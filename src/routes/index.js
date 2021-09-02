@@ -33,7 +33,9 @@ import Avatars from "../pages/components/Avatars";
 
 // Dashboards components
 // const Default = async(() => import("../pages/dashboards/Default"));
-const Analytics = async(() => import("../pages/dashboards/Analytics"));
+const Overview = async(() =>
+  import("../pages/protected/companies/marketing-performance")
+);
 // Pages components
 import Blank from "../pages/pages/Blank";
 import InvoiceDetails from "../pages/pages/InvoiceDetails";
@@ -53,14 +55,14 @@ import ProtectedPage from "../pages/protected/ProtectedPage";
 
 const marketingPerformance = {
   id: "Marketing Performance",
-  path: "/dashboard",
+  path: "/companies",
   containsHome: true,
   children: [
     {
-      path: "/dashboard/analytics",
+      path: "/companies/marketing-performance",
       name: "Overview",
       icon: <Compass />,
-      component: Analytics,
+      component: Overview,
     },
   ],
   component: null,
@@ -75,7 +77,7 @@ const websiteMetrics = {
       path: "/dashboard/analytics",
       name: "Dashboard",
       icon: <Activity />,
-      component: Analytics,
+      component: Overview,
     },
   ],
   component: null,
