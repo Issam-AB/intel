@@ -10,8 +10,6 @@ import {
   Typography as MuiTypography,
 } from "@material-ui/core";
 
-import { green } from "@material-ui/core/colors";
-
 import { spacing } from "@material-ui/system";
 
 import Actions from "./Actions";
@@ -52,26 +50,30 @@ const Overview = () => {
       <Divider my={6} />
 
       <Grid container spacing={6}>
-        <Grid item xs={6} lg={3} md={5} sm={6}>
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={12}>
-              <Stats title="INTELLIGENCE DASHBOARD" chip="Today" />
-            </Grid>
+        <Grid item spacing={6} lg={3}>
+          <Grid item xs={6} lg={4} xl>
+            <Stats title="INTELLIGENCE DASHBOARD" />
           </Grid>
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={12}>
-              <Account
-                title="Account Manager"
-                name="Michael Field"
-                call="(863)999-0010"
-                email="Manager@backend.com"
-                avatar="/static/img/avatars/avatar-"
-              />
-            </Grid>
+          <Grid item xs={6} lg={4} xl>
+            <Account
+              title="Account Manager"
+              name="Michael Field"
+              call="(863)999-0010"
+              email="Manager@backend.com"
+              avatar="/static/img/avatars/avatar-"
+            />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={7}>
+        <Grid item xs={12} lg={8}>
           <BarChart />
+        </Grid>
+      </Grid>
+      <Grid container spacing={6}>
+        <Grid item xs={12} lg={8}>
+          <BarChart />
+        </Grid>
+        <Grid item xs={12} lg={4}>
+          <DoughnutChart />
         </Grid>
       </Grid>
       <Grid container spacing={6}>

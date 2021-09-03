@@ -4,13 +4,13 @@ import styled from "styled-components/macro";
 import {
   Card,
   CardContent as MuiCardContent,
-  Chip as MuiChip,
   Typography as MuiTypography,
 } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
+import { MoreVertical } from "react-feather";
 
 const Typography = styled(MuiTypography)(spacing);
 
@@ -20,10 +20,12 @@ const useStyles = makeStyles({
     alignItems: "center",
     backgroundColor: "#651fff",
     borderRadius: "12px",
+    marginBottom: "15px",
+    boxShadow: "0px 0px 12px -5px #000000",
   },
   content: {
     textAlign: "center",
-    marginTop: "40px",
+    marginTop: "38px",
     fontWeight: "900",
     fontSize: "40px",
     color: "#fff",
@@ -38,21 +40,13 @@ const CardContent = styled(MuiCardContent)`
   }
 `;
 
-const Chip = styled(MuiChip)`
+const Chip = styled(MoreVertical)`
   position: absolute;
   top: 16px;
   right: 16px;
-  height: 20px;
-  padding: 4px 0;
-  font-size: 85%;
-  background-color: ${(props) => props.theme.palette.secondary.main};
+  width: 20px;
   color: ${(props) => props.theme.palette.common.white};
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
-
-  span {
-    padding-left: ${(props) => props.theme.spacing(2)}px;
-    padding-right: ${(props) => props.theme.spacing(2)}px;
-  }
 `;
 
 const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
@@ -63,7 +57,7 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
         <Typography variant="h1" mb={6} className={classes.content}>
           {title}
         </Typography>
-        <Chip label={chip} />
+        <Chip />
       </CardContent>
     </Card>
   );

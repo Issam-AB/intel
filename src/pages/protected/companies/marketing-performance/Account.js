@@ -17,11 +17,12 @@ const useStyles = makeStyles({
   root: {
     minHeight: 200,
     borderRadius: "12px",
+    boxShadow: "0px 0px 12px -5px #000000",
   },
   content: {
     textAlign: "center",
     fontWeight: "bold",
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid #E8EEF1",
   },
 });
 
@@ -37,11 +38,8 @@ const Account = ({ title, name, call, email, avatar }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <CardContent>
-        <Typography variant="h5" className={classes.content}>
-          {" "}
-          {title}{" "}
-        </Typography>{" "}
+      <CardContent className={classes.content}>
+        <Typography variant="h5"> {title} </Typography>{" "}
       </CardContent>{" "}
     </Card>
   );
