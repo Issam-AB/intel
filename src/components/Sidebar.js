@@ -22,7 +22,11 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { ExpandMore, ChevronRight } from "@material-ui/icons";
+import {
+  ExpandMore,
+  ChevronRight,
+  KeyboardArrowDown,
+} from "@material-ui/icons";
 
 import { green } from "@material-ui/core/colors";
 
@@ -145,6 +149,10 @@ const CategoryIconMore = styled(ExpandMore)`
   color: ${(props) => rgba(props.theme.sidebar.color, 0.5)};
 `;
 
+const IconClientDowm = styled(KeyboardArrowDown)`
+  color: ${(props) => rgba(props.theme.sidebar.color, 0.5)};
+`;
+
 const Link = styled(ListItem)`
   padding-left: ${(props) => props.theme.spacing(12)}px;
   padding-top: ${(props) => props.theme.spacing(2)}px;
@@ -225,25 +233,11 @@ const SidebarFooter = styled.div`
 
 const SidebarFooterText = styled(Typography)`
   color: ${(props) => props.theme.sidebar.footer.color};
-`;
-
-const SidebarFooterSubText = styled(Typography)`
-  color: ${(props) => props.theme.sidebar.footer.color};
-  font-size: 0.7rem;
-  display: block;
-  padding: 1px;
+  padding-top: 12px;
 `;
 
 const SidebarFooterBadge = styled(Badge)`
   margin-right: ${(props) => props.theme.spacing(1)}px;
-  span {
-    background-color: ${(props) =>
-      props.theme.sidebar.footer.online.background};
-    border: 1.5px solid ${(props) => props.theme.palette.common.white};
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-  }
 `;
 
 const SidebarCategory = ({
@@ -395,17 +389,12 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
               }}
               variant="dot"
             >
-              <Avatar
-                alt="Lucy Lavender"
-                src="/static/img/avatars/avatar-1.jpg"
-              />
+              <Avatar alt="Lucy Lavender">C </Avatar>
             </SidebarFooterBadge>
           </Grid>
-          <Grid item>
-            <SidebarFooterText variant="body2">Lucy Lavender</SidebarFooterText>
-            <SidebarFooterSubText variant="caption">
-              UX Designer
-            </SidebarFooterSubText>
+          <Grid spacing={7}>
+            <SidebarFooterText variant="body2">Client Name</SidebarFooterText>
+            {/* <IconClientDowm /> */}
           </Grid>
         </Grid>
       </SidebarFooter>

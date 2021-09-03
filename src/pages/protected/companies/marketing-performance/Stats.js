@@ -2,33 +2,26 @@ import React from "react";
 import styled from "styled-components/macro";
 
 import {
-  Card,
+  Box,
+  Card as MuiCard,
   CardContent as MuiCardContent,
+  Chip as MuiChip,
   Typography as MuiTypography,
 } from "@material-ui/core";
 
+import { rgba } from "polished";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
-import { MoreVertical } from "react-feather";
+
+const Card = styled(MuiCard)(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
 const useStyles = makeStyles({
-  root: {
-    minHeight: 200,
-    alignItems: "center",
-    backgroundColor: "#651fff",
-    borderRadius: "12px",
-    marginBottom: "15px",
+  card: {
+    border: "1.5px solid #7E4AEB",
     boxShadow: "0px 0px 12px -5px #000000",
-  },
-  content: {
-    textAlign: "center",
-    marginTop: "38px",
-    fontWeight: "900",
-    fontSize: "40px",
-    color: "#fff",
   },
 });
 
@@ -40,24 +33,48 @@ const CardContent = styled(MuiCardContent)`
   }
 `;
 
-const Chip = styled(MoreVertical)`
+const Chip = styled(MuiChip)`
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 20px;
+  padding: 0 6px;
+  font-size: 85%;
+  background-color: #6a74c9;
   color: ${(props) => props.theme.palette.common.white};
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
+`;
+
+const Percentage = styled(MuiTypography)`
+  span {
+    color: ${(props) => props.percentagecolor};
+    font-weight: ${(props) => props.theme.typography.fontWeightBold};
+    background: ${(props) => rgba(props.percentagecolor, 0.1)};
+    padding: 2px;
+    border-radius: 3px;
+    margin-right: ${(props) => props.theme.spacing(2)}px;
+  }
 `;
 
 const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
+    <Card mb={3} className={classes.card}>
       <CardContent>
-        <Typography variant="h1" mb={6} className={classes.content}>
+        <Typography variant="h6" mb={4}>
           {title}
         </Typography>
-        <Chip />
+        <Typography variant="h1" mb={3}>
+          <Box fontWeight="500">{amount}</Box>
+        </Typography>
+        <Percentage
+          variant="subtitle2"
+          mb={4}
+          color="textSecondary"
+          percentagecolor={percentagecolor}
+        >
+          <span>{percentageText}</span> Since last week
+        </Percentage>
+        <Chip label={chip} />
       </CardContent>
     </Card>
   );

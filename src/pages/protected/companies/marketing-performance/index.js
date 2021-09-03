@@ -11,17 +11,15 @@ import {
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
-
+import { green, red } from "@material-ui/core/colors";
 import Actions from "./Actions";
 import BarChart from "./BarChart";
-import DoughnutChart from "./DoughnutChart";
-import LanguagesTable from "./LanguagesTable";
+import Intelegence from "./Intelegence";
 import Stats from "./Stats";
 import Account from "./Account";
-import TrafficTable from "./TrafficTable";
-import WorldMap from "./WorldMap";
 
 const Divider = styled(MuiDivider)(spacing);
+const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
@@ -52,7 +50,7 @@ const Overview = () => {
       <Grid container spacing={6}>
         <Grid item spacing={6} lg={3}>
           <Grid item xs={6} lg={4} xl>
-            <Stats title="INTELLIGENCE DASHBOARD" />
+            <Intelegence title="INTELLIGENCE DASHBOARD" />
           </Grid>
           <Grid item xs={6} lg={4} xl>
             <Account
@@ -64,32 +62,57 @@ const Overview = () => {
             />
           </Grid>
         </Grid>
-        <Grid item xs={12} lg={8}>
+        <Grid item xs={12} lg={9}>
           <BarChart />
         </Grid>
       </Grid>
-      <Grid container spacing={6}>
-        <Grid item xs={12} lg={8}>
-          <BarChart />
+      <Spacer mb={6} />
+
+      <Grid container spacing={5}>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <Stats
+            title="People"
+            amount="17,244"
+            chip="Today"
+            percentageText="+26%"
+            percentagecolor={green[500]}
+          />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <DoughnutChart />
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <Stats
+            title="Total Leads"
+            amount="603"
+            chip="Today"
+            percentageText="-14%"
+            percentagecolor={red[500]}
+          />
         </Grid>
-      </Grid>
-      <Grid container spacing={6}>
-        <Grid item xs={12} lg={8}>
-          <WorldMap />
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <Stats
+            title="Conversion Rate"
+            amount="3.49%"
+            chip="Today"
+            percentageText="+18%"
+            percentagecolor={green[500]}
+          />
         </Grid>
-        <Grid item xs={12} lg={4}>
-          <DoughnutChart />
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <Stats
+            title="Cost Per Lead"
+            amount="$112.9"
+            chip="Yearly"
+            percentageText="-9%"
+            percentagecolor={red[500]}
+          />
         </Grid>
-      </Grid>
-      <Grid container spacing={6}>
-        <Grid item xs={12} lg={4}>
-          <LanguagesTable />
-        </Grid>
-        <Grid item xs={12} lg={8}>
-          <TrafficTable />
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <Stats
+            title="Cost"
+            amount="$74,772"
+            chip="Yearly"
+            percentageText="-9%"
+            percentagecolor={red[500]}
+          />
         </Grid>
       </Grid>
     </React.Fragment>
