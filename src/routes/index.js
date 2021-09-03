@@ -32,7 +32,7 @@ import Alerts from "../pages/components/Alerts";
 import Avatars from "../pages/components/Avatars";
 
 // Dashboards components
-// const Default = async(() => import("../pages/dashboards/Default"));
+//const Default = async(() => import("../pages/dashboards/Default"));
 const Overview = async(() =>
   import("../pages/protected/companies/marketing-performance")
 );
@@ -74,7 +74,8 @@ const websiteMetrics = {
   containsHome: true,
   children: [
     {
-      path: "/dashboard/analytics",
+      path: "/",
+      // path: "/dashboard/analytics",
       name: "Dashboard",
       icon: <Activity />,
       component: Overview,
@@ -184,7 +185,7 @@ const accountSettings = {
 
 const landingRoutes = {
   id: "Landing Page",
-  path: "/",
+  path: "/Landing-Page",
   header: "Docs",
   icon: <Monitor />,
   component: Landing,
@@ -215,6 +216,7 @@ export const dashboardLayoutRoutes = [
 
 // Routes using the Presentation layout
 export const presentationLayoutRoutes = [landingRoutes];
+// export const presentationLayoutRoutes = [marketingPerformance];
 
 // Routes that are protected
 export const protectedRoutes = [protectedPageRoutes];
