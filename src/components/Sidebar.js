@@ -5,6 +5,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import { darken } from "polished";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
 
@@ -22,17 +23,21 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import {
-  ExpandMore,
-  ChevronRight,
-  KeyboardArrowDown,
-} from "@material-ui/icons";
+import { ExpandMore, ChevronRight, KeyboardArrowUp } from "@material-ui/icons";
 
 import { green } from "@material-ui/core/colors";
 
 import { sidebarRoutes as routes } from "../routes/index";
 
 import { ReactComponent as Logo } from "../vendor/logo.svg";
+
+const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: "#1E88E5",
+    fontSize: "25px",
+    fontWeight: "bold",
+  },
+});
 
 const Box = styled(MuiBox)(spacing);
 
@@ -45,12 +50,12 @@ const Drawer = styled(MuiDrawer)`
 `;
 
 const Scrollbar = styled(PerfectScrollbar)`
-  background-color: ${(props) => props.theme.sidebar.background};
+  background-color: #0d0d2b;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
 `;
 
 const List = styled(MuiList)`
-  background-color: ${(props) => props.theme.sidebar.background};
+  background-color: #0d0d2b;
 `;
 
 const Items = styled.div`
@@ -62,7 +67,7 @@ const Brand = styled(ListItem)`
   font-size: ${(props) => props.theme.typography.h5.fontSize};
   font-weight: ${(props) => props.theme.typography.fontWeightMedium};
   color: ${(props) => props.theme.sidebar.header.color};
-  background-color: ${(props) => props.theme.sidebar.header.background};
+  background-color: #04040d;
   font-family: ${(props) => props.theme.typography.fontFamily};
   min-height: 56px;
   padding-left: ${(props) => props.theme.spacing(6)}px;
@@ -75,7 +80,7 @@ const Brand = styled(ListItem)`
   }
 
   &:hover {
-    background-color: ${(props) => props.theme.sidebar.header.background};
+    background-color: #04040d;
   }
 `;
 
@@ -149,8 +154,10 @@ const CategoryIconMore = styled(ExpandMore)`
   color: ${(props) => rgba(props.theme.sidebar.color, 0.5)};
 `;
 
-const IconClientDowm = styled(KeyboardArrowDown)`
-  color: ${(props) => rgba(props.theme.sidebar.color, 0.5)};
+const CategoryIconUp = styled(KeyboardArrowUp)`
+  color: #d6dbe5;
+  padding-top: 5px;
+  font-size: 40px;
 `;
 
 const Link = styled(ListItem)`
@@ -170,12 +177,11 @@ const Link = styled(ListItem)`
   }
 
   &:hover {
-    background: rgba(0, 0, 0, 0.08);
+    background: #14213d;
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-      darken(0.03, props.theme.sidebar.background)};
+    background-color: #04040d;
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -224,8 +230,7 @@ const SidebarSection = styled(Typography)`
 `;
 
 const SidebarFooter = styled.div`
-  background-color: ${(props) =>
-    props.theme.sidebar.footer.background} !important;
+  background-color: #000000 !important;
   padding: ${(props) => props.theme.spacing(2.75)}px
     ${(props) => props.theme.spacing(4)}px;
   border-right: 1px solid rgba(0, 0, 0, 0.12);
@@ -237,7 +242,7 @@ const SidebarFooterText = styled(Typography)`
 `;
 
 const SidebarFooterBadge = styled(Badge)`
-  margin-right: ${(props) => props.theme.spacing(1)}px;
+  margin-right: ${(props) => props.theme.spacing(2)}px;
 `;
 
 const SidebarCategory = ({
@@ -317,6 +322,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
       Object.assign({}, openRoutes, { [index]: !openRoutes[index] })
     );
   };
+  const classess = useStyles();
 
   return (
     <Drawer variant="permanent" {...rest}>
@@ -389,12 +395,16 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
               }}
               variant="dot"
             >
-              <Avatar alt="Lucy Lavender">C </Avatar>
+              <Avatar className={classess.avatar} alt="Lucy Lavender">
+                C{" "}
+              </Avatar>
             </SidebarFooterBadge>
           </Grid>
-          <Grid spacing={7}>
+          <Grid item md={6}>
             <SidebarFooterText variant="body2">Client Name</SidebarFooterText>
-            {/* <IconClientDowm /> */}
+          </Grid>
+          <Grid item justify="center">
+            <CategoryIconUp />
           </Grid>
         </Grid>
       </SidebarFooter>
