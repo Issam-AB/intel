@@ -124,7 +124,7 @@ function BarChart({ theme }) {
             <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
               Traffic Report
             </Typography>
-            <Typography variant="body2" gutterBottom style={{ fontWeight: "bold" }}>
+            <Typography variant="body2" gutterBottom>
               Monitor traffic acrosss all of your marketing effort
             </Typography>
           </Grid>
