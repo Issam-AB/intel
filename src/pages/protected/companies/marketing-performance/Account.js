@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "12px",
   },
   avatar: {
-    width: "80px",
-    height: "80px",
+    width: "85px",
+    height: "85px",
   },
   button: {
     margin: theme.spacing(2),
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px 18px",
     marginTop: "20px",
   },
+  name: {
+    fontWeight: "700"
+  }
 }));
 
 const AboutIcon = styled.span`
@@ -83,7 +86,7 @@ const Account = ({ title, name, call, email, avatar }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <Typography className={classes.title} variant="h6">
+      <Typography className={classes.title} variant="h2">
         {" "}
         {title}{" "}
       </Typography>{" "}
@@ -98,7 +101,7 @@ const Account = ({ title, name, call, email, avatar }) => {
           </Grid>
           <Grid item>
             <Grid item className={classes.flex}>
-              <Typography variant="h6">Micheal Field</Typography>
+              <Typography variant="h6" className={classes.name}>Micheal Field</Typography>
             </Grid>
             <Grid item className={classes.flex}>
               <AboutIcon>

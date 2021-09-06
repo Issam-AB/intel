@@ -8,24 +8,27 @@ import {
   Grid,
   FormGroup,
   FormControlLabel,
-  Checkbox, Button,
+  Checkbox,
 } from "@material-ui/core";
 import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import { Bar } from "react-chartjs-2";
-import { AlignCenter, AlignJustify } from "react-feather";
 const Card = styled(MuiCard)(spacing);
 
 const Spacer = styled.div(spacing);
 
 const ChartWrapper = styled.div`
-  height: 335px;
+  height: 322px;
   width: 100%;
 `;
 const useStyles = makeStyles({
   traffic: {
     borderBottom: "1px solid #E8EEF1",
+  },
+  Card: {
+    height: "475px",
+    boxShadow: "0px 0px 12px -5px #000000",
   },
 });
 
@@ -109,7 +112,7 @@ function BarChart({ theme }) {
   };
 
   return (
-    <Card mb={1}>
+    <Card mb={1} className={classes.Card} >
       <CardContent>
         <Grid
           justify="space-between"

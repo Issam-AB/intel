@@ -13,6 +13,7 @@ import { rgba } from "polished";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
+import { ArrowUp } from "react-feather"
 
 const Card = styled(MuiCard)(spacing);
 
@@ -55,16 +56,24 @@ const Percentage = styled(MuiTypography)`
   }
 `;
 
+const Arrow = styled(ArrowUp)`
+    color: #388e3c;
+    font-weight: ${(props) => props.theme.typography.fontWeightBold};
+    padding: 2px;
+    border-radius: 3px;
+    margin-right: ${(props) => props.theme.spacing(2)}px;
+
+`;
 const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
   const classes = useStyles();
   return (
     <Card mb={3} className={classes.card}>
       <CardContent>
-        <Typography variant="h6" mb={4}>
+        <Typography variant="h5" style={{ fontWeight: "700" }} mb={4}>
           {title}
         </Typography>
         <Typography variant="h1" mb={3}>
-          <Box fontWeight="500">{amount}</Box>
+          <Box fontWeight="600">{amount}</Box>
         </Typography>
         <Percentage
           variant="subtitle2"
@@ -72,6 +81,7 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
           color="textSecondary"
           percentagecolor={percentagecolor}
         >
+          {/* <Arrow /> */}
           <span>{percentageText}</span> Since last week
         </Percentage>
         <Chip label={chip} />

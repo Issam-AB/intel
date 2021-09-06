@@ -22,12 +22,12 @@ const typography = {
   fontWeightBold: 600,
   h1: {
     fontSize: "2rem",
-    fontWeight: 600,
+    fontWeight: 800,
     lineHeight: 1.25,
   },
   h2: {
     fontSize: "1.75rem",
-    fontWeight: 600,
+    fontWeight: 700,
     lineHeight: 1.25,
   },
   h3: {

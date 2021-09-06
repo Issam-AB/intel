@@ -25,10 +25,11 @@ const useStyles = makeStyles({
   },
   content: {
     textAlign: "center",
-    marginTop: "53px",
-    fontWeight: "800",
-    fontSize: "37px",
+    marginTop: "47px",
+    fontWeight: "700",
+    fontSize: "43px",
     color: "#fff",
+    fontFamily: "system-ui"
   },
 });
 
