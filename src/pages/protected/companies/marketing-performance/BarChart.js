@@ -16,7 +16,7 @@ const Card = styled(MuiCard)(spacing);
 const Spacer = styled.div(spacing);
 
 const ChartWrapper = styled.div`
-  height: 300px;
+  height: 335px;
   width: 100%;
 `;
 

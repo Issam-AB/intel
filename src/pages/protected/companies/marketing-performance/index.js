@@ -49,10 +49,10 @@ const Overview = () => {
 
       <Grid container spacing={6}>
         <Grid item spacing={6} lg={3}>
-          <Grid item xs={6} lg={4} xl>
+          <Grid item xs={12} lg={4} xl>
             <Intelegence title="INTELLIGENCE DASHBOARD" />
           </Grid>
-          <Grid item xs={6} lg={4} xl>
+          <Grid item xs={12} lg={4} xl>
             <Account
               title="Account Manager"
               name="Michael Field"

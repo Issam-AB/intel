@@ -42,6 +42,7 @@ import {
   ShoppingBag,
   Twitter,
 } from "react-feather";
+import { Smartphone } from "@material-ui/icons";
 
 const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
 
@@ -177,7 +178,7 @@ function About() {
         <Grid container direction="row" alignItems="center" mb={2}>
           <Grid item>
             <AboutIcon>
-              <Home />
+              <Smartphone />
             </AboutIcon>
           </Grid>
           <Grid item>

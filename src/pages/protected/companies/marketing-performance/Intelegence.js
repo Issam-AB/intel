@@ -16,7 +16,7 @@ const Typography = styled(MuiTypography)(spacing);
 
 const useStyles = makeStyles({
   root: {
-    minHeight: 200,
+    minHeight: 228,
     alignItems: "center",
     backgroundColor: "#6320EE",
     borderRadius: "12px",
@@ -25,9 +25,9 @@ const useStyles = makeStyles({
   },
   content: {
     textAlign: "center",
-    marginTop: "38px",
-    fontWeight: "900",
-    fontSize: "40px",
+    marginTop: "53px",
+    fontWeight: "bold",
+    fontSize: "38px",
     color: "#fff",
   },
 });

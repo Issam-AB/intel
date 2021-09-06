@@ -5,6 +5,7 @@ import {
   Badge,
   Grid,
   Card,
+  Button,
   Avatar,
   CardContent as MuiCardContent,
   Typography as MuiTypography,
@@ -14,9 +15,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
 
+import { Smartphone, Mail } from "react-feather";
+
 const Typography = styled(MuiTypography)(spacing);
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: 200,
     borderRadius: "12px",
@@ -24,37 +27,48 @@ const useStyles = makeStyles({
   },
   title: {
     textAlign: "center",
-    fontWeight: "bold",
     borderBottom: "1px solid #E8EEF1",
     padding: "12px",
+    fontSize: "16px",
   },
   content: {
-    maxWidth: "500px",
+    maxWidth: "600px",
+    textAlign: "center",
+    marginLeft: "35px",
   },
-});
+  flex: {
+    display: "flex",
+    marginBottom: "12px",
+  },
+  avatar: {
+    width: "80px",
+    height: "80px",
+  },
+  button: {
+    margin: theme.spacing(2),
+    color: "#6A74C9",
+    padding: "5px 25px",
+    marginTop: "20px",
+  },
+  buttons: {
+    margin: theme.spacing(2),
+    color: "#ffff",
+    backgroundColor: "#6A74C9",
+    padding: "5px 18px",
+    marginTop: "20px",
+  },
+}));
 
-const SidebarFooterText = styled(Typography)`
-  color: ${(props) => props.theme.sidebar.footer.color};
-`;
-const SidebarFooterSubText = styled(Typography)`
-  color: ${(props) => props.theme.sidebar.footer.color};
-  font-size: 0.7rem;
-  display: block;
-  padding: 1px;
-`;
+const AboutIcon = styled.span`
+  display: flex;
+  padding-right: ${(props) => props.theme.spacing(2)}px;
+  color: #6a74c9;
 
-const SidebarFooterBadge = styled(Badge)`
-  margin-right: ${(props) => props.theme.spacing(1)}px;
-  span {
-    background-color: ${(props) =>
-      props.theme.sidebar.footer.online.background};
-    border: 1.5px solid ${(props) => props.theme.palette.common.white};
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
+  svg {
+    width: 18px;
+    height: 18px;
   }
 `;
-
 const CardContent = styled(MuiCardContent)`
   position: relative;
 
@@ -62,39 +76,74 @@ const CardContent = styled(MuiCardContent)`
     padding-bottom: ${(props) => props.theme.spacing(4)}px;
   }
 `;
+const Centered = styled.div`
+  text-align: center;
+`;
 
 const Account = ({ title, name, call, email, avatar }) => {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
-      <Typography className={classes.title} variant="h5">
+      <Typography className={classes.title} variant="h6">
         {" "}
         {title}{" "}
       </Typography>{" "}
       <CardContent className={classes.content}>
-        <Grid container spacing={2}>
+        <Grid container direction="row" alignItems="center" mb={2} spacing={5}>
           <Grid item>
-            <SidebarFooterBadge
-              overlap="circle"
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "right",
-              }}
-              variant="dot"
-            >
-              <Avatar
-                alt="Lucy Lavender"
-                src="/static/img/avatars/avatar-1.jpg"
-              />
-            </SidebarFooterBadge>
+            <Avatar
+              className={classes.avatar}
+              alt="Lucy Lavender"
+              src="/static/img/avatars/avatar-1.jpg"
+            />
           </Grid>
           <Grid item>
-            <SidebarFooterText variant="body2">Lucy Lavender</SidebarFooterText>
-            <SidebarFooterSubText variant="caption">
-              UX Designer
-            </SidebarFooterSubText>
+            <Grid item className={classes.flex}>
+              <Typography variant="h6">Micheal Field</Typography>
+            </Grid>
+            <Grid item className={classes.flex}>
+              <AboutIcon>
+                <Smartphone />
+              </AboutIcon>
+              <Typography variant="body1">(863) 999-0010</Typography>
+            </Grid>
+            <Grid item className={classes.flex}>
+              <AboutIcon>
+                <Mail />
+              </AboutIcon>
+              <Typography variant="body1">Manager@backend.com</Typography>
+            </Grid>
           </Grid>
         </Grid>
+
+        <Centered>
+          <Button
+            mr={2}
+            variant="outlined"
+            startIcon={
+              <AboutIcon>
+                <Smartphone />
+              </AboutIcon>
+            }
+            className={classes.button}
+            color="#6A74C9"
+          >
+            Call
+          </Button>
+          <Button
+            mr={2}
+            variant="contained"
+            startIcon={
+              <AboutIcon>
+                <Mail style={{ color: "white" }} />
+              </AboutIcon>
+            }
+            className={classes.buttons}
+            color="#6A74C9"
+          >
+            Open Ticket
+          </Button>
+        </Centered>
       </CardContent>{" "}
     </Card>
   );
