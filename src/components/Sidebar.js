@@ -111,8 +111,7 @@ const Category = styled(ListItem)`
   }
 
   &.${(props) => props.activeClassName} {
-    background-color: ${(props) =>
-    darken(0.03, props.theme.sidebar.background)};
+    background-color:#04040d;
 
     span {
       color: ${(props) => props.theme.sidebar.color};
