@@ -88,25 +88,10 @@ const BrandIcon = styled(Logo)`
   margin-right: ${(props) => props.theme.spacing(2)}px;
   color: ${(props) => props.theme.sidebar.header.brand.color};
   fill: ${(props) => props.theme.sidebar.header.brand.color};
-  width: 32px;
-  height: 32px;
+  width: 200px;
+  height: 63px;
 `;
 
-const BrandChip = styled(Chip)`
-  background-color: ${green[700]};
-  border-radius: 5px;
-  color: ${(props) => props.theme.palette.common.white};
-  font-size: 55%;
-  height: 18px;
-  margin-left: 2px;
-  margin-top: -16px;
-  padding: 3px 0;
-
-  span {
-    padding-left: ${(props) => props.theme.spacing(1.375)}px;
-    padding-right: ${(props) => props.theme.spacing(1.375)}px;
-  }
-`;
 
 const Category = styled(ListItem)`
   padding-top: ${(props) => props.theme.spacing(3)}px;
@@ -129,7 +114,7 @@ const Category = styled(ListItem)`
 
   &.${(props) => props.activeClassName} {
     background-color: ${(props) =>
-      darken(0.03, props.theme.sidebar.background)};
+    darken(0.03, props.theme.sidebar.background)};
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -328,9 +313,6 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     <Drawer variant="permanent" {...rest}>
       <Brand component={NavLink} to="/" button>
         <BrandIcon />{" "}
-        <Box ml={1}>
-          Material App <BrandChip label="PRO" />
-        </Box>
       </Brand>
       <Scrollbar>
         <List disablePadding>
