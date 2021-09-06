@@ -6,10 +6,13 @@ import {
   Card as MuiCard,
   Typography,
   Grid,
+  FormGroup,
+  FormControlLabel,
+  Checkbox,
 } from "@material-ui/core";
 import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
-
+import { makeStyles } from "@material-ui/core/styles";
 import { Bar } from "react-chartjs-2";
 const Card = styled(MuiCard)(spacing);
 
@@ -19,6 +22,11 @@ const ChartWrapper = styled.div`
   height: 335px;
   width: 100%;
 `;
+const useStyles = makeStyles({
+  traffic: {
+    borderBottom: "1px solid #E8EEF1",
+  },
+});
 
 function BarChart({ theme }) {
   const data = {
@@ -87,11 +95,27 @@ function BarChart({ theme }) {
       ],
     },
   };
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+    checkedF: true,
+    checkedG: true,
+  });
+
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
 
   return (
     <Card mb={1}>
       <CardContent>
-        <Grid justify="space-between" container spacing={6}>
+        <Grid
+          justify="space-between"
+          container
+          spacing={6}
+          className={classes.traffic}
+        >
           <Grid item>
             <Typography variant="h6" gutterBottom>
               Traffic Report
@@ -107,7 +131,40 @@ function BarChart({ theme }) {
         </Grid>
 
         <Spacer mb={6} />
-
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={state.checkedA}
+                onChange={handleChange}
+                name="checkedA"
+              />
+            }
+            label="Secondary"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={state.checkedB}
+                onChange={handleChange}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label="Primary"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={state.checkedB}
+                onChange={handleChange}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label="Primary"
+          />
+        </FormGroup>
         <ChartWrapper>
           <Bar data={data} options={options} />
         </ChartWrapper>

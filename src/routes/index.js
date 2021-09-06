@@ -16,7 +16,6 @@ import {
   PhoneIncoming,
   Sliders,
   Users,
-  Settings,
   User,
 } from "react-feather";
 
@@ -118,12 +117,6 @@ const websiteLead = {
       path: "/pages/blank",
       name: "Integrations",
       icon: <Grid />,
-      component: Blank,
-    },
-    {
-      path: "/pages/blank",
-      name: "Settings",
-      icon: <Settings />,
       component: Blank,
     },
   ],

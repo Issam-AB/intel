@@ -26,8 +26,8 @@ const useStyles = makeStyles({
   content: {
     textAlign: "center",
     marginTop: "53px",
-    fontWeight: "bold",
-    fontSize: "38px",
+    fontWeight: "800",
+    fontSize: "37px",
     color: "#fff",
   },
 });
@@ -54,7 +54,7 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h1" mb={6} className={classes.content}>
+        <Typography variant="h2" mb={6} className={classes.content}>
           {title}
         </Typography>
         <Chip />

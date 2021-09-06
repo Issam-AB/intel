@@ -6,10 +6,19 @@ import { Button as MuiButton, Menu, MenuItem } from "@material-ui/core";
 import {
   Loop as LoopIcon,
   FilterList as FilterListIcon,
+  ExpandMore,
 } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
-
+const useStyle = makeStyles({
+  button: {
+    backgroundColor: "#fff",
+  },
+  // menu: {
+  //   width: "250px",
+  // },
+});
 const Button = styled(MuiButton)(spacing);
 
 const SmallButton = styled(Button)`
@@ -22,6 +31,7 @@ const SmallButton = styled(Button)`
 `;
 
 function Actions() {
+  const classes = useStyle();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -35,21 +45,24 @@ function Actions() {
   return (
     <React.Fragment>
       <SmallButton size="small" mr={2}>
-        <LoopIcon />
-      </SmallButton>
-      <SmallButton size="small" mr={2}>
         <FilterListIcon />
       </SmallButton>
+      <SmallButton size="small" mr={2}>
+        <LoopIcon />
+      </SmallButton>
       <Button
-        variant="contained"
-        color="secondary"
+        className={classes.button}
+        variant="outlined"
+        color="default"
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        endIcon={<ExpandMore />}
       >
-        Today: April 29
+        This Years
       </Button>
       <Menu
+        className={classes.menu}
         id="simple-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
