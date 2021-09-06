@@ -26,10 +26,10 @@ const Typography = styled(MuiTypography)(spacing);
 const Overview = () => {
   return (
     <React.Fragment>
-      <Helmet title="Analytics Dashboard" />
-      <Grid justify="space-between" container spacing={6}>
+      <Helmet title="marketing-performance" />
+      <Grid justify="space-between" container spacing={2}>
         <Grid item>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h2" gutterBottom>
             Marketing Performance
           </Typography>
           <Typography variant="subtitle1">
@@ -45,7 +45,7 @@ const Overview = () => {
         </Grid>
       </Grid>
 
-      <Divider my={6} />
+      <Divider my={4} />
 
       <Grid container spacing={6}>
         <Grid item spacing={6} lg={3}>

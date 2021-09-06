@@ -28,8 +28,8 @@ function App() {
     <React.Fragment>
       <HelmetProvider>
         <Helmet
-          titleTemplate="%s | Material App"
-          defaultTitle="Material App - React Admin & Dashboard Template"
+          titleTemplate="%s | Roofing Inteligence"
+          defaultTitle="Roofing Inteligence app admin"
         />
         <StylesProvider jss={jss}>
           <MuiPickersUtilsProvider utils={DateFnsUtils}>

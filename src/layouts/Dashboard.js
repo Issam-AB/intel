@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme.palette.background.default};
+    background: #f0f0f7;
   }
 
   .MuiCardHeader-action .MuiIconButton-root {
@@ -58,7 +58,7 @@ const Paper = styled(MuiPaper)(spacing);
 
 const MainContent = styled(Paper)`
   flex: 1;
-  background: ${(props) => props.theme.palette.background.default};
+  background: #f0f0f7;
 
   @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
     flex: none;
@@ -67,6 +67,7 @@ const MainContent = styled(Paper)`
   .MuiPaper-root .MuiPaper-root {
     box-shadow: none;
   }
+  padding: 20px;
 `;
 
 const Dashboard = ({ children, routes, width }) => {
