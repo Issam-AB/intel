@@ -23,7 +23,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { ExpandMore, ChevronRight, KeyboardArrowUp } from "@material-ui/icons";
+import { ExpandMore, ChevronRight, KeyboardArrowUp, OpenInNew } from "@material-ui/icons";
 
 
 import { sidebarRoutes as routes } from "../routes/index";
@@ -280,10 +280,12 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     routes.forEach((route, index) => {
       const isActive = pathName.indexOf(route.path) === 0;
       const isOpen = route.open;
+      const opentogle = route.children
       const isHome = route.containsHome && pathName === "/";
 
       _routes = Object.assign({}, _routes, {
-        [index]: isActive || isOpen || isHome,
+        [index]: isActive || isOpen || isHome || opentogle,
+
       });
     });
 
@@ -293,7 +295,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
   const [openRoutes, setOpenRoutes] = useState(() => initOpenRoutes());
 
   const toggle = (index) => {
-    // Collapse all elements
+    //Collapse all elements
     // Object.keys(openRoutes).forEach(
     //   (item) =>
     //     openRoutes[index] ||

@@ -143,7 +143,6 @@ function BarChart({ theme }) {
                 checked={state.checkedA}
                 onChange={handleChange}
                 name="checkedA"
-                style={{ color: "#6320ee" }}
               />
             }
             label="All Traffic"
@@ -153,7 +152,7 @@ function BarChart({ theme }) {
             control={
               <>
                 <Checkbox
-                  checked={state.checkedB}
+                  // checked={state.checkedB}
                   onChange={handleChange}
                   name="checkedB"
                 />
@@ -177,7 +176,7 @@ function BarChart({ theme }) {
             control={
               <>
                 <Checkbox
-                  checked={state.checkedF}
+                  //checked={state.checkedF}
                   onChange={handleChange}
                   name="checkedF"
                   color="primary"

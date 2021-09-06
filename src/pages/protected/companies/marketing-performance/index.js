@@ -26,7 +26,6 @@ const Typography = styled(MuiTypography)(spacing);
 const Overview = () => {
   return (
     <React.Fragment>
-      <Helmet title="marketing-performance" />
       <Grid container justify="space-between" spacing={2}>
         <Grid item>
           <Typography variant="h2" gutterBottom>
