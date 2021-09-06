@@ -8,12 +8,13 @@ import {
   Grid,
   FormGroup,
   FormControlLabel,
-  Checkbox,
+  Checkbox, Button,
 } from "@material-ui/core";
 import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import { Bar } from "react-chartjs-2";
+import { AlignCenter, AlignJustify } from "react-feather";
 const Card = styled(MuiCard)(spacing);
 
 const Spacer = styled.div(spacing);
@@ -131,8 +132,9 @@ function BarChart({ theme }) {
         </Grid>
 
         <Spacer mb={5} />
-        <FormGroup row>
+        <FormGroup row style={{ marginLeft: "5px" }}>
           <FormControlLabel
+            style={{ fontWeight: "bold" }}
             control={
               <Checkbox
                 checked={state.checkedA}
@@ -141,29 +143,56 @@ function BarChart({ theme }) {
                 style={{ color: "#6320ee" }}
               />
             }
-            label="Secondary"
+            label="All Traffic"
+            style={{ marginRight: "72px" }}
           />
           <FormControlLabel
             control={
-              <Checkbox
-                checked={state.checkedB}
-                onChange={handleChange}
-                name="checkedB"
-                color="primary"
-              />
+              <>
+                <Checkbox
+                  checked={state.checkedB}
+                  onChange={handleChange}
+                  name="checkedB"
+                />
+                <span style={{
+                  backgroundColor: "#9A68FC",
+                  width: "9px",
+                  height: "9px",
+                  left: "-4%",
+                  position: "relative",
+                  borderRadius: "50%",
+                  margin: "3px"
+                }}></span>
+              </>
             }
-            label="Primary"
+
+            label="Phone Calls"
+            style={{ marginRight: "72px" }}
+
           />
           <FormControlLabel
             control={
-              <Checkbox
-                checked={state.checkedB}
-                onChange={handleChange}
-                name="checkedB"
-                color="primary"
-              />
+              <>
+                <Checkbox
+                  checked={state.checkedF}
+                  onChange={handleChange}
+                  name="checkedF"
+                  color="primary"
+                />
+                <span style={{
+                  backgroundColor: "#4782DA",
+                  width: "9px",
+                  height: "9px",
+                  left: "-4%",
+                  position: "relative",
+                  borderRadius: "50%",
+                  margin: "3px"
+                }}></span>
+              </>
+
             }
-            label="Primary"
+            label="Website Leads"
+            style={{ marginRight: "75px" }}
           />
         </FormGroup>
         <Spacer mb={5} />
@@ -171,7 +200,7 @@ function BarChart({ theme }) {
           <Bar data={data} options={options} />
         </ChartWrapper>
       </CardContent>
-    </Card>
+    </Card >
   );
 }
 
