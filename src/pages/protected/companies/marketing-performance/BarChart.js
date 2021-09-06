@@ -117,10 +117,10 @@ function BarChart({ theme }) {
           className={classes.traffic}
         >
           <Grid item>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
               Traffic Report
             </Typography>
-            <Typography variant="body2" gutterBottom>
+            <Typography variant="body2" gutterBottom style={{ fontWeight: "bold" }}>
               Monitor traffic acrosss all of your marketing effort
             </Typography>
           </Grid>
@@ -130,7 +130,7 @@ function BarChart({ theme }) {
           </Grid>
         </Grid>
 
-        <Spacer mb={6} />
+        <Spacer mb={5} />
         <FormGroup row>
           <FormControlLabel
             control={
@@ -138,6 +138,7 @@ function BarChart({ theme }) {
                 checked={state.checkedA}
                 onChange={handleChange}
                 name="checkedA"
+                style={{ color: "#6320ee" }}
               />
             }
             label="Secondary"
@@ -165,6 +166,7 @@ function BarChart({ theme }) {
             label="Primary"
           />
         </FormGroup>
+        <Spacer mb={5} />
         <ChartWrapper>
           <Bar data={data} options={options} />
         </ChartWrapper>

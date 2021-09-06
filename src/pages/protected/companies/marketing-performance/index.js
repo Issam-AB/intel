@@ -27,13 +27,13 @@ const Overview = () => {
   return (
     <React.Fragment>
       <Helmet title="marketing-performance" />
-      <Grid justify="space-between" container spacing={2}>
+      <Grid container justify="space-between" spacing={2}>
         <Grid item>
           <Typography variant="h2" gutterBottom>
             Marketing Performance
           </Typography>
-          <Typography variant="subtitle1">
-            Welcome back, Meche! We've missed you.{" "}
+          <Typography variant="subtitle2" style={{ marginTop: "-10px", fontWeight: "bold" }}>
+            Welcome back, Client's <span>Fist Name!</span> We've missed you.{" "}
             <span role="img" aria-label="Waving Hand Sign">
               👋
             </span>
@@ -45,9 +45,9 @@ const Overview = () => {
         </Grid>
       </Grid>
 
-      <Divider my={4} />
+      <Divider my={3} />
 
-      <Grid container spacing={6}>
+      <Grid container spacing={6} style={{ marginTop: "10px" }} >
         <Grid item spacing={6} lg={3}>
           <Grid item xs={12} lg={4} xl>
             <Intelegence title="INTELLIGENCE DASHBOARD" />
