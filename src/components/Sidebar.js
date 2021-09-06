@@ -25,7 +25,6 @@ import {
 
 import { ExpandMore, ChevronRight, KeyboardArrowUp } from "@material-ui/icons";
 
-import { green } from "@material-ui/core/colors";
 
 import { sidebarRoutes as routes } from "../routes/index";
 
@@ -39,7 +38,6 @@ const useStyles = makeStyles({
   },
 });
 
-const Box = styled(MuiBox)(spacing);
 
 const Drawer = styled(MuiDrawer)`
   border-right: 0;
@@ -59,8 +57,8 @@ const List = styled(MuiList)`
 `;
 
 const Items = styled.div`
-  padding-top: ${(props) => props.theme.spacing(2.5)}px;
-  padding-bottom: ${(props) => props.theme.spacing(2.5)}px;
+  padding-top: ${(props) => props.theme.spacing(6)}px;
+  padding-bottom: ${(props) => props.theme.spacing(6)}px;
 `;
 
 const Brand = styled(ListItem)`
@@ -89,7 +87,7 @@ const BrandIcon = styled(Logo)`
   color: ${(props) => props.theme.sidebar.header.brand.color};
   fill: ${(props) => props.theme.sidebar.header.brand.color};
   width: 200px;
-  height: 63px;
+  height: 70px;
 `;
 
 
@@ -146,17 +144,17 @@ const CategoryIconUp = styled(KeyboardArrowUp)`
 `;
 
 const Link = styled(ListItem)`
-  padding-left: ${(props) => props.theme.spacing(12)}px;
-  padding-top: ${(props) => props.theme.spacing(2)}px;
-  padding-bottom: ${(props) => props.theme.spacing(2)}px;
+  padding-left: ${(props) => props.theme.spacing(10)}px;
+  padding-top: ${(props) => props.theme.spacing(1)}px;
+  padding-bottom: ${(props) => props.theme.spacing(1)}px;
   padding-right: ${(props) => props.theme.spacing(7)}px;
   font-weight: ${(props) => props.theme.typography.fontWeightRegular};
 
   svg {
     color: ${(props) => props.theme.sidebar.color};
     font-size: 20px;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     opacity: 0.5;
     padding-right: ${(props) => props.theme.spacing(2)}px;
   }
@@ -175,12 +173,13 @@ const Link = styled(ListItem)`
 `;
 
 const LinkText = styled(ListItemText)`
-  color: ${(props) => props.theme.sidebar.color};
+  color:#868695;
   span {
     font-size: ${(props) => props.theme.typography.body1.fontSize}px;
   }
   margin-top: 0;
   margin-bottom: 0;
+  margin-left: 30px;
 `;
 
 const LinkBadge = styled(Chip)`
@@ -190,7 +189,8 @@ const LinkBadge = styled(Chip)`
   position: absolute;
   right: 28px;
   top: 8px;
-  background: ${(props) => props.theme.sidebar.badge.background};
+  background:#6320ee;
+  border-radius: 25px;
 
   span.MuiChip-label,
   span.MuiChip-label:hover {
@@ -206,7 +206,7 @@ const CategoryBadge = styled(LinkBadge)`
 `;
 
 const SidebarSection = styled(Typography)`
-  color: ${(props) => props.theme.sidebar.color};
+  color: #868695;
   padding: ${(props) => props.theme.spacing(4)}px
     ${(props) => props.theme.spacing(7)}px
     ${(props) => props.theme.spacing(1)}px;
