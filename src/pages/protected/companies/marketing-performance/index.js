@@ -26,12 +26,13 @@ const Typography = styled(MuiTypography)(spacing);
 const Overview = () => {
   return (
     <React.Fragment>
-      <Grid container justify="space-between" spacing={2}>
+      <Helmet title="Marketing Performance" />
+      <Grid container justify="space-between" spacing={4}>
         <Grid item>
-          <Typography variant="h2" gutterBottom>
+          <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700" }} gutterBottom>
             Marketing Performance
           </Typography>
-          <Typography variant="subtitle2" style={{ marginTop: "-10px", fontWeight: "bold" }}>
+          <Typography variant="subtitle2" style={{ marginTop: "-10px", fontWeight: "600" }}>
             Welcome back, Client's <span>Fist Name!</span> We've missed you.{" "}
             <span role="img" aria-label="Waving Hand Sign">
               👋

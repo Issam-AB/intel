@@ -28,6 +28,7 @@ function App() {
     <React.Fragment>
       <HelmetProvider>
         <Helmet
+          titleTemplate="%s | Roofing Intelligence"
           defaultTitle="Roofing Intelligence"
         />
         <StylesProvider jss={jss}>

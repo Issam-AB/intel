@@ -6,7 +6,7 @@ import { Button as MuiButton, Menu, MenuItem } from "@material-ui/core";
 import {
   Loop as LoopIcon,
   FilterList as FilterListIcon,
-  ExpandMore,
+  ExpandMore
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -16,6 +16,7 @@ const useStyle = makeStyles({
     backgroundColor: "#fff",
   },
 });
+
 const Button = styled(MuiButton)(spacing);
 
 const SmallButton = styled(Button)`
@@ -59,7 +60,6 @@ function Actions() {
         This Years
       </Button>
       <Menu
-        className={classes.menu}
         id="simple-menu"
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
