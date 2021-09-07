@@ -9,11 +9,20 @@ import {
   Typography as MuiTypography,
 } from "@material-ui/core";
 
+import arrowup from "../../../../vendor/icons/arrow-up.svg";
+import { makeStyles } from "@material-ui/core/styles"
+
 import { rgba } from "polished";
 
 import { spacing } from "@material-ui/system";
 
 const Typography = styled(MuiTypography)(spacing);
+
+const useStyles = makeStyles({
+  card: {
+    boxShadow: "0px 0px 12px -5px #000000",
+  },
+});
 
 const CardContent = styled(MuiCardContent)`
   position: relative;
@@ -27,17 +36,11 @@ const Chip = styled(MuiChip)`
   position: absolute;
   top: 16px;
   right: 16px;
-  height: 20px;
-  padding: 4px 0;
+  padding: 0 6px;
   font-size: 85%;
-  background-color: ${(props) => props.theme.palette.secondary.main};
+  background-color: #6a74c9;
   color: ${(props) => props.theme.palette.common.white};
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
-
-  span {
-    padding-left: ${(props) => props.theme.spacing(2)}px;
-    padding-right: ${(props) => props.theme.spacing(2)}px;
-  }
 `;
 
 const Percentage = styled(MuiTypography)`
@@ -52,23 +55,32 @@ const Percentage = styled(MuiTypography)`
 `;
 
 const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
+  const classes = useStyles();
   return (
-    <Card>
+    <Card className={classes.card}>
       <CardContent>
-        <Typography variant="h6" mb={6}>
+        <Typography variant="h5" style={{ fontWeight: "700" }} mb={2}>
           {title}
         </Typography>
-        <Typography variant="h3" mb={6}>
-          <Box fontWeight="fontWeightRegular">{amount}</Box>
+        <Typography variant="h1" mb={3}>
+          <Box fontWeight="600">{amount}</Box>
         </Typography>
-        <Percentage
-          variant="subtitle2"
-          mb={6}
-          color="textSecondary"
-          percentagecolor={percentagecolor}
-        >
-          <span>{percentageText}</span> Since last week
-        </Percentage>
+        <Box ml={1} display="flex">
+          <img src={arrowup} style={{
+            marginRight: "8px",
+            width: "8px",
+            height: "19px"
+          }} />
+          <Percentage
+            variant="subtitle2"
+            mb={4}
+            color="textSecondary"
+            percentagecolor={percentagecolor}
+          >
+            <span>{percentageText}</span> Since last week
+          </Percentage>
+        </Box>
+
         <Chip label={chip} />
       </CardContent>
     </Card>

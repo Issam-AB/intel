@@ -19,7 +19,7 @@ const Card = styled(MuiCard)(spacing);
 const Spacer = styled.div(spacing);
 
 const ChartWrapper = styled.div`
-  height: 322px;
+  height: 344px;
   width: 100%;
 `;
 const useStyles = makeStyles({
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     borderBottom: "1px solid #E8EEF1",
   },
   Card: {
-    height: "475px",
+    height: "501px",
     boxShadow: "0px 0px 12px -5px #000000",
   },
 });

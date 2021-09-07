@@ -38,11 +38,17 @@ const Chip = styled(MuiChip)`
   position: absolute;
   top: 16px;
   right: 16px;
-  padding: 0 6px;
+  height: 20px;
+  padding: 4px 0;
   font-size: 85%;
-  background-color: #6a74c9;
+  background-color: ${(props) => props.theme.palette.secondary.main};
   color: ${(props) => props.theme.palette.common.white};
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
+
+  span {
+    padding-left: ${(props) => props.theme.spacing(2)}px;
+    padding-right: ${(props) => props.theme.spacing(2)}px;
+  }
 `;
 
 const Percentage = styled(MuiTypography)`
@@ -69,7 +75,7 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
   return (
     <Card mb={3} className={classes.card}>
       <CardContent>
-        <Typography variant="h5" style={{ fontWeight: "700" }} mb={4}>
+        <Typography variant="h5" style={{ fontWeight: "700" }} mb={2}>
           {title}
         </Typography>
         <Typography variant="h1" mb={3}>

@@ -16,6 +16,9 @@ import { spacing } from "@material-ui/system";
 import Actions from "./Actions";
 import BarChart from "./BarChart";
 import Stats from "./Stats";
+import Rate from "./Rate"
+import StateLeads from "./StateLeads"
+import TrafficSource from "./TrafficSource";
 
 
 const Divider = styled(MuiDivider)(spacing);
@@ -29,7 +32,7 @@ function Dashborad({ theme }) {
             <Helmet title="Website Matrics" />
             <Grid justify="space-between" container spacing={2}>
                 <Grid item>
-                    <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700" }} gutterBottom>
+                    <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700", fontSize: "20px" }} gutterBottom>
                         Website Matrics
                     </Typography>
                     <Typography variant="subtitle2" style={{ marginTop: "-10px", fontWeight: "600" }}>
@@ -51,13 +54,14 @@ function Dashborad({ theme }) {
 
                 <Grid item xs={12} lg={5}>
                     <Grid item xs={12}>
-                        <Typography variant="h3" gutterBottom>Dashborad</Typography>
+                        <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700", fontSize: "20px" }} gutterBottom>Dashborad</Typography>
+                        <Typography variant="subtitle2" style={{ marginTop: "-10px", marginBottom: "10px", fontWeight: "600" }} >This Month of July</Typography>
                     </Grid>
                     <Grid container spacing={6}>
                         <Grid item xs={12} sm={12} md={6}>
                             <Stats
-                                title="Visitors"
-                                amount="24.532"
+                                title="Total People"
+                                amount="17,244"
                                 chip="Today"
                                 percentageText="+14%"
                                 percentagecolor={green[500]}
@@ -65,37 +69,37 @@ function Dashborad({ theme }) {
                         </Grid>
                         <Grid item xs={12} sm={12} md={6}>
                             <Stats
-                                title="Activity"
-                                amount="63.200"
-                                chip="Annual"
+                                title="Average Actions"
+                                amount="100"
+                                chip="Today"
                                 percentageText="-12%"
                                 percentagecolor={red[500]}
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={6}>
                             <Stats
-                                title="Real-Time"
-                                amount="1.320"
-                                chip="Monthly"
+                                title="Return Visitors"
+                                amount="2%"
+                                chip="Today"
                                 percentageText="-18%"
                                 percentagecolor={red[500]}
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={6}>
                             <Stats
-                                title="Bounce"
-                                amount="12.364"
-                                chip="Yearly"
+                                title="New Visitors"
+                                amount="98%"
+                                chip="Today"
                                 percentageText="+27%"
                                 percentagecolor={green[500]}
                             />
                         </Grid>
                         <Grid item xs={12} sm={12} md={12}>
-                            <Stats
-                                title="Bounce"
-                                amount="12.364"
-                                chip="Yearly"
-                                percentageText="+27%"
+                            <Rate
+                                title="Conversion Rate"
+                                amount="5.5%"
+                                chip="Today"
+                                percentageText="+6%"
                                 percentagecolor={green[500]}
                             />
                         </Grid>
@@ -105,23 +109,68 @@ function Dashborad({ theme }) {
                     <BarChart />
                 </Grid>
             </Grid>
+            <Spacer mb={6} />
 
-            {/* <Grid container spacing={6}>
-                <Grid item xs={12} lg={8}>
-                    <WorldMap />
+            <Grid container spacing={5}>
+                <Grid item xs={12}>
+                    <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700", fontSize: "20px" }} gutterBottom>Website Leads</Typography>
+                    <Typography variant="subtitle2" style={{ marginTop: "-10px", marginBottom: "-7px", fontWeight: "600" }} >This Month of July</Typography>
                 </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={3} xl>
+                    <StateLeads
+                        title="People"
+                        amount="17,244"
+                        chip="Today"
+                        percentageText="+26%"
+                        percentagecolor={green[500]}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={3} xl>
+                    <StateLeads
+                        title="Total Leads"
+                        amount="603"
+                        chip="Today"
+                        percentageText="-14%"
+                        percentagecolor={red[500]}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={3} xl>
+                    <StateLeads
+                        title="Conversion Rate"
+                        amount="3.49%"
+                        chip="Today"
+                        percentageText="+18%"
+                        percentagecolor={green[500]}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={3} xl>
+                    <StateLeads
+                        title="Cost Per Lead"
+                        amount="$112.9"
+                        chip="Yearly"
+                        percentageText="-9%"
+                        percentagecolor={red[500]}
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} md={6} lg={3} xl>
+                    <StateLeads
+                        title="Cost"
+                        amount="$74,772"
+                        chip="Yearly"
+                        percentageText="-9%"
+                        percentagecolor={red[500]}
+                    />
+                </Grid>
+            </Grid>
+            <Spacer mb={10} />
+            <Grid container spacing={6}>
                 <Grid item xs={12} lg={4}>
-                    <DoughnutChart />
+                    <TrafficSource />
                 </Grid>
-            </Grid> */}
-            {/* <Grid container spacing={6}>
-                <Grid item xs={12} lg={4}>
-                    <LanguagesTable />
-                </Grid>
-                <Grid item xs={12} lg={8}>
+                {/* <Grid item xs={12} lg={8}>
                     <TrafficTable />
-                </Grid>
-            </Grid> */}
+                </Grid> */}
+            </Grid>
         </React.Fragment >
     );
 }
