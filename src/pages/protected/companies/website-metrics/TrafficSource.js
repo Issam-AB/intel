@@ -17,9 +17,15 @@ import {
 import { spacing } from "@material-ui/system";
 
 import { MoreVertical } from "react-feather";
+import { makeStyles } from "@material-ui/core/styles"
 
 const Card = styled(MuiCard)(spacing);
 
+const useStyles = makeStyles({
+  colorSecondary: {
+    backgroundColor: "#9A68FC",
+  },
+});
 const TableWrapper = styled.div`
   overflow-y: auto;
   max-width: calc(100vw - ${(props) => props.theme.spacing(12)}px);
@@ -33,6 +39,7 @@ const LinearProgress = styled(MuiLinearProgress)`
 `;
 
 function LanguagesTable() {
+  const classes = useStyles()
   return (
     <Card mb={3}>
       <CardHeader
@@ -58,26 +65,28 @@ function LanguagesTable() {
             </TableHead>
             <TableBody>
               <TableRow>
-                <>
-                  <span
-                    style={{
+                <TableCell scope="row">
+                  <>
+                    <span style={{
                       backgroundColor: "#9A68FC",
                       width: "9px",
                       height: "9px",
                       left: "-4%",
-                      position: "absolute",
+                      position: "relative",
                       borderRadius: "50%",
-                      margin: "3px"
-                    }}
-                  ></span>
-                  <TableCell scope="row">en-us</TableCell>
-                </>
+                      margin: "3px",
+                      color: "#9A68FC"
+                    }}>......</span>
+                    <span>dsdsd</span>
+                  </>
+                </TableCell>
                 <TableCell align="right">865</TableCell>
                 <TableCell>
                   <LinearProgress
                     variant="determinate"
                     value={75}
-                    color="secondary"
+                    color="primary"
+                    className={classes.colorPrimary}
                   />
                 </TableCell>
               </TableRow>
@@ -88,7 +97,6 @@ function LanguagesTable() {
                   <LinearProgress
                     variant="determinate"
                     value={65}
-                    color="secondary"
                   />
                 </TableCell>
               </TableRow>
@@ -140,7 +148,7 @@ function LanguagesTable() {
           </Table>
         </TableWrapper>
       </Paper>
-    </Card>
+    </Card >
   );
 }
 
