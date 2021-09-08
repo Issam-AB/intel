@@ -85,7 +85,7 @@ function DoughnutChart({ theme }) {
         title="Top Channels"
         classes={{ title: classes.title }}
       />
-
+      <Divider />
       <CardContent>
         <ChartWrapper>
           <DoughnutInner variant="h4">

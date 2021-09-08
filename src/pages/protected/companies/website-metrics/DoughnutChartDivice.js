@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { withTheme } from "styled-components/macro";
 
-import { green, red, orange } from "@material-ui/core/colors";
+import { green, red, orange, blue } from "@material-ui/core/colors";
 import { rgba } from "polished";
 import {
   Card as MuiCard,
@@ -85,8 +85,8 @@ function DoughnutChart({ theme }) {
     labels: ["Social", "Search Engines", "Direct", "Other"],
     datasets: [
       {
-        data: [260, 125, 164],
-        backgroundColor: [theme.palette.secondary.main, red[500], orange[500]],
+        data: [430, 300, 420],
+        backgroundColor: ["#9A68FC", "#45C1FF", "#9A68FC"],
         borderWidth: 5,
         borderColor: theme.palette.background.paper,
       },
@@ -143,7 +143,7 @@ function DoughnutChart({ theme }) {
                     style={{
                       marginRight: "8px",
                       width: "8px",
-                      height: "19px",
+                      height: "16px",
                     }}
                   />
                   <span>+6%</span>
@@ -171,7 +171,7 @@ function DoughnutChart({ theme }) {
                     style={{
                       marginRight: "8px",
                       width: "8px",
-                      height: "19px",
+                      height: "16px",
                     }}
                   />
                   <span>+6%</span>
@@ -199,7 +199,7 @@ function DoughnutChart({ theme }) {
                     style={{
                       marginRight: "8px",
                       width: "8px",
-                      height: "19px",
+                      height: "16px",
                     }}
                   />
                   <span>+6%</span>

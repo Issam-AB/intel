@@ -12,13 +12,14 @@ import {
   TableHead,
   TableRow,
   LinearProgress as MuiLinearProgress,
+  Divider as MuiDivider,
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
 
 import { MoreVertical } from "react-feather";
 import { makeStyles } from "@material-ui/core/styles";
-
+const Divider = styled(MuiDivider)(spacing);
 const Card = styled(MuiCard)(spacing);
 
 const useStyles = makeStyles({
@@ -77,6 +78,7 @@ function LanguagesTable() {
         title="Traffic Sources"
 
       />
+      <Divider />
       <Paper>
         <TableWrapper>
           <Table>
