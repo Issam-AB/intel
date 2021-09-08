@@ -28,7 +28,7 @@ function Introduction() {
         Introduction
       </Typography>
       <Typography variant="subtitle1" gutterBottom my={4}>
-        Hello, I hope you find this theme useful. Material App has been crafted
+        Hello, I hope you find this theme useful. Roofing intellegence has been crafted
         on top of Material UI. The included demo pages don't replace the
         official ones, but provide a clear view of all new components and
         extended styles that this theme provides on top of Material UI.

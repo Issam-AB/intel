@@ -22,17 +22,34 @@ import { makeStyles } from "@material-ui/core/styles";
 const Card = styled(MuiCard)(spacing);
 
 const useStyles = makeStyles({
-  root: {
-    height: 10,
-    borderRadius: 5,
-  },
-  colorPrimary: {
-    backgroundColor: "#E9E9E9",
-  },
   bar: {
+    borderRadius: 5,
+    backgroundColor: "#445AC9",
+  },
+  bar1: {
+    borderRadius: 5,
+    backgroundColor: "#45C1FF",
+  },
+  bar2: {
     borderRadius: 5,
     backgroundColor: "#9A68FC",
   },
+  bar3: {
+    borderRadius: 5,
+    backgroundColor: "#50B332",
+  },
+  bar4: {
+    borderRadius: 5,
+    backgroundColor: "#FF9800",
+  },
+  card: {
+    boxShadow: "0px 0px 12px -5px #000000",
+    height: "382px"
+  },
+  title: {
+    fontWeight: "700"
+  }
+
 });
 const TableWrapper = styled.div`
   overflow-y: auto;
@@ -49,25 +66,27 @@ const LinearProgress = styled(MuiLinearProgress)`
 function LanguagesTable() {
   const classes = useStyles();
   return (
-    <Card mb={3}>
+    <Card mb={3} className={classes.card}>
       <CardHeader
         action={
           <IconButton aria-label="settings">
             <MoreVertical />
           </IconButton>
         }
+        classes={{ title: classes.title }}
         title="Traffic Sources"
+
       />
       <Paper>
         <TableWrapper>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell component="th" scope="row">
+                <TableCell component="th" scope="row" style={{ fontWeight: "700" }}>
                   Trrafic Source
                 </TableCell>
-                <TableCell align="center">Poeple</TableCell>
-                <TableCell>Leads</TableCell>
+                <TableCell align="center" style={{ fontWeight: "700" }}>Poeple</TableCell>
+                <TableCell style={{ fontWeight: "700" }}>Leads</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -79,7 +98,7 @@ function LanguagesTable() {
                         backgroundColor: "#445AC9",
                         width: "9px",
                         height: "9px",
-                        left: "-4%",
+                        left: "-2%",
                         position: "relative",
                         borderRadius: "50%",
                         margin: "3px",
@@ -96,18 +115,8 @@ function LanguagesTable() {
                   <LinearProgress
                     variant="determinate"
                     value={75}
-                    style={{
-                      bar: {
-                        borderRadius: 5,
-                        backgroundColor: "#445AC9",
-                      },
-                      root: {
-                        height: 10,
-                        borderRadius: 5,
-                      },
-                      colorPrimary: {
-                        backgroundColor: "#E9E9E9",
-                      },
+                    classes={{
+                      bar: classes.bar,
                     }}
                   />
                 </TableCell>
@@ -120,7 +129,7 @@ function LanguagesTable() {
                         backgroundColor: "#45C1FF",
                         width: "9px",
                         height: "9px",
-                        left: "-4%",
+                        left: "-2%",
                         position: "relative",
                         borderRadius: "50%",
                         margin: "3px",
@@ -138,22 +147,7 @@ function LanguagesTable() {
                     variant="determinate"
                     value={75}
                     classes={{
-                      root: classes.root,
-                      colorPrimary: classes.colorPrimary,
-                      bar: classes.bar,
-                    }}
-                    style={{
-                      bar: {
-                        borderRadius: 5,
-                        backgroundColor: "#45C1FF",
-                      },
-                      root: {
-                        height: 10,
-                        borderRadius: 5,
-                      },
-                      colorPrimary: {
-                        backgroundColor: "#E9E9E9",
-                      },
+                      bar: classes.bar1,
                     }}
                   />
                 </TableCell>
@@ -166,7 +160,7 @@ function LanguagesTable() {
                         backgroundColor: "#9A68FC",
                         width: "9px",
                         height: "9px",
-                        left: "-4%",
+                        left: "-2%",
                         position: "relative",
                         borderRadius: "50%",
                         margin: "3px",
@@ -183,18 +177,8 @@ function LanguagesTable() {
                   <LinearProgress
                     variant="determinate"
                     value={75}
-                    style={{
-                      bar: {
-                        borderRadius: 5,
-                        backgroundColor: "#9A68FC",
-                      },
-                      root: {
-                        height: 10,
-                        borderRadius: 5,
-                      },
-                      colorPrimary: {
-                        backgroundColor: "#E9E9E9",
-                      },
+                    classes={{
+                      bar: classes.bar2,
                     }}
                   />
                 </TableCell>
@@ -207,7 +191,7 @@ function LanguagesTable() {
                         backgroundColor: "#50B432",
                         width: "9px",
                         height: "9px",
-                        left: "-4%",
+                        left: "-2%",
                         position: "relative",
                         borderRadius: "50%",
                         margin: "3px",
@@ -224,18 +208,39 @@ function LanguagesTable() {
                   <LinearProgress
                     variant="determinate"
                     value={75}
-                    style={{
-                      bar: {
-                        borderRadius: 5,
-                        backgroundColor: "#50B432",
-                      },
-                      root: {
-                        height: 10,
-                        borderRadius: 5,
-                      },
-                      colorPrimary: {
-                        backgroundColor: "#E9E9E9",
-                      },
+                    classes={{
+                      bar: classes.bar3,
+                    }}
+                  />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell scope="row">
+                  <>
+                    <span
+                      style={{
+                        backgroundColor: "#FF9800",
+                        width: "9px",
+                        height: "9px",
+                        left: "-2%",
+                        position: "relative",
+                        borderRadius: "50%",
+                        margin: "3px",
+                        color: "#FF9800",
+                      }}
+                    >
+                      ......
+                    </span>
+                    <span>Referral (misc,)</span>
+                  </>
+                </TableCell>
+                <TableCell align="center">12</TableCell>
+                <TableCell>
+                  <LinearProgress
+                    variant="determinate"
+                    value={75}
+                    classes={{
+                      bar: classes.bar4,
                     }}
                   />
                 </TableCell>

@@ -117,7 +117,7 @@ function Introduction() {
               <Grid container justify="center" spacing={4}>
                 <Grid item xs={12} lg={10}>
                   <Subtitle color="textSecondary">
-                    Material App comes with hundreds of UI elements, forms,
+                    Roofing intellegence comes with hundreds of UI elements, forms,
                     tables, charts, pages and icons that helps you to create
                     your web apps or applications faster.
                   </Subtitle>
@@ -190,7 +190,7 @@ function Introduction() {
             <ImageWrapper>
               <NavLink to="/dashboard/analytics" target="_blank">
                 <Image
-                  alt="Material App - React Admin Template"
+                  alt="Roofing intellegence - React Admin Template"
                   src={`/static/img/screenshots/dashboard-analytics-large.jpg`}
                 />
               </NavLink>

@@ -43,7 +43,7 @@ const AppBarComponent = () => (
             <Grid item>
               <Brand>
                 <BrandIcon />
-                Material App
+                Roofing intellegence
               </Brand>
             </Grid>
             <Grid item xs />
@@ -78,7 +78,7 @@ const AppBarComponent = () => (
                 href="https://material-ui.com/store/items/material-app/"
                 target="_blank"
               >
-                Get Material App
+                Get Roofing intellegence
               </Button>
             </Grid>
           </Grid>

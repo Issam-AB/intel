@@ -72,7 +72,7 @@ function QuickStart() {
         >
           Create React App
         </Link>
-        . You'll need to install Node.js (v12 or up) before using Material App.
+        . You'll need to install Node.js (v12 or up) before using Roofing intellegence.
       </Typography>
 
       <Typography variant="subtitle1" gutterBottom my={4}>
@@ -81,7 +81,7 @@ function QuickStart() {
           Node.js
         </Link>{" "}
         is installed, run <code>npm install</code> to install the rest of
-        Material App's dependencies. All dependencies will be downloaded to the{" "}
+        Roofing intellegence's dependencies. All dependencies will be downloaded to the{" "}
         <code>node_modules</code> directory.
         <br />
         <Code>npm install</Code>
@@ -90,7 +90,7 @@ function QuickStart() {
       <Typography variant="subtitle1" gutterBottom my={4}>
         Now you're ready to modify the source files and generate new{" "}
         <code>build/</code>
-        files. Material App is using webpack and webpack-serve to automatically
+        files. Roofing intellegence is using webpack and webpack-serve to automatically
         detect file changes and start a local webserver at{" "}
         <code>http://localhost:3000</code>.
         <br />

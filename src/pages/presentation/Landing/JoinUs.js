@@ -36,7 +36,7 @@ function JoinUs() {
         <Grid container alignItems="center" justify="center">
           <Grid item xs={12} md={6} lg={6} xl={6}>
             <Typography variant="h2" gutterBottom>
-              Get Material App and start saving time
+              Get Roofing intellegence and start saving time
             </Typography>
             <Subtitle variant="h5" gutterBottom>
               Stop wasting time building your application from scratch. Material
@@ -51,7 +51,7 @@ function JoinUs() {
               size="large"
               target="_blank"
             >
-              Get Material App
+              Get Roofing intellegence
             </Button>
           </Grid>
         </Grid>

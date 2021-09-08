@@ -19,6 +19,9 @@ import Stats from "./Stats";
 import Rate from "./Rate";
 import StateLeads from "./StateLeads";
 import TrafficSource from "./TrafficSource";
+import DoughnutChart from "./DoughnutChart"
+import DoughnutChartDivice from "./DoughnutChartDivice";
+import WebsiteHealth from "./WesbiteHealth";
 
 const Divider = styled(MuiDivider)(spacing);
 const Spacer = styled.div(spacing);
@@ -211,12 +214,78 @@ function Dashborad({ theme }) {
       </Grid>
       <Spacer mb={10} />
       <Grid container spacing={6}>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} lg={5}>
           <TrafficSource />
         </Grid>
-        {/* <Grid item xs={12} lg={8}>
-                    <TrafficTable />
-                </Grid> */}
+        <Grid item xs={12} lg={3}>
+          <DoughnutChart />
+        </Grid>
+        <Grid item xs={12} lg={4}>
+          <DoughnutChartDivice />
+        </Grid>
+      </Grid>
+
+      <Spacer mb={3} />
+
+      <Grid container spacing={5}>
+        <Grid item xs={12}>
+          <Typography
+            variant="h3"
+            style={{
+              marginBottom: "10px",
+              fontWeight: "700",
+              fontSize: "20px",
+            }}
+            gutterBottom
+          >
+            Website Health
+          </Typography>
+          <Typography
+            variant="subtitle2"
+            style={{
+              marginTop: "-10px",
+              marginBottom: "-7px",
+              fontWeight: "600",
+            }}
+          >
+            This Month of July
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <WebsiteHealth
+            title="Uptime Montoring"
+            amount="100%"
+            chip="Verify"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <WebsiteHealth
+            title="Security Monitoring"
+            amount="100%"
+            chip="Verify"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <WebsiteHealth
+            title="Hosting"
+            amount="Perfect"
+            chip="Verify"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <WebsiteHealth
+            title="Website Speed"
+            amount="3.4s"
+            chip="Verify"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12} md={6} lg={3} xl>
+          <WebsiteHealth
+            title="Lead Capture"
+            amount="Perfect"
+            chip="Verify"
+          />
+        </Grid>
       </Grid>
     </React.Fragment>
   );

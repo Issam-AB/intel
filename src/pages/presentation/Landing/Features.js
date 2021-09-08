@@ -71,14 +71,14 @@ function Features() {
           Features
         </TypographyOverline>
         <Typography variant="h2" component="h3" gutterBottom>
-          Developers love Material App
+          Developers love Roofing intellegence
         </Typography>
         <Box mb={8} />
         <Grid container spacing={6}>
           <Feature
             Icon={CodeIcon}
             title="Built for Developers"
-            description="Material App is built to make your life easier. Theme provider, build tooling, documentation, and 400+ components. "
+            description="Roofing intellegence is built to make your life easier. Theme provider, build tooling, documentation, and 400+ components. "
           />
           <Feature
             Icon={PlusCircleIcon}
