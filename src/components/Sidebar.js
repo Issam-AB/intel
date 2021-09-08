@@ -10,7 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import {
   Badge,
-  // Box as MuiBox,
+  Menu,
+  MenuItem,
   Chip,
   Grid,
   Avatar,
@@ -20,13 +21,14 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  ListItemIcon,
 } from "@material-ui/core";
 
 import {
   ExpandMore,
   ChevronRight,
   KeyboardArrowUp,
-  // OpenInNew,
+  PersonOutline
 } from "@material-ui/icons";
 
 import { sidebarRoutes as routes } from "../routes/index";
@@ -271,6 +273,16 @@ const SidebarLink = ({ name, to, badge, icon }) => {
 };
 
 const Sidebar = ({ classes, staticContext, location, ...rest }) => {
+
+  // Menu popup user
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const initOpenRoutes = () => {
     /* Open collapse element that matches current url */
     const pathName = location.pathname;
@@ -387,7 +399,35 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
             <SidebarFooterText variant="body2">Client Name</SidebarFooterText>
           </Grid>
           <Grid item justify="center">
-            <CategoryIconUp />
+
+            <div>
+              {/* <Button aria-controls="simple-menu" aria-haspopup="true">
+                Open Menu
+              </Button> */}
+              <CategoryIconUp onClick={handleClick} />
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+                getContentAnchorEl={null}
+                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+                transformOrigin={{ vertical: "bottom", horizontal: "center" }}
+              // className={props.classes.menu}
+
+              >
+
+                <ListItemIcon>
+                  <PersonOutline fontSize="small" />
+                  <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                </ListItemIcon>
+
+                <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Users</MenuItem>
+                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+              </Menu>
+            </div>
           </Grid>
         </Grid>
       </SidebarFooter>

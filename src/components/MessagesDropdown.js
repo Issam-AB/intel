@@ -28,7 +28,7 @@ const Popover = styled(MuiPopover)`
 
 const Indicator = styled(Badge)`
   .MuiBadge-badge {
-    background: ${(props) => props.theme.header.indicator.background};
+    background: #6320ee;
     color: ${(props) => props.theme.palette.common.white};
   }
 `;
