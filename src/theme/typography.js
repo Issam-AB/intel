@@ -12,8 +12,6 @@ const typography = {
     // '"Segoe UI Emoji"',
     // '"Segoe UI Symbol"',
     "Nunito",
-
-
   ].join(","),
   fontSize: 13,
   fontWeightLight: 300,

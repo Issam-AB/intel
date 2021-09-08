@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 
 import arrowup from "../../../../vendor/icons/arrow-up.svg";
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles";
 
 import { rgba } from "polished";
 
@@ -66,11 +66,15 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
           <Box fontWeight="600">{amount}</Box>
         </Typography>
         <Box ml={1} display="flex">
-          <img src={arrowup} style={{
-            marginRight: "8px",
-            width: "8px",
-            height: "19px"
-          }} />
+          <img
+            src={arrowup}
+            alt="arrowup"
+            style={{
+              marginRight: "8px",
+              width: "8px",
+              height: "19px",
+            }}
+          />
           <Percentage
             variant="subtitle2"
             mb={4}

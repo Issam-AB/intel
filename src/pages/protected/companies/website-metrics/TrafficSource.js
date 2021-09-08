@@ -17,12 +17,20 @@ import {
 import { spacing } from "@material-ui/system";
 
 import { MoreVertical } from "react-feather";
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles";
 
 const Card = styled(MuiCard)(spacing);
 
 const useStyles = makeStyles({
-  colorSecondary: {
+  root: {
+    height: 10,
+    borderRadius: 5,
+  },
+  colorPrimary: {
+    backgroundColor: "#E9E9E9",
+  },
+  bar: {
+    borderRadius: 5,
     backgroundColor: "#9A68FC",
   },
 });
@@ -39,7 +47,7 @@ const LinearProgress = styled(MuiLinearProgress)`
 `;
 
 function LanguagesTable() {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <Card mb={3}>
       <CardHeader
@@ -58,89 +66,177 @@ function LanguagesTable() {
                 <TableCell component="th" scope="row">
                   Trrafic Source
                 </TableCell>
-                <TableCell align="right">Poeple</TableCell>
+                <TableCell align="center">Poeple</TableCell>
                 <TableCell>Leads</TableCell>
-
               </TableRow>
             </TableHead>
             <TableBody>
               <TableRow>
                 <TableCell scope="row">
                   <>
-                    <span style={{
-                      backgroundColor: "#9A68FC",
-                      width: "9px",
-                      height: "9px",
-                      left: "-4%",
-                      position: "relative",
-                      borderRadius: "50%",
-                      margin: "3px",
-                      color: "#9A68FC"
-                    }}>......</span>
-                    <span>dsdsd</span>
+                    <span
+                      style={{
+                        backgroundColor: "#445AC9",
+                        width: "9px",
+                        height: "9px",
+                        left: "-4%",
+                        position: "relative",
+                        borderRadius: "50%",
+                        margin: "3px",
+                        color: "#445AC9",
+                      }}
+                    >
+                      ......
+                    </span>
+                    <span>Google My Business</span>
                   </>
                 </TableCell>
-                <TableCell align="right">865</TableCell>
+                <TableCell align="center">5</TableCell>
                 <TableCell>
                   <LinearProgress
                     variant="determinate"
                     value={75}
-                    color="primary"
-                    className={classes.colorPrimary}
+                    style={{
+                      bar: {
+                        borderRadius: 5,
+                        backgroundColor: "#445AC9",
+                      },
+                      root: {
+                        height: 10,
+                        borderRadius: 5,
+                      },
+                      colorPrimary: {
+                        backgroundColor: "#E9E9E9",
+                      },
+                    }}
                   />
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell scope="row">en-gb</TableCell>
-                <TableCell align="right">240</TableCell>
+                <TableCell scope="row">
+                  <>
+                    <span
+                      style={{
+                        backgroundColor: "#45C1FF",
+                        width: "9px",
+                        height: "9px",
+                        left: "-4%",
+                        position: "relative",
+                        borderRadius: "50%",
+                        margin: "3px",
+                        color: "#45C1FF",
+                      }}
+                    >
+                      ......
+                    </span>
+                    <span>Direct Traffic</span>
+                  </>
+                </TableCell>
+                <TableCell align="center">7</TableCell>
                 <TableCell>
                   <LinearProgress
                     variant="determinate"
-                    value={65}
+                    value={75}
+                    classes={{
+                      root: classes.root,
+                      colorPrimary: classes.colorPrimary,
+                      bar: classes.bar,
+                    }}
+                    style={{
+                      bar: {
+                        borderRadius: 5,
+                        backgroundColor: "#45C1FF",
+                      },
+                      root: {
+                        height: 10,
+                        borderRadius: 5,
+                      },
+                      colorPrimary: {
+                        backgroundColor: "#E9E9E9",
+                      },
+                    }}
                   />
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell scope="row">fr-fr</TableCell>
-                <TableCell align="right">220</TableCell>
+                <TableCell scope="row">
+                  <>
+                    <span
+                      style={{
+                        backgroundColor: "#9A68FC",
+                        width: "9px",
+                        height: "9px",
+                        left: "-4%",
+                        position: "relative",
+                        borderRadius: "50%",
+                        margin: "3px",
+                        color: "#9A68FC",
+                      }}
+                    >
+                      ......
+                    </span>
+                    <span>Organic Search</span>
+                  </>
+                </TableCell>
+                <TableCell align="center">9</TableCell>
                 <TableCell>
                   <LinearProgress
                     variant="determinate"
-                    value={50}
-                    color="secondary"
+                    value={75}
+                    style={{
+                      bar: {
+                        borderRadius: 5,
+                        backgroundColor: "#9A68FC",
+                      },
+                      root: {
+                        height: 10,
+                        borderRadius: 5,
+                      },
+                      colorPrimary: {
+                        backgroundColor: "#E9E9E9",
+                      },
+                    }}
                   />
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell scope="row">es-es</TableCell>
-                <TableCell align="right">162</TableCell>
-                <TableCell>
-                  <LinearProgress
-                    variant="determinate"
-                    value={30}
-                    color="secondary"
-                  />
+                <TableCell scope="row">
+                  <>
+                    <span
+                      style={{
+                        backgroundColor: "#50B432",
+                        width: "9px",
+                        height: "9px",
+                        left: "-4%",
+                        position: "relative",
+                        borderRadius: "50%",
+                        margin: "3px",
+                        color: "#50B432",
+                      }}
+                    >
+                      ......
+                    </span>
+                    <span>Soucial media</span>
+                  </>
                 </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">de-de</TableCell>
-                <TableCell align="right">86</TableCell>
+                <TableCell align="center">12</TableCell>
                 <TableCell>
                   <LinearProgress
                     variant="determinate"
-                    value={15}
-                    color="secondary"
-                  />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell scope="row">ru-ru</TableCell>
-                <TableCell align="right">32</TableCell>
-                <TableCell>
-                  <LinearProgress
-                    variant="determinate"
-                    value={5}
-                    color="secondary"
+                    value={75}
+                    style={{
+                      bar: {
+                        borderRadius: 5,
+                        backgroundColor: "#50B432",
+                      },
+                      root: {
+                        height: 10,
+                        borderRadius: 5,
+                      },
+                      colorPrimary: {
+                        backgroundColor: "#E9E9E9",
+                      },
+                    }}
                   />
                 </TableCell>
               </TableRow>
@@ -148,7 +244,7 @@ function LanguagesTable() {
           </Table>
         </TableWrapper>
       </Paper>
-    </Card >
+    </Card>
   );
 }
 

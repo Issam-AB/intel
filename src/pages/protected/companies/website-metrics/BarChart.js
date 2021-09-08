@@ -112,7 +112,7 @@ function BarChart({ theme }) {
   };
 
   return (
-    <Card mb={1} className={classes.Card} >
+    <Card mb={1} className={classes.Card}>
       <CardContent>
         <Grid
           justify="space-between"
@@ -121,7 +121,11 @@ function BarChart({ theme }) {
           className={classes.traffic}
         >
           <Grid item>
-            <Typography variant="h5" gutterBottom style={{ fontWeight: "bold" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{ fontWeight: "bold" }}
+            >
               Traffic Report
             </Typography>
             <Typography variant="body2" gutterBottom>
@@ -137,7 +141,6 @@ function BarChart({ theme }) {
         <Spacer mb={5} />
         <FormGroup row style={{ marginLeft: "5px" }}>
           <FormControlLabel
-            style={{ fontWeight: "bold" }}
             control={
               <Checkbox
                 checked={state.checkedA}
@@ -146,7 +149,7 @@ function BarChart({ theme }) {
               />
             }
             label="All Traffic"
-            style={{ marginRight: "72px" }}
+            style={{ marginRight: "72px", fontWeight: "bold" }}
           />
           <FormControlLabel
             control={
@@ -156,21 +159,21 @@ function BarChart({ theme }) {
                   onChange={handleChange}
                   name="checkedB"
                 />
-                <span style={{
-                  backgroundColor: "#9A68FC",
-                  width: "9px",
-                  height: "9px",
-                  left: "-4%",
-                  position: "relative",
-                  borderRadius: "50%",
-                  margin: "3px"
-                }}></span>
+                <span
+                  style={{
+                    backgroundColor: "#9A68FC",
+                    width: "9px",
+                    height: "9px",
+                    left: "-4%",
+                    position: "relative",
+                    borderRadius: "50%",
+                    margin: "3px",
+                  }}
+                ></span>
               </>
             }
-
             label="Phone Calls"
             style={{ marginRight: "72px" }}
-
           />
           <FormControlLabel
             control={
@@ -181,17 +184,18 @@ function BarChart({ theme }) {
                   name="checkedF"
                   color="primary"
                 />
-                <span style={{
-                  backgroundColor: "#4782DA",
-                  width: "9px",
-                  height: "9px",
-                  left: "-4%",
-                  position: "relative",
-                  borderRadius: "50%",
-                  margin: "3px"
-                }}></span>
+                <span
+                  style={{
+                    backgroundColor: "#4782DA",
+                    width: "9px",
+                    height: "9px",
+                    left: "-4%",
+                    position: "relative",
+                    borderRadius: "50%",
+                    margin: "3px",
+                  }}
+                ></span>
               </>
-
             }
             label="Website Leads"
             style={{ marginRight: "75px" }}
@@ -202,7 +206,7 @@ function BarChart({ theme }) {
           <Bar data={data} options={options} />
         </ChartWrapper>
       </CardContent>
-    </Card >
+    </Card>
   );
 }
 

@@ -57,8 +57,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
   },
   name: {
-    fontWeight: "700"
-  }
+    fontWeight: "700",
+  },
 }));
 
 const AboutIcon = styled.span`
@@ -101,7 +101,9 @@ const Account = ({ title, name, call, email, avatar }) => {
           </Grid>
           <Grid item>
             <Grid item className={classes.flex}>
-              <Typography variant="h6" className={classes.name}>Micheal Field</Typography>
+              <Typography variant="h6" className={classes.name}>
+                Micheal Field
+              </Typography>
             </Grid>
             <Grid item className={classes.flex}>
               <AboutIcon>

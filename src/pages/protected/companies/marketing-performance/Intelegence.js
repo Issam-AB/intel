@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     fontWeight: "700",
     fontSize: "43px",
     color: "#fff",
-    fontFamily: "system-ui"
+    fontFamily: "system-ui",
   },
 });
 

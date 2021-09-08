@@ -6,7 +6,7 @@ import { Button as MuiButton, Menu, MenuItem } from "@material-ui/core";
 import {
   Loop as LoopIcon,
   FilterList as FilterListIcon,
-  ExpandMore
+  ExpandMore,
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 

@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { rgba } from "polished";
 import { NavLink, withRouter } from "react-router-dom";
-import { darken } from "polished";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 
-import { spacing } from "@material-ui/system";
+// import { spacing } from "@material-ui/system";
 
 import {
   Badge,
-  Box as MuiBox,
+  // Box as MuiBox,
   Chip,
   Grid,
   Avatar,
@@ -23,8 +22,12 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { ExpandMore, ChevronRight, KeyboardArrowUp, OpenInNew } from "@material-ui/icons";
-
+import {
+  ExpandMore,
+  ChevronRight,
+  KeyboardArrowUp,
+  // OpenInNew,
+} from "@material-ui/icons";
 
 import { sidebarRoutes as routes } from "../routes/index";
 
@@ -37,7 +40,6 @@ const useStyles = makeStyles({
     fontWeight: "bold",
   },
 });
-
 
 const Drawer = styled(MuiDrawer)`
   border-right: 0;
@@ -90,7 +92,6 @@ const BrandIcon = styled(Logo)`
   height: 70px;
 `;
 
-
 const Category = styled(ListItem)`
   padding-top: ${(props) => props.theme.spacing(3)}px;
   padding-bottom: ${(props) => props.theme.spacing(3)}px;
@@ -111,7 +112,7 @@ const Category = styled(ListItem)`
   }
 
   &.${(props) => props.activeClassName} {
-    background-color:#04040d;
+    background-color: #04040d;
 
     span {
       color: ${(props) => props.theme.sidebar.color};
@@ -172,7 +173,7 @@ const Link = styled(ListItem)`
 `;
 
 const LinkText = styled(ListItemText)`
-  color:#868695;
+  color: #868695;
   span {
     font-size: ${(props) => props.theme.typography.body1.fontSize}px;
   }
@@ -188,7 +189,7 @@ const LinkBadge = styled(Chip)`
   position: absolute;
   right: 28px;
   top: 8px;
-  background:#6320ee;
+  background: #6320ee;
   border-radius: 25px;
 
   span.MuiChip-label,
@@ -279,12 +280,11 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
     routes.forEach((route, index) => {
       const isActive = pathName.indexOf(route.path) === 0;
       const isOpen = route.open;
-      const opentogle = route.children
+      const opentogle = route.children;
       const isHome = route.containsHome && pathName === "/";
 
       _routes = Object.assign({}, _routes, {
         [index]: isActive || isOpen || isHome || opentogle,
-
       });
     });
 

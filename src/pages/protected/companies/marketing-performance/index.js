@@ -29,10 +29,17 @@ const Overview = () => {
       <Helmet title="Marketing Performance" />
       <Grid container justify="space-between" spacing={4}>
         <Grid item>
-          <Typography variant="h3" style={{ marginBottom: "10px", fontWeight: "700" }} gutterBottom>
+          <Typography
+            variant="h3"
+            style={{ marginBottom: "10px", fontWeight: "700" }}
+            gutterBottom
+          >
             Marketing Performance
           </Typography>
-          <Typography variant="subtitle2" style={{ marginTop: "-10px", fontWeight: "600" }}>
+          <Typography
+            variant="subtitle2"
+            style={{ marginTop: "-10px", fontWeight: "600" }}
+          >
             Welcome back, Client's <span>Fist Name!</span> We've missed you.{" "}
             <span role="img" aria-label="Waving Hand Sign">
               👋
@@ -47,7 +54,7 @@ const Overview = () => {
 
       <Divider my={3} />
 
-      <Grid container spacing={6} style={{ marginTop: "10px" }} >
+      <Grid container spacing={6} style={{ marginTop: "10px" }}>
         <Grid item spacing={6} lg={3}>
           <Grid item xs={12} lg={4} xl>
             <Intelegence title="INTELLIGENCE DASHBOARD" />

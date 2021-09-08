@@ -13,7 +13,6 @@ import { rgba } from "polished";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";
-import { ArrowUp } from "react-feather"
 
 const Card = styled(MuiCard)(spacing);
 
@@ -56,14 +55,6 @@ const Percentage = styled(MuiTypography)`
   }
 `;
 
-const Arrow = styled(ArrowUp)`
-    color: #388e3c;
-    font-weight: ${(props) => props.theme.typography.fontWeightBold};
-    padding: 2px;
-    border-radius: 3px;
-    margin-right: ${(props) => props.theme.spacing(2)}px;
-
-`;
 const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
   const classes = useStyles();
   return (
