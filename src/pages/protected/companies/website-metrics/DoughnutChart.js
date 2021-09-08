@@ -25,7 +25,7 @@ const Divider = styled(MuiDivider)(spacing);
 const useStyles = makeStyles({
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
-    height: "382px"
+    height: "383px"
   },
   title: {
     fontWeight: "700"

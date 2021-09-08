@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 
   },
   paper: {
-    padding: "12px 57px"
+    padding: "14px 55px"
   },
   icons: {
     marginLeft: "-55px",
