@@ -28,7 +28,9 @@ import {
   ExpandMore,
   ChevronRight,
   KeyboardArrowUp,
-  PersonOutline
+  PersonOutline,
+  PeopleAltOutlined,
+  ExitToAppOutlined
 } from "@material-ui/icons";
 
 import { sidebarRoutes as routes } from "../routes/index";
@@ -41,6 +43,13 @@ const useStyles = makeStyles({
     fontSize: "25px",
     fontWeight: "bold",
   },
+  paper: {
+    marginLeft: "-61.5px",
+    width: "210px",
+    marginTop: "-3px",
+    borderRadius: "none",
+
+  }
 });
 
 const Drawer = styled(MuiDrawer)`
@@ -400,38 +409,50 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
           </Grid>
           <Grid item justify="center">
 
-            <div>
-              {/* <Button aria-controls="simple-menu" aria-haspopup="true">
-                Open Menu
-              </Button> */}
-              <CategoryIconUp onClick={handleClick} />
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-                getContentAnchorEl={null}
-                anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
-                transformOrigin={{ vertical: "bottom", horizontal: "center" }}
-              // className={props.classes.menu}
+            <CategoryIconUp onClick={handleClick} />
+            <Menu
+              classes={{ paper: classess.paper }}
+              // id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              getContentAnchorEl={null}
+              anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
+              transformOrigin={{ vertical: "bottom", horizontal: "center" }}
 
-              >
 
-                <ListItemIcon>
+            >
+
+              {/* <ListItemIcon>
                   <PersonOutline fontSize="small" />
                   <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                </ListItemIcon>
+                </ListItemIcon> */}
 
-                <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Users</MenuItem>
-                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
-              </Menu>
-            </div>
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon style={{ minWidth: "29px" }}>
+                  <PersonOutline fontSize="small" />
+                </ListItemIcon>
+                <Typography variant="inherit" align="right">My Profile</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon style={{ minWidth: "29px" }}>
+                  <PeopleAltOutlined fontSize="small" />
+                </ListItemIcon>
+                <Typography variant="inherit" align="right">User</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon style={{ minWidth: "29px" }}>
+                  <ExitToAppOutlined fontSize="small" />
+                </ListItemIcon>
+                <Typography variant="inherit" align="right">Signe Out</Typography>
+              </MenuItem>
+            </Menu>
+
           </Grid>
         </Grid>
       </SidebarFooter>
-    </Drawer>
+    </Drawer >
   );
 };
 
