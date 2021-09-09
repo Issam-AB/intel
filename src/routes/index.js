@@ -39,6 +39,7 @@ const Dashborad = async(() =>
   import("../pages/protected/companies/website-metrics")
 );
 // Pages components
+import GoodLeads from "../pages/protected/companies/website-leads/goodLeads"
 import Blank from "../pages/pages/Blank";
 import InvoiceDetails from "../pages/pages/InvoiceDetails";
 import InvoiceList from "../pages/pages/InvoiceList";
@@ -88,14 +89,14 @@ const websiteMetrics = {
 
 const websiteLead = {
   id: "Website Leads (forms)",
-  path: "/pages",
+  path: "/website-leads",
   children: [
     {
-      path: "/pages/profile",
+      path: "/website-leads/good-leads",
       name: "Good Leads",
       icon: <Filter />,
       badge: "3",
-      component: Profile,
+      component: GoodLeads,
     },
     {
       path: "/pages/settings",
