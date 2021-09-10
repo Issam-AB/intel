@@ -92,12 +92,15 @@ const useStyles = makeStyles((theme) => ({
   },
 
   hideSpan: {
-    display: "hidden",
+    visibility: "hidden",
+    "&:hover, &:focus": {
+      visibility: "show",
+    },
   },
 
-  showSpan: {
-    display: "block",
-  },
+  // showSpan: {
+  //   visibility: "show",
+  // },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
@@ -465,6 +468,15 @@ function EnhancedTable() {
 
   // }
 
+  // const showOptions = (ref) => {
+  //   setOptionsStatus(ref, ([ref] = true));
+
+  //   let className = "";
+  //   if()
+
+  //   console.log("option", optionsStatus);
+  // };
+
   return (
     <div>
       <Paper>
@@ -513,7 +525,7 @@ function EnhancedTable() {
                       onMouseEnter={(e) => {
                         // setShowAction(true)
                         e.target.classList.remove("hideSpan");
-                        e.target.classList.add("hideSpan");
+                        e.target.classList.add("showSpan");
                         console.log(row.refernce, "onMouseEnter");
                       }}
                       // onMouseLeave={() => setShowAction(false)}
@@ -541,7 +553,10 @@ function EnhancedTable() {
                       </TableCell>
                       <TableCell align="left">
                         {row.comment}
-                        <span id={row.refernce} className={classes.hideSpan}>
+                        <span
+                          id={row.refernce}
+                          // className={(classes.showSpan, classes.hideSpan)}
+                        >
                           "Show me"
                         </span>
                       </TableCell>
