@@ -5,14 +5,11 @@ import {
   Box,
   Card,
   CardContent as MuiCardContent,
-  Chip as MuiChip,
   Typography as MuiTypography,
-  Button
+  Button,
 } from "@material-ui/core";
-import RefreshIcon from '@material-ui/icons/Refresh';
+import RefreshIcon from "@material-ui/icons/Refresh";
 import { makeStyles } from "@material-ui/core/styles";
-
-import { rgba } from "polished";
 
 import { spacing } from "@material-ui/system";
 
@@ -31,26 +28,14 @@ const useStyles = makeStyles({
     fontSize: "85%",
     backgroundColor: "#6a74c9",
     color: "#fff",
-    marginbottom: "16px"
-
-  }
+    marginbottom: "16px",
+  },
 });
 const CardContent = styled(MuiCardContent)`
   position: relative;
 
   &:last-child {
     padding-bottom: ${(props) => props.theme.spacing(4)}px;
-  }
-`;
-
-const Percentage = styled(MuiTypography)`
-  span {
-    color: ${(props) => props.percentagecolor};
-    font-weight: ${(props) => props.theme.typography.fontWeightBold};
-    background: ${(props) => rgba(props.percentagecolor, 0.1)};
-    padding: 2px;
-    border-radius: 3px;
-    margin-right: ${(props) => props.theme.spacing(2)}px;
   }
 `;
 
@@ -67,7 +52,9 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
             {amount}
           </Box>
         </Typography>
-        <Button className={classes.button} endIcon={<RefreshIcon />} >Verify</Button>
+        <Button className={classes.button} endIcon={<RefreshIcon />}>
+          Verify
+        </Button>
       </CardContent>
     </Card>
   );

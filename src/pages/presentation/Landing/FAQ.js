@@ -31,9 +31,9 @@ const TypographyOverline = styled(Typography)`
 const Accordion = styled(MuiAccordion)`
   border: 1px solid
     ${(props) =>
-    props.theme.palette.type === "dark"
-      ? `rgba(255, 255, 255, .15)`
-      : `rgba(0, 0, 0, .15)`};
+      props.theme.palette.type === "dark"
+        ? `rgba(255, 255, 255, .15)`
+        : `rgba(0, 0, 0, .15)`};
   border-radius: 6px;
   box-shadow: 0;
   text-align: left;
@@ -132,8 +132,8 @@ function FAQ() {
               </AccordionSummary>
               <AccordionDetails>
                 <Typography variant="subtitle1" color="textSecondary">
-                  Yes, Roofing intellegence has been thoroughly tested with npm and yarn
-                  (LTS versions).
+                  Yes, Roofing intellegence has been thoroughly tested with npm
+                  and yarn (LTS versions).
                 </Typography>
               </AccordionDetails>
             </Accordion>

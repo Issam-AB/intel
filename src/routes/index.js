@@ -39,7 +39,7 @@ const Dashborad = async(() =>
   import("../pages/protected/companies/website-metrics")
 );
 // Pages components
-import GoodLeads from "../pages/protected/companies/website-leads/goodLeads"
+import GoodLeads from "../pages/protected/companies/website-leads/goodLeads";
 import Blank from "../pages/pages/Blank";
 import InvoiceDetails from "../pages/pages/InvoiceDetails";
 import InvoiceList from "../pages/pages/InvoiceList";

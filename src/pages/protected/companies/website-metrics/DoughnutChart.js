@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { withTheme } from "styled-components/macro";
 
-import { green, red, orange, purple } from "@material-ui/core/colors";
+import { orange } from "@material-ui/core/colors";
 
 import {
   Card as MuiCard,
@@ -9,7 +9,6 @@ import {
   CardHeader,
   IconButton,
   Grid,
-  TableCell as MuiTableCell,
   Typography,
   Divider as MuiDivider,
 } from "@material-ui/core";
@@ -25,12 +24,12 @@ const Divider = styled(MuiDivider)(spacing);
 const useStyles = makeStyles({
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
-    height: "383px"
+    height: "383px",
   },
   title: {
-    fontWeight: "700"
-  }
-})
+    fontWeight: "700",
+  },
+});
 const CardContent = styled(MuiCardContent)`
   &:last-child {
     padding-bottom: ${(props) => props.theme.spacing(2)}px;
@@ -58,7 +57,14 @@ function DoughnutChart({ theme }) {
     datasets: [
       {
         data: [230, 170, 180, 150, 270],
-        backgroundColor: [theme.palette.secondary.main, "#9A68FC", "#45C1FF", "#50B432", orange[500], "#445AC9"],
+        backgroundColor: [
+          theme.palette.secondary.main,
+          "#9A68FC",
+          "#45C1FF",
+          "#50B432",
+          orange[500],
+          "#445AC9",
+        ],
         borderWidth: 5,
         borderColor: theme.palette.background.paper,
       },
@@ -95,10 +101,18 @@ function DoughnutChart({ theme }) {
           <Doughnut data={data} options={options} />
         </ChartWrapper>
         <Divider my={6} style={{ marginLeft: "-17px", marginRight: "-16px" }} />
-        <Grid container style={{ marginLeft: "1px", marginTop: "-37px", marginBottom: "-12px" }} spacing={9}>
+        <Grid
+          container
+          style={{
+            marginLeft: "1px",
+            marginTop: "-37px",
+            marginBottom: "-12px",
+          }}
+          spacing={9}
+        >
           <Grid item>
             <Grid item>
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex" }}>
                 <span
                   style={{
                     backgroundColor: "#445AC9",
@@ -108,15 +122,16 @@ function DoughnutChart({ theme }) {
                     position: "relative",
                     borderRadius: "50%",
                     margin: "3px",
-                    marginTop: "8px"
+                    marginTop: "8px",
                   }}
                 ></span>
-                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>Google My Business</Typography>
+                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>
+                  Google My Business
+                </Typography>
               </div>
-
             </Grid>
             <Grid item>
-              <div style={{ display: 'flex', lineHeight: "26px" }}>
+              <div style={{ display: "flex", lineHeight: "26px" }}>
                 <span
                   style={{
                     backgroundColor: "#45C1FF",
@@ -129,11 +144,13 @@ function DoughnutChart({ theme }) {
                     marginTop: "8px",
                   }}
                 ></span>
-                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>Direct Traffic</Typography>
+                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>
+                  Direct Traffic
+                </Typography>
               </div>
             </Grid>
             <Grid item>
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex" }}>
                 <span
                   style={{
                     backgroundColor: "#9A68FC",
@@ -146,14 +163,16 @@ function DoughnutChart({ theme }) {
                     marginTop: "8px",
                   }}
                 ></span>
-                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>Organic Search</Typography>
+                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>
+                  Organic Search
+                </Typography>
               </div>
             </Grid>
           </Grid>
 
           <Grid item>
             <Grid item>
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex" }}>
                 <span
                   style={{
                     backgroundColor: "#50B432",
@@ -166,11 +185,13 @@ function DoughnutChart({ theme }) {
                     marginTop: "8px",
                   }}
                 ></span>
-                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>Soucial Media</Typography>
+                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>
+                  Soucial Media
+                </Typography>
               </div>
             </Grid>
             <Grid item>
-              <div style={{ display: 'flex' }}>
+              <div style={{ display: "flex" }}>
                 <span
                   style={{
                     backgroundColor: "#FF9800",
@@ -183,17 +204,16 @@ function DoughnutChart({ theme }) {
                     marginTop: "8px",
                   }}
                 ></span>
-                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>Refferal (misc.)</Typography>
+                <Typography variant="subtitle2" style={{ lineHeight: "30px" }}>
+                  Refferal (misc.)
+                </Typography>
               </div>
             </Grid>
-
           </Grid>
-
-
         </Grid>
         <Divider style={{ marginLeft: "-17px", marginRight: "-16px" }} />
       </CardContent>
-    </Card >
+    </Card>
   );
 }
 

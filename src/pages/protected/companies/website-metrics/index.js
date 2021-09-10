@@ -19,7 +19,7 @@ import Stats from "./Stats";
 import Rate from "./Rate";
 import StateLeads from "./StateLeads";
 import TrafficSource from "./TrafficSource";
-import DoughnutChart from "./DoughnutChart"
+import DoughnutChart from "./DoughnutChart";
 import DoughnutChartDivice from "./DoughnutChartDivice";
 import WebsiteHealth from "./WesbiteHealth";
 
@@ -252,11 +252,7 @@ function Dashborad({ theme }) {
           </Typography>
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          <WebsiteHealth
-            title="Uptime Montoring"
-            amount="100%"
-            chip="Verify"
-          />
+          <WebsiteHealth title="Uptime Montoring" amount="100%" chip="Verify" />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
           <WebsiteHealth
@@ -266,25 +262,13 @@ function Dashborad({ theme }) {
           />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          <WebsiteHealth
-            title="Hosting"
-            amount="Perfect"
-            chip="Verify"
-          />
+          <WebsiteHealth title="Hosting" amount="Perfect" chip="Verify" />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          <WebsiteHealth
-            title="Website Speed"
-            amount="3.4s"
-            chip="Verify"
-          />
+          <WebsiteHealth title="Website Speed" amount="3.4s" chip="Verify" />
         </Grid>
         <Grid item xs={12} sm={12} md={6} lg={3} xl>
-          <WebsiteHealth
-            title="Lead Capture"
-            amount="Perfect"
-            chip="Verify"
-          />
+          <WebsiteHealth title="Lead Capture" amount="Perfect" chip="Verify" />
         </Grid>
       </Grid>
     </React.Fragment>

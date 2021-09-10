@@ -117,9 +117,9 @@ function Introduction() {
               <Grid container justify="center" spacing={4}>
                 <Grid item xs={12} lg={10}>
                   <Subtitle color="textSecondary">
-                    Roofing intellegence comes with hundreds of UI elements, forms,
-                    tables, charts, pages and icons that helps you to create
-                    your web apps or applications faster.
+                    Roofing intellegence comes with hundreds of UI elements,
+                    forms, tables, charts, pages and icons that helps you to
+                    create your web apps or applications faster.
                   </Subtitle>
                 </Grid>
               </Grid>

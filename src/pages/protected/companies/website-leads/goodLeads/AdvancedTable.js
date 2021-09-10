@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 import { Helmet } from "react-helmet-async";
 import {
   Checkbox,
   Grid,
   IconButton,
-  Link,
-  Breadcrumbs as MuiBreadcrumbs,
+  // Breadcrumbs as MuiBreadcrumbs,
   Divider as MuiDivider,
   Paper as MuiPaper,
   Table,
@@ -26,41 +25,38 @@ import {
   Switch,
   InputBase,
   TextField,
-  Button
-
+  Button,
 } from "@material-ui/core";
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import {
-  Search as SearchIcon,
-} from "@material-ui/icons";
-import { Filter, MoreVertical } from "react-feather"
-import { color, spacing } from "@material-ui/system";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { Search as SearchIcon } from "@material-ui/icons";
+import { Filter, MoreVertical } from "react-feather";
+import { spacing } from "@material-ui/system";
+import { makeStyles } from "@material-ui/core/styles";
 
 const Divider = styled(MuiDivider)(spacing);
 
-const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
+// const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
 
 const Paper = styled(MuiPaper)(spacing);
-import { makeStyles } from "@material-ui/core/styles"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     color: "#6320EE",
     marginRight: "10px",
-    marginLeft: "5px"
+    marginLeft: "5px",
   },
   focused: {
-    color: "#6A74C9"
+    color: "#6A74C9",
   },
   goodlaeads: {
     fontWeight: "bold",
     marginRight: "50px",
-    width: "93px"
+    width: "93px",
   },
   root: {
-    padding: '0 0px',
-    display: 'flex',
-    alignItems: 'center',
+    padding: "0 0px",
+    display: "flex",
+    alignItems: "center",
     marginLeft: "-25px",
     width: 400,
     height: 31,
@@ -68,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover, &:focus": {
       border: "1px solid #6320EE",
     },
-    transition: "0.12s"
+    transition: "0.12s",
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -83,46 +79,132 @@ const useStyles = makeStyles((theme) => ({
   },
   autocomplete: {
     padding: "0px",
-    border: "none"
+    border: "none",
   },
   export: {
     marginLeft: "34px",
     width: "104px",
     color: "white",
-    backgroundColor: "#6A74C9"
+    backgroundColor: "#6A74C9",
   },
   label: {
-    fontWeight: "700"
+    fontWeight: "700",
   },
 
   hideSpan: {
-    display: "hidden"
+    display: "hidden",
   },
 
   showSpan: {
-    display: "block"
-  }
-
-
+    display: "block",
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(name, leadsSource, refernce, customer, member, interestedService, comment) {
-  return { name, leadsSource, refernce, customer, member, interestedService, comment };
+function createData(
+  name,
+  leadsSource,
+  refernce,
+  customer,
+  member,
+  interestedService,
+  comment
+) {
+  return {
+    name,
+    leadsSource,
+    refernce,
+    customer,
+    member,
+    interestedService,
+    comment,
+  };
 }
 
 const rows = [
-  createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Yesterday", "youtube", "GAKS520", "Harii poter", "711-552-552", "Roffig main", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "LGD4hhjshjd554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hjk", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshs", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshs", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshsii", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "ididg", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "ejoejc", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData(
+    "Today",
+    "Google",
+    "LGD4554",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Yesterday",
+    "youtube",
+    "GAKS520",
+    "Harii poter",
+    "711-552-552",
+    "Roffig main",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "LGD4hhjshjd554",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "hjk",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "hshshs",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "hshshs",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "hshshsii",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "ididg",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
+  createData(
+    "Today",
+    "Google",
+    "ejoejc",
+    "keagan San",
+    "714-755-9544",
+    "Metal Roffing",
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+  ),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
@@ -162,11 +244,21 @@ const headCells = [
     disablePadding: true,
     label: "Date",
   },
-  { id: "leadsSource", numeric: true, disablePadding: false, label: "Leads Source" },
+  {
+    id: "leadsSource",
+    numeric: true,
+    disablePadding: false,
+    label: "Leads Source",
+  },
   { id: "refernce", numeric: true, disablePadding: false, label: "Reference" },
   { id: "customer", numeric: true, disablePadding: false, label: "Customer" },
   { id: "member", numeric: true, disablePadding: false, label: "Member" },
-  { id: "interestedService", numeric: true, disablePadding: false, label: "Intrested Service" },
+  {
+    id: "interestedService",
+    numeric: true,
+    disablePadding: false,
+    label: "Intrested Service",
+  },
   { id: "comment", numeric: true, disablePadding: false, label: "Comment" },
 ];
 
@@ -217,18 +309,30 @@ function EnhancedTableHead(props) {
   );
 }
 
-const options = ['Custom', 'Reccent (Last 30 Dyas + Today)', "Yesterday", "Last 7 Days", "Last 30 Days", "This Month", "Last Month", "This Year", "Last Year"];
+const options = [
+  "Custom",
+  "Reccent (Last 30 Dyas + Today)",
+  "Yesterday",
+  "Last 7 Days",
+  "Last 30 Days",
+  "This Month",
+  "Last Month",
+  "This Year",
+  "Last Year",
+];
 let EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
+  // const { numSelected } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState("");
   return (
     <Toolbar>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Filter className={classes.icon} />
         <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
           Good Leads
@@ -240,17 +344,22 @@ let EnhancedTableToolbar = (props) => {
           <InputBase
             className={classes.input}
             placeholder="Search Good Leads"
-            inputProps={{ 'aria-label': 'search good leads' }}
+            inputProps={{ "aria-label": "search good leads" }}
           />
         </Paper>
       </div>
       <Spacer />
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Autocomplete
-          classes={{ root: classes.autocomplete, inputFocused: classes.focused }}
+          classes={{
+            root: classes.autocomplete,
+            inputFocused: classes.focused,
+          }}
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
@@ -262,17 +371,20 @@ let EnhancedTableToolbar = (props) => {
           id="controllable-states-demo"
           options={options}
           size="small"
-          style={{ width: 300 }} renderInput={(params) => <TextField {...params} label="Controllable" variant="outlined" />}
+          style={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Controllable" variant="outlined" />
+          )}
         />
-        <Button className={classes.export} variant="contained">Export (10)</Button>
+        <Button className={classes.export} variant="contained">
+          Export (10)
+        </Button>
 
         <Tooltip title="Filter list">
           <IconButton aria-label="Filter list">
             <MoreVertical />
           </IconButton>
         </Tooltip>
-
-
       </div>
     </Toolbar>
   );
@@ -288,7 +400,6 @@ function EnhancedTable() {
   const [optionsStatus, setOptionsStatus] = React.useState([]);
   const [showAction, setShowAction] = React.useState(false);
   const classes = useStyles();
-
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -343,9 +454,6 @@ function EnhancedTable() {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-
-
-
   // const showOptions = ref => {
 
   //   setOptionsStatus(optionsStatus, [ref] = true);
@@ -356,8 +464,6 @@ function EnhancedTable() {
   //   setOptionsStatus(optionsStatus[ref] = false);
 
   // }
-
-
 
   return (
     <div>
@@ -397,20 +503,20 @@ function EnhancedTable() {
                       className="span"
                       // onMouseEnter={() => className = "span"} // add display to span with id
                       // onMouseEnter={() => showOptions(index.refernce)} // add display to span with id
-                      onMouseLeave={() => {
+                      onMouseLeave={(e) => {
                         // hideOptions(row.refernce)
-                        // e.target.classList.remove('showSpan')
-                        // e.target.classList.add('hideSpan')
+                        e.target.classList.remove("showSpan");
+                        e.target.classList.add("hideSpan");
                         console.log(row.refernce, "onMouseLeave");
                       }}
                       // remove display frm span with id
                       onMouseEnter={(e) => {
                         // setShowAction(true)
-                        // e.target.classList.remove('hideSpan')
-                        // e.target.classList.add('hideSpan')
-                        console.log(row.refernce, "onMouseEnter")
+                        e.target.classList.remove("hideSpan");
+                        e.target.classList.add("hideSpan");
+                        console.log(row.refernce, "onMouseEnter");
                       }}
-                    // onMouseLeave={() => setShowAction(false)}
+                      // onMouseLeave={() => setShowAction(false)}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
@@ -430,8 +536,15 @@ function EnhancedTable() {
                       <TableCell align="left">{row.refernce}</TableCell>
                       <TableCell align="left">{row.customer}</TableCell>
                       <TableCell align="left">{row.member}</TableCell>
-                      <TableCell align="left">{row.interestedService}</TableCell>
-                      <TableCell align="left">{row.comment}<span id={row.refernce} className={classes.hideSpan} >"Show me"</span></TableCell>
+                      <TableCell align="left">
+                        {row.interestedService}
+                      </TableCell>
+                      <TableCell align="left">
+                        {row.comment}
+                        <span id={row.refernce} className={classes.hideSpan}>
+                          "Show me"
+                        </span>
+                      </TableCell>
                     </TableRow>
                   );
                 })}

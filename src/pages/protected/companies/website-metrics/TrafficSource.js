@@ -45,12 +45,11 @@ const useStyles = makeStyles({
   },
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
-    height: "382px"
+    height: "382px",
   },
   title: {
-    fontWeight: "700"
-  }
-
+    fontWeight: "700",
+  },
 });
 const TableWrapper = styled.div`
   overflow-y: auto;
@@ -76,7 +75,6 @@ function LanguagesTable() {
         }
         classes={{ title: classes.title }}
         title="Traffic Sources"
-
       />
       <Divider />
       <Paper>
@@ -84,10 +82,16 @@ function LanguagesTable() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell component="th" scope="row" style={{ fontWeight: "700" }}>
+                <TableCell
+                  component="th"
+                  scope="row"
+                  style={{ fontWeight: "700" }}
+                >
                   Trrafic Source
                 </TableCell>
-                <TableCell align="center" style={{ fontWeight: "700" }}>Poeple</TableCell>
+                <TableCell align="center" style={{ fontWeight: "700" }}>
+                  Poeple
+                </TableCell>
                 <TableCell style={{ fontWeight: "700" }}>Leads</TableCell>
               </TableRow>
             </TableHead>

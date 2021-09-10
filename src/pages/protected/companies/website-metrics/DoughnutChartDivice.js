@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { withTheme } from "styled-components/macro";
 
-import { green, red, orange, blue } from "@material-ui/core/colors";
+import { green } from "@material-ui/core/colors";
 import { rgba } from "polished";
 import {
   Card as MuiCard,
@@ -18,33 +18,32 @@ import { spacing } from "@material-ui/system";
 
 import { Doughnut } from "react-chartjs-2";
 import { makeStyles } from "@material-ui/core/styles";
-
+import arrowup from "../../../../vendor/icons/arrow-up.svg";
 import { MoreVertical } from "react-feather";
-import { DesktopWindows, PhoneAndroid, Tablet } from '@material-ui/icons';
+import { DesktopWindows, PhoneAndroid, Tablet } from "@material-ui/icons";
 
 const Card = styled(MuiCard)(spacing);
-import arrowup from "../../../../vendor/icons/arrow-up.svg";
+
 const Divider = styled(MuiDivider)(spacing);
 const useStyles = makeStyles({
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
   },
   title: {
-    fontWeight: "700"
+    fontWeight: "700",
   },
   cardContent: {
     display: "flex",
-
   },
   paper: {
-    padding: "14px 55px"
+    padding: "14px 55px",
   },
   icons: {
     marginLeft: "-55px",
     fontSize: "45px",
     marginTop: "14px",
-  }
-})
+  },
+});
 const CardContent = styled(MuiCardContent)`
   &:last-child {
     padding-bottom: ${(props) => props.theme.spacing(2)}px;
@@ -126,7 +125,10 @@ function DoughnutChart({ theme }) {
           <Paper variant="outlined" className={classes.paper}>
             <Box display="flex" spacing={12}>
               <Box mx={10}>
-                <DesktopWindows className={classes.icons} style={{ color: "#45C1FF" }} />
+                <DesktopWindows
+                  className={classes.icons}
+                  style={{ color: "#45C1FF" }}
+                />
               </Box>
               <Box>
                 <Typography variant="subtitle2">Desktop</Typography>
@@ -154,7 +156,10 @@ function DoughnutChart({ theme }) {
           <Paper variant="outlined" className={classes.paper}>
             <Box display="flex" spacing={12}>
               <Box mx={10}>
-                <PhoneAndroid className={classes.icons} style={{ color: "#9A68FC" }} />
+                <PhoneAndroid
+                  className={classes.icons}
+                  style={{ color: "#9A68FC" }}
+                />
               </Box>
               <Box>
                 <Typography variant="subtitle2">Mobile</Typography>
@@ -182,7 +187,10 @@ function DoughnutChart({ theme }) {
           <Paper variant="outlined" className={classes.paper}>
             <Box display="flex" spacing={12}>
               <Box mx={10}>
-                <Tablet className={classes.icons} style={{ color: "#445AC9" }} />
+                <Tablet
+                  className={classes.icons}
+                  style={{ color: "#445AC9" }}
+                />
               </Box>
               <Box>
                 <Typography variant="subtitle2">Tablet</Typography>
@@ -309,7 +317,7 @@ function DoughnutChart({ theme }) {
 
         </Grid>
         <Divider my={1} style={{ marginLeft: "-17px", marginRight: "-16px" }} /> */}
-    </Card >
+    </Card>
   );
 }
 
