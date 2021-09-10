@@ -26,22 +26,42 @@ import {
   Switch,
   InputBase,
   TextField,
-  Button
-
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Box,
+  DialogTitle,
+  Slide
 } from "@material-ui/core";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {
   Search as SearchIcon,
+  Forward as ForwardIcon,
+  Visibility as VisibilityIcon,
+  Block as BlockIcon,
+  Close as CloseIcon,
 } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather"
-import { color, spacing } from "@material-ui/system";
+import { spacing } from "@material-ui/system";
 
 const Divider = styled(MuiDivider)(spacing);
 
 const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
 
 const Paper = styled(MuiPaper)(spacing);
-import { makeStyles } from "@material-ui/core/styles"
+import { makeStyles, withStyles } from "@material-ui/core/styles"
+
+const StyledTableRow = withStyles({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: "#F9F9FC",
+    },
+    "& .MuiTableCell-root": {
+      borderLeft: "1px solid rgba(224, 224, 224, 1)"
+    }
+  },
+})(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -94,27 +114,58 @@ const useStyles = makeStyles((theme) => ({
   label: {
     fontWeight: "700"
   },
-
-  hideSpan: {
-    display: "hidden"
+  visibility: {
+    color: "#6320EE",
+    fontSize: "25px",
+    marginRight: "10px"
   },
+  forwardIcon: {
+    color: "#6A74C9",
+    fontSize: "25px",
+    marginRight: "10px"
+  },
+  blockIcon: {
+    color: "#e01e1e",
+    fontSize: "25px",
+    marginRight: "10px"
+  },
+  divIcons: {
+    display: "flex",
+    justifyContent: "flex-end",
 
-  showSpan: {
-    display: "block"
+  },
+  popper: {
+    backgroundColor: "#6A74C9",
+    color: "white"
+  },
+  table: {
+    minWidth: 700,
+    boxShadow: "0px 0px 12px -5px #000000",
+  },
+  paper: {
+    borderRadius: "12px",
+    boxShadow: "0px 0px 12px -5px #000000",
+  },
+  dialogwrapper: {
+    padding: theme.spacing(2),
+    position: "absolute",
+    top: theme.spacing(5)
+  },
+  dialogTitle: {
+    paddingRight: '0px'
   }
-
 
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(name, leadsSource, refernce, customer, member, interestedService, comment) {
-  return { name, leadsSource, refernce, customer, member, interestedService, comment };
+function createData(date, leadsSource, refernce, customer, member, interestedService, comment) {
+  return { date, leadsSource, refernce, customer, member, interestedService, comment };
 }
 
 const rows = [
-  createData("Today", "Google", "a1", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a1", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting ineedeeeeeeeeeeeeeeedeeeeeeeeeeeeeeeeeedustry."),
   createData("Yesterday", "youtube", "a2", "Harii poter", "711-552-552", "Roffig main", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   createData("Today", "Google", "a3", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   createData("Today", "Google", "a4", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
@@ -157,9 +208,8 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: "date",
     numeric: false,
-    disablePadding: true,
     label: "Date",
   },
   { id: "leadsSource", numeric: true, disablePadding: false, label: "Leads Source" },
@@ -289,11 +339,6 @@ function EnhancedTable() {
   // const [showAction, setShowAction] = React.useState(false);
   const classes = useStyles();
 
-  const log = console.log;
-
-
-
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -302,19 +347,19 @@ function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.date);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, date) => {
+    const selectedIndex = selected.indexOf(date);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, date);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -342,7 +387,7 @@ function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (date) => selected.indexOf(date) !== -1;
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -351,14 +396,15 @@ function EnhancedTable() {
 
   return (
     <div>
-      <Paper>
+      <Paper classes={{ root: classes.paper }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <Divider />
         <TableContainer>
           <Table
-            aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
-            aria-label="enhanced table"
+            className={classes.table}
+            // aria-labelledby="tableTitle"
+            // size={dense ? "small" : "medium"}
+            aria-label="customized table"
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -372,13 +418,13 @@ function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.date);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
 
 
                   return (
-                    <TableRow
+                    <StyledTableRow
                       onClick={(event) => handleClick(event, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
@@ -400,19 +446,23 @@ function EnhancedTable() {
                         component="th"
                         id={labelId}
                         scope="row"
-                        padding="none"
+                        // padding="none"
+                        align="left"
                       >
-                        {row.name}
+                        {row.date}
                       </TableCell>
                       <TableCell align="left">{row.leadsSource}</TableCell>
                       <TableCell align="left">{row.refernce}</TableCell>
                       <TableCell align="left">{row.customer}</TableCell>
                       <TableCell align="left">{row.member}</TableCell>
                       <TableCell align="left">{row.interestedService}</TableCell>
-                      <TableCell align="left" style={{ textoverflow: 'ellipsis' }} >{row.comment}
+                      {/* <TableCell align="left" style={{ display: 'flex', justifyContent: "spa" }}>{activeRow !== index ? row.comment : `${row.comment.substring(0, 80)} ...`}
                         {(activeRow === index) && (<RowOptions row={row} />)}
+                      </TableCell> */}
+                      <TableCell align="left" style={{ display: 'flex', }}>{activeRow !== index ? `${row.comment.substring(0, 60)} ...` : row.comment}
+                        {(activeRow === index) && (<RowOptions />)}
                       </TableCell>
-                    </TableRow>
+                    </StyledTableRow>
                   );
                 })}
               {emptyRows > 0 && (
@@ -437,12 +487,111 @@ function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-    </div>
+    </div >
   );
 }
 
 function RowOptions({ row }) {
-  return (<span> {row.refernce} Row Options</span>);
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  return (
+    <>
+      {/* <span> {row.refernce} Row Options</span> */}
+      <div style={{ position: "absolute", right: "1%", backgroundColor: "black", }} className={classes.divIcons}>
+
+        <>
+          <Tooltip title="Forward Leads" classes={{ tooltip: classes.popper }}>
+            <ForwardIcon className={classes.forwardIcon} onClick={handleClickOpen} />
+          </Tooltip>
+          <Dialog
+            className={{ paper: classes.dialogwrapper }}
+            max-width="md"
+            open={open}
+            TransitionComponent={Transition}
+            keepMounted
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <DialogTitle className={classes.dialogTitle}>
+              <div style={{ display: 'flex' }}>
+                <Filter className={classes.icon} />
+                <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+                  Good Leads Information
+                </Typography>
+                {/* <Controls.ActionButton
+                  color="secondary"
+                  onClick={() => { setOpenPopup(false) }}>
+                  <CloseIcon />
+                </Controls.ActionButton> */}
+              </div>
+            </DialogTitle>
+            <DialogContent divider>
+              <Grid container direction="row" alignItems="center">
+                <Grid item>
+                  <Grid item xs={6}>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                  </Grid>
+                </Grid>
+
+                <Grid item>
+                  <Grid item xs={6}>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                    <Typography variant="h6">Customer</Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+
+
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Disagree
+              </Button>
+              <Button onClick={handleClose} color="primary">
+                Agree
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </>
+
+        <Tooltip title="View Leads" placement="top" classes={{ tooltip: classes.popper }}>
+          <VisibilityIcon className={classes.visibility} />
+        </Tooltip>
+        <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
+          <BlockIcon className={classes.blockIcon} />
+        </Tooltip>
+      </div>
+    </>
+  );
 }
 
 function AdvancedTable() {
