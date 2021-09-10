@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import { NavLink } from "react-router-dom";
 
@@ -114,15 +114,15 @@ function createData(name, leadsSource, refernce, customer, member, interestedSer
 }
 
 const rows = [
-  createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Yesterday", "youtube", "GAKS520", "Harii poter", "711-552-552", "Roffig main", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "LGD4hhjshjd554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hjk", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshs", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshs", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "hshshsii", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "ididg", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-  createData("Today", "Google", "ejoejc", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a1", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Yesterday", "youtube", "a2", "Harii poter", "711-552-552", "Roffig main", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a3", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a4", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a5", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a6", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a7", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a8", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+  createData("Today", "Google", "a9", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
   // createData("Today", "Google", "LGD4554", "keagan San", "714-755-9544", "Metal Roffing", "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
@@ -279,15 +279,19 @@ let EnhancedTableToolbar = (props) => {
 };
 
 function EnhancedTable() {
-  const [order, setOrder] = React.useState("asc");
+  const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = React.useState("leadsSource");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [optionsStatus, setOptionsStatus] = React.useState([]);
-  const [showAction, setShowAction] = React.useState(false);
+  const [activeRow, setActiveRow] = useState("");
+  // const [showAction, setShowAction] = React.useState(false);
   const classes = useStyles();
+
+  const log = console.log;
+
+
 
 
   const handleRequestSort = (event, property) => {
@@ -345,20 +349,6 @@ function EnhancedTable() {
 
 
 
-
-  // const showOptions = ref => {
-
-  //   setOptionsStatus(optionsStatus, [ref] = true);
-  //   console.log("option", optionsStatus);
-  // }
-  // const hideOptions = ref => {
-
-  //   setOptionsStatus(optionsStatus[ref] = false);
-
-  // }
-
-
-
   return (
     <div>
       <Paper>
@@ -385,32 +375,20 @@ function EnhancedTable() {
                   const isItemSelected = isSelected(row.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
+
+
                   return (
                     <TableRow
-                      hover
                       onClick={(event) => handleClick(event, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={index}
                       selected={isItemSelected}
-                      className="span"
-                      // onMouseEnter={() => className = "span"} // add display to span with id
-                      // onMouseEnter={() => showOptions(index.refernce)} // add display to span with id
-                      onMouseLeave={() => {
-                        // hideOptions(row.refernce)
-                        // e.target.classList.remove('showSpan')
-                        // e.target.classList.add('hideSpan')
-                        console.log(row.refernce, "onMouseLeave");
-                      }}
-                      // remove display frm span with id
-                      onMouseEnter={(e) => {
-                        // setShowAction(true)
-                        // e.target.classList.remove('hideSpan')
-                        // e.target.classList.add('hideSpan')
-                        console.log(row.refernce, "onMouseEnter")
-                      }}
-                    // onMouseLeave={() => setShowAction(false)}
+
+                      onMouseEnter={() => setActiveRow(index)}
+                      onMouseLeave={() => setActiveRow("")}
+
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
@@ -431,7 +409,9 @@ function EnhancedTable() {
                       <TableCell align="left">{row.customer}</TableCell>
                       <TableCell align="left">{row.member}</TableCell>
                       <TableCell align="left">{row.interestedService}</TableCell>
-                      <TableCell align="left">{row.comment}<span id={row.refernce} className={classes.hideSpan} >"Show me"</span></TableCell>
+                      <TableCell align="left" style={{ textoverflow: 'ellipsis' }} >{row.comment}
+                        {(activeRow === index) && (<RowOptions row={row} />)}
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -459,6 +439,10 @@ function EnhancedTable() {
       />
     </div>
   );
+}
+
+function RowOptions({ row }) {
+  return (<span> {row.refernce} Row Options</span>);
 }
 
 function AdvancedTable() {

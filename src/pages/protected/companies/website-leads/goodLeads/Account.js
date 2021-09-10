@@ -130,7 +130,6 @@ const Account = ({ title, name, call, email, avatar }) => {
               </AboutIcon>
             }
             className={classes.button}
-            color="#6A74C9"
           >
             Call
           </Button>
@@ -143,7 +142,6 @@ const Account = ({ title, name, call, email, avatar }) => {
               </AboutIcon>
             }
             className={classes.buttons}
-            color="#6A74C9"
           >
             Open Ticket
           </Button>

@@ -356,7 +356,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                     />
 
                     <Collapse
-                      in={openRoutes[index]}
+                      in={!!openRoutes[index]}
                       timeout="auto"
                       unmountOnExit
                     >
@@ -407,7 +407,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
           <Grid item md={6}>
             <SidebarFooterText variant="body2">Client Name</SidebarFooterText>
           </Grid>
-          <Grid item justify="center">
+          <Grid item >
 
             <CategoryIconUp onClick={handleClick} />
             <Menu
