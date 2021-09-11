@@ -41,6 +41,8 @@ import {
   Visibility as VisibilityIcon,
   Block as BlockIcon,
   Close as CloseIcon,
+  ArrowForward as ArrowForwardIcon,
+  ArrowBack as ArrowBackIcon,
 } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather"
 import { spacing } from "@material-ui/system";
@@ -147,12 +149,16 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 0px 12px -5px #000000",
   },
   dialogwrapper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     position: "absolute",
-    top: theme.spacing(5)
+    maxWidth: "50rem"
+    // top: theme.spacing(5)
   },
   dialogTitle: {
-    paddingRight: '0px'
+    paddingRight: '0px',
+  },
+  startICon: {
+    margin: 0
   }
 
 }));
@@ -494,6 +500,7 @@ function EnhancedTable() {
 function RowOptions({ row }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -501,9 +508,18 @@ function RowOptions({ row }) {
   const handleClose = () => {
     setOpen(false);
   };
-  const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+  // const Transition = React.forwardRef(function Transition(props, ref) {
+  //   return <Slide direction="up" ref={ref} {...props} />;
+  // });
+
+  const handlBlock = (e) => {
+    console.log("this is working fine");
+    e.preventDefault();
+    e.target.style.color = 'black'
+    // e.target.Button.classes.startIcon.style.visible = "hide";
+    setVisible(!visible);
+    console.log("target", e);
+  }
   return (
     <>
       {/* <span> {row.refernce} Row Options</span> */}
@@ -514,11 +530,11 @@ function RowOptions({ row }) {
             <ForwardIcon className={classes.forwardIcon} onClick={handleClickOpen} />
           </Tooltip>
           <Dialog
-            className={{ paper: classes.dialogwrapper }}
-            max-width="md"
+            classes={{ paper: classes.dialogwrapper }}
+            fullWidth
+            max-width="lg"
             open={open}
-            TransitionComponent={Transition}
-            keepMounted
+            // TransitionComponent={Transition}
             onClose={handleClose}
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description"
@@ -527,58 +543,108 @@ function RowOptions({ row }) {
             <DialogTitle className={classes.dialogTitle}>
               <div style={{ display: 'flex' }}>
                 <Filter className={classes.icon} />
-                <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+                <Typography variant="h4" component="div" style={{ flexGrow: 1, fontWeight: 700, fontSize: "20px" }}>
                   Good Leads Information
                 </Typography>
-                {/* <Controls.ActionButton
-                  color="secondary"
-                  onClick={() => { setOpenPopup(false) }}>
+                <Button
+                  style={{ color: "#868695" }}
+                  onClick={() => { setOpen(false) }}>
                   <CloseIcon />
-                </Controls.ActionButton> */}
+                </Button>
               </div>
-            </DialogTitle>
-            <DialogContent divider>
-              <Grid container direction="row" alignItems="center">
-                <Grid item>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                  </Grid>
-                </Grid>
 
+            </DialogTitle>
+
+            <DialogContent style={{ marginTop: "-18px" }}>
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container
+                direction="row"
+                alignItems="center"
+              >
+                <Box display="flex">
+                  <Grid item xs={6}>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Customer:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>City:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Phone Number:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Email:</Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>Jazmyn Greenholt</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>Lakeland</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>708-381-3542</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>jazmyn@greenholt.com</Typography>
+                  </Grid>
+                </Box>
+                <Divider orientation="vertical" flexItem style={{ marginLeft: "100px", marginTop: "-16px", marginBottom: "-16px" }} />
+                <Box display="flex" style={{ marginLeft: "40px", }}>
+                  <Grid item >
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Reference ID:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Date:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Form Name:</Typography>
+                    <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", lineHeight: "30px" }}>Lead Source:</Typography>
+                  </Grid>
+                  <Grid item style={{ marginLeft: "40px" }}>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>VVZ31D</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>9/4/2021</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>Free Estimate</Typography>
+                    <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", lineHeight: "30px" }}>Google</Typography>
+                  </Grid>
+                </Box>
+              </Grid>
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container>
                 <Grid item>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                    <Typography variant="h6">Customer</Typography>
-                  </Grid>
+                  <Typography variant="subtitle1" style={{ fontWeight: "800", fontSize: "12px", paddingBottom: "5px", lineHeight: "30px" }}>Message:</Typography>
+                </Grid>
+                <Grid item>
+                  <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "600", }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Typography>
                 </Grid>
               </Grid>
-
-
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container direction="row" alignItems="center" spacing={10}>
+                <Grid item >
+                  <Typography variant="subtitle1" style={{ fontSize: "12px", fontWeight: "800" }}>Source URL:</Typography>
+                </Grid>
+                <Grid item >
+                  <Typography variant="subtitle1" style={{ color: "#868695", fontSize: "12px", fontWeight: "600" }}>https://metalroofing.com/free-estimate/</Typography>
+                </Grid>
+              </Grid>
+              <Divider my={5} style={{ marginRight: "20px" }} />
             </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose} color="primary">
-                Disagree
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                Agree
-              </Button>
+
+            <DialogActions style={{ paddingBottom: "35px" }}>
+              <Grid container direction="row" alignItems="center" justify="space-between" spacing={4}>
+
+                <Box display="flex" ml={3}>
+                  <Button variant="contained" size="small"
+                    style={{ color: "white", backgroundColor: "#6A74C9", marginLeft: "10px" }}
+                    startIcon={<ForwardIcon />}>Forward</Button>
+
+
+                  <Button
+                    variant="outlined" size="small"
+                    style={{ color: "#6A74C9", borderColor: "#6A74C9", marginLeft: "10px" }}
+                  >Mark as test</Button>
+
+
+                  <Button variant="contained"
+                    onClick={handlBlock}
+                    style={{ color: "white", backgroundColor: "#C44545", marginLeft: "10px" }}
+                    startIcon={<BlockIcon onClick={handlBlock} />}>{visible ? "Unblock" : "Block"}</Button>
+                </Box>
+
+                <Box display="flex" alignItems="center" mr={6}>
+                  <Typography variant="body2">6 of 101</Typography>
+                  <Button variant="outlined" size="small"
+                    classes={{ startIcon: classes.startICon }}
+                    style={{ color: "#6A74C9", borderColor: "#6A74C9", marginLeft: "10px", maxWidth: "36px", minWidth: "36px" }}
+                    startIcon={<ArrowForwardIcon />}></Button>
+                  <Button variant="outlined" size="small"
+                    classes={{ startIcon: classes.startICon }}
+                    style={{ color: "#6A74C9", borderColor: "#6A74C9", marginLeft: "10px", maxWidth: "36px", minWidth: "36px" }}
+                    startIcon={<ArrowBackIcon />}></Button>
+                </Box>
+              </Grid>
             </DialogActions>
           </Dialog>
         </>
@@ -589,7 +655,7 @@ function RowOptions({ row }) {
         <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
           <BlockIcon className={classes.blockIcon} />
         </Tooltip>
-      </div>
+      </div >
     </>
   );
 }
