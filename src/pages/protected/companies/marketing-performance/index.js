@@ -55,7 +55,7 @@ const Overview = () => {
       <Divider my={3} />
 
       <Grid container spacing={6} style={{ marginTop: "10px" }}>
-        <Grid item spacing={6} lg={3}>
+        <Grid item lg={3}>
           <Grid item xs={12} lg={4} xl>
             <Intelegence title="INTELLIGENCE DASHBOARD" />
           </Grid>

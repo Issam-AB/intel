@@ -80,7 +80,6 @@ const Stats = ({ title, amount, chip, percentageText, percentagecolor }) => {
           <Percentage
             variant="subtitle2"
             mb={4}
-            color="#fff"
             percentagecolor={percentagecolor}
           >
             <span

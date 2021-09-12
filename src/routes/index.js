@@ -47,7 +47,7 @@ import InvoiceList from "../pages/pages/InvoiceList";
 import Pricing from "../pages/pages/Pricing";
 import _Settings from "../pages/pages/Settings";
 import Chat from "../pages/pages/Chat";
-const Profile = async(() => import("../pages/pages/Profile"));
+// const Profile = async(() => import("../pages/pages/Profile"));
 const Tasks = async(() => import("../pages/pages/Tasks"));
 
 // Landing

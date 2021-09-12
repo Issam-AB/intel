@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 // import { NavLink } from "react-router-dom";
 
@@ -26,18 +26,44 @@ import {
   InputBase,
   TextField,
   Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  Box,
+  DialogTitle,
+  // Slide,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { Search as SearchIcon } from "@material-ui/icons";
+import {
+  Search as SearchIcon,
+  Forward as ForwardIcon,
+  Visibility as VisibilityIcon,
+  Block as BlockIcon,
+  Close as CloseIcon,
+  ArrowForward as ArrowForwardIcon,
+  ArrowBack as ArrowBackIcon,
+} from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather";
 import { spacing } from "@material-ui/system";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const Divider = styled(MuiDivider)(spacing);
 
 // const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
 
 const Paper = styled(MuiPaper)(spacing);
+
+const StyledTableRow = withStyles({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: "#F9F9FC",
+    },
+    "& .MuiTableCell-root": {
+      borderLeft: "1px solid rgba(224, 224, 224, 1)",
+      whiteSpace: "nowrap",
+    },
+  },
+})(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -90,24 +116,57 @@ const useStyles = makeStyles((theme) => ({
   label: {
     fontWeight: "700",
   },
-
-  hideSpan: {
-    visibility: "hidden",
-    "&:hover, &:focus": {
-      visibility: "show",
-    },
+  visibility: {
+    color: "#6320EE",
+    fontSize: "25px",
+    marginRight: "10px",
   },
-
-  // showSpan: {
-  //   visibility: "show",
-  // },
+  forwardIcon: {
+    color: "#6A74C9",
+    fontSize: "25px",
+    marginRight: "10px",
+  },
+  blockIcon: {
+    color: "#e01e1e",
+    fontSize: "25px",
+    marginRight: "10px",
+  },
+  divIcons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  popper: {
+    backgroundColor: "#6A74C9",
+    color: "white",
+  },
+  table: {
+    minWidth: 700,
+    boxShadow: "0px 0px 12px -5px #000000",
+    whiteSpace: "nowrap",
+  },
+  paper: {
+    borderRadius: "12px",
+    boxShadow: "0px 0px 12px -5px #000000",
+  },
+  dialogwrapper: {
+    padding: theme.spacing(4),
+    position: "absolute",
+    maxWidth: "50rem",
+    // top: theme.spacing(5)
+  },
+  dialogTitle: {
+    paddingRight: "0px",
+  },
+  startICon: {
+    margin: 0,
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
 function createData(
-  name,
+  date,
   leadsSource,
   refernce,
   customer,
@@ -116,7 +175,7 @@ function createData(
   comment
 ) {
   return {
-    name,
+    date,
     leadsSource,
     refernce,
     customer,
@@ -130,16 +189,16 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "LGD4554",
+    "a1",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    "Lorem Ipsum is simply dummy text of the printing and typesetting ineedeeeeeeeeeeeeeeedeeeeeeeeeeeeeeeeeedustry."
   ),
   createData(
     "Yesterday",
     "youtube",
-    "GAKS520",
+    "a2",
     "Harii poter",
     "711-552-552",
     "Roffig main",
@@ -148,7 +207,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "LGD4hhjshjd554",
+    "a3",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -157,7 +216,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "hjk",
+    "a4",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -166,7 +225,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "hshshs",
+    "a5",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -175,7 +234,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "hshshs",
+    "a6",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -184,7 +243,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "hshshsii",
+    "a7",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -193,7 +252,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "ididg",
+    "a8",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -202,7 +261,7 @@ const rows = [
   createData(
     "Today",
     "Google",
-    "ejoejc",
+    "a9",
     "keagan San",
     "714-755-9544",
     "Metal Roffing",
@@ -242,9 +301,8 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "name",
+    id: "date",
     numeric: false,
-    disablePadding: true,
     label: "Date",
   },
   {
@@ -394,14 +452,14 @@ let EnhancedTableToolbar = (props) => {
 };
 
 function EnhancedTable() {
-  const [order, setOrder] = React.useState("asc");
+  const [order, setOrder] = useState("asc");
   const [orderBy, setOrderBy] = React.useState("leadsSource");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [optionsStatus, setOptionsStatus] = React.useState([]);
-  const [showAction, setShowAction] = React.useState(false);
+  const [activeRow, setActiveRow] = useState("");
+  // const [showAction, setShowAction] = React.useState(false);
   const classes = useStyles();
 
   const handleRequestSort = (event, property) => {
@@ -412,19 +470,19 @@ function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.date);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, date) => {
+    const selectedIndex = selected.indexOf(date);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selected, date);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -452,41 +510,22 @@ function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (date) => selected.indexOf(date) !== -1;
 
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  // const showOptions = ref => {
-
-  //   setOptionsStatus(optionsStatus, [ref] = true);
-  //   console.log("option", optionsStatus);
-  // }
-  // const hideOptions = ref => {
-
-  //   setOptionsStatus(optionsStatus[ref] = false);
-
-  // }
-
-  // const showOptions = (ref) => {
-  //   setOptionsStatus(ref, ([ref] = true));
-
-  //   let className = "";
-  //   if()
-
-  //   console.log("option", optionsStatus);
-  // };
-
   return (
     <div>
-      <Paper>
+      <Paper classes={{ root: classes.paper }}>
         <EnhancedTableToolbar numSelected={selected.length} />
         <Divider />
         <TableContainer>
           <Table
-            aria-labelledby="tableTitle"
-            size={dense ? "small" : "medium"}
-            aria-label="enhanced table"
+            classes={{ root: classes.table }}
+            // aria-labelledby="tableTitle"
+            // size={dense ? "small" : "medium"}
+            aria-label="customized table"
           >
             <EnhancedTableHead
               numSelected={selected.length}
@@ -500,35 +539,20 @@ function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.date);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
-                    <TableRow
-                      hover
+                    <StyledTableRow
                       onClick={(event) => handleClick(event, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={index}
                       selected={isItemSelected}
-                      className="span"
-                      // onMouseEnter={() => className = "span"} // add display to span with id
-                      // onMouseEnter={() => showOptions(index.refernce)} // add display to span with id
-                      onMouseLeave={(e) => {
-                        // hideOptions(row.refernce)
-                        e.target.classList.remove("showSpan");
-                        e.target.classList.add("hideSpan");
-                        console.log(row.refernce, "onMouseLeave");
-                      }}
-                      // remove display frm span with id
-                      onMouseEnter={(e) => {
-                        // setShowAction(true)
-                        e.target.classList.remove("hideSpan");
-                        e.target.classList.add("showSpan");
-                        console.log(row.refernce, "onMouseEnter");
-                      }}
-                      // onMouseLeave={() => setShowAction(false)}
+                      onMouseEnter={() => setActiveRow(index)}
+                      onMouseLeave={() => setActiveRow("")}
+                      style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
@@ -540,9 +564,10 @@ function EnhancedTable() {
                         component="th"
                         id={labelId}
                         scope="row"
-                        padding="none"
+                        // padding="none"
+                        align="left"
                       >
-                        {row.name}
+                        {row.date}
                       </TableCell>
                       <TableCell align="left">{row.leadsSource}</TableCell>
                       <TableCell align="left">{row.refernce}</TableCell>
@@ -551,16 +576,25 @@ function EnhancedTable() {
                       <TableCell align="left">
                         {row.interestedService}
                       </TableCell>
+                      {/* <TableCell align="left" style={{ display: 'flex', justifyContent: "spa" }}>{activeRow !== index ? row.comment : `${row.comment.substring(0, 80)} ...`}
+                        {(activeRow === index) && (<RowOptions row={row} />)}
+                      </TableCell> */}
                       <TableCell align="left">
-                        {row.comment}
                         <span
-                          id={row.refernce}
-                          // className={(classes.showSpan, classes.hideSpan)}
+                          style={{
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            // width: "380px",
+                            display: "flex",
+                          }}
                         >
-                          "Show me"
+                          {activeRow === index
+                            ? `${row.comment.substring(0, 60)} ...`
+                            : `${row.comment.substring(0, 80)}`}
+                          {activeRow === index && <RowOptions />}
                         </span>
                       </TableCell>
-                    </TableRow>
+                    </StyledTableRow>
                   );
                 })}
               {emptyRows > 0 && (
@@ -586,6 +620,425 @@ function EnhancedTable() {
         label="Dense padding"
       />
     </div>
+  );
+}
+
+function RowOptions({ row }) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  // const Transition = React.forwardRef(function Transition(props, ref) {
+  //   return <Slide direction="up" ref={ref} {...props} />;
+  // });
+
+  const handlBlock = (e) => {
+    console.log("this is working fine");
+    e.preventDefault();
+    // e.target.style.color = "black";
+    // e.target.button.style.backgroundColor = "purple";
+    setVisible(!visible);
+    console.log("target", e);
+  };
+  return (
+    <>
+      {/* <span> {row.refernce} Row Options</span> */}
+      <div
+        style={{
+          position: "relative",
+          right: "-15%",
+          backgroundColor: "black",
+        }}
+        className={classes.divIcons}
+      >
+        <>
+          <Tooltip title="Forward Leads" classes={{ tooltip: classes.popper }}>
+            <ForwardIcon
+              className={classes.forwardIcon}
+              onClick={handleClickOpen}
+            />
+          </Tooltip>
+          <Dialog
+            classes={{ paper: classes.dialogwrapper }}
+            fullWidth
+            max-width="lg"
+            open={open}
+            // TransitionComponent={Transition}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-slide-title"
+            aria-describedby="alert-dialog-slide-description"
+            style={{ width: "100%", height: "100%" }}
+          >
+            <DialogTitle className={classes.dialogTitle}>
+              <div style={{ display: "flex" }}>
+                <Filter className={classes.icon} />
+                <Typography
+                  variant="h4"
+                  component="div"
+                  style={{ flexGrow: 1, fontWeight: 700, fontSize: "20px" }}
+                >
+                  Good Leads Information
+                </Typography>
+                <Button
+                  style={{ color: "#868695" }}
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon />
+                </Button>
+              </div>
+            </DialogTitle>
+
+            <DialogContent style={{ marginTop: "-18px" }}>
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container direction="row" alignItems="center">
+                <Box display="flex">
+                  <Grid item xs={6}>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Customer:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      City:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Phone Number:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Email:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Jazmyn Greenholt
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Lakeland
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      708-381-3542
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      jazmyn@greenholt.com
+                    </Typography>
+                  </Grid>
+                </Box>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  style={{
+                    marginLeft: "100px",
+                    marginTop: "-16px",
+                    marginBottom: "-16px",
+                  }}
+                />
+                <Box display="flex" style={{ marginLeft: "40px" }}>
+                  <Grid item>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Reference ID:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Date:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Form Name:
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "800",
+                        fontSize: "12px",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Lead Source:
+                    </Typography>
+                  </Grid>
+                  <Grid item style={{ marginLeft: "40px" }}>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      VVZ31D
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      9/4/2021
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Free Estimate
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: "600",
+                        lineHeight: "30px",
+                      }}
+                    >
+                      Google
+                    </Typography>
+                  </Grid>
+                </Box>
+              </Grid>
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container>
+                <Grid item>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      fontWeight: "800",
+                      fontSize: "12px",
+                      paddingBottom: "5px",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    Message:
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography
+                    variant="subtitle1"
+                    style={{ fontSize: "12px", fontWeight: "600" }}
+                  >
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book.Lorem Ipsum is simply dummy text of the
+                    printing and typesetting industry.
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Divider my={4} style={{ marginRight: "20px" }} />
+              <Grid container direction="row" alignItems="center" spacing={10}>
+                <Grid item>
+                  <Typography
+                    variant="subtitle1"
+                    style={{ fontSize: "12px", fontWeight: "800" }}
+                  >
+                    Source URL:
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Typography
+                    variant="subtitle1"
+                    style={{
+                      color: "#868695",
+                      fontSize: "12px",
+                      fontWeight: "600",
+                    }}
+                  >
+                    https://metalroofing.com/free-estimate/
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Divider my={5} style={{ marginRight: "20px" }} />
+            </DialogContent>
+
+            <DialogActions style={{ paddingBottom: "35px" }}>
+              <Grid
+                container
+                direction="row"
+                alignItems="center"
+                justify="space-between"
+                spacing={4}
+              >
+                <Box display="flex" ml={3}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    style={{
+                      color: "white",
+                      backgroundColor: "#6A74C9",
+                      marginLeft: "10px",
+                    }}
+                    startIcon={<ForwardIcon />}
+                  >
+                    Forward
+                  </Button>
+
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    style={{
+                      color: "#6A74C9",
+                      borderColor: "#6A74C9",
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Mark as test
+                  </Button>
+
+                  <Button
+                    variant="contained"
+                    onClick={handlBlock}
+                    style={
+                      visible
+                        ? {
+                            color: "#6A74C9",
+                            backgroundColor: "white",
+                            border: "1px solid #6A74C9",
+                            marginLeft: "10px",
+                          }
+                        : {
+                            color: "white",
+                            backgroundColor: "#C44545",
+                            marginLeft: "10px",
+                          }
+                    }
+                    startIcon={visible ? "" : <BlockIcon />}
+                  >
+                    {visible ? "Unblock" : "Block"}
+                  </Button>
+                </Box>
+
+                <Box display="flex" alignItems="center" mr={6}>
+                  <Typography variant="body2">6 of 101</Typography>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    classes={{ startIcon: classes.startICon }}
+                    style={{
+                      color: "#6A74C9",
+                      borderColor: "#6A74C9",
+                      marginLeft: "10px",
+                      maxWidth: "36px",
+                      minWidth: "36px",
+                    }}
+                    startIcon={<ArrowForwardIcon />}
+                  ></Button>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    classes={{ startIcon: classes.startICon }}
+                    style={{
+                      color: "#6A74C9",
+                      borderColor: "#6A74C9",
+                      marginLeft: "10px",
+                      maxWidth: "36px",
+                      minWidth: "36px",
+                    }}
+                    startIcon={<ArrowBackIcon />}
+                  ></Button>
+                </Box>
+              </Grid>
+            </DialogActions>
+          </Dialog>
+        </>
+
+        <Tooltip
+          title="View Leads"
+          placement="top"
+          classes={{ tooltip: classes.popper }}
+        >
+          <VisibilityIcon className={classes.visibility} />
+        </Tooltip>
+        <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
+          <BlockIcon className={classes.blockIcon} />
+        </Tooltip>
+      </div>
+    </>
   );
 }
 
