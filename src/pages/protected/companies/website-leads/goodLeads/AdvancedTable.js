@@ -650,13 +650,18 @@ function RowOptions({ row }) {
           )}
         </>
 
-        <Tooltip
-          title="View Leads"
-          placement="top"
-          classes={{ tooltip: classes.popper }}
-        >
-          <VisibilityIcon className={classes.visibility} />
-        </Tooltip>
+        <>
+          <Tooltip
+            title="View Leads"
+            placement="top"
+            classes={{ tooltip: classes.popper }} >
+            <VisibilityIcon className={classes.visibility} onClick={handleClickOpen} />
+          </Tooltip>
+          {open && (
+            <Modal open={open} setOpen={setOpen} handleClose={handleClose} />
+          )}
+        </>
+
         <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
           <BlockIcon className={classes.blockIcon} />
         </Tooltip>
