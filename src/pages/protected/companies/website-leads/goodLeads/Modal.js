@@ -26,6 +26,11 @@ import { spacing } from "@material-ui/system";
 const Divider = styled(MuiDivider)(spacing);
 
 const useStyles = makeStyles((theme) => ({
+  icon: {
+    color: "#6320EE",
+    marginRight: "10px",
+    marginLeft: "5px",
+  },
   paper: {
     borderRadius: "12px",
     boxShadow: "0px 0px 12px -5px #000000",

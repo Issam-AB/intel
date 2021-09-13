@@ -47,6 +47,7 @@ const StyledTableRow = withStyles({
   root: {
     "&:nth-of-type(odd)": {
       backgroundColor: "#F9F9FC",
+      opacity: 2,
     },
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
@@ -69,23 +70,26 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "50px",
     width: "93px",
   },
-  root: {
+  input: {
     padding: "0 0px",
     display: "flex",
     alignItems: "center",
     marginLeft: "-25px",
     width: 400,
     height: 31,
+    transition: "0.5s",
     backgroundColor: "#F9F9FC",
     "&:hover, &:focus": {
       border: "1px solid #6320EE",
+      opacity: 4,
     },
-    transition: "0.12s",
   },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-  },
+  // input: {
+  //   marginLeft: theme.spacing(1),
+  //   flex: 1,
+  //   opacity: 0.6,
+  //   transition: "0.75s",
+  // },
   iconButton: {
     padding: "5px 10px",
   },
@@ -388,12 +392,11 @@ let EnhancedTableToolbar = (props) => {
         <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
           Good Leads
         </Typography>
-        <Paper component="form" className={classes.root}>
+        <Paper component="form" className={classes.input}>
           <IconButton className={classes.iconButton} aria-label="menu">
             <SearchIcon />
           </IconButton>
           <InputBase
-            className={classes.input}
             placeholder="Search Good Leads"
             inputProps={{ "aria-label": "search good leads" }}
           />
@@ -513,8 +516,8 @@ function EnhancedTable() {
         <TableContainer>
           <Table
             classes={{ root: classes.table }}
-            // aria-labelledby="tableTitle"
-            // size={dense ? "small" : "medium"}
+            aria-labelledby="tableTitle"
+            size={dense ? "small" : "medium"}
             aria-label="customized table"
           >
             <EnhancedTableHead
