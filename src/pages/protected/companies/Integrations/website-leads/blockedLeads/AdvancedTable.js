@@ -25,6 +25,7 @@ import {
   InputBase,
   TextField,
   Button,
+  AppBar
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {
@@ -32,9 +33,10 @@ import {
   Forward as ForwardIcon,
   Visibility as VisibilityIcon,
   Block as BlockIcon,
+  Close as CloseIcon,
 } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather";
-import { spacing } from "@material-ui/system";
+import { borderColor, spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const Divider = styled(MuiDivider)(spacing);
@@ -53,7 +55,11 @@ const StyledTableRow = withStyles({
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
     },
+
   },
+  hover: {
+    borderColor: "#6320EE"
+  }
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -154,6 +160,13 @@ const useStyles = makeStyles((theme) => ({
   startICon: {
     margin: 0,
   },
+  appBar: {
+    contentVisibility: "hidden",
+  },
+  colorPrimary: {
+    backgroundColor: "#e4def9",
+    color: "black",
+  }
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
@@ -376,71 +389,114 @@ const options = [
   "Last Year",
 ];
 let EnhancedTableToolbar = (props) => {
-  // const { numSelected } = props;
+  const { numSelected } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
-  return (
-    <Toolbar>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Filter className={classes.icon} />
-        <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          Good Leads
-        </Typography>
-        <Paper component="form" className={classes.input}>
-          <IconButton className={classes.iconButton} aria-label="menu">
-            <SearchIcon />
-          </IconButton>
-          <InputBase
-            placeholder="Search Good Leads"
-            inputProps={{ "aria-label": "search good leads" }}
-          />
-        </Paper>
-      </div>
-      <Spacer />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Autocomplete
-          classes={{
-            root: classes.autocomplete,
-            inputFocused: classes.focused,
-          }}
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-          inputValue={inputValue}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
-          id="controllable-states-demo"
-          options={options}
-          size="small"
-          style={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Controllable" variant="outlined" />
-          )}
-        />
-        <Button className={classes.export} variant="contained">
-          Export (10)
-        </Button>
 
-        <Tooltip title="Filter list">
-          <IconButton aria-label="Filter list">
-            <MoreVertical />
-          </IconButton>
-        </Tooltip>
-      </div>
-    </Toolbar>
+  // const [auth, setAuth] = React.useState(true);
+  const [open, setOpen] = React.useState(numSelected);
+  // const handleChange = (event) => {
+  //   setAuth(event.target.checked);
+  // };
+
+  // const handleMenu = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen();
+  // };
+  const specificAppBar = numSelected ? " " : classes.appBar
+
+  return (
+    <>
+      <AppBar position="static" classes={{ root: specificAppBar, colorPrimary: classes.colorPrimary }} >
+        <Toolbar style={{ display: 'flex', justifyContent: "space-between", alignItems: "center" }}>
+
+          <div style={{ display: 'flex', alignItems: "center" }}>
+            <IconButton
+              style={{ color: "#868695", }}
+            // onClick={ }
+            >
+              <CloseIcon />
+            </IconButton>
+            {numSelected > 0 ? (
+              <Typography color="inherit" variant="h6" style={{ fontWeight: "700", marginLeft: "10px" }}>
+                {numSelected} item selected
+              </Typography>
+            ) : ""}
+          </div>
+          <div>
+            <Button variant="contained" style={{
+              color: "white",
+              backgroundColor: "#6A74C9",
+            }}>Unblock Leads</Button>
+          </div>
+
+        </Toolbar>
+      </AppBar>
+      <Toolbar>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Filter className={classes.icon} />
+          <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
+            Good Leads
+          </Typography>
+          <Paper component="form" className={classes.input}>
+            <IconButton className={classes.iconButton} aria-label="menu">
+              <SearchIcon />
+            </IconButton>
+            <InputBase
+              placeholder="Search Good Leads"
+              inputProps={{ "aria-label": "search good leads" }}
+            />
+          </Paper>
+        </div>
+        <Spacer />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Autocomplete
+            classes={{
+              root: classes.autocomplete,
+              inputFocused: classes.focused,
+            }}
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue);
+            }}
+            id="controllable-states-demo"
+            options={options}
+            size="small"
+            style={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} label="Controllable" variant="outlined" />
+            )}
+          />
+          <Button className={classes.export} variant="contained">
+            Export (10)
+          </Button>
+
+          <Tooltip title="Filter list">
+            <IconButton aria-label="Filter list">
+              <MoreVertical />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </Toolbar>
+    </>
   );
 };
 
@@ -452,7 +508,9 @@ function EnhancedTable() {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [activeRow, setActiveRow] = useState("");
-  // const [showAction, setShowAction] = React.useState(false);
+
+
+
   const classes = useStyles();
 
   const handleRequestSort = (event, property) => {
@@ -502,6 +560,9 @@ function EnhancedTable() {
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
+  const handleChangeCheked = (event) => {
+    setCheked(event.currentTarget)
+  }
 
   const isSelected = (date) => selected.indexOf(date) !== -1;
 
@@ -510,8 +571,9 @@ function EnhancedTable() {
 
   return (
     <div>
+
       <Paper classes={{ root: classes.paper }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} isSelected={isSelected} />
         <Divider />
         <TableContainer>
           <Table
@@ -537,15 +599,17 @@ function EnhancedTable() {
 
                   return (
                     <StyledTableRow
-                      onClick={(event) => handleClick(event, row)}
+                      onClick={(event) => handleClick(event, row.date)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
+                      hover
                       selected={isItemSelected}
                       onMouseEnter={() => setActiveRow(index)}
                       onMouseLeave={() => setActiveRow("")}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
+                      classes={{ hover: classes.hover }}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
@@ -612,7 +676,7 @@ function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-    </div>
+    </div >
   );
 }
 

@@ -19,6 +19,7 @@ import {
   User,
 } from "react-feather";
 
+import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
 // loaded asynchronously, to keep the initial JS bundle to a minimum size
 
@@ -32,17 +33,18 @@ import Avatars from "../pages/components/Avatars";
 
 // Dashboards components
 //const Default = async(() => import("../pages/dashboards/Default"));
-const Overview = async(() =>
-  import("../pages/protected/companies/marketing-performance")
-);
+// const Overview = async(() =>
+//   import("../pages/protected/companies/marketing-performance")
+// );
 const Dashborad = async(() =>
-  import("../pages/protected/companies/website-metrics")
+  import("../pages/protected/companies/Integrations/website-metrics")
 );
 // Pages components
-import GoodLeads from "../pages/protected/companies/website-leads/goodLeads";
+// import GoodLeads from "../pages/protected/companies/Integrations/website-leads/goodLeads";
+// import BlockedLeads from "../pages/protected/companies/Integrations/website-leads/blockedLeads"
 import Blank from "../pages/pages/Blank";
-import InvoiceDetails from "../pages/pages/InvoiceDetails";
-import InvoiceList from "../pages/pages/InvoiceList";
+// import InvoiceDetails from "../pages/pages/InvoiceDetails";
+// import InvoiceList from "../pages/pages/InvoiceList";
 
 import Pricing from "../pages/pages/Pricing";
 import _Settings from "../pages/pages/Settings";
@@ -56,96 +58,96 @@ import Landing from "../pages/presentation/Landing";
 // Protected routes
 import ProtectedPage from "../pages/protected/ProtectedPage";
 
-const marketingPerformance = {
-  id: "Marketing Performance",
-  path: "/marketing-performance",
-  //containsHome: true,
-  children: [
-    {
-      path: "/marketing-performance/overview",
-      name: "Overview",
-      icon: <Compass />,
-      component: Overview,
-    },
-  ],
-  component: null,
-};
+// const marketingPerformance = {
+//   id: "Marketing Performance",
+//   path: "/marketing-performance",
+//   //containsHome: true,
+//   children: [
+//     {
+//       path: "/marketing-performance/overview",
+//       name: "Overview",
+//       icon: <Compass />,
+//       component: Overview,
+//     },
+//   ],
+//   component: null,
+// };
 
-const websiteMetrics = {
-  id: "Website Metrics",
-  path: "/dashboard",
-  containsHome: true,
-  children: [
-    {
-      path: "/",
-      // path: "/dashboard/analytics",
-      name: "Dashboard",
-      icon: <Activity />,
-      component: Dashborad,
-    },
-  ],
-  component: null,
-};
+// const websiteMetrics = {
+//   id: "Website Metrics",
+//   path: "/dashboard",
+//   containsHome: true,
+//   children: [
+//     {
+//       path: "/",
+//       // path: "/dashboard/analytics",
+//       name: "Dashboard",
+//       icon: <Activity />,
+//       component: Dashborad,
+//     },
+//   ],
+//   component: null,
+// };
 
-const websiteLead = {
-  id: "Website Leads (forms)",
-  path: "/website-leads",
-  children: [
-    {
-      path: "/website-leads/good-leads",
-      name: "Good Leads",
-      icon: <Filter />,
-      badge: "3",
-      component: GoodLeads,
-    },
-    {
-      path: "/pages/settings",
-      name: "Blocked Leads",
-      icon: <Slash />,
-      component: _Settings,
-    },
-    {
-      path: "/pages/pricing",
-      name: "Custom Filters",
-      icon: <Sliders />,
-      component: Pricing,
-    },
-    {
-      path: "/pages/chat",
-      name: "Notifications",
-      badge: "3",
-      icon: <Bell />,
-      component: Chat,
-    },
-    {
-      path: "/pages/blank",
-      name: "Integrations",
-      icon: <Grid />,
-      component: Blank,
-    },
-  ],
-  component: null,
-};
+// const websiteLead = {
+//   id: "Website Leads (forms)",
+//   path: "/website-leads",
+//   children: [
+//     {
+//       path: "/website-leads/good-leads",
+//       name: "Good Leads",
+//       icon: <Filter />,
+//       badge: "3",
+//       component: GoodLeads,
+//     },
+//     {
+//       path: "/website-leads/blocked-leads",
+//       name: "Blocked Leads",
+//       icon: <Slash />,
+//       component: BlockedLeads,
+//     },
+//     {
+//       path: "/pages/pricing",
+//       name: "Custom Filters",
+//       icon: <Sliders />,
+//       component: Pricing,
+//     },
+//     {
+//       path: "/pages/chat",
+//       name: "Notifications",
+//       badge: "3",
+//       icon: <Bell />,
+//       component: Chat,
+//     },
+//     {
+//       path: "/pages/blank",
+//       name: "Integrations",
+//       icon: <Grid />,
+//       component: Blank,
+//     },
+//   ],
+//   component: null,
+// };
 
-const callTracking = {
-  id: "Call Tracking",
-  path: "/invoices",
-  children: [
-    {
-      path: "/invoices",
-      name: "Call Log",
-      icon: <PhoneIncoming />,
-      component: InvoiceList,
-    },
-    {
-      path: "/invoices/detail",
-      name: "Reports",
-      icon: <FileText />,
-      component: InvoiceDetails,
-    },
-  ],
-  component: null,
-};
+// // const callTracking = {
+// //   id: "Call Tracking",
+// //   path: "/invoices",
+// //   children: [
+// //     {
+// //       path: "/invoices",
+// //       name: "Call Log",
+// //       icon: <PhoneIncoming />,
+// //       component: InvoiceList,
+// //     },
+// //     {
+// //       path: "/invoices/detail",
+// //       name: "Reports",
+// //       icon: <FileText />,
+// //       component: InvoiceDetails,
+// //     },
+// //   ],
+// //   component: null,
+// // };
 
 const support = {
   id: "Support",
@@ -199,14 +201,25 @@ const protectedPageRoutes = {
 };
 
 // Routes using the Dashboard layout
-export const dashboardLayoutRoutes = [
-  marketingPerformance,
-  websiteMetrics,
-  websiteLead,
-  callTracking,
-  support,
-  accountSettings,
-];
+export const dashboardLayoutRoutes = InegrationsRoutes;
+
+
+
+
+
+// dashboardLayoutRoutes.push(websiteMetrics)
+//dashboardLayoutRoutes.push(callTracking)
+// dashboardLayoutRoutes.push(support);
+// dashboardLayoutRoutes.push(accountSettings)
+
+// = [
+//   // marketingPerformance,
+//   // websiteMetrics,
+//   // websiteLead,
+//   // callTracking,
+//   support,
+//   accountSettings,
+// ];
 
 // // Routes using the Auth layout
 // export const authLayoutRoutes = [authRoutes];
@@ -219,11 +232,17 @@ export const presentationLayoutRoutes = [landingRoutes];
 export const protectedRoutes = [protectedPageRoutes];
 
 // Routes visible in the sidebar
-export const sidebarRoutes = [
-  marketingPerformance,
-  websiteMetrics,
-  websiteLead,
-  callTracking,
-  support,
-  accountSettings,
-];
+export const sidebarRoutes = InegrationsRoutes;
+// [
+//   marketingPerformance,
+//   websiteMetrics,
+//   websiteLead,
+//   callTracking,
+//   support,
+//   accountSettings,
+// // ];
+
+// sidebarRoutes.push(websiteMetrics);
+//sidebarRoutes.push(callTracking);
+sidebarRoutes.push(support);
+sidebarRoutes.push(accountSettings)

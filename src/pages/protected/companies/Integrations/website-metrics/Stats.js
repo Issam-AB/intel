@@ -9,7 +9,7 @@ import {
   Typography as MuiTypography,
 } from "@material-ui/core";
 
-import arrowup from "../../../../vendor/icons/arrow-up.svg";
+import arrowup from "../../../../../vendor/icons/arrow-up.svg";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { rgba } from "polished";

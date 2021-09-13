@@ -18,7 +18,7 @@ import { spacing } from "@material-ui/system";
 
 import { Doughnut } from "react-chartjs-2";
 import { makeStyles } from "@material-ui/core/styles";
-import arrowup from "../../../../vendor/icons/arrow-up.svg";
+import arrowup from "../../../../../vendor/icons/arrow-up.svg";
 import { MoreVertical } from "react-feather";
 import { DesktopWindows, PhoneAndroid, Tablet } from "@material-ui/icons";
 
