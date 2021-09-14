@@ -7,28 +7,24 @@ import React from "react";
 import InvoiceDetails from "./Report";
 import InvoiceList from "./Report";
 
-import {
-
-    PhoneIncoming,
-    FileText,
-} from "react-feather";
+import { PhoneIncoming, FileText } from "react-feather";
 
 export const callTracking = {
-    id: "Call Tracking",
-    path: "/invoices",
-    children: [
-        {
-            path: "/invoices",
-            name: "Call Log",
-            icon: <PhoneIncoming />,
-            component: InvoiceList,
-        },
-        {
-            path: "/invoices/detail",
-            name: "Reports",
-            icon: <FileText />,
-            component: InvoiceDetails,
-        },
-    ],
-    component: null,
+  id: "Call Tracking",
+  path: "/invoices",
+  children: [
+    {
+      path: "/invoices",
+      name: "Call Log",
+      icon: <PhoneIncoming />,
+      component: InvoiceList,
+    },
+    {
+      path: "/invoices/detail",
+      name: "Reports",
+      icon: <FileText />,
+      component: InvoiceDetails,
+    },
+  ],
+  component: null,
 };

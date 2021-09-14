@@ -315,7 +315,6 @@ const headCells = [
     label: "Intrested Service",
   },
   { id: "comment", numeric: false, disablePadding: false, label: "Comment" },
-  { id: "options", numeric: false, disablePadding: false, label: "Options" },
 ];
 
 function EnhancedTableHead(props) {
@@ -442,7 +441,7 @@ let EnhancedTableToolbar = (props) => {
         </Tooltip>
       </div>
     </Toolbar>
-    </>
+  </>
   );
 };
 
@@ -575,27 +574,28 @@ function EnhancedTable() {
                         {(activeRow === index) && (<RowOptions row={row} />)}
                       </TableCell> */}
                       <TableCell align="left">
-                       
-                          {/* {activeRow === index
+                        <span
+                          style={{
+                            whiteSpace: "nowrap",
+                            overflow: "hidden",
+                            // width: "380px",
+                            display: "flex",
+                          }}
+                        >
+                          {activeRow === index
                             ? `${row.comment.substring(0, 60)} ...`
                             : `${row.comment.substring(0, 80)}`}
-                           */}
-
-                          {row.comment}
-                      </TableCell>
-
-                          <TableCell>
-                          <RowOptions />
-                        
+                          {activeRow === index && <RowOptions />}
+                        </span>
                       </TableCell>
                     </StyledTableRow>
                   );
                 })}
-              {emptyRows > 0 && (
+              {/* {emptyRows > 0 && (
                 <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -652,8 +652,12 @@ function RowOptions({ row }) {
           <Tooltip
             title="View Leads"
             placement="top"
-            classes={{ tooltip: classes.popper }} >
-            <VisibilityIcon className={classes.visibility} onClick={handleClickOpen} />
+            classes={{ tooltip: classes.popper }}
+          >
+            <VisibilityIcon
+              className={classes.visibility}
+              onClick={handleClickOpen}
+            />
           </Tooltip>
           {open && (
             <Modal open={open} setOpen={setOpen} handleClose={handleClose} />
