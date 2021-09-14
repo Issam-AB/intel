@@ -71,7 +71,7 @@ const Overview = () => {
           <BarChart />
         </Grid>
       </Grid>
-      <Spacer mb={7} />
+      <Spacer mb={6} />
       <Grid container spacing={6}>
         <Grid item xs={12} lg={12}>
           <AdvancedTable />

@@ -54,6 +54,7 @@ const StyledTableRow = withStyles({
       whiteSpace: "nowrap",
     },
   },
+
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -79,10 +80,9 @@ const useStyles = makeStyles((theme) => ({
     height: 31,
     transition: "0.5s",
     backgroundColor: "#F9F9FC",
-    "&:hover, &:focus": {
-      border: "1px solid #6320EE",
-      opacity: 4,
-    },
+  },
+  iconLabel: {
+    color: "#6320EE !important",
   },
   // input: {
   //   marginLeft: theme.spacing(1),
@@ -113,21 +113,22 @@ const useStyles = makeStyles((theme) => ({
   visibility: {
     color: "#6320EE",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   forwardIcon: {
     color: "#6A74C9",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   blockIcon: {
     color: "#e01e1e",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   divIcons: {
     display: "flex",
     justifyContent: "flex-end",
+    // marginLeft: "200px",
   },
   popper: {
     backgroundColor: "#6A74C9",
@@ -164,7 +165,7 @@ function createData(
   leadsSource,
   refernce,
   customer,
-  member,
+  phoneNumber,
   interestedService,
   comment
 ) {
@@ -173,7 +174,7 @@ function createData(
     leadsSource,
     refernce,
     customer,
-    member,
+    phoneNumber,
     interestedService,
     comment,
   };
@@ -199,7 +200,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today1",
+    "Today",
     "Google",
     "a3",
     "keagan San",
@@ -208,7 +209,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today2",
+    "Today",
     "Google",
     "a4",
     "keagan San",
@@ -217,7 +218,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today3",
+    "Today",
     "Google",
     "a5",
     "keagan San",
@@ -226,7 +227,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today4",
+    "Today",
     "Google",
     "a6",
     "keagan San",
@@ -235,7 +236,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today5",
+    "Today",
     "Google",
     "a7",
     "keagan San",
@@ -244,7 +245,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today6",
+    "Today",
     "Google",
     "a8",
     "keagan San",
@@ -253,7 +254,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today7",
+    "Today",
     "Google",
     "a9",
     "keagan San",
@@ -307,14 +308,15 @@ const headCells = [
   },
   { id: "refernce", numeric: true, disablePadding: false, label: "Reference" },
   { id: "customer", numeric: true, disablePadding: false, label: "Customer" },
-  { id: "member", numeric: true, disablePadding: false, label: "Member" },
+  { id: "phoneNumber", numeric: true, disablePadding: false, label: "Phone Number" },
   {
     id: "interestedService",
     numeric: true,
     disablePadding: false,
     label: "Intrested Service",
   },
-  { id: "comment", numeric: false, disablePadding: false, label: "Comment" },
+  { id: "comment", numeric: true, disablePadding: false, label: "Comment" },
+  { id: "actions", numeric: false, disablePadding: false, label: "Actions" },
 ];
 
 function EnhancedTableHead(props) {
@@ -345,12 +347,12 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "left" : "left"}
+            align={headCell.numeric ? "left" : "center"}
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
-              classes={{ root: classes.label }}
+              classes={{ root: classes.label, icon: classes.iconlabel }}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
@@ -452,7 +454,7 @@ function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [activeRow, setActiveRow] = useState("");
+  // const [activeRow, setActiveRow] = useState("");
   // const [showAction, setShowAction] = React.useState(false);
   const classes = useStyles();
 
@@ -538,18 +540,19 @@ function EnhancedTable() {
 
                   return (
                     <StyledTableRow
+                      onClick={(event) => handleClick(event, row.date)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
+                      hover
                       selected={isItemSelected}
-                      onMouseEnter={() => setActiveRow(index)}
-                      onMouseLeave={() => setActiveRow("")}
+                      // onMouseEnter={() => setActiveRow(index)}
+                      // onMouseLeave={() => setActiveRow("")}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
-                          onClick={(event) => handleClick(event, row.date)}
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
@@ -566,27 +569,19 @@ function EnhancedTable() {
                       <TableCell align="left">{row.leadsSource}</TableCell>
                       <TableCell align="left">{row.refernce}</TableCell>
                       <TableCell align="left">{row.customer}</TableCell>
-                      <TableCell align="left">{row.member}</TableCell>
+                      <TableCell align="left">{row.phoneNumber}</TableCell>
                       <TableCell align="left">
                         {row.interestedService}
                       </TableCell>
-                      {/* <TableCell align="left" style={{ display: 'flex', justifyContent: "spa" }}>{activeRow !== index ? row.comment : `${row.comment.substring(0, 80)} ...`}
-                        {(activeRow === index) && (<RowOptions row={row} />)}
-                      </TableCell> */}
                       <TableCell align="left">
-                        <span
-                          style={{
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            // width: "380px",
-                            display: "flex",
-                          }}
-                        >
-                          {activeRow === index
-                            ? `${row.comment.substring(0, 60)} ...`
-                            : `${row.comment.substring(0, 80)}`}
-                          {activeRow === index && <RowOptions />}
-                        </span>
+
+                        {row.comment.length > 80
+                          ? `${row.comment.substring(0, 75)} ...`
+                          : `${row.comment}`}
+
+                      </TableCell>
+                      <TableCell align="left">
+                        {<RowOptions />}
                       </TableCell>
                     </StyledTableRow>
                   );
@@ -616,7 +611,6 @@ function EnhancedTable() {
     </div>
   );
 }
-
 function RowOptions({ row }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -630,10 +624,7 @@ function RowOptions({ row }) {
 
   return (
     <>
-      {/* <span> {row.refernce} Row Options</span> */}
       <div
-        style={{
-        }}
         className={classes.divIcons}
       >
         <>

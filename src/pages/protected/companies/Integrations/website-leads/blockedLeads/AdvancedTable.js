@@ -56,9 +56,7 @@ const StyledTableRow = withStyles({
       whiteSpace: "nowrap",
     },
   },
-  hover: {
-    borderColor: "#6320EE",
-  },
+
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -69,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
   },
   focused: {
     color: "#6A74C9",
+  },
+  iconLabel: {
+    color: "#6320EE !important",
   },
   goodlaeads: {
     fontWeight: "bold",
@@ -118,17 +119,17 @@ const useStyles = makeStyles((theme) => ({
   visibility: {
     color: "#6320EE",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   forwardIcon: {
     color: "#6320EE",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   blockIcon: {
     color: "#6A74C9",
     fontSize: "25px",
-    marginRight: "10px",
+    marginRight: "20px",
   },
   divIcons: {
     display: "flex",
@@ -175,7 +176,7 @@ function createData(
   leadsSource,
   refernce,
   customer,
-  member,
+  phoneNumber,
   interestedService,
   comment
 ) {
@@ -184,7 +185,7 @@ function createData(
     leadsSource,
     refernce,
     customer,
-    member,
+    phoneNumber,
     interestedService,
     comment,
   };
@@ -318,7 +319,7 @@ const headCells = [
   },
   { id: "refernce", numeric: true, disablePadding: false, label: "Reference" },
   { id: "customer", numeric: true, disablePadding: false, label: "Customer" },
-  { id: "member", numeric: true, disablePadding: false, label: "Member" },
+  { id: "phoneNumber", numeric: true, disablePadding: false, label: "Phone Number" },
   {
     id: "interestedService",
     numeric: true,
@@ -326,6 +327,7 @@ const headCells = [
     label: "Intrested Service",
   },
   { id: "comment", numeric: true, disablePadding: false, label: "Comment" },
+  { id: "actions", numeric: false, disablePadding: false, label: "Actions" },
 ];
 
 function EnhancedTableHead(props) {
@@ -356,12 +358,12 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "left" : "left"}
+            align={headCell.numeric ? "left" : "center"}
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
-              classes={{ root: classes.label }}
+              classes={{ root: classes.label, icon: classes.iconlabel }}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
@@ -371,7 +373,7 @@ function EnhancedTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-    </TableHead>
+    </TableHead >
   );
 }
 
@@ -611,10 +613,9 @@ function EnhancedTable() {
                       key={index}
                       hover
                       selected={isItemSelected}
-                      onMouseEnter={() => setActiveRow(index)}
-                      onMouseLeave={() => setActiveRow("")}
+                      // onMouseEnter={() => setActiveRow(index)}
+                      // onMouseLeave={() => setActiveRow("")}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
-                      classes={{ hover: classes.hover }}
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
@@ -634,36 +635,23 @@ function EnhancedTable() {
                       <TableCell align="left">{row.leadsSource}</TableCell>
                       <TableCell align="left">{row.refernce}</TableCell>
                       <TableCell align="left">{row.customer}</TableCell>
-                      <TableCell align="left">{row.member}</TableCell>
+                      <TableCell align="left">{row.phoneNumber}</TableCell>
                       <TableCell align="left">
                         {row.interestedService}
                       </TableCell>
-                      {/* <TableCell align="left" style={{ display: 'flex', justifyContent: "spa" }}>{activeRow !== index ? row.comment : `${row.comment.substring(0, 80)} ...`}
-                        {(activeRow === index) && (<RowOptions row={row} />)}
-                      </TableCell> */}
                       <TableCell align="left">
-                        <span
-                          style={{
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            // width: "380px",
-                            display: "flex",
-                          }}
-                        >
-                          {activeRow === index
-                            ? `${row.comment.substring(0, 60)} ...`
-                            : `${row.comment.substring(0, 80)}`}
-                          {activeRow === index && <RowOptions />}
-                        </span>
+
+                        {row.comment.length > 80
+                          ? `${row.comment.substring(0, 75)} ...`
+                          : `${row.comment}`}
+
+                      </TableCell>
+                      <TableCell align="left">
+                        {<RowOptions />}
                       </TableCell>
                     </StyledTableRow>
                   );
                 })}
-              {/* {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )} */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -700,10 +688,6 @@ function RowOptions({ row }) {
     <>
       {/* <span> {row.refernce} Row Options</span> */}
       <div
-        style={{
-          position: "relative",
-          right: "-15%",
-        }}
         className={classes.divIcons}
       >
         <>
