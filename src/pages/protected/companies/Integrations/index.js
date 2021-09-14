@@ -1,8 +1,8 @@
 import * as integrationsNames from './constants';
-import { callTracking } from './call-tracking/index.js';
-import { websiteMetrics } from './../Integrations/website-metrics/route'
-import { marketingPerformance } from "../Integrations/marketing-performance/route";
-import { websiteLead } from "../Integrations/website-leads/route";
+import { callTracking } from './call-tracking/index';
+import { websiteMetrics } from './website-metrics/route'
+import { marketingPerformance } from "./marketing-performance/route";
+import { websiteLead } from "./website-leads/route";
 
 
 const listOfIntegrations = [];
@@ -23,10 +23,5 @@ for (let slug in listOfIntegrations) {
         InegrationsRoutes.push(listOfIntegrations[slug])
     }
 }
-console.log('hi', InegrationsRoutes)
 
 export default InegrationsRoutes;
-
-// Jib la list dial les integrations li kayning 3nd username
-//  looper f la lsit o verifier si ite
-

@@ -32,7 +32,7 @@ import {
   Search as SearchIcon,
   Forward as ForwardIcon,
   Visibility as VisibilityIcon,
-  Block as BlockIcon,
+  ThumbUpAltOutlined as ThumbUpAltIcon,
   Close as CloseIcon,
 } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather";
@@ -122,12 +122,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "10px",
   },
   forwardIcon: {
-    color: "#6A74C9",
+    color: "#6320EE",
     fontSize: "25px",
     marginRight: "10px",
   },
   blockIcon: {
-    color: "#e01e1e",
+    color: "#6A74C9",
     fontSize: "25px",
     marginRight: "10px",
   },
@@ -698,7 +698,6 @@ function RowOptions({ row }) {
         style={{
           position: "relative",
           right: "-15%",
-          backgroundColor: "black",
         }}
         className={classes.divIcons}
       >
@@ -726,8 +725,8 @@ function RowOptions({ row }) {
           )}
         </>
 
-        <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
-          <BlockIcon className={classes.blockIcon} />
+        <Tooltip title="Unblock Leads" classes={{ tooltip: classes.popper }}>
+          <ThumbUpAltIcon className={classes.blockIcon} />
         </Tooltip>
       </div>
     </>

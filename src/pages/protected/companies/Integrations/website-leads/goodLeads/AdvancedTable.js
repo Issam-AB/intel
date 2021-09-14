@@ -199,7 +199,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today1",
     "Google",
     "a3",
     "keagan San",
@@ -208,7 +208,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today2",
     "Google",
     "a4",
     "keagan San",
@@ -217,7 +217,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today3",
     "Google",
     "a5",
     "keagan San",
@@ -226,7 +226,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today4",
     "Google",
     "a6",
     "keagan San",
@@ -235,7 +235,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today5",
     "Google",
     "a7",
     "keagan San",
@@ -244,7 +244,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today6",
     "Google",
     "a8",
     "keagan San",
@@ -253,7 +253,7 @@ const rows = [
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   ),
   createData(
-    "Today",
+    "Today7",
     "Google",
     "a9",
     "keagan San",
@@ -314,7 +314,8 @@ const headCells = [
     disablePadding: false,
     label: "Intrested Service",
   },
-  { id: "comment", numeric: true, disablePadding: false, label: "Comment" },
+  { id: "comment", numeric: false, disablePadding: false, label: "Comment" },
+  { id: "options", numeric: false, disablePadding: false, label: "Options" },
 ];
 
 function EnhancedTableHead(props) {
@@ -380,7 +381,7 @@ let EnhancedTableToolbar = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
-  return (
+  return (<>
     <Toolbar>
       <div
         style={{
@@ -441,6 +442,7 @@ let EnhancedTableToolbar = (props) => {
         </Tooltip>
       </div>
     </Toolbar>
+    </>
   );
 };
 
@@ -537,7 +539,6 @@ function EnhancedTable() {
 
                   return (
                     <StyledTableRow
-                      onClick={(event) => handleClick(event, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -549,6 +550,7 @@ function EnhancedTable() {
                     >
                       <TableCell padding="checkbox">
                         <Checkbox
+                          onClick={(event) => handleClick(event, row.date)}
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
@@ -573,19 +575,18 @@ function EnhancedTable() {
                         {(activeRow === index) && (<RowOptions row={row} />)}
                       </TableCell> */}
                       <TableCell align="left">
-                        <span
-                          style={{
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            // width: "380px",
-                            display: "flex",
-                          }}
-                        >
-                          {activeRow === index
+                       
+                          {/* {activeRow === index
                             ? `${row.comment.substring(0, 60)} ...`
                             : `${row.comment.substring(0, 80)}`}
-                          {activeRow === index && <RowOptions />}
-                        </span>
+                           */}
+
+                          {row.comment}
+                      </TableCell>
+
+                          <TableCell>
+                          <RowOptions />
+                        
                       </TableCell>
                     </StyledTableRow>
                   );
@@ -632,9 +633,6 @@ function RowOptions({ row }) {
       {/* <span> {row.refernce} Row Options</span> */}
       <div
         style={{
-          position: "relative",
-          right: "-15%",
-          backgroundColor: "black",
         }}
         className={classes.divIcons}
       >
