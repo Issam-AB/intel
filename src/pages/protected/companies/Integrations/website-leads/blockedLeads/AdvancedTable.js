@@ -516,7 +516,6 @@ function EnhancedTable() {
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [activeRow, setActiveRow] = useState("");
 
   const classes = useStyles();
 
