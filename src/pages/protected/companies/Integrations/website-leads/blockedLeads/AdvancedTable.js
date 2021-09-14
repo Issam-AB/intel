@@ -25,7 +25,7 @@ import {
   InputBase,
   TextField,
   Button,
-  AppBar
+  AppBar,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {
@@ -36,7 +36,7 @@ import {
   Close as CloseIcon,
 } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather";
-import { borderColor, spacing } from "@material-ui/system";
+import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const Divider = styled(MuiDivider)(spacing);
@@ -55,11 +55,10 @@ const StyledTableRow = withStyles({
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
     },
-
   },
   hover: {
-    borderColor: "#6320EE"
-  }
+    borderColor: "#6320EE",
+  },
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -152,7 +151,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     position: "absolute",
     maxWidth: "50rem",
-    // top: theme.spacing(5)
   },
   dialogTitle: {
     paddingRight: "0px",
@@ -166,7 +164,7 @@ const useStyles = makeStyles((theme) => ({
   colorPrimary: {
     backgroundColor: "#e4def9",
     color: "black",
-  }
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
@@ -389,51 +387,56 @@ const options = [
   "Last Year",
 ];
 let EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
+  const { numSelected, handleSelectAllClick } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
 
-  // const [auth, setAuth] = React.useState(true);
-  const [open, setOpen] = React.useState(numSelected);
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
-
-  // const handleMenu = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen();
-  // };
-  const specificAppBar = numSelected ? " " : classes.appBar
+  const specificAppBar = numSelected ? " " : classes.appBar;
 
   return (
     <>
-      <AppBar position="static" classes={{ root: specificAppBar, colorPrimary: classes.colorPrimary }} >
-        <Toolbar style={{ display: 'flex', justifyContent: "space-between", alignItems: "center" }}>
-
-          <div style={{ display: 'flex', alignItems: "center" }}>
+      <AppBar
+        position="static"
+        classes={{ root: specificAppBar, colorPrimary: classes.colorPrimary }}
+      >
+        <Toolbar
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center" }}>
             <IconButton
-              style={{ color: "#868695", }}
-            // onClick={ }
+              style={{ color: "#868695" }}
+              onClick={handleSelectAllClick}
             >
               <CloseIcon />
             </IconButton>
             {numSelected > 0 ? (
-              <Typography color="inherit" variant="h6" style={{ fontWeight: "700", marginLeft: "10px" }}>
+              <Typography
+                color="inherit"
+                variant="h6"
+                style={{ fontWeight: "700", marginLeft: "10px" }}
+              >
                 {numSelected} item selected
               </Typography>
-            ) : ""}
+            ) : (
+              ""
+            )}
           </div>
           <div>
-            <Button variant="contained" style={{
-              color: "white",
-              backgroundColor: "#6A74C9",
-            }}>Unblock Leads</Button>
+            <Button
+              variant="contained"
+              style={{
+                color: "white",
+                backgroundColor: "#6A74C9",
+              }}
+            >
+              Unblock Leads
+            </Button>
           </div>
-
         </Toolbar>
       </AppBar>
       <Toolbar>
@@ -444,7 +447,11 @@ let EnhancedTableToolbar = (props) => {
           }}
         >
           <Filter className={classes.icon} />
-          <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
+          <Typography
+            variant="h6"
+            id="tableTitle"
+            className={classes.goodlaeads}
+          >
             Good Leads
           </Typography>
           <Paper component="form" className={classes.input}>
@@ -509,8 +516,6 @@ function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [activeRow, setActiveRow] = useState("");
 
-
-
   const classes = useStyles();
 
   const handleRequestSort = (event, property) => {
@@ -560,20 +565,20 @@ function EnhancedTable() {
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
-  const handleChangeCheked = (event) => {
-    setCheked(event.currentTarget)
-  }
 
   const isSelected = (date) => selected.indexOf(date) !== -1;
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  // const emptyRows =
+  //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div>
-
       <Paper classes={{ root: classes.paper }}>
-        <EnhancedTableToolbar numSelected={selected.length} isSelected={isSelected} />
+        <EnhancedTableToolbar
+          handleSelectAllClick={handleSelectAllClick}
+          numSelected={selected.length}
+          isSelected={isSelected}
+        />
         <Divider />
         <TableContainer>
           <Table
@@ -654,11 +659,11 @@ function EnhancedTable() {
                     </StyledTableRow>
                   );
                 })}
-              {emptyRows > 0 && (
+              {/* {emptyRows > 0 && (
                 <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
-              )}
+              )} */}
             </TableBody>
           </Table>
         </TableContainer>
@@ -676,7 +681,7 @@ function EnhancedTable() {
         control={<Switch checked={dense} onChange={handleChangeDense} />}
         label="Dense padding"
       />
-    </div >
+    </div>
   );
 }
 
@@ -718,8 +723,12 @@ function RowOptions({ row }) {
           <Tooltip
             title="View Leads"
             placement="top"
-            classes={{ tooltip: classes.popper }} >
-            <VisibilityIcon className={classes.visibility} onClick={handleClickOpen} />
+            classes={{ tooltip: classes.popper }}
+          >
+            <VisibilityIcon
+              className={classes.visibility}
+              onClick={handleClickOpen}
+            />
           </Tooltip>
           {open && (
             <Modal open={open} setOpen={setOpen} handleClose={handleClose} />

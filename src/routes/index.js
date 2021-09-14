@@ -3,21 +3,7 @@ import React from "react";
 
 import async from "../components/Async";
 
-import {
-  Activity,
-  Bell,
-  CreditCard,
-  Grid,
-  Compass,
-  Filter,
-  FileText,
-  Slash,
-  Monitor,
-  PhoneIncoming,
-  Sliders,
-  Users,
-  User,
-} from "react-feather";
+import { CreditCard, Monitor, Users, User } from "react-feather";
 
 import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
@@ -35,20 +21,20 @@ import Avatars from "../pages/components/Avatars";
 //const Default = async(() => import("../pages/dashboards/Default"));
 // const Overview = async(() =>
 //   import("../pages/protected/companies/marketing-performance")
+// // );
+// const Dashborad = async(() =>
+//   import("../pages/protected/companies/Integrations/website-metrics")
 // );
-const Dashborad = async(() =>
-  import("../pages/protected/companies/Integrations/website-metrics")
-);
 // Pages components
 // import GoodLeads from "../pages/protected/companies/Integrations/website-leads/goodLeads";
 // import BlockedLeads from "../pages/protected/companies/Integrations/website-leads/blockedLeads"
-import Blank from "../pages/pages/Blank";
+// import Blank from "../pages/pages/Blank";
 // import InvoiceDetails from "../pages/pages/InvoiceDetails";
 // import InvoiceList from "../pages/pages/InvoiceList";
 
-import Pricing from "../pages/pages/Pricing";
-import _Settings from "../pages/pages/Settings";
-import Chat from "../pages/pages/Chat";
+// import Pricing from "../pages/pages/Pricing";
+// import _Settings from "../pages/pages/Settings";
+// import Chat from "../pages/pages/Chat";
 // const Profile = async(() => import("../pages/pages/Profile"));
 const Tasks = async(() => import("../pages/pages/Tasks"));
 
@@ -203,10 +189,6 @@ const protectedPageRoutes = {
 // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = InegrationsRoutes;
 
-
-
-
-
 // dashboardLayoutRoutes.push(websiteMetrics)
 //dashboardLayoutRoutes.push(callTracking)
 // dashboardLayoutRoutes.push(support);
@@ -245,4 +227,4 @@ export const sidebarRoutes = InegrationsRoutes;
 // sidebarRoutes.push(websiteMetrics);
 //sidebarRoutes.push(callTracking);
 sidebarRoutes.push(support);
-sidebarRoutes.push(accountSettings)
+sidebarRoutes.push(accountSettings);
