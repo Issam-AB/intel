@@ -14,6 +14,7 @@ import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import { Bar } from "react-chartjs-2";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const Card = styled(MuiCard)(spacing);
 
 const Spacer = styled.div(spacing);
@@ -22,6 +23,25 @@ const ChartWrapper = styled.div`
   height: 322px;
   width: 100%;
 `;
+const themes = createMuiTheme({
+  overrides: {
+    MuiCheckbox: {
+      colorSecondary: {
+        color: '# custom color',
+        '&$checked': {
+          color: '#6320EE',
+        },
+      },
+      colorPrimary: {
+        color: '# custom color',
+        '&$checked': {
+          color: '#custom color',
+        },
+      },
+    },
+  },
+})
+
 const useStyles = makeStyles({
   traffic: {
     borderBottom: "1px solid #E8EEF1",
@@ -30,6 +50,9 @@ const useStyles = makeStyles({
     height: "475px",
     boxShadow: "0px 0px 12px -5px #000000",
   },
+  // Checkbox: {
+  //   color: "#6320EE"
+  // }
 });
 
 function BarChart({ theme }) {
@@ -49,16 +72,16 @@ function BarChart({ theme }) {
       "Dec",
     ],
     datasets: [
-      {
-        label: "Last year",
-        backgroundColor: theme.palette.secondary.main,
-        borderColor: theme.palette.secondary.main,
-        hoverBackgroundColor: theme.palette.secondary.main,
-        hoverBorderColor: theme.palette.secondary.main,
-        data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-        barPercentage: 0.75,
-        categoryPercentage: 0.5,
-      },
+      // {
+      //   label: "Last year",
+      //   backgroundColor: theme.palette.secondary.main,
+      //   borderColor: theme.palette.secondary.main,
+      //   hoverBackgroundColor: theme.palette.secondary.main,
+      //   hoverBorderColor: theme.palette.secondary.main,
+      //   data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+      //   barPercentage: 0.75,
+      //   categoryPercentage: 0.5,
+      // },
       {
         label: "This year",
         backgroundColor: "#9A68FC",
@@ -138,26 +161,33 @@ function BarChart({ theme }) {
         </Grid>
 
         <Spacer mb={5} />
+
         <FormGroup row style={{ marginLeft: "5px" }}>
           <FormControlLabel
             control={
-              <Checkbox
-                checked={state.checkedA}
-                onChange={handleChange}
-                name="checkedA"
-              />
+              <ThemeProvider theme={themes}>
+                <Checkbox
+                  // checked={state.checkedA}
+                  color="primary"
+                  onChange={handleChange}
+                  name="checkedA"
+                />
+              </ThemeProvider>
             }
-            label=" Website Traffic"
+            label="Website Traffic"
             style={{ marginRight: "72px", fontWeight: "bold" }}
           />
           <FormControlLabel
             control={
               <>
-                <Checkbox
-                  // checked={state.checkedB}
-                  onChange={handleChange}
-                  name="checkedB"
-                />
+                <ThemeProvider theme={themes}>
+                  <Checkbox
+                    defaultChecked
+                    // checked={state.checkedB}
+                    onChange={handleChange}
+                    name="checkedB"
+                  />
+                </ThemeProvider>
                 <span
                   style={{
                     backgroundColor: "#9A68FC",
@@ -205,7 +235,7 @@ function BarChart({ theme }) {
           <Bar data={data} options={options} />
         </ChartWrapper>
       </CardContent>
-    </Card>
+    </Card >
   );
 }
 

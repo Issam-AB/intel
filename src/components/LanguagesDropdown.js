@@ -119,8 +119,8 @@ function LanguagesDropdown() {
             Billing
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", borderTop: "1px solid #E0E0E0" }}>
-          <ListItemIcon style={{ minWidth: "29px" }}>
+        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", borderTop: "1px solid #E0E0E0", }}>
+          <ListItemIcon style={{ minWidth: "29px", }}>
             <Grid className={classes.icons} />
           </ListItemIcon>
           <Typography variant="inherit" align="right">

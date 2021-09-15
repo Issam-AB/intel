@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 // import { NavLink } from "react-router-dom";
-// import Modal from "./Modal";
+
 import { Helmet } from "react-helmet-async";
 import {
   Checkbox,
@@ -17,30 +17,30 @@ import {
   TablePagination,
   TableRow,
   TableSortLabel,
+  Toolbar,
+  Tooltip,
+  Typography,
   FormControlLabel,
   Switch,
-  Chip as MuiChip,
-  Toolbar, Typography,
   Button,
-  Tooltip,
 } from "@material-ui/core";
-import ChipInput from 'material-ui-chip-input'
+
 import {
-  FiberManualRecord as FiberManualRecordIcons,
+  Forward as ForwardIcon,
+  Visibility as VisibilityIcon,
+  ThumbUpAltOutlined as ThumbUpAltIcon,
+  Close as CloseIcon,
 } from "@material-ui/icons";
-import { Bell, MoreVertical, } from "react-feather";
+import { MoreVertical, PhoneIncoming, Volume, Download, Volume2 } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 const Divider = styled(MuiDivider)(spacing);
 
+// const Breadcrumbs = styled(MuiBreadcrumbs)(spacing);
+
 const Paper = styled(MuiPaper)(spacing);
 
-const Chip = styled(MuiChip)`
- border-radius: 25px;
- margin: 5px;
- padding: 14px 1px;
-`;
 const StyledTableRow = withStyles({
   root: {
     "&:nth-of-type(odd)": {
@@ -50,24 +50,14 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
+      padding: "9px"
     },
+
   },
 
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    listStyle: 'none',
-    padding: theme.spacing(0.5),
-    margin: 0,
-    border: "1px solid #DBDBDB",
-    "&:hover": {
-      border: "1px solid #6320EE"
-    }
-
-  },
   icon: {
     color: "#6320EE",
     marginRight: "10px",
@@ -76,12 +66,13 @@ const useStyles = makeStyles((theme) => ({
   focused: {
     color: "#6A74C9",
   },
+  iconLabel: {
+    color: "#6320EE !important",
+  },
   goodlaeads: {
     fontWeight: "bold",
-    width: "143px",
-  },
-  rootchips: {
-    minWidth: "0px"
+    marginRight: "50px",
+    width: "93px",
   },
   input: {
     padding: "0 0px",
@@ -92,14 +83,17 @@ const useStyles = makeStyles((theme) => ({
     height: 31,
     transition: "0.5s",
     backgroundColor: "#F9F9FC",
+    "&:hover, &:focus": {
+      border: "1px solid #6320EE",
+      opacity: 4,
+    },
   },
-  iconLabel: {
-    color: "#6320EE !important",
-  },
-  chipInput: {
-    minHeight: "30px",
-    fontWeight: "600"
-  },
+  // input: {
+  //   marginLeft: theme.spacing(1),
+  //   flex: 1,
+  //   opacity: 0.6,
+  //   transition: "0.75s",
+  // },
   iconButton: {
     padding: "5px 10px",
   },
@@ -121,24 +115,20 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "700",
   },
   visibility: {
-    color: "#6320EE",
+    color: "#6A74C9",
     fontSize: "25px",
-    marginRight: "20px",
+    height: "21px",
+    marginRight: "2px",
   },
   forwardIcon: {
     color: "#6A74C9",
-    fontSize: "25px",
-    marginRight: "20px",
-  },
-  blockIcon: {
-    color: "#e01e1e",
-    fontSize: "25px",
-    marginRight: "20px",
+    width: "45px",
+    height: "24px",
+    marginLeft: "-27px"
   },
   divIcons: {
     display: "flex",
-    justifyContent: "flex-end",
-    // marginLeft: "200px",
+    justifyContent: "space-evenly",
   },
   popper: {
     backgroundColor: "#6A74C9",
@@ -157,7 +147,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     position: "absolute",
     maxWidth: "50rem",
-    // top: theme.spacing(5)
   },
   dialogTitle: {
     paddingRight: "0px",
@@ -165,8 +154,15 @@ const useStyles = makeStyles((theme) => ({
   startICon: {
     margin: 0,
   },
-  chip: {
-    margin: "2px 9px 3px 1px"
+  appBar: {
+    contentVisibility: "hidden",
+  },
+  colorPrimary: {
+    backgroundColor: "#e4def9",
+    color: "black",
+  },
+  fontcells: {
+    fontWeight: 600
   }
 }));
 const Spacer = styled.div`
@@ -174,74 +170,103 @@ const Spacer = styled.div`
 `;
 
 function createData(
-  formName,
-  status,
-  leadsSubmitted,
-  notifications,
+  no,
+  company,
+  source,
+  startTime,
+  duration,
+  callersName,
 ) {
   return {
-    formName,
-    status,
-    leadsSubmitted,
-    notifications,
+    no,
+    company,
+    source,
+    startTime,
+    duration,
+    callersName,
   };
 }
 
 const rows = [
   createData(
-    "FREE Estimate",
-    "1",
-    "47",
+    "4",
+    "Resodence Roffing Depot, LLC",
+    "Google My Business",
+    "Today 5:00pm",
+    "45s",
+    "Keagan Schulist",
   ),
   createData(
-    "Contact Us",
-    "1",
-    "35",
-  ),
-  createData(
-    "Residential Roffing",
-    "1",
-    "29"
-  ),
-  createData(
-    "Commercial Roffing",
-    "0",
-    "17"
-  ),
-  createData(
-    "Financing",
-    "1",
-    "8",
-  ),
-  createData(
-    "Home",
-    "0",
-    "41",
-  ),
-  createData(
-    "Tile Roffing",
-    "1",
-    "2",
-  ),
-  createData(
-    "Tile Roffing",
-    "1",
-    "2",
-  ),
-  createData(
+    "9",
+    "Resodence Roffing Depot, LLCe",
     "Metal Roffing",
-    "1",
-    "2",
+    "Today 4:00pm",
+    "2m 05s",
+    "Lou Moore",
   ),
   createData(
-    "Tile Roffing",
-    "1",
-    "2",
+    "6",
+    "Resodence Roffing Depot, LLC",
+    "Google Origanic",
+    "Today 1:00pm",
+    "32s",
+    "Laurie Senger",
   ),
   createData(
-    "Home",
-    "0",
-    "41",
+    "2",
+    "Resodence Roffing Depot, LLC",
+    "Direct",
+    "Yestarday 1:30pm",
+    "35s",
+    "jazmyn Greenhoit",
+  ),
+  createData(
+    "8",
+    "Resodence Roffing Depot, LLC",
+    "Leads Gen Intel",
+    "Yestarday 3:30pm",
+    "2m 12s",
+    "wanda Rice",
+  ),
+  createData(
+    "1",
+    "Resodence Roffing Depot, LLC",
+    "Bing Origanic",
+    "Yestarday 4:30pm",
+    "35s",
+    "Metal Roffing",
+  ),
+  createData(
+    "5",
+    "Resodence Roffing Depot, LLC",
+    "Google My Business",
+    "Today 5:00pm",
+    "45s",
+    "Keagan Schulist",
+  ),
+  createData(
+    "10",
+    "Resodence Roffing Depot, LLCe",
+    "Metal Roffing",
+    "Today 4:00pm",
+    "2m 05s",
+    "Lou Moore",
+  ),
+  createData(
+    "7",
+    "Resodence Roffing Depot, LLC",
+    "Google Origanic",
+    "Today 1:00pm",
+    "32s",
+    "Laurie Senger",
+  ),
+  createData(
+    "3",
+    "Resodence Roffing Depot, LLC",
+    "Direct",
+    "Yestarday 1:30pm",
+    "35s",
+    "jazmyn Greenhoit",
   ),
 ];
 
@@ -273,18 +298,26 @@ function stableSort(array, comparator) {
 
 const headCells = [
   {
-    id: "formName",
+    id: "no",
     numeric: true,
-    label: "Form Name",
+    label: "No.",
   },
   {
-    id: "Status",
-    numeric: false,
+    id: "company",
+    numeric: true,
     disablePadding: false,
-    label: "Status",
+    label: "Company",
   },
-  { id: "leadsSubmitted", numeric: false, disablePadding: false, label: "Leads Submitted" },
-  { id: "notifications", numeric: true, disablePadding: false, label: "Notfications" },
+  { id: "source", numeric: true, disablePadding: false, label: "Source" },
+  { id: "startTime", numeric: true, disablePadding: false, label: "Start Time" },
+  { id: "duration", numeric: true, disablePadding: false, label: "Duration" },
+  {
+    id: "callersName",
+    numeric: true,
+    disablePadding: false,
+    label: "Callers Name",
+  },
+  { id: "actions", numeric: false, disablePadding: false, label: "Actions" },
 ];
 
 function EnhancedTableHead(props) {
@@ -306,6 +339,7 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding="checkbox">
           <Checkbox
+            style={{ padding: "15px" }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -330,13 +364,13 @@ function EnhancedTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-    </TableHead>
+    </TableHead >
   );
 }
-
 let EnhancedTableToolbar = (props) => {
   // const { numSelected } = props;
   const classes = useStyles();
+
   return (<>
     <Toolbar>
       <div
@@ -345,9 +379,9 @@ let EnhancedTableToolbar = (props) => {
           alignItems: "center",
         }}
       >
-        <Bell className={classes.icon} />
+        <PhoneIncoming className={classes.icon} />
         <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          Leads Notifications
+          Call Log
         </Typography>
       </div>
       <Spacer />
@@ -373,9 +407,10 @@ let EnhancedTableToolbar = (props) => {
 };
 
 
+
 function EnhancedTable() {
   const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = React.useState("leadsSubmitted");
+  const [orderBy, setOrderBy] = React.useState("source");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -391,19 +426,19 @@ function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.formName)
+      const newSelecteds = rows.map((n) => n.no);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, formName) => {
-    const selectedIndex = selected.indexOf(formName);
+  const handleClick = (event, no) => {
+    const selectedIndex = selected.indexOf(no);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, formName);
+      newSelected = newSelected.concat(selected, no);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -431,22 +466,10 @@ function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (formName) => selected.indexOf(formName) !== -1;
+  const isSelected = (no) => selected.indexOf(no) !== -1;
 
   // const emptyRows =
   //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
-  const chipRenderer = ({ chip, className, handleClick, handleDelete }, key) => (
-    <Chip
-      className={className}
-      key={key}
-      label={chip}
-      onClick={handleClick}
-      onDelete={handleDelete}
-      size="small"
-    />
-  );
-  const defaultValue = ["Notification@email.com", "Person2@email.com", "Person3@email.com"];
 
   return (
     <div>
@@ -472,12 +495,12 @@ function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.formName);
+                  const isItemSelected = isSelected(row.no);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <StyledTableRow
-                      onClick={(event) => handleClick(event, row.formName)}
+                      onClick={(event) => handleClick(event, row.no)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -486,7 +509,7 @@ function EnhancedTable() {
                       selected={isItemSelected}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
-                      <TableCell padding="checkbox">
+                      <TableCell padding="checkbox" >
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
@@ -496,25 +519,22 @@ function EnhancedTable() {
                         component="th"
                         id={labelId}
                         scope="row"
-                        // padding="none"
-                        align="left"
-                        style={{ width: "200px", fontWeight: "600" }}
+                        padding="none"
+                        align="center"
+                        style={{ width: "9px" }}
+                        className={classes.fontcells}
                       >
-                        {row.formName}
+                        {row.no}
                       </TableCell>
-                      {/* <TableCell align="left">{row.status}</TableCell> */}
-                      <TableCell align="center" style={{ width: "200px" }}>{<FiberManualRecordIcons style={{ color: row.status == 1 ? "#388E3C" : "#B21F1F", marginLeft: "-14px" }} />}</TableCell>
-                      <TableCell align="center" style={{ width: "200px", fontWeight: "600" }}>{row.leadsSubmitted}</TableCell>
-
-                      <TableCell align="left" style={{ width: "400px" }}>
-                        <Paper component="ul" className={classes.root}>
-                          <ChipInput
-                            disableUnderline={true}
-                            classes={{ chipContainer: classes.chipInput, inputRoot: classes.rootchips, chip: classes.chip }}
-                            chipRenderer={chipRenderer}
-                            defaultValue={defaultValue}
-                          />
-                        </Paper>
+                      <TableCell align="left" className={classes.fontcells}>{row.company}</TableCell>
+                      <TableCell align="left" className={classes.fontcells}>{row.source}</TableCell>
+                      <TableCell align="left" className={classes.fontcells}>{row.startTime}</TableCell>
+                      <TableCell align="left" style={{ fontSize: "12px", fontWeight: "600" }}>{row.duration}</TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.callersName}
+                      </TableCell>
+                      <TableCell align="left">
+                        {<RowOptions />}
                       </TableCell>
                     </StyledTableRow>
                   );
@@ -539,6 +559,60 @@ function EnhancedTable() {
     </div>
   );
 }
+
+function RowOptions({ row }) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const handleClickOpen = () => {
+    setOpen(!open);
+  };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  return (
+    <>
+      <div
+        className={classes.divIcons}
+      >
+        <>
+          {
+            open ? (
+              <Tooltip title="Listen Call" classes={{ tooltip: classes.popper }}>
+                <Volume
+                  className={classes.forwardIcon}
+                  onClick={handleClickOpen}
+                />
+              </Tooltip>
+            ) : (
+              <Tooltip title="Stop Listening" classes={{ tooltip: classes.popper }}>
+                <Volume2
+                  className={classes.forwardIcon}
+                  onClick={handleClickOpen}
+                />
+              </Tooltip>
+            )
+          }
+        </>
+
+        <>
+          <Tooltip
+            title="Download Call"
+            classes={{ tooltip: classes.popper }}
+          >
+
+            <Download
+              className={classes.visibility}
+            />
+
+          </Tooltip>
+        </>
+      </div>
+    </>
+  );
+}
+
 function AdvancedTable() {
   return (
     <React.Fragment>

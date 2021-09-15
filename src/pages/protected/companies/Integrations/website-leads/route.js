@@ -32,7 +32,7 @@ export const websiteLead = {
       component: CustomFilter,
     },
     {
-      path: "/pages/chat",
+      path: "/pages/notifications",
       name: "Notifications",
       badge: "3",
       icon: <Bell />,
