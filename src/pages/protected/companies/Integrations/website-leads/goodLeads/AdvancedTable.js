@@ -84,12 +84,6 @@ const useStyles = makeStyles((theme) => ({
   iconLabel: {
     color: "#6320EE !important",
   },
-  // input: {
-  //   marginLeft: theme.spacing(1),
-  //   flex: 1,
-  //   opacity: 0.6,
-  //   transition: "0.75s",
-  // },
   iconButton: {
     padding: "5px 10px",
   },

@@ -50,6 +50,7 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
+      padding: "9px"
     },
   },
 
