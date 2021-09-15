@@ -120,7 +120,7 @@ const CustomFilter = () => {
             variant="subtitle2"
             style={{ marginTop: "-10px", fontWeight: "600" }}
           >
-            Welcome back, Client's <span>Fist Name!</span> We've missed you.{" "}
+            Set up custom filters for your leads to block Spam and unqualified leads from going to your inbox or CRM. Dont't waste your time on people not interested in your service.
             <span role="img" aria-label="Waving Hand Sign">
               👋
             </span>

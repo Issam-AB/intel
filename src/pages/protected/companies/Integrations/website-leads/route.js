@@ -4,8 +4,9 @@ import React from "react";
 import GoodLeads from "./goodLeads";
 import BlockedLeads from "./blockedLeads";
 import CustomFilter from "./customFilter";
+import Notification from "./notification";
 
-import { Filter, Slash, Sliders } from "react-feather";
+import { Filter, Slash, Sliders, Bell } from "react-feather";
 
 export const websiteLead = {
   id: "Website Leads (forms)",
@@ -30,19 +31,13 @@ export const websiteLead = {
       icon: <Sliders />,
       component: CustomFilter,
     },
-    // {
-    //   path: "/pages/chat",
-    //   name: "Notifications",
-    //   badge: "3",
-    //   icon: <Bell />,
-    //   component: Chat,
-    // },
-    // {
-    //   path: "/pages/blank",
-    //   name: "Integrations",
-    //   icon: <Grid />,
-    //   component: Blank,
-    // },
+    {
+      path: "/pages/chat",
+      name: "Notifications",
+      badge: "3",
+      icon: <Bell />,
+      component: Notification,
+    },
   ],
   component: null,
 };
