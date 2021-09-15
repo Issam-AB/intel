@@ -93,15 +93,8 @@ const useStyles = makeStyles((theme) => ({
   iconLabel: {
     color: "#6320EE !important",
   },
-  // input: {
-  //   marginLeft: theme.spacing(1),
-  //   flex: 1,
-  //   opacity: 0.6,
-  //   transition: "0.75s",
-  // },
   chipInput: {
     minHeight: "30px",
-    // margin: "0 10px 0 0",
     fontWeight: "600"
   },
   iconButton: {
@@ -339,7 +332,7 @@ function EnhancedTableHead(props) {
 }
 function EnhancedTable() {
   const [order, setOrder] = useState("asc");
-  const [orderBy, setOrderBy] = React.useState("leadsSource");
+  const [orderBy, setOrderBy] = React.useState("leadsSubmitted");
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);

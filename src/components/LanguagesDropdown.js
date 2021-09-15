@@ -1,19 +1,17 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { ChevronDown } from "react-feather";
+
 
 import {
   Tooltip,
   Menu,
   MenuItem,
   IconButton as MuiIconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Collapse,
+  ListItemIcon,
+  Typography,
 } from "@material-ui/core";
-import ExpandMore from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+
+import { ChevronDown, Grid, Headphones, LogOut, CreditCard, User, Users } from "react-feather"
 import { makeStyles } from "@material-ui/core/styles";
 
 const IconButton = styled(MuiIconButton)`
@@ -39,6 +37,16 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(4),
     //borderBottom: "1px solid dark",
   },
+  paper: {
+    left: "1735px",
+    width: "167px",
+    marginTop: "11px",
+    borderRadius: "none",
+    boxShadow: "0px 0px 12px -5px #000000",
+  },
+  icons: {
+    width: "18px"
+  }
 }));
 
 function LanguagesDropdown() {
@@ -50,7 +58,7 @@ function LanguagesDropdown() {
     setAnchorMenu(event.currentTarget);
   };
 
-  const closeMenu = () => {
+  const handleClose = () => {
     setAnchorMenu(null);
   };
   const handleClick = () => {
@@ -71,11 +79,11 @@ function LanguagesDropdown() {
         </IconButton>
       </Tooltip>
       <Menu
-        // classes={classes.menuappbar}
+        classes={{ paper: classes.paper }}
         anchorEl={anchorMenu}
         keepMounted
         open={Boolean(anchorMenu)}
-        onClose={closeMenu}
+        onClose={handleClose}
         elevation={0}
         getContentAnchorEl={null}
         anchorOrigin={{
@@ -87,30 +95,55 @@ function LanguagesDropdown() {
           horizontal: "center",
         }}
       >
-        <MenuItem onClick={closeMenu}>My Profile</MenuItem>
-        <ListItem button onClick={handleClick}>
-          <ListItemText primary="User" />
-          {open ? <ChevronRightIcon /> : <ExpandMore />}
-        </ListItem>
-        <Collapse in={!open} timeout="auto" unmountOnExit>
-          <List component="div" disablePadding>
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Billing" />
-            </ListItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <User className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            My Profile
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <Users className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            User
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <CreditCard className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            Billing
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", borderTop: "1px solid #E0E0E0" }}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <Grid className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            Integrations
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", }}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <Headphones className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            Support
+          </Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon style={{ minWidth: "29px" }}>
+            <LogOut className={classes.icons} />
+          </ListItemIcon>
+          <Typography variant="inherit" align="right">
+            Sign Out
+          </Typography>
+        </MenuItem>
 
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Integration" />
-            </ListItem>
-
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Support" />
-            </ListItem>
-
-            <ListItem button className={classes.nested}>
-              <ListItemText primary="Sign Out" />
-            </ListItem>
-          </List>
-        </Collapse>
       </Menu>
     </React.Fragment>
   );

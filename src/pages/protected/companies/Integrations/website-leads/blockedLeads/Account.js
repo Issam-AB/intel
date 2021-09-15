@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: 200,
     borderRadius: "12px",
-    boxShadow: "0px 0px 12px -5px #000000",
+    boxShadow: "1px 2px 11px -7px #000000",
   },
   title: {
     textAlign: "center",
