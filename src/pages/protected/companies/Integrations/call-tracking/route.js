@@ -5,7 +5,7 @@ import React from "react";
 // import InvoiceList from "../pages/pages/InvoiceList";
 
 import CallLog from "./callLog";
-// import InvoiceList from "./Report";
+import Report from "./report"
 
 import { PhoneIncoming, FileText } from "react-feather";
 
@@ -19,12 +19,12 @@ export const callTracking = {
       icon: <PhoneIncoming />,
       component: CallLog,
     },
-    // {
-    //   path: "/invoices/detail",
-    //   name: "Reports",
-    //   icon: <FileText />,
-    //   component: InvoiceDetails,
-    // },
+    {
+      path: "/call-tracking/reports",
+      name: "Reports",
+      icon: <FileText />,
+      component: Report,
+    },
   ],
   component: null,
 };
