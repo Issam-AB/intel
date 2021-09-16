@@ -133,11 +133,11 @@ const BarChart = ({ theme }) => {
         },
     };
     const dataDoughnut = {
-        labels: ["Social", "Search Engines", "Direct", "Other"],
+        labels: ["Social", "Search Engines",],
         datasets: [
             {
-                data: [430, 300, 420],
-                backgroundColor: ["#9A68FC", "#45C1FF", "#9A68FC"],
+                data: [430, 80],
+                backgroundColor: ["#DCDFF0", "#E01E1E"],
                 borderWidth: 5,
                 borderColor: theme.palette.background.paper,
             },
@@ -183,15 +183,19 @@ const BarChart = ({ theme }) => {
                             <ChartMissed>
                                 <DoughnutInner variant="h4">
                                     <Typography variant="h2">8%</Typography>
-                                    <Typography variant="caption">Total Leads</Typography>
+                                    <Typography variant="caption" style={{ fontWeight: "700" }}>Missed Calls</Typography>
                                 </DoughnutInner>
                                 <Doughnut data={dataDoughnut} options={optionsDoughnut} />
+                                <div style={{ marginLeft: "10px", display: "grid", textAlign: "center", marginTop: "20px" }}>
+                                    <Typography variant="caption">12 out of 185</Typography>
+                                    <Typography variant="caption">calls were missed</Typography>
+                                </div>
                             </ChartMissed>
                         </Grid>
                     </Grid>
                 </ChartWrapper>
             </CardContent>
-        </Card>
+        </Card >
     );
 };
 
