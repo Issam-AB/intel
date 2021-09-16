@@ -8,7 +8,6 @@ import {
     IconButton,
     Grid, Typography,
     Divider as MuiDivider,
-    Box
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
@@ -29,13 +28,16 @@ const useStyles = makeStyles({
     Card: {
         marginLeft: "-66px",
         boxShadow: "0px 0px 12px -5px #000000",
+        height: "505px"
     },
+    header: {
+        fontWeight: "700"
+    }
 });
 
 const Card = styled(MuiCard)(spacing);
 
 const ChartWrapper = styled.div`
-  height: 340px;
   width: 100%;
   display: flex;
 `;
@@ -85,7 +87,7 @@ const BarChart = ({ theme }) => {
                 hoverBorderColor: "#DCDFF0",
                 data: [70, 145, 110, 148, 114, 45, 115],
                 barPercentage: 0.5,
-                categoryPercentage: 0.4,
+                categoryPercentage: 0.5,
             },
             {
                 label: "Desktop",
@@ -95,7 +97,7 @@ const BarChart = ({ theme }) => {
                 hoverBorderColor: "#E01E1E",
                 data: [4, 6, 8, 48, 52, 51, 20],
                 barPercentage: 0.4,
-                categoryPercentage: 0.5,
+                categoryPercentage: 0.6,
             },
         ],
     };
@@ -138,7 +140,7 @@ const BarChart = ({ theme }) => {
             {
                 data: [430, 80],
                 backgroundColor: ["#DCDFF0", "#E01E1E"],
-                borderWidth: 5,
+                borderWidth: 2,
                 borderColor: theme.palette.background.paper,
             },
         ],
@@ -154,6 +156,7 @@ const BarChart = ({ theme }) => {
     return (
         <Card mb={1} className={classes.Card}>
             <CardHeader
+                classes={{ title: classes.header }}
                 action={
                     <IconButton aria-label="settings">
                         <MoreVertical />
@@ -178,7 +181,7 @@ const BarChart = ({ theme }) => {
                         <Grid item lg={8}>
                             <Bar data={data} options={options} />
                         </Grid>
-                        <Divider orientation="vertical" style={{ marginTop: "-69px", height: "433px" }} />
+                        <Divider orientation="vertical" style={{ marginTop: "-69px", height: "449px" }} />
                         <Grid item lg={4}>
                             <ChartMissed>
                                 <DoughnutInner variant="h4">

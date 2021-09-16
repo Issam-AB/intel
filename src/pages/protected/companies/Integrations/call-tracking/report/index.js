@@ -17,7 +17,7 @@ import BarChart from "./BarChart";
 import Intelegence from "./Intelegence";
 import Account from "./Account";
 import StatsCall from "./StatsCall"
-import BarcharSource from "./BarchartSource"
+import BarSource from "./BarSource"
 
 import BarCalls from "./BarCalls"
 
@@ -76,7 +76,7 @@ const CallLog = () => {
                     <BarChart />
                 </Grid>
             </Grid>
-            <Spacer mb={6} />
+            <Spacer mb={5} />
             <Grid container spacing={6} style={{ marginTop: "10px" }}>
                 <Grid item lg={3} xs={12} >
                     <Grid item lg={10}>
@@ -93,10 +93,10 @@ const CallLog = () => {
                     <BarCalls />
                 </Grid>
                 <Grid item xs={12} lg={4} >
-                    <BarcharSource />
+                    <BarSource />
                 </Grid>
             </Grid>
-            <Spacer mb={6} />
+            <Spacer mb={2} />
             <Grid container spacing={6}>
                 <Grid item xs={12} lg={12}>
                     <AdvancedTable />

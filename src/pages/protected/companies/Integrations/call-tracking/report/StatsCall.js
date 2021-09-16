@@ -18,8 +18,8 @@ const Typography = styled(MuiTypography)(spacing);
 const useStyles = makeStyles({
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
-    height: "150px",
-    marginBottom: "19px"
+    height: "154px",
+    marginBottom: "21px"
   },
   button: {
     position: "absolute",
@@ -45,7 +45,7 @@ const StatsCall = ({ title, amount, chip, totalCall }) => {
   return (
     <Card className={classes.card} style={{ backgroundColor: totalCall ? "#6320ee" : "", color: totalCall ? "#fff" : "" }}>
       <CardContent>
-        <Typography variant="h5" style={{ fontWeight: "700" }} mt={2}>
+        <Typography variant="h5" style={{ fontWeight: "700" }} mt={4}>
           {title}
         </Typography>
         <Typography variant="h1" mt={5}>

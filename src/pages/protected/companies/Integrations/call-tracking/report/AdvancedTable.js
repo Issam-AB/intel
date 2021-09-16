@@ -444,6 +444,7 @@ let EnhancedTableToolbar = (props) => {
               <ThemeProvider theme={themes}>
                 <Checkbox
                   // checked={state.checkedA}
+                  defaultChecked
                   color="primary"
                   onChange={handleChange}
                   name="checkedA"
