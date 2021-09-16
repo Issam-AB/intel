@@ -75,7 +75,7 @@ function Dashborad({ theme }) {
               }}
               gutterBottom
             >
-              Dashborad
+              Overview
             </Typography>
             <Typography
               variant="subtitle2"

@@ -161,75 +161,76 @@ function BarChart({ theme }) {
         </Grid>
 
         <Spacer mb={5} />
+        <ThemeProvider theme={themes}>
+          <FormGroup row style={{ marginLeft: "5px" }}>
+            <FormControlLabel
+              control={
 
-        <FormGroup row style={{ marginLeft: "5px" }}>
-          <FormControlLabel
-            control={
-              <ThemeProvider theme={themes}>
                 <Checkbox
                   // checked={state.checkedA}
                   color="primary"
                   onChange={handleChange}
                   name="checkedA"
                 />
-              </ThemeProvider>
-            }
-            label="Website Traffic"
-            style={{ marginRight: "72px", fontWeight: "bold" }}
-          />
-          <FormControlLabel
-            control={
-              <>
-                <ThemeProvider theme={themes}>
+
+              }
+              label="Website Traffic"
+              style={{ marginRight: "72px", fontWeight: "bold" }}
+            />
+            <FormControlLabel
+              control={
+                <>
+
                   <Checkbox
                     defaultChecked
                     // checked={state.checkedB}
                     onChange={handleChange}
                     name="checkedB"
                   />
-                </ThemeProvider>
-                <span
-                  style={{
-                    backgroundColor: "#9A68FC",
-                    width: "9px",
-                    height: "9px",
-                    left: "-4%",
-                    position: "relative",
-                    borderRadius: "50%",
-                    margin: "3px",
-                  }}
-                ></span>
-              </>
-            }
-            label="Phone Calls"
-            style={{ marginRight: "72px" }}
-          />
-          <FormControlLabel
-            control={
-              <>
-                <Checkbox
-                  //checked={state.checkedF}
-                  onChange={handleChange}
-                  name="checkedF"
-                  color="primary"
-                />
-                <span
-                  style={{
-                    backgroundColor: "#4782DA",
-                    width: "9px",
-                    height: "9px",
-                    left: "-4%",
-                    position: "relative",
-                    borderRadius: "50%",
-                    margin: "3px",
-                  }}
-                ></span>
-              </>
-            }
-            label="Website Leads"
-            style={{ marginRight: "75px" }}
-          />
-        </FormGroup>
+
+                  <span
+                    style={{
+                      backgroundColor: "#9A68FC",
+                      width: "9px",
+                      height: "9px",
+                      left: "-4%",
+                      position: "relative",
+                      borderRadius: "50%",
+                      margin: "3px",
+                    }}
+                  ></span>
+                </>
+              }
+              label="Phone Calls"
+              style={{ marginRight: "72px" }}
+            />
+            <FormControlLabel
+              control={
+                <>
+                  <Checkbox
+                    //checked={state.checkedF}
+                    onChange={handleChange}
+                    name="checkedF"
+                    color="primary"
+                  />
+                  <span
+                    style={{
+                      backgroundColor: "#4782DA",
+                      width: "9px",
+                      height: "9px",
+                      left: "-4%",
+                      position: "relative",
+                      borderRadius: "50%",
+                      margin: "3px",
+                    }}
+                  ></span>
+                </>
+              }
+              label="Website Leads"
+              style={{ marginRight: "75px" }}
+            />
+          </FormGroup>
+        </ThemeProvider>
         <Spacer mb={5} />
         <ChartWrapper>
           <Bar data={data} options={options} />

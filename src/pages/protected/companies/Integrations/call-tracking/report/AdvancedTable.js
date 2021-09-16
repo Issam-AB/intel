@@ -126,9 +126,6 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     backgroundColor: "#6A74C9",
   },
-  label: {
-    fontWeight: "700",
-  },
   visibility: {
     color: "#6A74C9",
     fontSize: "25px",
@@ -408,40 +405,34 @@ let EnhancedTableToolbar = (props) => {
             Call Log - Missed Calls
           </Typography>
         </div>
-        <FormGroup row style={{ marginLeft: "5px", display: "contents" }}>
-          <FormControlLabel
-            control={
-              <ThemeProvider theme={themes}>
+        <ThemeProvider theme={themes}>
+          <FormGroup row style={{ marginLeft: "5px", display: "contents" }}>
+            <FormControlLabel
+              control={
                 <Checkbox
                   // checked={state.checkedA}
                   color="primary"
                   onChange={handleChange}
                   name="checkedA"
                 />
-              </ThemeProvider>
-            }
-            classes={{ label: classes.label }}
-            label="All Traffic"
-            style={{ marginRight: "38px", fontWeight: "bold", width: "114px" }}
-          />
-          <FormControlLabel
-            control={
-              <ThemeProvider theme={themes}>
+              }
+              label="All Traffic"
+              style={{ marginRight: "38px", fontWeight: "bold", width: "110px" }}
+            />
+            <FormControlLabel
+              control={
                 <Checkbox
                   // checked={state.checkedA}
                   color="primary"
                   onChange={handleChange}
                   name="checkedA"
                 />
-              </ThemeProvider>
-            }
-            classes={{ label: classes.label }}
-            label="Answered Calls"
-            style={{ marginRight: "38px", fontWeight: "bold", width: "138px" }}
-          />
-          <FormControlLabel
-            control={
-              <ThemeProvider theme={themes}>
+              }
+              label="Answered Calls"
+              style={{ marginRight: "38px", fontWeight: "bold", width: "156px" }}
+            />
+            <FormControlLabel
+              control={
                 <Checkbox
                   // checked={state.checkedA}
                   defaultChecked
@@ -449,13 +440,12 @@ let EnhancedTableToolbar = (props) => {
                   onChange={handleChange}
                   name="checkedA"
                 />
-              </ThemeProvider>
-            }
-            classes={{ label: classes.label }}
-            label="Missed Calls"
-            style={{ marginRight: "42px", fontWeight: "bold", width: "118px" }}
-          />
-        </FormGroup>
+              }
+              label="Missed Calls"
+              style={{ marginRight: "42px", fontWeight: "bold", width: "135px" }}
+            />
+          </FormGroup>
+        </ThemeProvider>
       </div>
       <Spacer />
       <div

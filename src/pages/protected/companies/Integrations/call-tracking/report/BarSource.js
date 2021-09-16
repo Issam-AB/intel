@@ -34,7 +34,7 @@ const useStyles = makeStyles({
     }
 });
 const ChartWrapper = styled.div`
-  height: 377px;
+  height: 372px;
   width: 100%;
 `;
 
@@ -60,7 +60,7 @@ const BarChart = ({ theme }) => {
                 borderColor: "#9A68FC",
                 hoverBackgroundColor: "#9A68FC",
                 hoverBorderColor: "#9A68FC",
-                data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+                data: [69, 66, 24, 48, 52],
                 barPercentage: 0.5,
                 categoryPercentage: 0.4,
             },

@@ -169,16 +169,16 @@ const BarChart = ({ theme }) => {
                 <Grid container direction="row">
                     <div style={{ margin: "3px 10px", marginBottom: "23px", display: "flex" }}>
                         <FiberManualRecordIcons style={{ color: "#E01E1E", marginRight: "10px" }} />
-                        <Typography variant="subtitle1">Missed Calls</Typography>
+                        <Typography variant="subtitle1" style={{ fontWeight: "600" }}>Missed Calls</Typography>
                     </div>
-                    <div style={{ margin: "3px 10px", marginLeft: "107px", marginBottom: "23px", display: "flex" }}>
+                    <div style={{ margin: "3px 10px 23px 50px", display: "flex" }}>
                         <FiberManualRecordIcons style={{ color: "#DCDFF0", marginRight: "10px" }} />
-                        <Typography variant="subtitle1">Answered Calls</Typography>
+                        <Typography variant="subtitle1" style={{ fontWeight: "600" }}>Answered Calls</Typography>
                     </div>
                 </Grid>
                 <ChartWrapper>
                     <Grid container direction="row">
-                        <Grid item lg={8}>
+                        <Grid item lg={8} style={{ height: "370px" }}>
                             <Bar data={data} options={options} />
                         </Grid>
                         <Divider orientation="vertical" style={{ marginTop: "-69px", height: "449px" }} />
