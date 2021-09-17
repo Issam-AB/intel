@@ -135,12 +135,12 @@ import ProtectedPage from "../pages/protected/ProtectedPage";
 // //   component: null,
 // // };
 
-const support = {
-  id: "Support",
-  path: "/tasks",
-  component: Tasks,
-  children: null,
-};
+// const support = {
+//   id: "Support",
+//   path: "/tasks",
+//   component: Tasks,
+//   children: null,
+// };
 
 const accountSettings = {
   id: "Account Settings",
@@ -226,5 +226,5 @@ export const sidebarRoutes = InegrationsRoutes;
 
 // sidebarRoutes.push(websiteMetrics);
 //sidebarRoutes.push(callTracking);
-sidebarRoutes.push(support);
+// sidebarRoutes.push(support);
 sidebarRoutes.push(accountSettings);
