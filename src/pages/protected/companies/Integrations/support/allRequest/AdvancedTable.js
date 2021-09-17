@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid #D0CBD4",
       whiteSpace: "nowrap",
-      padding: "18px"
+      padding: "15px"
     },
 
   },
@@ -211,31 +211,31 @@ const rows = [
   createData(
     "Monitoring",
     "[# 1231546] cancel dediicated IP",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 10:18pm",
   ),
   createData(
     "level 2 - Support",
     "[# 1231546] Unknown redirection",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 12:18m",
   ),
   createData(
     "Sales",
     "[# 1231546] Decidicated Ip for urgentrestoration.com",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "2 weeks 10:18pm",
   ),
   createData(
     "Billing",
     "[# 1231546] re: remove email completely from account",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 10:8pm",
   ),
   createData(
     "Level 2 - Support",
     "[# 1231546]  cancel dedicated IP",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 6 Month 7:18am",
   ),
 ];

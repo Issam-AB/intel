@@ -4,9 +4,7 @@ import styled from "styled-components/macro";
 
 import { Helmet } from "react-helmet-async";
 import {
-  Checkbox,
   Grid,
-  IconButton,
   Divider as MuiDivider,
   Paper as MuiPaper,
   Table,
@@ -26,7 +24,7 @@ import {
   Chip as MuiChip,
 } from "@material-ui/core";
 
-import { Copy } from "react-feather";
+import { FilePlus } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { Visibility, Archive } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,14 +38,15 @@ const Paper = styled(MuiPaper)(spacing);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "&:nth-of-type(odd)": {
+    "&": {
       backgroundColor: "#E4DEF9",
       opacity: 2,
     },
     "& .MuiTableCell-root": {
       borderLeft: "1px solid #D0CBD4",
+      borderBottom: "1px solid #D0CBD4",
       whiteSpace: "nowrap",
-      padding: "18px"
+      padding: "15px"
     },
 
   },
@@ -65,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   goodlaeads: {
     fontWeight: "bold",
     marginRight: "50px",
-    width: "93px",
+    width: "100px",
   },
   input: {
     padding: "0 0px",
@@ -145,7 +144,8 @@ const useStyles = makeStyles((theme) => ({
   },
   fontcells: {
     fontWeight: 600,
-    fontSize: "15px"
+    fontSize: "15px",
+    padding: "15px"
   },
   Chips: {
     color: "black",
@@ -185,40 +185,10 @@ const rows = [
     "Today 12:00pm",
   ),
   createData(
-    "Sales",
-    "[# 1231546] Dedicated Ip for urgentrestorat.com",
-    <Chip label="Waiting on Reponse" rgbcolor={"#E01E1E"} />,
-    "2 Month 7:00pm",
-  ),
-  createData(
-    "Billing",
-    "[# 1231546] re: remove email completely from account",
-    <Chip label="Waiting on Reponse" rgbcolor={"#E01E1E"} />,
-    "Yesterday 10:18pm",
-  ),
-  createData(
     "Level2 - Support",
     "[# 1231546] cancel dediicated IP",
     <Chip label="Processing" rgbcolor={"#388E3C"} />,
     "Today 10:18pm",
-  ),
-  createData(
-    "Monitoring",
-    "[# 1231546] 500 error problem",
-    <Chip label="Processing" rgbcolor={"#388E3C"} />,
-    "Today 10:18pm",
-  ),
-  createData(
-    "Monitoring",
-    "[# 1231546] cancel dediicated IP",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
-    "Today 10:18pm",
-  ),
-  createData(
-    "level 2 - Support",
-    "[# 1231546] Unknown redirection",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
-    "Today 12:18m",
   ),
   createData(
     "Sales",
@@ -343,9 +313,9 @@ let EnhancedTableToolbar = (props) => {
           alignItems: "center",
         }}
       >
-        <Copy className={classes.icon} />
+        <FilePlus className={classes.icon} />
         <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          All Request
+          New Request
         </Typography>
       </div>
       <Spacer />

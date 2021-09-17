@@ -4,6 +4,7 @@ import { websiteMetrics } from "./../Integrations/website-metrics/route";
 import { marketingPerformance } from "../Integrations/marketing-performance/route";
 import { websiteLead } from "../Integrations/website-leads/route";
 import { support } from "../Integrations/support/route"
+import { integrations } from "../Integrations/addons/route"
 
 const listOfIntegrations = [];
 
@@ -13,6 +14,7 @@ listOfIntegrations[integrationsNames.WEBSITE_METRICS] = websiteMetrics;
 listOfIntegrations[integrationsNames.WEBSITE_LEADS] = websiteLead;
 listOfIntegrations[integrationsNames.CALL_TRAKING] = callTracking;
 listOfIntegrations[integrationsNames.SUPPORT] = support;
+listOfIntegrations[integrationsNames.INTEGRATION] = integrations;
 
 let userPermissions = [
   "marketing-performance",
@@ -20,7 +22,8 @@ let userPermissions = [
   "website-leads",
   "call-tracking",
   "call-tracking",
-  "support"
+  "support",
+  "integration"
 ];
 
 let InegrationsRoutes = [];
