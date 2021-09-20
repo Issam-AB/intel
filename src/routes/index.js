@@ -3,7 +3,12 @@ import React from "react";
 
 import async from "../components/Async";
 
-import { CreditCard, Monitor, Users, User } from "react-feather";
+import { CreditCard, Monitor, Users, User, Copy, FilePlus, Grid } from "react-feather";
+import AllRequest from "../pages/protected/companies/Integrations/support/allRequest";
+import NewRrquest from "../pages/protected/companies/Integrations/support/newRequest";
+
+import Integration from "../pages/protected/companies/Integrations/addons"
+import MyProfile from "../pages/protected/companies/Integrations/account-settings/myProfile"
 
 import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
@@ -43,6 +48,7 @@ import Landing from "../pages/presentation/Landing";
 
 // Protected routes
 import ProtectedPage from "../pages/protected/ProtectedPage";
+// import { integrations } from "../pages/protected/companies/Integrations/addons/route";
 
 // const marketingPerformance = {
 //   id: "Marketing Performance",
@@ -135,22 +141,49 @@ import ProtectedPage from "../pages/protected/ProtectedPage";
 // //   component: null,
 // // };
 
-// const support = {
-//   id: "Support",
-//   path: "/tasks",
-//   component: Tasks,
-//   children: null,
-// };
+
+export const support = {
+  id: "Support",
+  path: "/support",
+  children: [
+    {
+      path: "/support/all-request",
+      name: "All Request",
+      icon: <Copy />,
+      component: AllRequest,
+    },
+    {
+      path: "/support/new-request",
+      name: "New Request",
+      icon: <FilePlus />,
+      component: NewRrquest,
+    },
+  ],
+  component: null,
+};
+export const integrations = {
+  id: "Integration",
+  path: "/integration",
+  children: [
+    {
+      path: "/integration/all-integration",
+      name: "All Integration",
+      icon: <Grid />,
+      component: Integration,
+    },
+  ],
+  component: null,
+};
 
 const accountSettings = {
   id: "Account Settings",
-  path: "/components",
+  path: "/account-settings",
   children: [
     {
-      path: "/components/alerts",
+      path: "/account-settings/my-profile",
       name: "My Profile",
       icon: <User />,
-      component: Alerts,
+      component: MyProfile,
     },
     {
       path: "/components/accordion",
@@ -225,6 +258,6 @@ export const sidebarRoutes = InegrationsRoutes;
 // // ];
 
 // sidebarRoutes.push(websiteMetrics);
-//sidebarRoutes.push(callTracking);
-// sidebarRoutes.push(support);
+sidebarRoutes.push(integrations);
+sidebarRoutes.push(support);
 sidebarRoutes.push(accountSettings);

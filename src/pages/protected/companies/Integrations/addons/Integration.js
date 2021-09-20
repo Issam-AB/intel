@@ -10,7 +10,7 @@ import {
     Popper,
     Paper,
     MenuList,
-    Button
+    Button,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
@@ -23,6 +23,8 @@ const useStyles = makeStyles({
         marginLeft: "34px",
         marginTop: "34px",
         borderRadius: "15px",
+        boxShadow: " rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+        border: "2px solid #fff",
         "&:hover, &:focus": {
             border: "2px solid #6320EE"
         },
@@ -55,7 +57,9 @@ const useStyles = makeStyles({
         width: "30rem",
         padding: "20px",
         height: "221px",
-        borderRadius: "15px"
+        borderRadius: "15px",
+        marginTop: "-32px",
+        marginLeft: "356px",
     },
     poperShadow: {
         top: "-36px",
@@ -101,252 +105,252 @@ const integration = [
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
     {
         id: '1',
         name: "Salesforce",
         icon: "https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg",
-        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations, and to make sure that your forecasts are up-to-date. Here's what you can do once your Salesforce data is connected to your Causal model",
+        decsription: "Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations",
         slug: "",
     },
 
@@ -363,9 +367,9 @@ const Integration = () => {
     const handleShow = (event) => {
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
-    // const handleLeave = (event) => {
-    //     setAnchorEl(anchorEl ?  : event.currentTarget);
-    // };
+    const handleLeave = () => {
+        setAnchorEl(null);
+    };
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
@@ -373,22 +377,22 @@ const Integration = () => {
         <div className={classes.item}>
             {integration.map((item, index) => (
                 <div>
-                    <Box display="grid" alignItems="center" className={classes.Box} onMouseEnter={handleShow}>
+                    <Box key={index} display="grid" alignItems="center" className={classes.Box} onMouseEnter={handleShow} onMouseLeave={handleLeave}>
                         <div className={classes.content}>
-                            <img src="https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg" alt="box image" width="98px" />
-                            <Typography variant="h3" className={classes.name}>Salesforce</Typography>
+                            <img src={item.icon} alt="box image" width="98px" />
+                            <Typography variant="h3" className={classes.name}>{item.name}</Typography>
                             <Chip label="FREE" classes={{ root: classes.chips, label: classes.label }} />
                         </div>
 
                     </Box>
-                    <Popper open={open} anchorEl={anchorEl} classes={{ tooltip: classes.poperShadow }} className={classes.poper} id="menu-list-grow">
+                    <Popper key={index} open={open} anchorEl={anchorEl} className={classes.poper} id={id}>
                         <Grid container direction="row" alignItems="center">
                             <Grid item lg={4}>
-                                <img src="https://global-uploads.webflow.com/5e8a043bfbc2c035b4d8e5b5/5f6218838acac6cf2d679d15_salesforce-2.svg" alt="box image" width="70px" style={{ marginLeft: '18px' }} />
+                                <img src={item.icon} alt="box image" width="70px" style={{ marginLeft: '18px' }} />
                             </Grid>
                             <Grid item lg={8} style={{ marginLeft: '-40px' }}>
-                                <Typography variant="h5" style={{ fontSize: '16px', fontWeight: '700' }}>Salesforce</Typography>
-                                <Typography variant="subtitle1" className={classes.discription}>Use Causal to build your company's financial plan, and connect it to your data in Salesforce to get visibility into your operations.</Typography>
+                                <Typography variant="h5" style={{ fontSize: '16px', fontWeight: '700' }}>{item.name}</Typography>
+                                <Typography variant="subtitle1" className={classes.discription}>{item.decsription}</Typography>
                             </Grid>
                         </Grid>
                         <Grid item style={{ marginLeft: '120px' }}>
