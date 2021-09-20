@@ -8,7 +8,7 @@ import {
   Typography as MuiTypography,
   Button,
 } from "@material-ui/core";
-import RefreshIcon from "@material-ui/icons/Refresh";
+// import RefreshIcon from "@material-ui/icons/Refresh";
 import { makeStyles } from "@material-ui/core/styles";
 
 import { spacing } from "@material-ui/system";

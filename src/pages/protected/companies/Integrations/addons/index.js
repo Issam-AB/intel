@@ -36,6 +36,9 @@ const useStyles = makeStyles({
         "&:hover, &:focus": {
             border: "1px solid #6320EE",
             opacity: 4,
+        }, "&:hover, &:focus": {
+            border: "1px solid #6320EE",
+            opacity: 4,
         },
     },
     iconButton: {
