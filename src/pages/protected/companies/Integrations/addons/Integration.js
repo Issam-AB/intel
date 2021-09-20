@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import styled from "styled-components/macro";
 
@@ -56,6 +57,7 @@ const useStyles = makeStyles({
     borderRadius: "15px",
     marginTop: "-32px",
     marginLeft: "356px",
+    boxShadow: " rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
   poperShadow: {
     top: "-36px",
