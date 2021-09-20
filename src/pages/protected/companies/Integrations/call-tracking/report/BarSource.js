@@ -41,9 +41,9 @@ const ChartWrapper = styled.div`
 const BarChart = ({ theme }) => {
   // const firstDatasetColor = theme.palette.secondary.main;
   // const secondDatasetColor =
-  theme.palette.type === "dark"
-    ? "rgba(255, 255, 255, 0.5)"
-    : "rgba(0, 0, 0, 0.15)";
+  // theme.palette.type === "dark"
+  //   ? "rgba(255, 255, 255, 0.5)"
+  //   : "rgba(0, 0, 0, 0.15)";
 
   const data = {
     labels: ["GMB", "GMB", "Ads", "Website Pool", "GMB - NEW"],

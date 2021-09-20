@@ -38,6 +38,14 @@ const useStyles = makeStyles((theme) => ({
   buttonPrimary: {
     backgroundColor: "#6A74C9",
     color: "white",
+    width: "12rem",
+  },
+  photoHelp: {
+    fontSize: "13px",
+    fontWeight: "600",
+    width: "13rem",
+    marginLeft: "18px",
+    marginTop: "8px",
   },
 }));
 const Divider = styled(MuiDivider)(spacing);
@@ -65,7 +73,7 @@ const EditProfile = () => {
             >
               Change picture
             </Button>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" className={classes.photoHelp}>
               Photo help your teammates recognize you in intelegece
             </Typography>
           </div>
