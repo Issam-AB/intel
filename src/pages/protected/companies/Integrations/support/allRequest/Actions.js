@@ -5,7 +5,7 @@ import { Button as MuiButton } from "@material-ui/core";
 
 // import { Plus } from "react-feather"
 import { makeStyles } from "@material-ui/core/styles";
-import { Add } from "@material-ui/icons"
+import { Add } from "@material-ui/icons";
 import { spacing } from "@material-ui/system";
 const useStyle = makeStyles({
   button: {
@@ -13,18 +13,17 @@ const useStyle = makeStyles({
     width: "212px",
     height: "60px",
     color: "white",
-    borderRadius: "8px"
+    borderRadius: "8px",
   },
   label: {
     fontSize: "17px",
-    fontWeight: "600"
+    fontWeight: "600",
   },
   startIcon: {
-    fontSize: "24px"
-  }
+    fontSize: "24px",
+  },
 });
 const Button = styled(MuiButton)(spacing);
-
 
 function Actions() {
   const classes = useStyle();
@@ -41,7 +40,7 @@ function Actions() {
   return (
     <React.Fragment>
       <Button
-        classes={{ label: classes.label, startIcon: classes.startIcon, }}
+        classes={{ label: classes.label, startIcon: classes.startIcon }}
         className={classes.button}
         // aria-owns={anchorEl ? "simple-menu" : undefined}
         // aria-haspopup="true"
@@ -50,7 +49,6 @@ function Actions() {
       >
         Open New Ticket
       </Button>
-
     </React.Fragment>
   );
 }

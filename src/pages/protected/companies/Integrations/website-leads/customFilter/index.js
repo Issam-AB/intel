@@ -23,7 +23,6 @@ const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
-
 const CustomFilter = () => {
   const [chipData, setChipData] = useState([
     { key: 0, label: "jack@spam.com" },
@@ -120,26 +119,50 @@ const CustomFilter = () => {
             variant="subtitle2"
             style={{ marginTop: "-10px", fontWeight: "600" }}
           >
-            Set up custom filters for your leads to block Spam and unqualified leads from going to your inbox or CRM. Dont't waste your time on people not interested in your service.
+            Set up custom filters for your leads to block Spam and unqualified
+            leads from going to your inbox or CRM. Dont't waste your time on
+            people not interested in your service.
             <span role="img" aria-label="Waving Hand Sign">
               👋
             </span>
           </Typography>
         </Grid>
         <Grid item xs={12} lg={12}>
-          <CustomBlock title="Blocked Email:" chipData={chipData} handleDelete={handleDelete} button={button} />
+          <CustomBlock
+            title="Blocked Email:"
+            chipData={chipData}
+            handleDelete={handleDelete}
+            button={button}
+          />
         </Grid>
         <Grid item xs={12} lg={12}>
-          <CustomBlock title="Blocked Names:" chipData={chipData} handleDelete={handleDelete} />
+          <CustomBlock
+            title="Blocked Names:"
+            chipData={chipData}
+            handleDelete={handleDelete}
+          />
         </Grid>
         <Grid item xs={12} lg={12}>
-          <CustomBlock title="Blocked URL's:" chipData={chipData} handleDelete={handleDelete} />
+          <CustomBlock
+            title="Blocked URL's:"
+            chipData={chipData}
+            handleDelete={handleDelete}
+          />
         </Grid>
         <Grid item xs={12} lg={12}>
-          <CustomBlock title="Blocked Phone Numbers:" chipData={chipData} handleDelete={handleDelete} button={button} />
+          <CustomBlock
+            title="Blocked Phone Numbers:"
+            chipData={chipData}
+            handleDelete={handleDelete}
+            button={button}
+          />
         </Grid>
         <Grid item xs={12} lg={12}>
-          <CustomBlock title="Blocked Keywords:" chipData={chipData} handleDelete={handleDelete} />
+          <CustomBlock
+            title="Blocked Keywords:"
+            chipData={chipData}
+            handleDelete={handleDelete}
+          />
         </Grid>
       </Grid>
     </React.Fragment>

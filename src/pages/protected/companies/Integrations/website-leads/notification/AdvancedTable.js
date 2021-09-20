@@ -20,15 +20,14 @@ import {
   FormControlLabel,
   Switch,
   Chip as MuiChip,
-  Toolbar, Typography,
+  Toolbar,
+  Typography,
   Button,
   Tooltip,
 } from "@material-ui/core";
-import ChipInput from 'material-ui-chip-input'
-import {
-  FiberManualRecord as FiberManualRecordIcons,
-} from "@material-ui/icons";
-import { Bell, MoreVertical, } from "react-feather";
+import ChipInput from "material-ui-chip-input";
+import { FiberManualRecord as FiberManualRecordIcons } from "@material-ui/icons";
+import { Bell, MoreVertical } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
@@ -37,9 +36,9 @@ const Divider = styled(MuiDivider)(spacing);
 const Paper = styled(MuiPaper)(spacing);
 
 const Chip = styled(MuiChip)`
- border-radius: 25px;
- margin: 5px;
- padding: 14px 1px;
+  border-radius: 25px;
+  margin: 5px;
+  padding: 14px 1px;
 `;
 const StyledTableRow = withStyles({
   root: {
@@ -50,24 +49,22 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
-      padding: "9px"
+      padding: "9px",
     },
   },
-
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    listStyle: 'none',
+    display: "flex",
+    flexWrap: "wrap",
+    listStyle: "none",
     padding: theme.spacing(0.5),
     margin: 0,
     border: "1px solid #DBDBDB",
     "&:hover": {
-      border: "1px solid #6320EE"
-    }
-
+      border: "1px solid #6320EE",
+    },
   },
   icon: {
     color: "#6320EE",
@@ -82,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     width: "143px",
   },
   rootchips: {
-    minWidth: "0px"
+    minWidth: "0px",
   },
   input: {
     padding: "0 0px",
@@ -99,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   chipInput: {
     minHeight: "30px",
-    fontWeight: "600"
+    fontWeight: "600",
   },
   iconButton: {
     padding: "5px 10px",
@@ -167,19 +164,14 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
   },
   chip: {
-    margin: "2px 9px 3px 1px"
-  }
+    margin: "2px 9px 3px 1px",
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(
-  formName,
-  status,
-  leadsSubmitted,
-  notifications,
-) {
+function createData(formName, status, leadsSubmitted, notifications) {
   return {
     formName,
     status,
@@ -189,61 +181,17 @@ function createData(
 }
 
 const rows = [
-  createData(
-    "FREE Estimate",
-    "1",
-    "47",
-  ),
-  createData(
-    "Contact Us",
-    "1",
-    "35",
-  ),
-  createData(
-    "Residential Roffing",
-    "1",
-    "29"
-  ),
-  createData(
-    "Commercial Roffing",
-    "0",
-    "17"
-  ),
-  createData(
-    "Financing",
-    "1",
-    "8",
-  ),
-  createData(
-    "Home",
-    "0",
-    "41",
-  ),
-  createData(
-    "Tile Roffing",
-    "1",
-    "2",
-  ),
-  createData(
-    "Tile Roffing",
-    "1",
-    "2",
-  ),
-  createData(
-    "Metal Roffing",
-    "1",
-    "2",
-  ),
-  createData(
-    "Tile Roffing",
-    "1",
-    "2",
-  ),
-  createData(
-    "Home",
-    "0",
-    "41",
-  ),
+  createData("FREE Estimate", "1", "47"),
+  createData("Contact Us", "1", "35"),
+  createData("Residential Roffing", "1", "29"),
+  createData("Commercial Roffing", "0", "17"),
+  createData("Financing", "1", "8"),
+  createData("Home", "0", "41"),
+  createData("Tile Roffing", "1", "2"),
+  createData("Tile Roffing", "1", "2"),
+  createData("Metal Roffing", "1", "2"),
+  createData("Tile Roffing", "1", "2"),
+  createData("Home", "0", "41"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -284,8 +232,18 @@ const headCells = [
     disablePadding: false,
     label: "Status",
   },
-  { id: "leadsSubmitted", numeric: false, disablePadding: false, label: "Leads Submitted" },
-  { id: "notifications", numeric: true, disablePadding: false, label: "Notfications" },
+  {
+    id: "leadsSubmitted",
+    numeric: false,
+    disablePadding: false,
+    label: "Leads Submitted",
+  },
+  {
+    id: "notifications",
+    numeric: true,
+    disablePadding: false,
+    label: "Notfications",
+  },
 ];
 
 function EnhancedTableHead(props) {
@@ -338,41 +296,45 @@ function EnhancedTableHead(props) {
 let EnhancedTableToolbar = (props) => {
   // const { numSelected } = props;
   const classes = useStyles();
-  return (<>
-    <Toolbar>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Bell className={classes.icon} />
-        <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          Leads Notifications
-        </Typography>
-      </div>
-      <Spacer />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Button startIcon="E:" className={classes.export} variant="contained">
-          Export
-        </Button>
+  return (
+    <>
+      <Toolbar>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Bell className={classes.icon} />
+          <Typography
+            variant="h6"
+            id="tableTitle"
+            className={classes.goodlaeads}
+          >
+            Leads Notifications
+          </Typography>
+        </div>
+        <Spacer />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Button startIcon="E:" className={classes.export} variant="contained">
+            Export
+          </Button>
 
-        <Tooltip title="Filter list">
-          <IconButton aria-label="Filter list">
-            <MoreVertical />
-          </IconButton>
-        </Tooltip>
-      </div>
-    </Toolbar>
-  </>
+          <Tooltip title="Filter list">
+            <IconButton aria-label="Filter list">
+              <MoreVertical />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </Toolbar>
+    </>
   );
 };
-
 
 function EnhancedTable() {
   const [order, setOrder] = useState("asc");
@@ -392,7 +354,7 @@ function EnhancedTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.formName)
+      const newSelecteds = rows.map((n) => n.formName);
       setSelected(newSelecteds);
       return;
     }
@@ -437,7 +399,10 @@ function EnhancedTable() {
   // const emptyRows =
   //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
-  const chipRenderer = ({ chip, className, handleClick, handleDelete }, key) => (
+  const chipRenderer = (
+    { chip, className, handleClick, handleDelete },
+    key
+  ) => (
     <Chip
       className={className}
       key={key}
@@ -447,7 +412,11 @@ function EnhancedTable() {
       size="small"
     />
   );
-  const defaultValue = ["Notification@email.com", "Person2@email.com", "Person3@email.com"];
+  const defaultValue = [
+    "Notification@email.com",
+    "Person2@email.com",
+    "Person3@email.com",
+  ];
 
   return (
     <div>
@@ -504,14 +473,32 @@ function EnhancedTable() {
                         {row.formName}
                       </TableCell>
                       {/* <TableCell align="left">{row.status}</TableCell> */}
-                      <TableCell align="center" style={{ width: "200px" }}>{<FiberManualRecordIcons style={{ color: row.status == 1 ? "#388E3C" : "#B21F1F", marginLeft: "-14px" }} />}</TableCell>
-                      <TableCell align="center" style={{ width: "200px", fontWeight: "600" }}>{row.leadsSubmitted}</TableCell>
+                      <TableCell align="center" style={{ width: "200px" }}>
+                        {
+                          <FiberManualRecordIcons
+                            style={{
+                              color: row.status == 1 ? "#388E3C" : "#B21F1F",
+                              marginLeft: "-14px",
+                            }}
+                          />
+                        }
+                      </TableCell>
+                      <TableCell
+                        align="center"
+                        style={{ width: "200px", fontWeight: "600" }}
+                      >
+                        {row.leadsSubmitted}
+                      </TableCell>
 
                       <TableCell align="left" style={{ width: "400px" }}>
                         <Paper component="ul" className={classes.root}>
                           <ChipInput
                             disableUnderline={true}
-                            classes={{ chipContainer: classes.chipInput, inputRoot: classes.rootchips, chip: classes.chip }}
+                            classes={{
+                              chipContainer: classes.chipInput,
+                              inputRoot: classes.rootchips,
+                              chip: classes.chip,
+                            }}
                             chipRenderer={chipRenderer}
                             defaultValue={defaultValue}
                           />

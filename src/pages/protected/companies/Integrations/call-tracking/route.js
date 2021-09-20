@@ -5,7 +5,7 @@ import React from "react";
 // import InvoiceList from "../pages/pages/InvoiceList";
 
 import CallLog from "./callLog";
-import Report from "./report"
+import Report from "./report";
 
 import { PhoneIncoming, FileText } from "react-feather";
 

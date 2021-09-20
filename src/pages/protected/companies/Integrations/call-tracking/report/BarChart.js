@@ -14,7 +14,7 @@ import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
 import { Bar } from "react-chartjs-2";
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 const Card = styled(MuiCard)(spacing);
 
 const Spacer = styled.div(spacing);
@@ -27,20 +27,20 @@ const themes = createMuiTheme({
   overrides: {
     MuiCheckbox: {
       colorSecondary: {
-        color: '# custom color',
-        '&$checked': {
-          color: '#6320EE',
+        color: "# custom color",
+        "&$checked": {
+          color: "#6320EE",
         },
       },
       colorPrimary: {
-        color: '# custom color',
-        '&$checked': {
-          color: '#custom color',
+        color: "# custom color",
+        "&$checked": {
+          color: "#custom color",
         },
       },
     },
   },
-})
+});
 
 const useStyles = makeStyles({
   traffic: {
@@ -165,14 +165,12 @@ function BarChart({ theme }) {
           <FormGroup row style={{ marginLeft: "5px" }}>
             <FormControlLabel
               control={
-
                 <Checkbox
                   // checked={state.checkedA}
                   color="primary"
                   onChange={handleChange}
                   name="checkedA"
                 />
-
               }
               label="Website Traffic"
               style={{ marginRight: "72px", fontWeight: "bold" }}
@@ -180,7 +178,6 @@ function BarChart({ theme }) {
             <FormControlLabel
               control={
                 <>
-
                   <Checkbox
                     defaultChecked
                     // checked={state.checkedB}
@@ -236,7 +233,7 @@ function BarChart({ theme }) {
           <Bar data={data} options={options} />
         </ChartWrapper>
       </CardContent>
-    </Card >
+    </Card>
   );
 }
 

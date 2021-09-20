@@ -54,7 +54,6 @@ const StyledTableRow = withStyles({
       whiteSpace: "nowrap",
     },
   },
-
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -302,7 +301,12 @@ const headCells = [
   },
   { id: "refernce", numeric: true, disablePadding: false, label: "Reference" },
   { id: "customer", numeric: true, disablePadding: false, label: "Customer" },
-  { id: "phoneNumber", numeric: true, disablePadding: false, label: "Phone Number" },
+  {
+    id: "phoneNumber",
+    numeric: true,
+    disablePadding: false,
+    label: "Phone Number",
+  },
   {
     id: "interestedService",
     numeric: true,
@@ -376,68 +380,73 @@ let EnhancedTableToolbar = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
-  return (<>
-    <Toolbar>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Filter className={classes.icon} />
-        <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          Good Leads
-        </Typography>
-        <Paper component="form" className={classes.input}>
-          <IconButton className={classes.iconButton} aria-label="menu">
-            <SearchIcon />
-          </IconButton>
-          <InputBase
-            placeholder="Search Good Leads"
-            inputProps={{ "aria-label": "search good leads" }}
+  return (
+    <>
+      <Toolbar>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Filter className={classes.icon} />
+          <Typography
+            variant="h6"
+            id="tableTitle"
+            className={classes.goodlaeads}
+          >
+            Good Leads
+          </Typography>
+          <Paper component="form" className={classes.input}>
+            <IconButton className={classes.iconButton} aria-label="menu">
+              <SearchIcon />
+            </IconButton>
+            <InputBase
+              placeholder="Search Good Leads"
+              inputProps={{ "aria-label": "search good leads" }}
+            />
+          </Paper>
+        </div>
+        <Spacer />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Autocomplete
+            classes={{
+              root: classes.autocomplete,
+              inputFocused: classes.focused,
+            }}
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+            inputValue={inputValue}
+            onInputChange={(event, newInputValue) => {
+              setInputValue(newInputValue);
+            }}
+            id="controllable-states-demo"
+            options={options}
+            size="small"
+            style={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} label="Controllable" variant="outlined" />
+            )}
           />
-        </Paper>
-      </div>
-      <Spacer />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Autocomplete
-          classes={{
-            root: classes.autocomplete,
-            inputFocused: classes.focused,
-          }}
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-          inputValue={inputValue}
-          onInputChange={(event, newInputValue) => {
-            setInputValue(newInputValue);
-          }}
-          id="controllable-states-demo"
-          options={options}
-          size="small"
-          style={{ width: 300 }}
-          renderInput={(params) => (
-            <TextField {...params} label="Controllable" variant="outlined" />
-          )}
-        />
-        <Button startIcon="E:" className={classes.export} variant="contained">
-          Export
-        </Button>
+          <Button startIcon="E:" className={classes.export} variant="contained">
+            Export
+          </Button>
 
-        <Tooltip title="Filter list">
-          <IconButton aria-label="Filter list">
-            <MoreVertical />
-          </IconButton>
-        </Tooltip>
-      </div>
-    </Toolbar>
-  </>
+          <Tooltip title="Filter list">
+            <IconButton aria-label="Filter list">
+              <MoreVertical />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </Toolbar>
+    </>
   );
 };
 
@@ -568,15 +577,11 @@ function EnhancedTable() {
                         {row.interestedService}
                       </TableCell>
                       <TableCell align="left">
-
                         {row.comment.length > 80
                           ? `${row.comment.substring(0, 75)} ...`
                           : `${row.comment}`}
-
                       </TableCell>
-                      <TableCell align="left">
-                        {<RowOptions />}
-                      </TableCell>
+                      <TableCell align="left">{<RowOptions />}</TableCell>
                     </StyledTableRow>
                   );
                 })}
@@ -618,9 +623,7 @@ function RowOptions({ row }) {
 
   return (
     <>
-      <div
-        className={classes.divIcons}
-      >
+      <div className={classes.divIcons}>
         <>
           <Tooltip title="Forward Leads" classes={{ tooltip: classes.popper }}>
             <ForwardIcon

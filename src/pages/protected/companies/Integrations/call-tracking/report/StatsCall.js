@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   card: {
     boxShadow: "0px 0px 12px -5px #000000",
     height: "154px",
-    marginBottom: "21px"
+    marginBottom: "21px",
   },
   button: {
     position: "absolute",
@@ -43,7 +43,13 @@ const CardContent = styled(MuiCardContent)`
 const StatsCall = ({ title, amount, chip, totalCall }) => {
   const classes = useStyles();
   return (
-    <Card className={classes.card} style={{ backgroundColor: totalCall ? "#6320ee" : "", color: totalCall ? "#fff" : "" }}>
+    <Card
+      className={classes.card}
+      style={{
+        backgroundColor: totalCall ? "#6320ee" : "",
+        color: totalCall ? "#fff" : "",
+      }}
+    >
       <CardContent>
         <Typography variant="h5" style={{ fontWeight: "700" }} mt={4}>
           {title}
@@ -53,11 +59,9 @@ const StatsCall = ({ title, amount, chip, totalCall }) => {
             {amount}
           </Box>
         </Typography>
-        <Button className={classes.button}>
-          {chip}
-        </Button>
+        <Button className={classes.button}>{chip}</Button>
       </CardContent>
-    </Card >
+    </Card>
   );
 };
 

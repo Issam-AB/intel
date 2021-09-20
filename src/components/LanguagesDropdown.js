@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-
 import {
   Tooltip,
   Menu,
@@ -11,7 +10,15 @@ import {
   Typography,
 } from "@material-ui/core";
 
-import { ChevronDown, Grid, Headphones, LogOut, CreditCard, User, Users } from "react-feather"
+import {
+  ChevronDown,
+  Grid,
+  Headphones,
+  LogOut,
+  CreditCard,
+  User,
+  Users,
+} from "react-feather";
 import { makeStyles } from "@material-ui/core/styles";
 
 const IconButton = styled(MuiIconButton)`
@@ -45,14 +52,13 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 0px 12px -5px #000000",
   },
   icons: {
-    width: "18px"
-  }
+    width: "18px",
+  },
 }));
 
 function LanguagesDropdown() {
   const classes = useStyles();
   const [anchorMenu, setAnchorMenu] = React.useState(null);
-  const [open, setOpen] = React.useState(true);
 
   const toggleMenu = (event) => {
     setAnchorMenu(event.currentTarget);
@@ -60,9 +66,6 @@ function LanguagesDropdown() {
 
   const handleClose = () => {
     setAnchorMenu(null);
-  };
-  const handleClick = () => {
-    setOpen(!open);
   };
 
   return (
@@ -119,15 +122,24 @@ function LanguagesDropdown() {
             Billing
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", borderTop: "1px solid #E0E0E0", }}>
-          <ListItemIcon style={{ minWidth: "29px", }}>
+        <MenuItem
+          onClick={handleClose}
+          style={{
+            borderBottom: "1px solid #E0E0E0",
+            borderTop: "1px solid #E0E0E0",
+          }}
+        >
+          <ListItemIcon style={{ minWidth: "29px" }}>
             <Grid className={classes.icons} />
           </ListItemIcon>
           <Typography variant="inherit" align="right">
             Integrations
           </Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose} style={{ borderBottom: "1px solid #E0E0E0", }}>
+        <MenuItem
+          onClick={handleClose}
+          style={{ borderBottom: "1px solid #E0E0E0" }}
+        >
           <ListItemIcon style={{ minWidth: "29px" }}>
             <Headphones className={classes.icons} />
           </ListItemIcon>
@@ -143,7 +155,6 @@ function LanguagesDropdown() {
             Sign Out
           </Typography>
         </MenuItem>
-
       </Menu>
     </React.Fragment>
   );

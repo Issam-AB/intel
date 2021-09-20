@@ -31,7 +31,13 @@ import {
   ThumbUpAltOutlined as ThumbUpAltIcon,
   Close as CloseIcon,
 } from "@material-ui/icons";
-import { MoreVertical, PhoneIncoming, Volume, Download, Volume2 } from "react-feather";
+import {
+  MoreVertical,
+  PhoneIncoming,
+  Volume,
+  Download,
+  Volume2,
+} from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
@@ -50,11 +56,9 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
-      padding: "9px"
+      padding: "9px",
     },
-
   },
-
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -124,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#6A74C9",
     width: "45px",
     height: "24px",
-    marginLeft: "-27px"
+    marginLeft: "-27px",
   },
   divIcons: {
     display: "flex",
@@ -162,21 +166,14 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
   fontcells: {
-    fontWeight: 600
-  }
+    fontWeight: 600,
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(
-  no,
-  company,
-  source,
-  startTime,
-  duration,
-  callersName,
-) {
+function createData(no, company, source, startTime, duration, callersName) {
   return {
     no,
     company,
@@ -194,7 +191,7 @@ const rows = [
     "Google My Business",
     "Today 5:00pm",
     "45s",
-    "Keagan Schulist",
+    "Keagan Schulist"
   ),
   createData(
     "9",
@@ -202,7 +199,7 @@ const rows = [
     "Metal Roffing",
     "Today 4:00pm",
     "2m 05s",
-    "Lou Moore",
+    "Lou Moore"
   ),
   createData(
     "6",
@@ -210,7 +207,7 @@ const rows = [
     "Google Origanic",
     "Today 1:00pm",
     "32s",
-    "Laurie Senger",
+    "Laurie Senger"
   ),
   createData(
     "2",
@@ -218,7 +215,7 @@ const rows = [
     "Direct",
     "Yestarday 1:30pm",
     "35s",
-    "jazmyn Greenhoit",
+    "jazmyn Greenhoit"
   ),
   createData(
     "8",
@@ -226,7 +223,7 @@ const rows = [
     "Leads Gen Intel",
     "Yestarday 3:30pm",
     "2m 12s",
-    "wanda Rice",
+    "wanda Rice"
   ),
   createData(
     "1",
@@ -234,7 +231,7 @@ const rows = [
     "Bing Origanic",
     "Yestarday 4:30pm",
     "35s",
-    "Metal Roffing",
+    "Metal Roffing"
   ),
   createData(
     "5",
@@ -242,7 +239,7 @@ const rows = [
     "Google My Business",
     "Today 5:00pm",
     "45s",
-    "Keagan Schulist",
+    "Keagan Schulist"
   ),
   createData(
     "10",
@@ -250,7 +247,7 @@ const rows = [
     "Metal Roffing",
     "Today 4:00pm",
     "2m 05s",
-    "Lou Moore",
+    "Lou Moore"
   ),
   createData(
     "7",
@@ -258,7 +255,7 @@ const rows = [
     "Google Origanic",
     "Today 1:00pm",
     "32s",
-    "Laurie Senger",
+    "Laurie Senger"
   ),
   createData(
     "3",
@@ -266,7 +263,7 @@ const rows = [
     "Direct",
     "Yestarday 1:30pm",
     "35s",
-    "jazmyn Greenhoit",
+    "jazmyn Greenhoit"
   ),
 ];
 
@@ -309,7 +306,12 @@ const headCells = [
     label: "Company",
   },
   { id: "source", numeric: true, disablePadding: false, label: "Source" },
-  { id: "startTime", numeric: true, disablePadding: false, label: "Start Time" },
+  {
+    id: "startTime",
+    numeric: true,
+    disablePadding: false,
+    label: "Start Time",
+  },
   { id: "duration", numeric: true, disablePadding: false, label: "Duration" },
   {
     id: "callersName",
@@ -364,49 +366,52 @@ function EnhancedTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-    </TableHead >
+    </TableHead>
   );
 }
 let EnhancedTableToolbar = (props) => {
   // const { numSelected } = props;
   const classes = useStyles();
 
-  return (<>
-    <Toolbar>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <PhoneIncoming className={classes.icon} />
-        <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          Call Log
-        </Typography>
-      </div>
-      <Spacer />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Button startIcon="E:" className={classes.export} variant="contained">
-          Export
-        </Button>
+  return (
+    <>
+      <Toolbar>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <PhoneIncoming className={classes.icon} />
+          <Typography
+            variant="h6"
+            id="tableTitle"
+            className={classes.goodlaeads}
+          >
+            Call Log
+          </Typography>
+        </div>
+        <Spacer />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Button startIcon="E:" className={classes.export} variant="contained">
+            Export
+          </Button>
 
-        <Tooltip title="Filter list">
-          <IconButton aria-label="Filter list">
-            <MoreVertical />
-          </IconButton>
-        </Tooltip>
-      </div>
-    </Toolbar>
-  </>
+          <Tooltip title="Filter list">
+            <IconButton aria-label="Filter list">
+              <MoreVertical />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </Toolbar>
+    </>
   );
 };
-
-
 
 function EnhancedTable() {
   const [order, setOrder] = useState("asc");
@@ -509,7 +514,7 @@ function EnhancedTable() {
                       selected={isItemSelected}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
-                      <TableCell padding="checkbox" >
+                      <TableCell padding="checkbox">
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
@@ -526,16 +531,25 @@ function EnhancedTable() {
                       >
                         {row.no}
                       </TableCell>
-                      <TableCell align="left" className={classes.fontcells}>{row.company}</TableCell>
-                      <TableCell align="left" className={classes.fontcells}>{row.source}</TableCell>
-                      <TableCell align="left" className={classes.fontcells}>{row.startTime}</TableCell>
-                      <TableCell align="left" style={{ fontSize: "12px", fontWeight: "600" }}>{row.duration}</TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.company}
+                      </TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.source}
+                      </TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.startTime}
+                      </TableCell>
+                      <TableCell
+                        align="left"
+                        style={{ fontSize: "12px", fontWeight: "600" }}
+                      >
+                        {row.duration}
+                      </TableCell>
                       <TableCell align="left" className={classes.fontcells}>
                         {row.callersName}
                       </TableCell>
-                      <TableCell align="left">
-                        {<RowOptions />}
-                      </TableCell>
+                      <TableCell align="left">{<RowOptions />}</TableCell>
                     </StyledTableRow>
                   );
                 })}
@@ -573,39 +587,31 @@ function RowOptions({ row }) {
 
   return (
     <>
-      <div
-        className={classes.divIcons}
-      >
+      <div className={classes.divIcons}>
         <>
-          {
-            open ? (
-              <Tooltip title="Listen Call" classes={{ tooltip: classes.popper }}>
-                <Volume
-                  className={classes.forwardIcon}
-                  onClick={handleClickOpen}
-                />
-              </Tooltip>
-            ) : (
-              <Tooltip title="Stop Listening" classes={{ tooltip: classes.popper }}>
-                <Volume2
-                  className={classes.forwardIcon}
-                  onClick={handleClickOpen}
-                />
-              </Tooltip>
-            )
-          }
+          {open ? (
+            <Tooltip title="Listen Call" classes={{ tooltip: classes.popper }}>
+              <Volume
+                className={classes.forwardIcon}
+                onClick={handleClickOpen}
+              />
+            </Tooltip>
+          ) : (
+            <Tooltip
+              title="Stop Listening"
+              classes={{ tooltip: classes.popper }}
+            >
+              <Volume2
+                className={classes.forwardIcon}
+                onClick={handleClickOpen}
+              />
+            </Tooltip>
+          )}
         </>
 
         <>
-          <Tooltip
-            title="Download Call"
-            classes={{ tooltip: classes.popper }}
-          >
-
-            <Download
-              className={classes.visibility}
-            />
-
+          <Tooltip title="Download Call" classes={{ tooltip: classes.popper }}>
+            <Download className={classes.visibility} />
           </Tooltip>
         </>
       </div>

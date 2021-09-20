@@ -3,12 +3,20 @@ import React from "react";
 
 import async from "../components/Async";
 
-import { CreditCard, Monitor, Users, User, Copy, FilePlus, Grid } from "react-feather";
+import {
+  CreditCard,
+  Monitor,
+  Users,
+  User,
+  Copy,
+  FilePlus,
+  Grid,
+} from "react-feather";
 import AllRequest from "../pages/protected/companies/Integrations/support/allRequest";
 import NewRrquest from "../pages/protected/companies/Integrations/support/newRequest";
 
-import Integration from "../pages/protected/companies/Integrations/addons"
-import MyProfile from "../pages/protected/companies/Integrations/account-settings/myProfile"
+import Integration from "../pages/protected/companies/Integrations/addons";
+import MyProfile from "../pages/protected/companies/Integrations/account-settings/myProfile";
 
 import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
@@ -140,7 +148,6 @@ import ProtectedPage from "../pages/protected/ProtectedPage";
 // //   ],
 // //   component: null,
 // // };
-
 
 export const support = {
   id: "Support",

@@ -56,7 +56,6 @@ const StyledTableRow = withStyles({
       whiteSpace: "nowrap",
     },
   },
-
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
@@ -319,7 +318,12 @@ const headCells = [
   },
   { id: "refernce", numeric: true, disablePadding: false, label: "Reference" },
   { id: "customer", numeric: true, disablePadding: false, label: "Customer" },
-  { id: "phoneNumber", numeric: true, disablePadding: false, label: "Phone Number" },
+  {
+    id: "phoneNumber",
+    numeric: true,
+    disablePadding: false,
+    label: "Phone Number",
+  },
   {
     id: "interestedService",
     numeric: true,
@@ -373,7 +377,7 @@ function EnhancedTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-    </TableHead >
+    </TableHead>
   );
 }
 
@@ -639,15 +643,11 @@ function EnhancedTable() {
                         {row.interestedService}
                       </TableCell>
                       <TableCell align="left">
-
                         {row.comment.length > 80
                           ? `${row.comment.substring(0, 75)} ...`
                           : `${row.comment}`}
-
                       </TableCell>
-                      <TableCell align="left">
-                        {<RowOptions />}
-                      </TableCell>
+                      <TableCell align="left">{<RowOptions />}</TableCell>
                     </StyledTableRow>
                   );
                 })}
@@ -686,9 +686,7 @@ function RowOptions({ row }) {
   return (
     <>
       {/* <span> {row.refernce} Row Options</span> */}
-      <div
-        className={classes.divIcons}
-      >
+      <div className={classes.divIcons}>
         <>
           <Tooltip title="Forward Leads" classes={{ tooltip: classes.popper }}>
             <ForwardIcon

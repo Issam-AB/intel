@@ -37,7 +37,6 @@ const Divider = styled(MuiDivider)(spacing);
 
 const Paper = styled(MuiPaper)(spacing);
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
@@ -47,9 +46,8 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid #D0CBD4",
       whiteSpace: "nowrap",
-      padding: "15px"
+      padding: "15px",
     },
-
   },
   icon: {
     color: "#6320EE",
@@ -123,7 +121,6 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     borderRadius: "12px",
     boxShadow: " rgba(0, 0, 0, 0.35) 0px 5px 15px",
-
   },
   dialogwrapper: {
     padding: theme.spacing(4),
@@ -145,11 +142,11 @@ const useStyles = makeStyles((theme) => ({
   },
   fontcells: {
     fontWeight: 600,
-    fontSize: "15px"
+    fontSize: "15px",
   },
   Chips: {
     color: "black",
-  }
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
@@ -162,13 +159,7 @@ const Chip = styled(MuiChip)`
   color: ${(props) => props.theme.palette.common.white};
 `;
 
-
-function createData(
-  department,
-  ticket,
-  status,
-  lastActivity,
-) {
+function createData(department, ticket, status, lastActivity) {
   return {
     department,
     ticket,
@@ -182,61 +173,61 @@ const rows = [
     "Integration",
     "[# 1231546] Need JobNimbus Integration",
     <Chip label="Waiting on Reponse" rgbcolor={"#E01E1E"} />,
-    "Today 12:00pm",
+    "Today 12:00pm"
   ),
   createData(
     "Sales",
     "[# 1231546] Dedicated Ip for urgentrestorat.com",
     <Chip label="Waiting on Reponse" rgbcolor={"#E01E1E"} />,
-    "2 Month 7:00pm",
+    "2 Month 7:00pm"
   ),
   createData(
     "Billing",
     "[# 1231546] re: remove email completely from account",
     <Chip label="Waiting on Reponse" rgbcolor={"#E01E1E"} />,
-    "Yesterday 10:18pm",
+    "Yesterday 10:18pm"
   ),
   createData(
     "Level2 - Support",
     "[# 1231546] cancel dediicated IP",
     <Chip label="Processing" rgbcolor={"#388E3C"} />,
-    "Today 10:18pm",
+    "Today 10:18pm"
   ),
   createData(
     "Monitoring",
     "[# 1231546] 500 error problem",
     <Chip label="Processing" rgbcolor={"#388E3C"} />,
-    "Today 10:18pm",
+    "Today 10:18pm"
   ),
   createData(
     "Monitoring",
     "[# 1231546] cancel dediicated IP",
     <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
-    "Today 10:18pm",
+    "Today 10:18pm"
   ),
   createData(
     "level 2 - Support",
     "[# 1231546] Unknown redirection",
     <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
-    "Today 12:18m",
+    "Today 12:18m"
   ),
   createData(
     "Sales",
     "[# 1231546] Decidicated Ip for urgentrestoration.com",
     <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
-    "2 weeks 10:18pm",
+    "2 weeks 10:18pm"
   ),
   createData(
     "Billing",
     "[# 1231546] re: remove email completely from account",
     <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
-    "Today 10:8pm",
+    "Today 10:8pm"
   ),
   createData(
     "Level 2 - Support",
     "[# 1231546]  cancel dedicated IP",
     <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
-    "Today 6 Month 7:18am",
+    "Today 6 Month 7:18am"
   ),
 ];
 
@@ -280,7 +271,12 @@ const headCells = [
     label: "Ticket",
   },
   { id: "status", numeric: true, disablePadding: false, label: "Status" },
-  { id: "lastActivity", numeric: true, disablePadding: false, label: "Last Activity" },
+  {
+    id: "lastActivity",
+    numeric: true,
+    disablePadding: false,
+    label: "Last Activity",
+  },
   { id: "actions", numeric: false, disablePadding: false, label: "Actions" },
 ];
 
@@ -328,33 +324,36 @@ function EnhancedTableHead(props) {
           </TableCell>
         ))}
       </TableRow>
-    </TableHead >
+    </TableHead>
   );
 }
 let EnhancedTableToolbar = (props) => {
   // const { numSelected } = props;
   const classes = useStyles();
 
-  return (<>
-    <Toolbar>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Copy className={classes.icon} />
-        <Typography variant="h6" id="tableTitle" className={classes.goodlaeads}>
-          All Request
-        </Typography>
-      </div>
-      <Spacer />
-    </Toolbar>
-  </>
+  return (
+    <>
+      <Toolbar>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Copy className={classes.icon} />
+          <Typography
+            variant="h6"
+            id="tableTitle"
+            className={classes.goodlaeads}
+          >
+            All Request
+          </Typography>
+        </div>
+        <Spacer />
+      </Toolbar>
+    </>
   );
 };
-
-
 
 function EnhancedTable() {
   const [order, setOrder] = useState("asc");
@@ -477,12 +476,19 @@ function EnhancedTable() {
                         {row.department}
                       </TableCell>
 
-                      <TableCell align="left" style={{ color: "#388E3C", fontSize: "15px" }}>{row.ticket}</TableCell>
-                      <TableCell align="left" className={classes.fontcells}>{row.status}</TableCell>
-                      <TableCell align="left" className={classes.fontcells} >{row.lastActivity}</TableCell>
-                      <TableCell align="left">
-                        {<RowOptions />}
+                      <TableCell
+                        align="left"
+                        style={{ color: "#388E3C", fontSize: "15px" }}
+                      >
+                        {row.ticket}
                       </TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.status}
+                      </TableCell>
+                      <TableCell align="left" className={classes.fontcells}>
+                        {row.lastActivity}
+                      </TableCell>
+                      <TableCell align="left">{<RowOptions />}</TableCell>
                     </TableRow>
                   );
                 })}
@@ -520,31 +526,15 @@ function RowOptions({ row }) {
 
   return (
     <>
-      <div
-        className={classes.divIcons}
-      >
+      <div className={classes.divIcons}>
         <>
-          <Tooltip
-            title="View"
-            classes={{ tooltip: classes.popper }}
-          >
-
-            <Visibility
-              className={classes.visibility}
-            />
-
+          <Tooltip title="View" classes={{ tooltip: classes.popper }}>
+            <Visibility className={classes.visibility} />
           </Tooltip>
         </>
         <>
-          <Tooltip
-            title="Archive"
-            classes={{ tooltip: classes.popper }}
-          >
-
-            <Archive
-              className={classes.archive}
-            />
-
+          <Tooltip title="Archive" classes={{ tooltip: classes.popper }}>
+            <Archive className={classes.archive} />
           </Tooltip>
         </>
       </div>
