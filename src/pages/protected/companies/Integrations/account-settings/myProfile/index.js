@@ -5,6 +5,7 @@ import styled, { withTheme } from "styled-components/macro";
 import { Helmet } from "react-helmet-async";
 
 import EditeProfile from "./EditProfile";
+import PassordChange from "./PsswordChange"
 import {
   Grid,
   Divider as MuiDivider,
@@ -20,6 +21,7 @@ import { User, Lock } from "react-feather";
 
 const Divider = styled(MuiDivider)(spacing);
 const Spacer = styled.div(spacing);
+
 const Typography = styled(MuiTypography)(spacing);
 
 const useStyles = makeStyles({
@@ -100,8 +102,50 @@ const Profile = () => {
         </Grid>
         <Grid item>
           <EditeProfile />
+          <Spacer mb={50} />
         </Grid>
       </Grid>
+
+      <Grid container direction="row">
+        <Grid item>
+          <div>
+            <Typography variant="h4" className={classes.title}>
+              My Profile Settings
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              style={{ fontsize: "13px", fontWeight: "600" }}
+            >
+              Manage your Intelegence account
+            </Typography>
+          </div>
+          <div style={{ marginTop: "13px" }}>
+            <ListItem button classes={{ root: classes.ListItem }}>
+              <ListItemIcon classes={{ root: classes.ListItemIcon }}>
+                <User className={classes.icons} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Edit Profile"
+                classes={{ primary: classes.primary }}
+              />
+            </ListItem>
+            <ListItem button classes={{ root: classes.ListItem }}>
+              <ListItemIcon classes={{ root: classes.ListItemIcon }}>
+                <Lock className={classes.icons} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Change Password"
+                classes={{ primary: classes.primary }}
+              />
+            </ListItem>
+          </div>
+        </Grid>
+        <Grid item>
+          <PassordChange />
+          <Spacer mb={80} />
+        </Grid>
+      </Grid>
+
     </React.Fragment>
   );
 };
