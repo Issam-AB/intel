@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   iconButton: {
     padding: "5px 10px",
   },
-  primary: {
+  ButtonSearch: {
     backgroundColor: "#23CC94",
     color: "white",
     width: "8rem",
@@ -107,8 +107,7 @@ const CallLog = () => {
               />
             </Paper>
             <Button
-              variant="primary"
-              classes={{ primary: classes.primary, label: classes.textButton }}
+              classes={{ root: classes.ButtonSearch, label: classes.textButton }}
             >
               Search
             </Button>
