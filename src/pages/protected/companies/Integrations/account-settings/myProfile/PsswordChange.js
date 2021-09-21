@@ -178,7 +178,7 @@ const EditProfile = () => {
                 <Divider />
                 <div style={{ display: 'flex' }}>
 
-                    <div style={{ marginLeft: "40px" }}>
+                    <div style={{ marginLeft: "40px", width: "25rem" }}>
                         <Typography variant="subtitle1" className={classes.title}> Password must contain:</Typography>
                         <div style={{ marginLeft: "39px" }}>
                             <span style={{ display: "flex" }}>
@@ -205,7 +205,7 @@ const EditProfile = () => {
                     </div>
 
 
-                    <div style={{ marginLeft: "77px" }}>
+                    <div style={{ marginLeft: "80px" }}>
                         <Formik
                             initialValues={initialValues}
                             validationSchema={validationSchema}
@@ -238,62 +238,64 @@ const EditProfile = () => {
                                             <form onSubmit={handleSubmit}>
                                                 <Grid container spacing={6}>
                                                     <Grid item md={12} xs={6}>
-                                                        <div style={{ display: "flex" }}>
-                                                            <Typography variant="h5" style={{ width: "158px", marginTop: "20px" }} classes={{ h5: classes.h5 }}>Current Password:</Typography>
+                                                        <div style={{ display: "flex", alignItems: "center" }}>
+                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>Current Password:</Typography>
                                                             <TextField
-                                                                name="firstName"
+                                                                name="password"
                                                                 InputLabelProps={{ shrink: false }}
-                                                                placeholder="First Name"
-                                                                InputProps={{ classes: { input: classes.input } }}
-                                                                // label="First Name"
-                                                                value={values.firstName}
-                                                                error={Boolean(touched.firstName && errors.firstName)}
+                                                                placeholder="Password"
+                                                                // InputProps={{ classes: { input: classes.input } }}
+                                                                value={values.password}
+                                                                error={Boolean(touched.password && errors.password)}
                                                                 fullWidth
-                                                                helperText={touched.firstName && errors.firstName}
+                                                                helperText={touched.password && errors.password}
                                                                 onBlur={handleBlur}
                                                                 onChange={handleChange}
+                                                                type="password"
                                                                 variant="outlined"
                                                                 my={2}
                                                             />
                                                         </div>
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
-                                                        <div style={{ display: "flex" }}>
-                                                            <Typography variant="h5" style={{ width: "158px", marginTop: "20px", }} classes={{ h5: classes.h5 }}>New Password:</Typography>
+                                                        <div style={{ display: "flex", alignItems: "center" }}>
+                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>New Password:</Typography>
                                                             <TextField
-                                                                name="firstName"
+                                                                name="password"
                                                                 InputLabelProps={{ shrink: false }}
-                                                                placeholder="First Name"
-                                                                InputProps={{ classes: { input: classes.input } }}
-                                                                // label="First Name"
-                                                                value={values.firstName}
-                                                                error={Boolean(touched.firstName && errors.firstName)}
+                                                                // InputProps={{ classes: { input: classes.input } }}
+                                                                value={values.password}
+                                                                error={Boolean(touched.password && errors.password)}
                                                                 fullWidth
-                                                                helperText={touched.firstName && errors.firstName}
+                                                                helperText={touched.password && errors.password}
                                                                 onBlur={handleBlur}
                                                                 onChange={handleChange}
+                                                                type="password"
                                                                 variant="outlined"
                                                                 my={2}
                                                             />
                                                         </div>
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
-                                                        <div style={{ display: "flex" }}>
-                                                            <Typography variant="h5" style={{ width: "255px", marginTop: "20px", }} classes={{ h5: classes.h5 }}>Confirm New Password:</Typography>
+                                                        <div style={{ display: "flex", alignItems: "center" }}>
+                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>Confirm New Password:</Typography>
                                                             <TextField
-                                                                name="firstName"
+                                                                name="confirmPassword"
                                                                 InputLabelProps={{ shrink: false }}
-                                                                placeholder="First Name"
-                                                                InputProps={{ classes: { input: classes.input } }}
-                                                                // label="First Name"
-                                                                value={values.firstName}
-                                                                error={Boolean(touched.firstName && errors.firstName)}
+
+                                                                // label="Confirm password"
+                                                                value={values.confirmPassword}
+                                                                error={Boolean(
+                                                                    touched.confirmPassword && errors.confirmPassword
+                                                                )}
                                                                 fullWidth
-                                                                helperText={touched.firstName && errors.firstName}
+                                                                helperText={touched.confirmPassword && errors.confirmPassword}
                                                                 onBlur={handleBlur}
                                                                 onChange={handleChange}
+                                                                type="password"
                                                                 variant="outlined"
                                                                 my={2}
+                                                            // InputProps={{ classes: { input: classes.input } }}
                                                             />
                                                         </div>
                                                     </Grid>

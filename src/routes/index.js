@@ -6,7 +6,7 @@ import async from "../components/Async";
 import {
   CreditCard,
   Monitor,
-  Users,
+  Users as UsersIcon,
   User,
   Copy,
   FilePlus,
@@ -17,6 +17,7 @@ import NewRrquest from "../pages/protected/companies/Integrations/support/newReq
 
 import Integration from "../pages/protected/companies/Integrations/addons";
 import MyProfile from "../pages/protected/companies/Integrations/account-settings/myProfile";
+import Users from "../pages/protected/companies/Integrations/account-settings/users";
 
 import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
@@ -193,10 +194,10 @@ const accountSettings = {
       component: MyProfile,
     },
     {
-      path: "/components/accordion",
+      path: "/account-settings/users",
       name: "Users",
-      icon: <Users />,
-      component: Accordion,
+      icon: <UsersIcon />,
+      component: Users,
     },
     {
       path: "/components/avatars",
