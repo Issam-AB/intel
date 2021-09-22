@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components/macro";
 import * as Yup from "yup";
+import styled from "styled-components/macro";
 import { Formik } from "formik";
 import { Close as CloseIcon } from "@material-ui/icons";
 import {
@@ -10,15 +10,18 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  Divider as MuiDivider,
-  Chip as MuiChip,
   TextField,
   Card,
   CardContent,
+  CircularProgress,
+  Box,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { Alert as MuiAlert } from "@material-ui/lab";
 // import { spacing } from "@material-ui/system";
+import { spacing } from "@material-ui/system";
+
+const Alert = styled(MuiAlert)(spacing);
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -79,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
   // const [open, setOpen] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
   const classes = useStyles();
   // const handleClickOpen = () => {
   //   setOpen(true);

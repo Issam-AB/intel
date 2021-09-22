@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import {
   CardContent,
-  Card as MuiCard,
   Typography,
-  Grid,
   Card,
   Chip as MuiChip,
   InputBase,
   Button,
   CardActions,
 } from "@material-ui/core";
-import {
-  Block as BlockIcon,
-  TagFaces as TagFacesIcon,
-} from "@material-ui/icons";
+import { Block as BlockIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
 const Spacer = styled.div(spacing);

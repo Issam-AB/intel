@@ -13,6 +13,8 @@ import {
   Divider as MuiDivider,
   TextField,
   Card,
+  Box,
+  CircularProgress,
   CardContent,
   FormControl,
   Select,
@@ -21,6 +23,8 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 import { Add } from "@material-ui/icons";
 import { spacing } from "@material-ui/system";
+import { Alert as MuiAlert } from "@material-ui/lab";
+const Alert = styled(MuiAlert)(spacing);
 
 const Divider = styled(MuiDivider)(spacing);
 
@@ -88,15 +92,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
-  // const [open, setOpen] = React.useState(false);
   const classes = useStyles();
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
   const timeOut = (time) => new Promise((res) => setTimeout(res, time));
   const initialValues = {
     firstName: "Lucy",

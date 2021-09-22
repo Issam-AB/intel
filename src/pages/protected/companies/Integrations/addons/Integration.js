@@ -2,14 +2,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import {
-  Box,
-  Grid,
-  Typography,
-  Chip as MuiChip,
-  Popper,
-  Button,
-} from "@material-ui/core";
+import { Box, Typography, Chip as MuiChip } from "@material-ui/core";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Popup from "./popup";
