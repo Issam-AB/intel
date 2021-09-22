@@ -24,6 +24,8 @@ const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
+
+
 const useStyles = makeStyles({
   title: {
     fontSize: "18px",
@@ -50,7 +52,25 @@ const useStyles = makeStyles({
 });
 
 const Profile = () => {
+  const [isProfileShowing, setProfileShowing] = React.useState(true);
+  const [isPasswordShowing, setPasswordShowing] = React.useState(false)
+
+  const handleShowProfile = () => {
+    setPasswordShowing(false)
+    setProfileShowing(true)
+  }
+
+  const handleShowPassword = () => {
+    setPasswordShowing(true)
+    setProfileShowing(false)
+  }
+
   const classes = useStyles();
+
+
+
+
+
   return (
     <React.Fragment>
       <Helmet title="Integration" />
@@ -80,70 +100,39 @@ const Profile = () => {
             </Typography>
           </div>
           <div style={{ marginTop: "13px" }}>
-            <ListItem button classes={{ root: classes.ListItem }}>
+            <ListItem style={{ backgroundColor: isProfileShowing ? "#ffff" : false }} button classes={{ root: classes.ListItem }}>
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <User className={classes.icons} />
               </ListItemIcon>
               <ListItemText
                 primary="Edit Profile"
                 classes={{ primary: classes.primary }}
+                onClick={handleShowProfile}
               />
             </ListItem>
-            <ListItem button classes={{ root: classes.ListItem }}>
+            <ListItem style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }} classes={{ root: classes.ListItem }}>
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <Lock className={classes.icons} />
               </ListItemIcon>
               <ListItemText
                 primary="Change Password"
                 classes={{ primary: classes.primary }}
+                onClick={handleShowPassword}
               />
             </ListItem>
           </div>
         </Grid>
         <Grid item>
-          <EditeProfile />
+          {isProfileShowing ? <EditeProfile /> : ""}
+          {isPasswordShowing ? <PassordChange /> : ""}
+
           <Spacer mb={50} />
         </Grid>
       </Grid>
 
       <Grid container direction="row">
-        <Grid item>
-          <div>
-            <Typography variant="h4" className={classes.title}>
-              My Profile Settings
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              style={{ fontsize: "13px", fontWeight: "600" }}
-            >
-              Manage your Intelegence account
-            </Typography>
-          </div>
-          <div style={{ marginTop: "13px" }}>
-            <ListItem button classes={{ root: classes.ListItem }}>
-              <ListItemIcon classes={{ root: classes.ListItemIcon }}>
-                <User className={classes.icons} />
-              </ListItemIcon>
-              <ListItemText
-                primary="Edit Profile"
-                classes={{ primary: classes.primary }}
-              />
-            </ListItem>
-            <ListItem button classes={{ root: classes.ListItem }}>
-              <ListItemIcon classes={{ root: classes.ListItemIcon }}>
-                <Lock className={classes.icons} />
-              </ListItemIcon>
-              <ListItemText
-                primary="Change Password"
-                classes={{ primary: classes.primary }}
-              />
-            </ListItem>
-          </div>
-        </Grid>
-        <Grid item>
-          <PassordChange />
-          <Spacer mb={80} />
-        </Grid>
+
+
       </Grid>
 
     </React.Fragment>

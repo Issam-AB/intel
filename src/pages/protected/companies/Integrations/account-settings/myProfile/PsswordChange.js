@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import moment from "moment-timezone";
-import TimezoneSelect, { i18nTimezones } from "react-timezone-select";
+
 import {
     Paper,
     Typography,
     Divider as MuiDivider,
-    Avatar,
     Button,
     Box,
     Button as MuiButton,
@@ -18,14 +16,14 @@ import {
     TextField as MuiTextField,
 
 } from "@material-ui/core";
-import Popup from "./Popup"
+
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
 import { Lock, Check } from "react-feather"
+import PasswordStrengthBar from 'react-password-strength-bar';
 
-import { Backup, Search as SearchIcon } from "@material-ui/icons";
 const Alert = styled(MuiAlert)(spacing);
 
 const TextField = styled(MuiTextField)(spacing);
@@ -107,17 +105,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 const Divider = styled(MuiDivider)(spacing);
-const EditProfile = () => {
+const PsswordChnage = ({ score }) => {
     const classes = useStyles();
-    const [tz, setTz] = useState(
-        Intl.DateTimeFormat().resolvedOptions().timeZone
-    );
-    const [datetime, setDatetime] = useState(moment());
 
-    useEffect(() => {
-        const tzValue = tz.value ?? tz;
-        setDatetime(datetime.tz(tzValue));
-    }, [tz, datetime]);
+
 
     const timeOut = (time) => new Promise((res) => setTimeout(res, time));
 
@@ -125,8 +116,8 @@ const EditProfile = () => {
         firstName: "Lucy",
         lastName: "Lavender",
         email: "lucylavender@gmail.com",
-        password: "mypassword123",
-        confirmPassword: "mypassword123",
+        password: "",
+        confirmPassword: "",
     };
 
     const validationSchema = Yup.object().shape({
@@ -259,7 +250,7 @@ const EditProfile = () => {
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
-                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>New Password:</Typography>
+                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>New Password: </Typography>
                                                             <TextField
                                                                 name="password"
                                                                 InputLabelProps={{ shrink: false }}
@@ -274,7 +265,10 @@ const EditProfile = () => {
                                                                 variant="outlined"
                                                                 my={2}
                                                             />
+
+
                                                         </div>
+                                                        <PasswordStrengthBar password={values.password} style={{ width: '27rem', height: '5px', marginLeft: "11rem" }} />
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
@@ -338,4 +332,4 @@ const EditProfile = () => {
     );
 };
 
-export default EditProfile;
+export default PsswordChnage;

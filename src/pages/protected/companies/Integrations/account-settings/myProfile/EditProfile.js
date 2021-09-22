@@ -179,7 +179,7 @@ const EditProfile = () => {
 
           <div style={{ margin: "76px 0px" }}>
             <Button
-              variant="primary"
+              // variant="primary"
               className={classes.buttonPrimary}
               startIcon={<Backup />}
             >

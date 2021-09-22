@@ -316,22 +316,10 @@ function EnhancedTableHead(props) {
   );
 }
 
-const options = [
-  "Custom",
-  "Reccent (Last 30 Dyas + Today)",
-  "Yesterday",
-  "Last 7 Days",
-  "Last 30 Days",
-  "This Month",
-  "Last Month",
-  "This Year",
-  "Last Year",
-];
+
 let EnhancedTableToolbar = (props) => {
   const { numSelected, handleSelectAllClick } = props;
   const classes = useStyles();
-  const [value, setValue] = React.useState(options[0]);
-  const [inputValue, setInputValue] = React.useState("");
 
   const specificAppBar = numSelected ? " " : classes.appBar;
 
@@ -367,18 +355,26 @@ let EnhancedTableToolbar = (props) => {
               ""
             )}
           </div>
-          <div style={{ width: "18rem" }}>
-            <RowOptions />
+          <div>
+            <Button
+              variant="contained"
+              style={{
+                color: "white",
+                backgroundColor: "#e01e1e",
+              }}
+            >
+              Delete Selected
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
-      <Toolbar>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
+      <Toolbar style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between"
+      }}>
+
+        <div style={{ display: "flex", }}>
           <Filter className={classes.icon} />
           <Typography
             variant="h6"
@@ -387,54 +383,15 @@ let EnhancedTableToolbar = (props) => {
           >
             Good Leads
           </Typography>
-          <Paper component="form" className={classes.input}>
-            <IconButton className={classes.iconButton} aria-label="menu">
-              <SearchIcon />
-            </IconButton>
-            <InputBase
-              placeholder="Search Good Leads"
-              inputProps={{ "aria-label": "search good leads" }}
-            />
-          </Paper>
-        </div>
-        <Spacer />
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          <Autocomplete
-            classes={{
-              root: classes.autocomplete,
-              inputFocused: classes.focused,
-            }}
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-            inputValue={inputValue}
-            onInputChange={(event, newInputValue) => {
-              setInputValue(newInputValue);
-            }}
-            id="controllable-states-demo"
-            options={options}
-            size="small"
-            style={{ width: 300 }}
-            renderInput={(params) => (
-              <TextField {...params} label="Controllable" variant="outlined" />
-            )}
-          />
-          <Button className={classes.export} variant="contained">
-            Export (10)
-          </Button>
 
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <MoreVertical />
-            </IconButton>
-          </Tooltip>
         </div>
+
+        <Tooltip title="Filter list">
+          <IconButton aria-label="Filter list">
+            <MoreVertical />
+          </IconButton>
+        </Tooltip>
+
       </Toolbar>
     </>
   );
