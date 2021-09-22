@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
 
-import Popup from "./Popup"
+import Popup from "./Popup";
 import { Button as MuiButton } from "@material-ui/core";
 
 // import { Plus } from "react-feather"
@@ -36,7 +36,7 @@ function Actions() {
 
   const handleClose = () => {
     setOpen(false);
-  }
+  };
   return (
     <React.Fragment>
       <Button

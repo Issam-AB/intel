@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import {
-  Close as CloseIcon,
-} from "@material-ui/icons";
+import { Close as CloseIcon } from "@material-ui/icons";
 import {
   Grid,
   Typography,
@@ -17,9 +15,8 @@ import {
   Card,
   CardContent,
   FormControl,
-  InputLabel,
   Select,
-  MenuItem
+  MenuItem,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Add } from "@material-ui/icons";
@@ -60,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   rootButton: {
     minWidth: "39px",
     marginTop: "-2px",
-    marginRight: "11px"
+    marginRight: "11px",
   },
   ButtonAprove: {
     backgroundColor: "#23CC94",
@@ -69,26 +66,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "12px 39px",
   },
   discription: {
-    fontSize: "14px", fontWeight: "500", lineHeight: "22px", marginTop: "10px"
+    fontSize: "14px",
+    fontWeight: "500",
+    lineHeight: "22px",
+    marginTop: "10px",
   },
   input: {
-    padding: "11.5px 14px"
+    padding: "11.5px 14px",
   },
   h5: {
-    fontSize: "13px", fontWeight: "700", marginBottom: "5px"
+    fontSize: "13px",
+    fontWeight: "700",
+    marginBottom: "5px",
   },
   select: {
     border: "1px solid #bfbfbf",
     borderRadius: "4px",
-    padding: "4px 12px "
+    padding: "4px 12px ",
     // backgroundColor: "white"
   },
-
 }));
 
 const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
   // const [open, setOpen] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
   const classes = useStyles();
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -145,13 +145,20 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
       onClose={handleClose}
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
-
     >
       <DialogTitle className={classes.dialogTitle}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Add style={{ width: "22px", color: "#6320EE", marginLeft: "10px" }} />
-            <Typography variant="h4" style={{ fontSize: "16px", fontWeight: "700" }}> Invite New User</Typography>
+            <Add
+              style={{ width: "22px", color: "#6320EE", marginLeft: "10px" }}
+            />
+            <Typography
+              variant="h4"
+              style={{ fontSize: "16px", fontWeight: "700" }}
+            >
+              {" "}
+              Invite New User
+            </Typography>
           </div>
           <Button
             style={{ color: "#868695" }}
@@ -163,7 +170,6 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
             <CloseIcon />
           </Button>
         </div>
-
       </DialogTitle>
 
       <DialogContent style={{ marginTop: "-18px" }}>
@@ -185,7 +191,6 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
           }) => (
             <Card mb={6}>
               <CardContent>
-
                 {status && status.sent && (
                   <Alert severity="success" my={3}>
                     [DEMO] Your data has been submitted successfully!
@@ -199,8 +204,10 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                 ) : (
                   <form onSubmit={handleSubmit}>
                     <Grid container spacing={6}>
-                      <Grid item md={12} style={{ padding: '9px' }} >
-                        <Typography variant="h5" classes={{ h5: classes.h5 }}>Email*:</Typography>
+                      <Grid item md={12} style={{ padding: "9px" }}>
+                        <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                          Email*:
+                        </Typography>
                         <TextField
                           InputProps={{ classes: { input: classes.input } }}
                           InputLabelProps={{ shrink: false }}
@@ -217,8 +224,10 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                           my={2}
                         />
                       </Grid>
-                      <Grid item md={12} style={{ padding: '9px' }} >
-                        <Typography variant="h5" classes={{ h5: classes.h5 }} >Access Level*:</Typography>
+                      <Grid item md={12} style={{ padding: "9px" }}>
+                        <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                          Access Level*:
+                        </Typography>
                         <FormControl fullWidth>
                           <Select
                             labelId="demo-simple-select-label"
@@ -229,7 +238,6 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                             disableUnderline
                             displayEmpty
                             className={classes.select}
-
                             getContentAnchorEl={null}
                             anchorOrigin={{
                               vertical: "bottom",
@@ -241,14 +249,25 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                             }}
                           >
                             <MenuItem value={""}>View Only Access</MenuItem>
-                            <MenuItem value={20} >Full Access</MenuItem>
-
+                            <MenuItem value={20}>Full Access</MenuItem>
                           </Select>
                         </FormControl>
                       </Grid>
-                      <Grid item md={12} style={{ padding: '9px' }} >
-                        <Typography variant="h5" classes={{ h5: classes.h5 }} >Role (optional)</Typography>
-                        <Typography variant="h5" style={{ fontSize: '12px', fontWeight: "600", marginBottom: '8px' }}  >"What role does this person play with your organization?"</Typography>
+                      <Grid item md={12} style={{ padding: "9px" }}>
+                        <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                          Role (optional)
+                        </Typography>
+                        <Typography
+                          variant="h5"
+                          style={{
+                            fontSize: "12px",
+                            fontWeight: "600",
+                            marginBottom: "8px",
+                          }}
+                        >
+                          "What role does this person play with your
+                          organization?"
+                        </Typography>
                         <TextField
                           InputLabelProps={{ shrink: false }}
                           placeholder="Last Name"
@@ -284,9 +303,8 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                         color="primary"
                         mt={3}
                       >
-                        Save changes
+                        Send Invite
                       </Button>
-
                     </div>
                   </form>
                 )}
@@ -294,9 +312,7 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
             </Card>
           )}
         </Formik>
-
       </DialogContent>
-
     </Dialog>
   );
 };

@@ -30,7 +30,7 @@ import {
   MenuItem,
   Select,
   InputLabel,
-  FormControl
+  FormControl,
 } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import {
@@ -174,7 +174,7 @@ const useStyles = makeStyles((theme) => ({
     width: "30px",
     height: "30px",
     backgroundColor: "#6A74C9",
-    marginRight: "10px"
+    marginRight: "10px",
   },
   select: {
     border: "1px solid #6A74C9",
@@ -184,17 +184,13 @@ const useStyles = makeStyles((theme) => ({
   },
   labelView: {
     color: "#6A74C9",
-  }
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(
-  member,
-  role,
-
-) {
+function createData(member, role) {
   return {
     member,
     role,
@@ -202,30 +198,12 @@ function createData(
 }
 
 const rows = [
-  createData(
-    "Ammanda Petersen",
-    "CEO",
-  ),
-  createData(
-    "Bonnie Roberts",
-    "Marketing Assistant",
-  ),
-  createData(
-    "Cleo Pala",
-    "Project Manager",
-  ),
-  createData(
-    "Danny James A.Lepaopao",
-    "Project Manager",
-  ),
-  createData(
-    "James Aaron Ramayan",
-    "SEO Officer",
-  ),
-  createData(
-    "Luvly M. Clarido",
-    "CTO",
-  ),
+  createData("Ammanda Petersen", "CEO"),
+  createData("Bonnie Roberts", "Marketing Assistant"),
+  createData("Cleo Pala", "Project Manager"),
+  createData("Danny James A.Lepaopao", "Project Manager"),
+  createData("James Aaron Ramayan", "SEO Officer"),
+  createData("Luvly M. Clarido", "CTO"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -316,7 +294,6 @@ function EnhancedTableHead(props) {
   );
 }
 
-
 let EnhancedTableToolbar = (props) => {
   const { numSelected, handleSelectAllClick } = props;
   const classes = useStyles();
@@ -368,13 +345,14 @@ let EnhancedTableToolbar = (props) => {
           </div>
         </Toolbar>
       </AppBar>
-      <Toolbar style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between"
-      }}>
-
-        <div style={{ display: "flex", }}>
+      <Toolbar
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{ display: "flex" }}>
           <Filter className={classes.icon} />
           <Typography
             variant="h6"
@@ -383,7 +361,6 @@ let EnhancedTableToolbar = (props) => {
           >
             Good Leads
           </Typography>
-
         </div>
 
         <Tooltip title="Filter list">
@@ -391,7 +368,6 @@ let EnhancedTableToolbar = (props) => {
             <MoreVertical />
           </IconButton>
         </Tooltip>
-
       </Toolbar>
     </>
   );
@@ -560,7 +536,7 @@ function RowOptions({ row }) {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-  const [age, setAge] = React.useState('');
+  const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -570,7 +546,13 @@ function RowOptions({ row }) {
       {/* <span> {row.refernce} Row Options</span> */}
       <div className={classes.divIcons}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label" style={{ fontSize: "12px", paddingLeft: "10px" }} classes={{ root: classes.labelView }}>View Only Access</InputLabel>
+          <InputLabel
+            id="demo-simple-select-label"
+            style={{ fontSize: "12px", paddingLeft: "10px" }}
+            classes={{ root: classes.labelView }}
+          >
+            View Only Access
+          </InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -580,13 +562,17 @@ function RowOptions({ row }) {
             disableUnderline
             className={classes.select}
 
-          // getContentAnchorEl={null}
-          // anchorOrigin={{ vertical: "bottom", horizontal: "top" }}
-          // transformOrigin={{ vertical: "bottom", horizontal: "bottom" }}
+            // getContentAnchorEl={null}
+            // anchorOrigin={{ vertical: "bottom", horizontal: "top" }}
+            // transformOrigin={{ vertical: "bottom", horizontal: "bottom" }}
           >
             <MenuItem value={10}>View Only Access</MenuItem>
-            <MenuItem value={20} style={{ color: "black", fontWeight: "600" }}>Full Access</MenuItem>
-            <MenuItem value={30} style={{ color: "red", fontWeight: "600" }}>Delete</MenuItem>
+            <MenuItem value={20} style={{ color: "black", fontWeight: "600" }}>
+              Full Access
+            </MenuItem>
+            <MenuItem value={30} style={{ color: "red", fontWeight: "600" }}>
+              Delete
+            </MenuItem>
           </Select>
         </FormControl>
       </div>

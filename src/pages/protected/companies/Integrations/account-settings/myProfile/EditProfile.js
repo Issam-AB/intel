@@ -16,14 +16,13 @@ import {
   CircularProgress,
   Grid,
   TextField as MuiTextField,
-
 } from "@material-ui/core";
-import Popup from "./Popup"
+import Popup from "./Popup";
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
-import { Lock } from "react-feather"
+import { Lock } from "react-feather";
 
 import { Backup, Search as SearchIcon } from "@material-ui/icons";
 const Alert = styled(MuiAlert)(spacing);
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     width: "63rem",
     height: "30rem",
     marginLeft: "42px",
-    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
   title: {
     fontSize: "14px",
@@ -55,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
   flex: {
     display: "flex",
-    height: "12rem"
+    height: "12rem",
   },
   buttonPrimary: {
     backgroundColor: "#6A74C9",
@@ -68,17 +67,19 @@ const useStyles = makeStyles((theme) => ({
     width: "13rem",
     marginLeft: "18px",
     marginTop: "14px",
-    lineHeight: "18px"
+    lineHeight: "18px",
   },
   input: {
-    padding: "11.5px 14px"
+    padding: "11.5px 14px",
   },
   h5: {
-    fontSize: "13px", fontWeight: "700"
+    fontSize: "13px",
+    fontWeight: "700",
   },
   h5select: {
-    fontSize: "13px", fontWeight: "700",
-    marginBottom: "7px"
+    fontSize: "13px",
+    fontWeight: "700",
+    marginBottom: "7px",
   },
   ButtonEmail: {
     backgroundColor: "#F9F9FC",
@@ -90,13 +91,12 @@ const useStyles = makeStyles((theme) => ({
   IconLock: {
     margin: "7px",
     height: "20px",
-    width: "20px"
-
+    width: "20px",
   },
   labelEmail: {
     fontSize: "12px",
     fontWeight: "700",
-  }
+  },
 }));
 const Divider = styled(MuiDivider)(spacing);
 const EditProfile = () => {
@@ -138,7 +138,6 @@ const EditProfile = () => {
     }),
   });
 
-
   const handleSubmit = async (
     values,
     { resetForm, setErrors, setStatus, setSubmitting }
@@ -161,7 +160,7 @@ const EditProfile = () => {
 
   const handleClose = () => {
     setOpen(false);
-  }
+  };
 
   return (
     <div>
@@ -208,7 +207,6 @@ const EditProfile = () => {
             }) => (
               <Card mb={6}>
                 <CardContent>
-
                   {status && status.sent && (
                     <Alert severity="success" my={3}>
                       [DEMO] Your data has been submitted successfully!
@@ -223,7 +221,9 @@ const EditProfile = () => {
                     <form onSubmit={handleSubmit}>
                       <Grid container spacing={6}>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5 }}>Your First Name:</Typography>
+                          <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                            Your First Name:
+                          </Typography>
                           <TextField
                             name="firstName"
                             InputLabelProps={{ shrink: false }}
@@ -231,7 +231,9 @@ const EditProfile = () => {
                             InputProps={{ classes: { input: classes.input } }}
                             // label="First Name"
                             value={values.firstName}
-                            error={Boolean(touched.firstName && errors.firstName)}
+                            error={Boolean(
+                              touched.firstName && errors.firstName
+                            )}
                             fullWidth
                             helperText={touched.firstName && errors.firstName}
                             onBlur={handleBlur}
@@ -241,7 +243,9 @@ const EditProfile = () => {
                           />
                         </Grid>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5 }} >Your Last Name:</Typography>
+                          <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                            Your Last Name:
+                          </Typography>
                           <TextField
                             InputLabelProps={{ shrink: false }}
                             placeholder="Last Name"
@@ -262,8 +266,12 @@ const EditProfile = () => {
 
                       <Grid container spacing={6}>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5select }} >TimeZone:</Typography>
-
+                          <Typography
+                            variant="h5"
+                            classes={{ h5: classes.h5select }}
+                          >
+                            TimeZone:
+                          </Typography>
 
                           {/* <TextField
                               name="firstName"
@@ -284,16 +292,17 @@ const EditProfile = () => {
                             timezones={{
                               ...i18nTimezones,
                               "America/Lima": "Pittsburgh",
-                              "Europe/Berlin": "Frankfurt"
+                              "Europe/Berlin": "Frankfurt",
                             }}
-                            error={Boolean(touched.firstName && errors.firstName)}
+                            error={Boolean(
+                              touched.firstName && errors.firstName
+                            )}
                           />
-
-
-
                         </Grid>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5 }} >Role:</Typography>
+                          <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                            Role:
+                          </Typography>
                           <TextField
                             InputProps={{ classes: { input: classes.input } }}
                             name="role"
@@ -311,16 +320,26 @@ const EditProfile = () => {
                       </Grid>
                       <Grid container spacing={6}>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5 }} >Email:</Typography>
+                          <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                            Email:
+                          </Typography>
                           <TextField
                             InputProps={{
-                              classes: { input: classes.input }, endAdornment:
+                              classes: { input: classes.input },
+                              endAdornment: (
                                 <>
                                   <Lock className={classes.IconLock} />
-                                  <Button onClick={handleClickOpen} classes={{ root: classes.ButtonEmail, label: classes.labelEmail }}>
+                                  <Button
+                                    onClick={handleClickOpen}
+                                    classes={{
+                                      root: classes.ButtonEmail,
+                                      label: classes.labelEmail,
+                                    }}
+                                  >
                                     Change
                                   </Button>
                                 </>
+                              ),
                             }}
                             InputLabelProps={{ shrink: false }}
                             name="email"
@@ -336,12 +355,17 @@ const EditProfile = () => {
                             my={2}
                           />
                           {open && (
-                            <Popup open={open} setOpen={setOpen} handleClose={handleClose} />
+                            <Popup
+                              open={open}
+                              setOpen={setOpen}
+                              handleClose={handleClose}
+                            />
                           )}
-
                         </Grid>
                         <Grid item md={6} xs={6}>
-                          <Typography variant="h5" classes={{ h5: classes.h5 }} >Phone Number:</Typography>
+                          <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                            Phone Number:
+                          </Typography>
                           <TextField
                             InputProps={{ classes: { input: classes.input } }}
                             InputLabelProps={{ shrink: false }}
@@ -377,7 +401,6 @@ const EditProfile = () => {
                         >
                           Save changes
                         </Button>
-
                       </div>
                     </form>
                   )}
@@ -385,7 +408,6 @@ const EditProfile = () => {
               </Card>
             )}
           </Formik>
-
         </div>
       </Paper>
     </div>

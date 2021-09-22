@@ -5,7 +5,7 @@ import styled, { withTheme } from "styled-components/macro";
 import { Helmet } from "react-helmet-async";
 
 import EditeProfile from "./EditProfile";
-import PassordChange from "./PsswordChange"
+import PassordChange from "./PsswordChange";
 import {
   Grid,
   Divider as MuiDivider,
@@ -23,8 +23,6 @@ const Divider = styled(MuiDivider)(spacing);
 const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
-
-
 
 const useStyles = makeStyles({
   title: {
@@ -53,23 +51,19 @@ const useStyles = makeStyles({
 
 const Profile = () => {
   const [isProfileShowing, setProfileShowing] = React.useState(true);
-  const [isPasswordShowing, setPasswordShowing] = React.useState(false)
+  const [isPasswordShowing, setPasswordShowing] = React.useState(false);
 
   const handleShowProfile = () => {
-    setPasswordShowing(false)
-    setProfileShowing(true)
-  }
+    setPasswordShowing(false);
+    setProfileShowing(true);
+  };
 
   const handleShowPassword = () => {
-    setPasswordShowing(true)
-    setProfileShowing(false)
-  }
+    setPasswordShowing(true);
+    setProfileShowing(false);
+  };
 
   const classes = useStyles();
-
-
-
-
 
   return (
     <React.Fragment>
@@ -100,7 +94,11 @@ const Profile = () => {
             </Typography>
           </div>
           <div style={{ marginTop: "13px" }}>
-            <ListItem style={{ backgroundColor: isProfileShowing ? "#ffff" : false }} button classes={{ root: classes.ListItem }}>
+            <ListItem
+              style={{ backgroundColor: isProfileShowing ? "#ffff" : false }}
+              button
+              classes={{ root: classes.ListItem }}
+            >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <User className={classes.icons} />
               </ListItemIcon>
@@ -110,7 +108,10 @@ const Profile = () => {
                 onClick={handleShowProfile}
               />
             </ListItem>
-            <ListItem style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }} classes={{ root: classes.ListItem }}>
+            <ListItem
+              style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }}
+              classes={{ root: classes.ListItem }}
+            >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <Lock className={classes.icons} />
               </ListItemIcon>
@@ -130,11 +131,7 @@ const Profile = () => {
         </Grid>
       </Grid>
 
-      <Grid container direction="row">
-
-
-      </Grid>
-
+      <Grid container direction="row"></Grid>
     </React.Fragment>
   );
 };

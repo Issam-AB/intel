@@ -72,7 +72,6 @@ const Chip = styled(MuiChip)`
   margin-bottom: ${(props) => props.theme.spacing(4)}px;
 `;
 
-
 const integration = [
   {
     id: "1",
@@ -373,7 +372,7 @@ const Integration = () => {
 
   const handleClose = () => {
     setOpen(false);
-  }
+  };
   return (
     <div className={classes.item}>
       {integration.map((item, index) => (
@@ -395,10 +394,16 @@ const Integration = () => {
                 classes={{ root: classes.chips, label: classes.label }}
               />
             </div>
-
           </Box>
           {open && (
-            <Popup open={open} setOpen={setOpen} handleClose={handleClose} icons={item.icon} name={item.name} discription={item.decsription} />
+            <Popup
+              open={open}
+              setOpen={setOpen}
+              handleClose={handleClose}
+              icons={item.icon}
+              name={item.name}
+              discription={item.decsription}
+            />
           )}
         </div>
       ))}

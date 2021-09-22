@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 
 import { Button as MuiButton } from "@material-ui/core";
 
-// import { Plus } from "react-feather"
+import Popup from "./Popup";
 import { makeStyles } from "@material-ui/core/styles";
 import { Add } from "@material-ui/icons";
 import { spacing } from "@material-ui/system";
@@ -27,14 +27,14 @@ const Button = styled(MuiButton)(spacing);
 
 function Actions() {
   const classes = useStyle();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const handleClickOpen = () => {
+    setOpen(true);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setOpen(false);
   };
 
   return (
@@ -44,11 +44,14 @@ function Actions() {
         className={classes.button}
         // aria-owns={anchorEl ? "simple-menu" : undefined}
         // aria-haspopup="true"
-        onClick={handleClick}
+        onClick={handleClickOpen}
         startIcon={<Add />}
       >
         Open New Ticket
       </Button>
+      {open && (
+        <Popup open={open} setOpen={setOpen} handleClose={handleClose} />
+      )}
     </React.Fragment>
   );
 }

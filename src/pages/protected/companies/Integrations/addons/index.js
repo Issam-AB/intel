@@ -107,7 +107,10 @@ const CallLog = () => {
               />
             </Paper>
             <Button
-              classes={{ root: classes.ButtonSearch, label: classes.textButton }}
+              classes={{
+                root: classes.ButtonSearch,
+                label: classes.textButton,
+              }}
             >
               Search
             </Button>

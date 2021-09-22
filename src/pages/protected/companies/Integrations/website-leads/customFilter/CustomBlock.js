@@ -76,7 +76,7 @@ const CustomBlock = ({ title, chipData, handleDelete, button }) => {
           <Typography variant="h6" className={classes.title}>
             {title}
           </Typography>
-          <form className={classes.root} noValidate autocomplete="off">
+          <form className={classes.root} noValidate autoComplete="off">
             <InputBase
               multiline
               variant="outlined"
