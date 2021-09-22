@@ -21,8 +21,9 @@ import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
-import { Lock, Check } from "react-feather"
+import { X, Check } from "react-feather"
 import PasswordStrengthBar from 'react-password-strength-bar';
+import { validate } from "@material-ui/pickers";
 
 const Alert = styled(MuiAlert)(spacing);
 
@@ -38,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
     },
     title: {
-        margin: "31px ", fontSize: "15px", fontWeight: "600", marginTop: "30px", marginBottom: "10px", marginLeft: "33px"
+        fontSize: "14px",
+        fontWeight: "700",
+        padding: "11px 33px",
     },
     purple: {
         color: "white",
@@ -68,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         padding: "11.5px 14px",
-        width: "0px"
+
     },
     h5: {
         fontSize: "13px", fontWeight: "700",
@@ -97,35 +100,85 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         width: "19px",
         color: "#50b432",
+
     },
     subtitle: {
         fontSize: "13px",
         fontWeight: "700",
-        marginLeft: "8px"
+        marginLeft: "8px",
+        width: "13rem",
+        lineHeight: "2rem"
     }
 }));
 const Divider = styled(MuiDivider)(spacing);
-const PsswordChnage = ({ score }) => {
-    const classes = useStyles();
+const PsswordChnage = () => {
 
+    const [isPasswordLengthValid, setIsPasswordLengthValid] = React.useState(false);
+    const [isPasswordUper, setPasswordUper] = React.useState(false);
+    const [isPasswordLower, setPasswordLower] = React.useState(false);
+    const [isPasswordNumber, setPasswordNumber] = React.useState(false);
+    const [isPasswordCharacter, setPasswordCharacter] = React.useState(false);
 
+    const [open, setOpen] = useState(false);
 
-    const timeOut = (time) => new Promise((res) => setTimeout(res, time));
-
-    const initialValues = {
+    const [initialValues, setInitialValues] = React.useState({
         firstName: "Lucy",
         lastName: "Lavender",
         email: "lucylavender@gmail.com",
-        password: "",
+        password: "huhuhu",
+        newPassword: "",
         confirmPassword: "",
-    };
+    })
+
+
+    const classes = useStyles();
+    const timeOut = (time) => new Promise((res) => setTimeout(res, time));
+
+    // const initialValues = {
+    //     firstName: "Lucy",
+    //     lastName: "Lavender",
+    //     email: "lucylavender@gmail.com",
+    //     password: "huhuhu",
+    //     newPassword: "",
+    //     confirmPassword: "",
+    // };
+
+
+
+    const validatePassword = password => {
+
+        setIsPasswordLengthValid(checkChars(password));
+        setPasswordUper(checkChars(password, "upper"));
+        setPasswordLower(checkChars(password, "lower"));
+        setPasswordNumber(checkChars(password, "number"));
+        setPasswordCharacter(checkChars(password, "character"));
+    }
+
+
+
+
+    function checkChars(password, type = null) {
+        switch (type) {
+            case 'upper':
+                return /[A-Z]/.test(password);
+            case 'lower':
+                return /[a-z]/.test(password);
+            case 'number':
+                return /[0-9]/.test(password);
+            case 'character':
+                return /[(~!@#$%^&*()=+)]/.test(password);
+            default:
+                return password.length >= 8
+        }
+    }
+
 
     const validationSchema = Yup.object().shape({
         firstName: Yup.string().required("Required"),
         lastName: Yup.string().required("Required"),
         email: Yup.string().email().required("Required"),
         password: Yup.string()
-            .min(12, "Must be at least 12 characters")
+            .min(12, "Must be at least 8 characters")
             .max(255)
             .required("Required"),
         confirmPassword: Yup.string().when("password", {
@@ -143,6 +196,7 @@ const PsswordChnage = ({ score }) => {
         { resetForm, setErrors, setStatus, setSubmitting }
     ) => {
         try {
+
             await timeOut(1500);
             resetForm();
             setStatus({ sent: true });
@@ -153,43 +207,44 @@ const PsswordChnage = ({ score }) => {
             setSubmitting(false);
         }
     };
-    const [open, setOpen] = useState(false);
     const handleClickOpen = () => {
         setOpen(true);
     };
 
-    const handleClose = () => {
-        setOpen(false);
-    }
+
+    // const handleClose = () => {
+    //     setOpen(false);
+    // }
 
     return (
         <div>
             <Paper elevation={3} className={classes.paper}>
                 <Typography className={classes.title}>Edit My Profile</Typography>
-                <Divider />
+                <Divider mb={8} />
                 <div style={{ display: 'flex' }}>
 
-                    <div style={{ marginLeft: "40px", width: "25rem" }}>
+                    <div style={{ marginLeft: "40px", width: "28rem" }}>
                         <Typography variant="subtitle1" className={classes.title}> Password must contain:</Typography>
                         <div style={{ marginLeft: "39px" }}>
-                            <span style={{ display: "flex" }}>
-                                <Check className={classes.icon} />
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                                {isPasswordLengthValid ? <Check className={classes.icon} /> : <X style={{ width: "19px", color: "#e01e1e", }} />}
                                 <Typography variant="subtitle1" className={classes.subtitle}> At Least 8 characters</Typography>
                             </span>
-                            <span style={{ display: "flex" }}>
-                                <Check className={classes.icon} />
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                                {isPasswordUper ? <Check className={classes.icon} /> : <X style={{ width: "19px", color: "#e01e1e", }} />}
+
                                 <Typography variant="subtitle1" className={classes.subtitle}> At least 1 upper case letter (A-Z)</Typography>
                             </span>
-                            <span style={{ display: "flex" }}>
-                                <Check className={classes.icon} />
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                                {isPasswordLower ? <Check className={classes.icon} /> : <X style={{ width: "19px", color: "#e01e1e", }} />}
                                 <Typography variant="subtitle1" className={classes.subtitle}> At least 1 lower case letter (a-z)</Typography>
                             </span>
-                            <span style={{ display: "flex" }}>
-                                <Check className={classes.icon} />
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                                {isPasswordNumber ? <Check className={classes.icon} /> : <X style={{ width: "19px", color: "#e01e1e", }} />}
                                 <Typography variant="subtitle1" className={classes.subtitle}> At least 1 number (0-1)</Typography>
                             </span>
-                            <span style={{ display: "flex" }}>
-                                <Check className={classes.icon} />
+                            <span style={{ display: "flex", alignItems: "center" }}>
+                                {isPasswordCharacter ? <Check className={classes.icon} /> : <X style={{ width: "19px", color: "#e01e1e", }} />}
                                 <Typography variant="subtitle1" className={classes.subtitle} style={{ width: "180px" }}> At least 1 special characters (~!@#$%^&*()=+)</Typography>
                             </span>
                         </div>
@@ -201,16 +256,18 @@ const PsswordChnage = ({ score }) => {
                             initialValues={initialValues}
                             validationSchema={validationSchema}
                             onSubmit={handleSubmit}
+                            onchange={values => { console.log(values.newPassword) }}
                         >
                             {({
                                 errors,
                                 handleBlur,
-                                handleChange,
                                 handleSubmit,
                                 isSubmitting,
+                                handleChange,
                                 touched,
                                 values,
                                 status,
+                                validateField, validateForm
                             }) => (
                                 <Card mb={6}>
                                     <CardContent>
@@ -227,15 +284,15 @@ const PsswordChnage = ({ score }) => {
                                             </Box>
                                         ) : (
                                             <form onSubmit={handleSubmit}>
-                                                <Grid container spacing={6}>
+                                                <Grid container spacing={6} style={{ margin: "-36px -39px" }}>
                                                     <Grid item md={12} xs={6}>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
-                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>Current Password:</Typography>
+                                                            <Typography variant="h5" style={{ width: "15rem", paddingLeft: "3rem" }} classes={{ h5: classes.h5 }}>Current Password:</Typography>
                                                             <TextField
                                                                 name="password"
                                                                 InputLabelProps={{ shrink: false }}
                                                                 placeholder="Password"
-                                                                // InputProps={{ classes: { input: classes.input } }}
+                                                                InputProps={{ classes: { input: classes.input } }}
                                                                 value={values.password}
                                                                 error={Boolean(touched.password && errors.password)}
                                                                 fullWidth
@@ -250,12 +307,12 @@ const PsswordChnage = ({ score }) => {
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
-                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>New Password: </Typography>
+                                                            <Typography variant="h5" style={{ width: "15rem", paddingLeft: "4rem" }} classes={{ h5: classes.h5 }}>New Password: </Typography>
                                                             <TextField
-                                                                name="password"
+                                                                name="newPassword"
                                                                 InputLabelProps={{ shrink: false }}
-                                                                // InputProps={{ classes: { input: classes.input } }}
-                                                                value={values.password}
+                                                                InputProps={{ classes: { input: classes.input } }}
+                                                                value={values.newPassword}
                                                                 error={Boolean(touched.password && errors.password)}
                                                                 fullWidth
                                                                 helperText={touched.password && errors.password}
@@ -264,15 +321,17 @@ const PsswordChnage = ({ score }) => {
                                                                 type="password"
                                                                 variant="outlined"
                                                                 my={2}
+                                                                inputRef={validatePassword(values.newPassword)}
+
                                                             />
 
 
                                                         </div>
-                                                        <PasswordStrengthBar password={values.password} style={{ width: '27rem', height: '5px', marginLeft: "11rem" }} />
+                                                        <PasswordStrengthBar password={values.newPassword} style={{ width: '27rem', height: '5px', marginLeft: "11rem" }} />
                                                     </Grid>
                                                     <Grid item md={12} xs={6}>
                                                         <div style={{ display: "flex", alignItems: "center" }}>
-                                                            <Typography variant="h5" style={{ width: "15rem" }} classes={{ h5: classes.h5 }}>Confirm New Password:</Typography>
+                                                            <Typography variant="h5" style={{ width: "16rem", paddingLeft: "1rem" }} classes={{ h5: classes.h5 }}>Confirm New Password:</Typography>
                                                             <TextField
                                                                 name="confirmPassword"
                                                                 InputLabelProps={{ shrink: false }}
@@ -289,7 +348,7 @@ const PsswordChnage = ({ score }) => {
                                                                 type="password"
                                                                 variant="outlined"
                                                                 my={2}
-                                                            // InputProps={{ classes: { input: classes.input } }}
+                                                                InputProps={{ classes: { input: classes.input } }}
                                                             />
                                                         </div>
                                                     </Grid>
