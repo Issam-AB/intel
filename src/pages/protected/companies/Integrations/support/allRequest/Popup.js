@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  Forward as ForwardIcon,
-  Block as BlockIcon,
-  Close as CloseIcon,
-  ArrowForward as ArrowForwardIcon,
-  ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
+import { Close as CloseIcon } from "@material-ui/icons";
+import { Link } from "react-feather";
 import {
   Grid,
   Typography,
@@ -17,14 +12,30 @@ import {
   Box,
   DialogTitle,
   Divider as MuiDivider,
-  // Slide,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Avatar,
+  LinearProgress,
+  Paper,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
-
+const Spacer = styled.div(spacing);
 const Divider = styled(MuiDivider)(spacing);
 
 const useStyles = makeStyles((theme) => ({
+  bar: {
+    borderRadius: 5,
+    backgroundColor: "#445AC9",
+    width: "3rem",
+  },
+  rootBar: {
+    width: "20rem",
+    height: "9px",
+  },
   icon: {
     color: "#6320EE",
     marginRight: "10px",
@@ -46,28 +57,29 @@ const useStyles = makeStyles((theme) => ({
   startICon: {
     margin: 0,
   },
+  input: {
+    padding: "11.5px 14px",
+    cursor: "pointer",
+  },
+  h5: {
+    fontSize: "13px",
+    fontWeight: "700",
+    marginBottom: "10px",
+  },
+  papers: {
+    backgroundColor: "#ececec",
+    padding: "6px",
+    marginTop: "-39px",
+    cursor: "pointer",
+  },
+  //   label: {
+  //     margin: "-7px 16px",
+  //   },
 }));
 
 const Popup = ({ open, setOpen, handleClose }) => {
-  // const [open, setOpen] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
   const classes = useStyles();
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  const handlBlock = (e) => {
-    console.log("this is working fine");
-    e.preventDefault();
-    // e.target.style.color = "black";
-    // e.target.button.style.backgroundColor = "purple";
-    setVisible(!visible);
-    console.log("target", e);
-  };
   return (
     <Dialog
       classes={{ paper: classes.dialogwrapper }}
@@ -78,7 +90,6 @@ const Popup = ({ open, setOpen, handleClose }) => {
       onClose={handleClose}
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
-      style={{ width: "100%", height: "100%" }}
     >
       <DialogTitle className={classes.dialogTitle}>
         <div style={{ display: "flex" }}>
@@ -101,60 +112,122 @@ const Popup = ({ open, setOpen, handleClose }) => {
         <Divider my={4} style={{ marginRight: "20px" }} />
       </DialogTitle>
 
-      <DialogContent style={{ marginTop: "-18px" }}>
-        <Grid container direction="row" alignItems="center"></Grid>
-
-        <Grid container>
-          <Grid item>
-            <Typography
-              variant="subtitle1"
-              style={{
-                fontWeight: "800",
-                fontSize: "12px",
-                paddingBottom: "5px",
-                lineHeight: "30px",
-              }}
-            >
-              Message:
+      <DialogContent style={{ marginTop: "-18px", overflow: "hidden" }}>
+        <form>
+          <Grid Container item md={12} xs={12}>
+            <Typography variant="h5" classes={{ h5: classes.h5 }}>
+              Subject:
             </Typography>
+            <TextField
+              name="subject"
+              InputLabelProps={{ shrink: false }}
+              placeholder="Type your subject"
+              InputProps={{ classes: { input: classes.input } }}
+              fullWidth
+              variant="outlined"
+              my={2}
+            />
           </Grid>
-          <Grid item>
-            <Typography
-              variant="subtitle1"
-              style={{ fontSize: "12px", fontWeight: "600" }}
-            >
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.Lorem Ipsum is
-              simply dummy text of the printing and typesetting industry.
-            </Typography>
+          <Spacer mb={8} />
+          <Grid container spacing={6}>
+            <Grid item md={6} xs={6}>
+              <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                Department:
+              </Typography>
+              <FormControl fullWidth>
+                <InputLabel
+                  shrink={false}
+                  style={{ margin: "-7px 10px" }}
+                  id="demo-simple-select-label"
+                >
+                  Department
+                </InputLabel>
+                <Select
+                  classes={{ root: classes.input }}
+                  InputLabelProps={{ shrink: false }}
+                  variant="outlined"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  //   value={age}
+                  //   onChange={handleChange}
+                >
+                  <MenuItem value={10}>Technical Support</MenuItem>
+                  <MenuItem value={20}>Seles Support</MenuItem>
+                  <MenuItem value={30}>Billing Department</MenuItem>
+                  <MenuItem value={30}>Others</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item md={6} xs={6}>
+              <Typography variant="h5" classes={{ h5: classes.h5 }}>
+                Priority:
+              </Typography>
+              <FormControl fullWidth>
+                <InputLabel
+                  shrink={false}
+                  style={{ margin: "-7px 10px" }}
+                  id="demo-simple-select-label"
+                >
+                  Priority
+                </InputLabel>
+                <Select
+                  classes={{ root: classes.input }}
+                  InputLabelProps={{ shrink: false }}
+                  variant="outlined"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  //   value={age}
+                  //   onChange={handleChange}
+                >
+                  <MenuItem value={10}>High</MenuItem>
+                  <MenuItem value={20}>Medium</MenuItem>
+                  <MenuItem value={30}>Law</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
           </Grid>
-        </Grid>
-        <Divider my={4} style={{ marginRight: "20px" }} />
-        <Grid container direction="row" alignItems="center" spacing={10}>
-          <Grid item>
-            <Typography
-              variant="subtitle1"
-              style={{ fontSize: "12px", fontWeight: "800" }}
-            >
-              Source URL:
-            </Typography>
+          <Divider my={8} />
+          <Grid container direction="row" spacing={5}>
+            <Grid item>
+              <Avatar style={{ backgroundColor: "#1E88E5" }}>C</Avatar>
+            </Grid>
+            <Grid item md={11} xs={12}>
+              <TextField
+                InputLabelProps={{ shrink: false }}
+                InputProps={{ classes: { input: classes.input } }}
+                id="outlined-multiline-static"
+                // label="Multiline"
+                multiline
+                rows={4}
+                defaultValue="Type here to Reply to Ticket"
+                fullWidth
+                variant="outlined"
+              />
+              <Paper className={classes.papers}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography variant="subtitle1">
+                    AtachmentFile Name (456 K)
+                  </Typography>
+                  <LinearProgress
+                    variant="determinate"
+                    value={50}
+                    classes={{
+                      bar: classes.bar,
+                      root: classes.rootBar,
+                    }}
+                  />
+                  <CloseIcon />
+                </div>
+              </Paper>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Typography
-              variant="subtitle1"
-              style={{
-                color: "#868695",
-                fontSize: "12px",
-                fontWeight: "600",
-              }}
-            >
-              https://metalroofing.com/free-estimate/
-            </Typography>
-          </Grid>
-        </Grid>
-        <Divider my={5} style={{ marginRight: "20px" }} />
+        </form>
       </DialogContent>
 
       <DialogActions style={{ paddingBottom: "35px" }}>
@@ -165,83 +238,22 @@ const Popup = ({ open, setOpen, handleClose }) => {
           justify="space-between"
           spacing={4}
         >
-          <Box display="flex" ml={3}>
+          <Box display="flex" ml={3} mt={8}>
             <Button
               variant="contained"
               size="small"
               style={{
+                width: "5rem",
                 color: "white",
                 backgroundColor: "#6A74C9",
                 marginLeft: "10px",
               }}
-              startIcon={<ForwardIcon />}
             >
-              Forward
+              Send
             </Button>
-
-            <Button
-              variant="outlined"
-              size="small"
-              style={{
-                color: "#6A74C9",
-                borderColor: "#6A74C9",
-                marginLeft: "10px",
-              }}
-            >
-              Mark as test
+            <Button style={{ marginLeft: "10px" }}>
+              <Link style={{ color: "#6A74C9" }} />
             </Button>
-
-            <Button
-              variant="contained"
-              onClick={handlBlock}
-              style={
-                visible
-                  ? {
-                      color: "#6A74C9",
-                      backgroundColor: "white",
-                      border: "1px solid #6A74C9",
-                      marginLeft: "10px",
-                    }
-                  : {
-                      color: "white",
-                      backgroundColor: "#C44545",
-                      marginLeft: "10px",
-                    }
-              }
-              startIcon={visible ? "" : <BlockIcon />}
-            >
-              {visible ? "Unblock" : "Block"}
-            </Button>
-          </Box>
-
-          <Box display="flex" alignItems="center" mr={6}>
-            <Typography variant="body2">6 of 101</Typography>
-            <Button
-              variant="outlined"
-              size="small"
-              classes={{ startIcon: classes.startICon }}
-              style={{
-                color: "#6A74C9",
-                borderColor: "#6A74C9",
-                marginLeft: "10px",
-                maxWidth: "36px",
-                minWidth: "36px",
-              }}
-              startIcon={<ArrowForwardIcon />}
-            ></Button>
-            <Button
-              variant="outlined"
-              size="small"
-              classes={{ startIcon: classes.startICon }}
-              style={{
-                color: "#6A74C9",
-                borderColor: "#6A74C9",
-                marginLeft: "10px",
-                maxWidth: "36px",
-                minWidth: "36px",
-              }}
-              startIcon={<ArrowBackIcon />}
-            ></Button>
           </Box>
         </Grid>
       </DialogActions>

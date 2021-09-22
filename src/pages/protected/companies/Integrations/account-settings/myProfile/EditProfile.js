@@ -10,7 +10,6 @@ import {
   Avatar,
   Button,
   Box,
-  Button as MuiButton,
   Card,
   CardContent,
   CircularProgress,
@@ -24,7 +23,7 @@ import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
 import { Lock } from "react-feather";
 
-import { Backup, Search as SearchIcon } from "@material-ui/icons";
+import { Backup } from "@material-ui/icons";
 const Alert = styled(MuiAlert)(spacing);
 
 const TextField = styled(MuiTextField)(spacing);
