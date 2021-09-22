@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     padding: "11.5px 14px",
-    cursor: "pointer",
   },
   h5: {
     fontSize: "13px",
@@ -69,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   papers: {
     backgroundColor: "#ececec",
     padding: "6px",
-    marginTop: "-39px",
+    // marginTop: "-39px",
     cursor: "pointer",
   },
   //   label: {

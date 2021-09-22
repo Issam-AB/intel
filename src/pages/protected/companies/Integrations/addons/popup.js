@@ -1,31 +1,18 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import styled from "styled-components/macro";
-import {
-  Forward as ForwardIcon,
-  Block as BlockIcon,
-  Close as CloseIcon,
-  ArrowForward as ArrowForwardIcon,
-  ArrowBack as ArrowBackIcon,
-} from "@material-ui/icons";
+import { Close as CloseIcon } from "@material-ui/icons";
 import {
   Grid,
   Typography,
   Button,
   Dialog,
-  DialogActions,
   DialogContent,
-  Box,
   DialogTitle,
-  Divider as MuiDivider,
-  Popper,
   Chip as MuiChip,
   // Slide,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Filter } from "react-feather";
-import { spacing } from "@material-ui/system";
-
-const Divider = styled(MuiDivider)(spacing);
 
 const Chips = styled(MuiChip)`
   position: relative;
@@ -90,7 +77,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
   // const [open, setOpen] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
   const classes = useStyles();
   // const handleClickOpen = () => {
   //   setOpen(true);
@@ -105,6 +91,7 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
       classes={{ paper: classes.dialogwrapper }}
       open={open}
       onClose={handleClose}
+      overlayStyle={{ backgroundColor: "transparent" }}
       aria-labelledby="alert-dialog-slide-title"
       aria-describedby="alert-dialog-slide-description"
     >
