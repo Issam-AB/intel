@@ -24,6 +24,18 @@ import { CheckSquare, CreditCard, List, Copy } from "react-feather";
 // const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
+const data = {
+  name: "Prime",
+  type: "Monthly",
+  description: "Website Archtecteur",
+  features: [
+    { name: "Website Archtecteur", description: "" },
+    { name: "Accelerated Market", description: "1 Location / 1 Website" },
+    { name: "Lead Intel Dashboard", description: "" },
+  ],
+  price: "$6,999",
+  isEntreprise: false,
+};
 
 const useStyles = makeStyles({
   title: {
@@ -139,7 +151,7 @@ const Billing = () => {
         </Grid>
         <Grid item md={10}>
           {isProfileShowing ? <MyPlan /> : ""}
-          {isPayemntShowing ? <PaymentMethods /> : ""}
+          {isPayemntShowing ? <PaymentMethods selectedPlan={data} /> : ""}
           {/* {isPasswordShowing ? <PassordChange /> : ""} */}
 
           {/* <Spacer mb={50} /> */}

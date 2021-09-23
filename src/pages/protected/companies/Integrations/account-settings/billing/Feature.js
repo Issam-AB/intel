@@ -12,8 +12,6 @@ import { Check } from "react-feather";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
-import Feature from "./Feature";
-
 const Divider = styled(MuiDivider)(spacing);
 
 const boxStyle = {
@@ -87,7 +85,7 @@ const boxStyle = {
     marginLeft: "-15px",
   },
   icon: {
-    width: "19px",
+    width: "21px",
     color: "#23CC94",
     height: "25px",
     marginRight: "6px",
@@ -126,46 +124,37 @@ const useEntrepriseStyles = makeStyles((theme) => entrepriseStyle);
 
 const useStyles = makeStyles((theme) => boxStyle);
 
-const Plan = ({ data }) => {
-  const classes = data.isEntreprise ? useEntrepriseStyles() : useStyles();
-
+const Feature = ({ feature, isEntreprise }) => {
+  const classes = isEntreprise ? useEntrepriseStyles() : useStyles();
   return (
-    <Box className={classes.paperPrime} classes={{ root: classes.root }}>
-      <Grid item className={classes.itemCenter}>
-        <Typography variant="h3" gutterBottom className={classes.Prime}>
-          {data.name}
-        </Typography>
-        <Typography variant="h3" gutterBottom className={classes.dolar}>
-          {data.price}
-        </Typography>
+    <Grid item>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Check className={classes.icon} />
         <Typography
-          variant="h3"
-          gutterBottom
-          style={{ fontSize: "16px", marginBottom: "20px" }}
+          variant="h5"
+          style={{ fontSize: "17px", fontWeight: "700" }}
         >
-          {data.type}
+          {feature.name}
         </Typography>
-        <Button className={classes.button} classes={{ label: classes.label }}>
-          Get Started
-        </Button>
-      </Grid>
-      <Divider my={8} />
-      <Grid
-        container
-        align="center"
-        spacing={2}
-        style={{ width: "19rem", marginLeft: "-1rem" }}
-      >
-        {data.features.map((feature, key) => (
-          <Feature
-            key={key}
-            feature={feature}
-            isEntreprise={data.isEntreprise}
-          />
-        ))}
-      </Grid>
-    </Box>
+      </div>
+
+      {feature.description !== "" ? (
+        <Typography
+          variant="h5"
+          style={{
+            fontSize: "14px",
+            fontWeight: "600",
+            float: "left",
+            marginLeft: "25px",
+            padding: "3px",
+          }}
+        >
+          {feature.description}
+        </Typography>
+      ) : (
+        ""
+      )}
+    </Grid>
   );
 };
-
-export default Plan;
+export default Feature;

@@ -7,18 +7,16 @@ import {
   Button,
   Grid,
   TextField as MuiTextField,
+  Box,
 } from "@material-ui/core";
+import { Check } from "react-feather";
 // import Popup from "./Popup";
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
 import { Phone } from "react-feather";
-
-import { Backup } from "@material-ui/icons";
-const Alert = styled(MuiAlert)(spacing);
-
-const TextField = styled(MuiTextField)(spacing);
+import Feature from "./Feature";
 
 // const Button = styled(MuiButton)(spacing);
 
@@ -42,9 +40,48 @@ const useStyles = makeStyles((theme) => ({
   startIconsCalls: {
     width: "1rem",
   },
+  modePayment: {
+    height: "69px",
+    marginLeft: "6px",
+  },
+  itemCenter: {
+    textAlign: "center",
+  },
+  Prime: {
+    fontSize: "31px",
+    fontWeight: "700",
+    lineHeight: "39px",
+  },
+  dolar: {
+    fontSize: "36px",
+    fontWeight: "800",
+    color: "#6320EE",
+  },
+  modePaymentt: {
+    height: "45px",
+    marginTop: "12px",
+    marginLeft: "6px",
+  },
+  paperPrime: {
+    padding: "2rem",
+  },
+  Plan: {
+    fontSize: "22px",
+    paddingTop: "41px",
+    paddingBottom: "15px",
+    fontWeight: "600",
+    textAlign: "center",
+    color: "#FFFFFF",
+    borderTopRadius: 8,
+  },
+  cards: {
+    borderRadius: 20,
+    boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+    border: "2px solid #6320EE",
+  },
 }));
 const Divider = styled(MuiDivider)(spacing);
-const EditProfile = () => {
+const PaymentMethode = ({ selectedPlan }) => {
   const classes = useStyles();
 
   return (
@@ -86,23 +123,88 @@ const EditProfile = () => {
             >
               Update your payment methode
             </Typography>
-            <Typography style={{ fontWeight: "600", fontsize: "14px" }}>
+            <Typography style={{ fontWeight: "600", fontsize: "15px" }}>
               Fill out this form to update the payment method on file for your
               subsription:
             </Typography>
+            <Grid container direction="row" justify="center" spacing={12}>
+              <img
+                className={classes.modePayment}
+                src="/static/img/modePayment/masterCard.png"
+                alt="master Card"
+              />
+              <img
+                className={classes.modePaymentt}
+                src="/static/img/modePayment/visaa.png"
+                alt="master Card"
+              />
+              <img
+                style={{ marginLeft: "12px" }}
+                className={classes.modePaymentt}
+                src="/static/img/modePayment/express.png"
+                alt="master Card"
+              />
+              <img
+                className={classes.modePayment}
+                src="/static/img/modePayment/discover.png"
+                alt="master Card"
+              />
+            </Grid>
+            <Grid container></Grid>
           </div>
         </Paper>
       </Grid>
       <Grid item md={4}>
-        <Paper elevation={3} className={classes.paper}>
-          <Typography className={classes.title}>
-            Primary Payment Methode
-          </Typography>
-          <Divider />
+        <Paper className={classes.cards}>
+          <Box
+            style={{
+              backgroundColor: "#6320EE",
+              borderTopLeftRadius: 14,
+              borderTopRightRadius: 14,
+            }}
+          >
+            <Typography className={classes.Plan}>Your Plan</Typography>
+          </Box>
+          <Box className={classes.paperPrime} classes={{ root: classes.root }}>
+            <Grid item className={classes.itemCenter}>
+              <Typography variant="h3" gutterBottom className={classes.Prime}>
+                {selectedPlan.name}
+              </Typography>
+              <Typography variant="h3" gutterBottom className={classes.dolar}>
+                {selectedPlan.price}
+              </Typography>
+              <Typography
+                variant="h3"
+                gutterBottom
+                style={{
+                  fontSize: "16px",
+                  marginBottom: "20px",
+                  fontWeight: "700",
+                }}
+              >
+                {selectedPlan.type}
+              </Typography>
+            </Grid>
+            <Divider my={8} />
+            <Grid
+              container
+              align="center"
+              spacing={2}
+              style={{ width: "18rem", marginLeft: "4rem" }}
+            >
+              {selectedPlan.features.map((feature, key) => (
+                <Feature
+                  key={key}
+                  feature={feature}
+                  isEntreprise={selectedPlan.isEntreprise}
+                />
+              ))}
+            </Grid>
+          </Box>
         </Paper>
       </Grid>
     </Grid>
   );
 };
 
-export default EditProfile;
+export default PaymentMethode;
