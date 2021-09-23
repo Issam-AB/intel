@@ -46,6 +46,7 @@ const useStyles = makeStyles({
   primary: {
     fontSize: "13px",
     fontWeight: "600",
+    cursor: "pointer",
   },
 });
 
@@ -98,6 +99,7 @@ const Profile = () => {
               style={{ backgroundColor: isProfileShowing ? "#ffff" : false }}
               button
               classes={{ root: classes.ListItem }}
+              onClick={handleShowProfile}
             >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <User className={classes.icons} />
@@ -105,12 +107,12 @@ const Profile = () => {
               <ListItemText
                 primary="Edit Profile"
                 classes={{ primary: classes.primary }}
-                onClick={handleShowProfile}
               />
             </ListItem>
             <ListItem
               style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }}
               classes={{ root: classes.ListItem }}
+              onClick={handleShowPassword}
             >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <Lock className={classes.icons} />
@@ -118,7 +120,6 @@ const Profile = () => {
               <ListItemText
                 primary="Change Password"
                 classes={{ primary: classes.primary }}
-                onClick={handleShowPassword}
               />
             </ListItem>
           </div>

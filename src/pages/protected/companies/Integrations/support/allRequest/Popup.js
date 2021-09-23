@@ -74,6 +74,9 @@ const useStyles = makeStyles((theme) => ({
   //   label: {
   //     margin: "-7px 16px",
   //   },
+  shrink: {
+    display: "none",
+  },
 }));
 
 const Popup = ({ open, setOpen, handleClose }) => {
@@ -135,7 +138,8 @@ const Popup = ({ open, setOpen, handleClose }) => {
               </Typography>
               <FormControl fullWidth>
                 <InputLabel
-                  shrink={false}
+                  // shrink={false}
+                  classes={{ shrink: classes.shrink }}
                   style={{ margin: "-7px 10px" }}
                   id="demo-simple-select-label"
                 >
@@ -163,9 +167,10 @@ const Popup = ({ open, setOpen, handleClose }) => {
               </Typography>
               <FormControl fullWidth>
                 <InputLabel
-                  shrink={false}
+                  // shrink={false}
                   style={{ margin: "-7px 10px" }}
                   id="demo-simple-select-label"
+                  classes={{ shrink: classes.shrink }}
                 >
                   Priority
                 </InputLabel>

@@ -1,7 +1,7 @@
 /* eslint-disable import/first */
 import React from "react";
 
-import async from "../components/Async";
+// import async from "../components/Async";
 
 import {
   CreditCard,
@@ -18,6 +18,7 @@ import NewRrquest from "../pages/protected/companies/Integrations/support/newReq
 import Integration from "../pages/protected/companies/Integrations/addons";
 import MyProfile from "../pages/protected/companies/Integrations/account-settings/myProfile";
 import Users from "../pages/protected/companies/Integrations/account-settings/users";
+import Billing from "../pages/protected/companies/Integrations/account-settings/billing";
 
 import InegrationsRoutes from "./../pages/protected/companies/Integrations/index";
 // All pages that rely on 3rd party components (other than Material-UI) are
@@ -27,9 +28,9 @@ import InegrationsRoutes from "./../pages/protected/companies/Integrations/index
 import AuthGuard from "../components/AuthGuard";
 
 // Components components
-import Accordion from "../pages/components/Accordion";
-import Alerts from "../pages/components/Alerts";
-import Avatars from "../pages/components/Avatars";
+// import Accordion from "../pages/components/Accordion";
+// import Alerts from "../pages/components/Alerts";
+// import Avatars from "../pages/components/Avatars";
 
 // Dashboards components
 //const Default = async(() => import("../pages/dashboards/Default"));
@@ -50,7 +51,7 @@ import Avatars from "../pages/components/Avatars";
 // import _Settings from "../pages/pages/Settings";
 // import Chat from "../pages/pages/Chat";
 // const Profile = async(() => import("../pages/pages/Profile"));
-const Tasks = async(() => import("../pages/pages/Tasks"));
+// const Tasks = async(() => import("../pages/pages/Tasks"));
 
 // Landing
 import Landing from "../pages/presentation/Landing";
@@ -200,10 +201,10 @@ const accountSettings = {
       component: Users,
     },
     {
-      path: "/components/avatars",
+      path: "/account-settings/billing",
       name: "Biling",
       icon: <CreditCard />,
-      component: Avatars,
+      component: Billing,
     },
   ],
   component: null,
