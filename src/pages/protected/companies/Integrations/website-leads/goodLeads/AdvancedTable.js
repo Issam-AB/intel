@@ -511,8 +511,8 @@ function EnhancedTable() {
 
   const isSelected = (date) => selected.indexOf(date) !== -1;
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  // const emptyRows =
+  //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div>

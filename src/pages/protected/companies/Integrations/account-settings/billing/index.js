@@ -6,10 +6,11 @@ import { Helmet } from "react-helmet-async";
 
 import MyPlan from "./MyPlan";
 import PaymentMethods from "./PaymentMethode";
-// import PassordChange from "./PsswordChange";
+import BillingDetails from "./BillingDetails";
+import Invoices from "./Invoices";
+
 import {
   Grid,
-  Divider as MuiDivider,
   Typography as MuiTypography,
   ListItem,
   ListItemIcon,
@@ -69,15 +70,33 @@ const useStyles = makeStyles({
 const Billing = () => {
   const [isProfileShowing, setProfileShowing] = React.useState(true);
   const [isPayemntShowing, setPayemntShowing] = React.useState(false);
+  const [isBillingDetails, setBillingDetails] = React.useState(false);
+  const [isInvoicesShowing, setInvoicesShowing] = React.useState(false);
 
   const handleShowProfile = () => {
     setPayemntShowing(false);
     setProfileShowing(true);
+    setBillingDetails(false);
+    setInvoicesShowing(false);
   };
 
   const handleShowPayement = () => {
     setPayemntShowing(true);
     setProfileShowing(false);
+    setBillingDetails(false);
+    setInvoicesShowing(false);
+  };
+  const handlShowBillingDetails = () => {
+    setPayemntShowing(false);
+    setProfileShowing(false);
+    setBillingDetails(true);
+    setInvoicesShowing(false);
+  };
+  const handlShowInvoices = () => {
+    setPayemntShowing(false);
+    setProfileShowing(false);
+    setBillingDetails(false);
+    setInvoicesShowing(true);
   };
 
   const classes = useStyles();
@@ -122,9 +141,11 @@ const Billing = () => {
               />
             </ListItem>
             <ListItem
-            //   style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }}
-            //   classes={{ root: classes.ListItem }}
-            //   onClick={handleShowPassword}
+              style={{
+                backgroundColor: isBillingDetails ? "#ffff" : false,
+              }}
+              classes={{ root: classes.ListItem }}
+              onClick={handlShowBillingDetails}
             >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <List className={classes.icons} />
@@ -135,9 +156,9 @@ const Billing = () => {
               />
             </ListItem>
             <ListItem
-            //   style={{ backgroundColor: isPasswordShowing ? "#ffff" : false }}
-            //   classes={{ root: classes.ListItem }}
-            //   onClick={handleShowPassword}
+              style={{ backgroundColor: isInvoicesShowing ? "#ffff" : false }}
+              classes={{ root: classes.ListItem }}
+              onClick={handlShowInvoices}
             >
               <ListItemIcon classes={{ root: classes.ListItemIcon }}>
                 <Copy className={classes.icons} />
@@ -152,7 +173,8 @@ const Billing = () => {
         <Grid item md={10}>
           {isProfileShowing ? <MyPlan /> : ""}
           {isPayemntShowing ? <PaymentMethods selectedPlan={data} /> : ""}
-          {/* {isPasswordShowing ? <PassordChange /> : ""} */}
+          {isBillingDetails ? <BillingDetails /> : ""}
+          {isInvoicesShowing ? <Invoices /> : ""}
 
           {/* <Spacer mb={50} /> */}
         </Grid>

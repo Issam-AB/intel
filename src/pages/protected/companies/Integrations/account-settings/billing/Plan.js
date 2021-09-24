@@ -7,8 +7,6 @@ import {
   Grid,
   Box,
 } from "@material-ui/core";
-// import Popup from "./Popup";
-import { Check } from "react-feather";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components/macro";
 import { spacing } from "@material-ui/system";
