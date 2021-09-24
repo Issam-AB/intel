@@ -75,7 +75,13 @@ const EditProfile = () => {
   return (
     <div>
       <Paper elevation={3} className={classes.paper}>
-        <Grid justify="center" align="center" style={{ paddingTop: "49px" }}>
+        <Grid
+          style={{
+            paddingTop: "49px",
+            textAlign: "center",
+            alignItems: "center",
+          }}
+        >
           <Typography className={classes.title}>
             We have a plan for evryone
           </Typography>

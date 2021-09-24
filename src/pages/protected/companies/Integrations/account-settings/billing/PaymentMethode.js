@@ -6,7 +6,6 @@ import {
   Divider as MuiDivider,
   Button,
   Grid,
-  TextField as MuiTextField,
   Box,
 } from "@material-ui/core";
 
@@ -125,7 +124,7 @@ const PaymentMethode = ({ selectedPlan }) => {
               Fill out this form to update the payment method on file for your
               subsription:
             </Typography>
-            <Grid container direction="row" justify="center" spacing={12}>
+            <Grid container direction="row" justify="center">
               <img
                 className={classes.modePayment}
                 src="/static/img/modePayment/masterCard.png"

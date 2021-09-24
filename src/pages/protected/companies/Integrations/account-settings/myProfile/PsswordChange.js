@@ -31,7 +31,7 @@ const TextField = styled(MuiTextField)(spacing);
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: "63rem",
-    height: "30rem",
+    height: "24rem",
     marginLeft: "42px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
@@ -104,6 +104,17 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "8px",
     width: "13rem",
     lineHeight: "2rem",
+  },
+  subtitleChar: {
+    fontSize: "13px",
+    fontWeight: "700",
+    marginLeft: "8px",
+    width: "13rem",
+    lineHeight: "25px",
+  },
+
+  inputOtlined: {
+    marginLeft: "-5px",
   },
 }));
 const Divider = styled(MuiDivider)(spacing);
@@ -193,9 +204,9 @@ const PsswordChnage = () => {
       setSubmitting(false);
     }
   };
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   // const handleClose = () => {
   //     setOpen(false);
@@ -204,7 +215,7 @@ const PsswordChnage = () => {
   return (
     <div>
       <Paper elevation={3} className={classes.paper}>
-        <Typography className={classes.title}>Edit My Profile</Typography>
+        <Typography className={classes.title}>Change Password</Typography>
         <Divider mb={8} />
         <div style={{ display: "flex" }}>
           <div style={{ marginLeft: "40px", width: "28rem" }}>
@@ -258,7 +269,7 @@ const PsswordChnage = () => {
                   At least 1 number (0-1)
                 </Typography>
               </span>
-              <span style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ display: "flex" }}>
                 {isPasswordCharacter ? (
                   <Check className={classes.icon} />
                 ) : (
@@ -266,7 +277,7 @@ const PsswordChnage = () => {
                 )}
                 <Typography
                   variant="subtitle1"
-                  className={classes.subtitle}
+                  className={classes.subtitleChar}
                   style={{ width: "180px" }}
                 >
                   {" "}
@@ -332,7 +343,9 @@ const PsswordChnage = () => {
                                 InputLabelProps={{ shrink: false }}
                                 placeholder="Password"
                                 InputProps={{
-                                  classes: { input: classes.input },
+                                  classes: {
+                                    input: classes.input,
+                                  },
                                 }}
                                 value={values.password}
                                 error={Boolean(
@@ -360,6 +373,7 @@ const PsswordChnage = () => {
                                 New Password:{" "}
                               </Typography>
                               <TextField
+                                classes={{ root: classes.inputOtlined }}
                                 name="newPassword"
                                 InputLabelProps={{ shrink: false }}
                                 InputProps={{
@@ -382,9 +396,9 @@ const PsswordChnage = () => {
                             <PasswordStrengthBar
                               password={values.newPassword}
                               style={{
-                                width: "27rem",
+                                width: "21rem",
                                 height: "5px",
-                                marginLeft: "11rem",
+                                marginLeft: "184px",
                               }}
                             />
                           </Grid>
@@ -426,7 +440,7 @@ const PsswordChnage = () => {
                           </Grid>
                         </Grid>
 
-                        <div style={{ float: "right", margin: "40px 0" }}>
+                        <div style={{ float: "right", margin: "40px 27px" }}>
                           <Button
                             style={{ marginRight: "15px" }}
                             // type="outlined"

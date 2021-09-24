@@ -57,9 +57,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "5px",
     width: "19px",
   },
-  focused: {
-    color: "#6A74C9",
-  },
+
   iconLabel: {
     color: "#6320EE !important",
   },
@@ -68,43 +66,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "50px",
     width: "90px",
   },
-  input: {
-    padding: "0 0px",
-    display: "flex",
-    alignItems: "center",
-    marginLeft: "-25px",
-    width: 400,
-    height: 31,
-    transition: "0.5s",
-    backgroundColor: "#F9F9FC",
-    "&:hover, &:focus": {
-      border: "1px solid #6320EE",
-      opacity: 4,
-    },
-  },
-  // input: {
-  //   marginLeft: theme.spacing(1),
-  //   flex: 1,
-  //   opacity: 0.6,
-  //   transition: "0.75s",
-  // },
-  iconButton: {
-    padding: "5px 10px",
-  },
-  divider: {
-    height: 28,
-    margin: 4,
-  },
-  autocomplete: {
-    padding: "0px",
-    border: "none",
-  },
-  export: {
-    marginLeft: "34px",
-    width: "104px",
-    color: "white",
-    backgroundColor: "#6A74C9",
-  },
+
   label: {
     fontWeight: "700",
   },
@@ -138,24 +100,6 @@ const useStyles = makeStyles((theme) => ({
 
     boxShadow: "0px 0px 12px -5px #000000",
     border: "1px solid #E0E0E0",
-  },
-  dialogwrapper: {
-    padding: theme.spacing(4),
-    position: "absolute",
-    maxWidth: "50rem",
-  },
-  dialogTitle: {
-    paddingRight: "0px",
-  },
-  startICon: {
-    margin: 0,
-  },
-  appBar: {
-    contentVisibility: "hidden",
-  },
-  colorPrimary: {
-    backgroundColor: "#e4def9",
-    color: "black",
   },
   fontcells: {
     fontWeight: 600,
@@ -270,15 +214,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          {/* <Checkbox
-            style={{ padding: "15px" }}
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ "aria-label": "select all desserts" }}
-          /> */}
-        </TableCell>
+        <TableCell padding="checkbox"></TableCell>
         {headCells.map((headCell) => (
           <TableCell
             classes={{ head: classes.tableHead }}
@@ -354,26 +290,6 @@ function EnhancedTable() {
     setSelected([]);
   };
 
-  //   const handleClick = (event, no) => {
-  //     const selectedIndex = selected.indexOf(no);
-  //     let newSelected = [];
-
-  //     if (selectedIndex === -1) {
-  //       newSelected = newSelected.concat(selected, no);
-  //     } else if (selectedIndex === 0) {
-  //       newSelected = newSelected.concat(selected.slice(1));
-  //     } else if (selectedIndex === selected.length - 1) {
-  //       newSelected = newSelected.concat(selected.slice(0, -1));
-  //     } else if (selectedIndex > 0) {
-  //       newSelected = newSelected.concat(
-  //         selected.slice(0, selectedIndex),
-  //         selected.slice(selectedIndex + 1)
-  //       );
-  //     }
-
-  //     setSelected(newSelected);
-  //   };
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -386,11 +302,6 @@ function EnhancedTable() {
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
-
-  //   const isSelected = (no) => selected.indexOf(no) !== -1;
-
-  // const emptyRows =
-  //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div>
@@ -416,18 +327,13 @@ function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  //   const isItemSelected = isSelected(row.no);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <StyledTableRow
-                      //   onClick={(event) => handleClick(event, row.no)}
-                      //   role="checkbox"
-                      //   aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
                       hover
-                      //   selected={isItemSelected}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
                       <TableCell padding="checkbox">
@@ -490,10 +396,6 @@ function RowOptions({ row }) {
   const handleClickOpen = () => {
     setOpen(!open);
   };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
 
   return (
     <>
