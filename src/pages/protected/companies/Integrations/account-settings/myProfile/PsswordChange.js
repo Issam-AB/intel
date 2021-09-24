@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -31,7 +31,7 @@ const TextField = styled(MuiTextField)(spacing);
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: "63rem",
-    height: "24rem",
+    height: "28rem",
     marginLeft: "42px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
@@ -126,16 +126,14 @@ const PsswordChnage = () => {
   const [isPasswordNumber, setPasswordNumber] = React.useState(false);
   const [isPasswordCharacter, setPasswordCharacter] = React.useState(false);
 
-  const [setOpen] = useState(false);
-
-  const [initialValues, setInitialValues] = React.useState({
+  const initialValues = {
     firstName: "Lucy",
     lastName: "Lavender",
     email: "lucylavender@gmail.com",
     password: "huhuhu",
     newPassword: "",
     confirmPassword: "",
-  });
+  };
 
   const classes = useStyles();
   const timeOut = (time) => new Promise((res) => setTimeout(res, time));

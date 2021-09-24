@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     padding: "11.5px 14px",
+    backgroundColor: "#F9F9FC",
   },
   h5: {
     fontSize: "13px",
@@ -76,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
   //   },
   shrink: {
     display: "none",
+  },
+  texterea: {
+    backgroundColor: "#F9F9FC",
   },
 }));
 
@@ -197,8 +201,14 @@ const Popup = ({ open, setOpen, handleClose }) => {
             </Grid>
             <Grid item md={11} xs={12}>
               <TextField
+                classes={{ multiline: classes.texterea }}
                 InputLabelProps={{ shrink: false }}
-                InputProps={{ classes: { input: classes.input } }}
+                InputProps={{
+                  classes: {
+                    input: classes.input,
+                    multiline: classes.texterea,
+                  },
+                }}
                 id="outlined-multiline-static"
                 // label="Multiline"
                 multiline

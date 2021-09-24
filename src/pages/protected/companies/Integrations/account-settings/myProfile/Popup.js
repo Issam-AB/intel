@@ -72,11 +72,15 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     padding: "11.5px 14px",
+    backgroundColor: "#F9F9FC",
   },
   h5: {
     fontSize: "13px",
     fontWeight: "700",
     marginBottom: "5px",
+  },
+  dialogContent: {
+    padding: "0px 24px",
   },
 }));
 
@@ -153,7 +157,10 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
         </div>
       </DialogTitle>
 
-      <DialogContent style={{ marginTop: "-18px" }}>
+      <DialogContent
+        style={{ marginTop: "-18px" }}
+        classes={{ root: classes.dialogContent }}
+      >
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

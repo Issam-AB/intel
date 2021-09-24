@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-// import { NavLink } from "react-router-dom";
-import Popup from "./Popup";
+
 import { Helmet } from "react-helmet-async";
 import {
   Checkbox,
@@ -22,8 +21,6 @@ import {
   Typography,
   FormControlLabel,
   Switch,
-  InputBase,
-  TextField,
   Button,
   AppBar,
   Avatar,
@@ -32,14 +29,7 @@ import {
   InputLabel,
   FormControl,
 } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import {
-  Search as SearchIcon,
-  Forward as ForwardIcon,
-  Visibility as VisibilityIcon,
-  ThumbUpAltOutlined as ThumbUpAltIcon,
-  Close as CloseIcon,
-} from "@material-ui/icons";
+import { Close as CloseIcon } from "@material-ui/icons";
 import { Filter, MoreVertical } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -59,6 +49,7 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
+      padding: "6px",
     },
   },
 })(TableRow);
@@ -186,9 +177,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#6A74C9",
   },
 }));
-const Spacer = styled.div`
-  flex: 1 1 100%;
-`;
 
 function createData(member, role) {
   return {
@@ -528,7 +516,7 @@ function EnhancedTable() {
 
 function RowOptions({ row }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };

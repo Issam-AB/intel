@@ -20,7 +20,6 @@ import {
   Typography,
   FormControlLabel,
   Switch,
-  Button,
   Chip as MuiChip,
 } from "@material-ui/core";
 
@@ -184,19 +183,19 @@ const rows = [
   createData(
     "Sales",
     "[# 1231546] Decidicated Ip for urgentrestoration.com",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "2 weeks 10:18pm"
   ),
   createData(
     "Billing",
     "[# 1231546] re: remove email completely from account",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 10:8pm"
   ),
   createData(
     "Level 2 - Support",
     "[# 1231546]  cancel dedicated IP",
-    <Chip label="Closed" rgbcolor={"#DBDBDB"} />,
+    <Chip label="Closed" rgbcolor={"#DBDBDB"} style={{ color: "black" }} />,
     "Today 6 Month 7:18am"
   ),
 ];
@@ -267,15 +266,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
-            style={{ padding: "15px" }}
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ "aria-label": "select all desserts" }}
-          />
-        </TableCell> */}
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -383,8 +373,6 @@ function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (no) => selected.indexOf(no) !== -1;
-
   // const emptyRows =
   //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
@@ -412,37 +400,17 @@ function EnhancedTable() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  // const isItemSelected = isSelected(row.no);
-                  // const labelId = `enhanced-table-checkbox-${index}`;
-                  // const rowColor = `${row.lastActivity.chartAt(4) === "Today" ? "primary" : "secondary"}`
-                  // console.log("hahahah", rowColor);
                   return (
                     <TableRow
                       classes={{ root: classes.root }}
                       onClick={(event) => handleClick(event, row.no)}
                       role="checkbox"
-                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
                       hover
-                      // selected={isItemSelected}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
-                      {/* <TableCell padding="checkbox" >
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ "aria-labelledby": labelId }}
-                        />
-                      </TableCell> */}
-                      <TableCell
-                        // component="th"
-                        // id={labelId}
-                        // scope="row"
-                        // padding="none"
-                        // align="center"
-                        // style={{ width: "9px" }}
-                        className={classes.fontcells}
-                      >
+                      <TableCell className={classes.fontcells}>
                         {row.department}
                       </TableCell>
 
@@ -485,14 +453,6 @@ function EnhancedTable() {
 
 function RowOptions({ row }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleClickOpen = () => {
-    setOpen(!open);
-  };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
 
   return (
     <>
