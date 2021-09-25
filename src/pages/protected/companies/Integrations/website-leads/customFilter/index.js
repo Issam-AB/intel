@@ -47,7 +47,7 @@ const CustomFilter = () => {
     { key: 19, label: "ThomasRShaw@dayrep.com" },
     { key: 20, label: "MargaretBChen@rtyta.com" },
   ]);
-  const [button, setButton] = useState(true);
+  const [button] = useState(true);
   const handleDelete = (data) => () => {
     // if (data.label === "React") {
     //     alert("Why would you want to delete React?! :)"); // eslint-disable-line no-alert

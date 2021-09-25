@@ -20,7 +20,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Search as SearchIcon } from "@material-ui/icons";
 import Integration from "./Integration";
 const Divider = styled(MuiDivider)(spacing);
-const Spacer = styled.div(spacing);
 const Typography = styled(MuiTypography)(spacing);
 
 const useStyles = makeStyles({
@@ -33,10 +32,6 @@ const useStyles = makeStyles({
     height: 38,
     transition: "0.5s",
     backgroundColor: "#F9F9FC",
-    "&:hover, &:focus": {
-      border: "1px solid #6320EE",
-      opacity: 4,
-    },
     "&:hover, &:focus": {
       border: "1px solid #6320EE",
       opacity: 4,
@@ -56,7 +51,6 @@ const useStyles = makeStyles({
   },
   root: {
     background: "#F9F9FC",
-    position: "-webkit-sticky",
     position: "sticky",
     top: 20,
     bottom: 20,
@@ -67,7 +61,7 @@ const useStyles = makeStyles({
 });
 
 const CallLog = () => {
-  const [totalCall, setTotalCall] = React.useState(true);
+  // const [totalCall, setTotalCall] = React.useState(true);
   const classes = useStyles();
   return (
     <React.Fragment>

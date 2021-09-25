@@ -26,12 +26,6 @@ import {
 } from "@material-ui/core";
 
 import {
-  Forward as ForwardIcon,
-  Visibility as VisibilityIcon,
-  ThumbUpAltOutlined as ThumbUpAltIcon,
-  Close as CloseIcon,
-} from "@material-ui/icons";
-import {
   MoreVertical,
   PhoneIncoming,
   Volume,

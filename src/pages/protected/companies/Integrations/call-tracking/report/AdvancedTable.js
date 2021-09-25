@@ -32,13 +32,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 //   ThumbUpAltOutlined as ThumbUpAltIcon,
 //   Close as CloseIcon,
 // } from "@material-ui/icons";
-import {
-  MoreVertical,
-  FileText,
-  Volume,
-  Download,
-  Volume2,
-} from "react-feather";
+import { MoreVertical, FileText } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
@@ -647,50 +641,50 @@ function EnhancedTable() {
   );
 }
 
-function RowOptions({ row }) {
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleClickOpen = () => {
-    setOpen(!open);
-  };
+// function RowOptions({ row }) {
+//   const classes = useStyles();
+//   const [open, setOpen] = React.useState(true);
+//   const handleClickOpen = () => {
+//     setOpen(!open);
+//   };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
+//   // const handleClose = () => {
+//   //   setOpen(false);
+//   // };
 
-  return (
-    <>
-      <div className={classes.divIcons}>
-        <>
-          {open ? (
-            <Tooltip title="Listen Call" classes={{ tooltip: classes.popper }}>
-              <Volume
-                className={classes.forwardIcon}
-                onClick={handleClickOpen}
-              />
-            </Tooltip>
-          ) : (
-            <Tooltip
-              title="Stop Listening"
-              classes={{ tooltip: classes.popper }}
-            >
-              <Volume2
-                className={classes.forwardIcon}
-                onClick={handleClickOpen}
-              />
-            </Tooltip>
-          )}
-        </>
+//   return (
+//     <>
+//       <div className={classes.divIcons}>
+//         <>
+//           {open ? (
+//             <Tooltip title="Listen Call" classes={{ tooltip: classes.popper }}>
+//               <Volume
+//                 className={classes.forwardIcon}
+//                 onClick={handleClickOpen}
+//               />
+//             </Tooltip>
+//           ) : (
+//             <Tooltip
+//               title="Stop Listening"
+//               classes={{ tooltip: classes.popper }}
+//             >
+//               <Volume2
+//                 className={classes.forwardIcon}
+//                 onClick={handleClickOpen}
+//               />
+//             </Tooltip>
+//           )}
+//         </>
 
-        <>
-          <Tooltip title="Download Call" classes={{ tooltip: classes.popper }}>
-            <Download className={classes.visibility} />
-          </Tooltip>
-        </>
-      </div>
-    </>
-  );
-}
+//         <>
+//           <Tooltip title="Download Call" classes={{ tooltip: classes.popper }}>
+//             <Download className={classes.visibility} />
+//           </Tooltip>
+//         </>
+//       </div>
+//     </>
+//   );
+// }
 
 function AdvancedTable() {
   return (

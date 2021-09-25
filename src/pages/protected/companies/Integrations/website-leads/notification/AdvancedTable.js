@@ -477,7 +477,7 @@ function EnhancedTable() {
                         {
                           <FiberManualRecordIcons
                             style={{
-                              color: row.status == 1 ? "#388E3C" : "#B21F1F",
+                              color: row.status === "1" ? "#388E3C" : "#B21F1F",
                               marginLeft: "-14px",
                             }}
                           />

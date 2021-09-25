@@ -60,12 +60,6 @@ const ChartMissed = styled.div`
   margin-top: -120px;
 `;
 const BarChart = ({ theme }) => {
-  const firstDatasetColor = theme.palette.secondary.main;
-  const secondDatasetColor =
-    theme.palette.type === "dark"
-      ? "rgba(255, 255, 255, 0.5)"
-      : "rgba(0, 0, 0, 0.15)";
-
   const data = {
     labels: ["Sun", "Mon", "Tues", "Wed", "Thur", "Frid", "Satu"],
     datasets: [

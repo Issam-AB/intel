@@ -4,9 +4,7 @@ import styled from "styled-components/macro";
 
 import { Helmet } from "react-helmet-async";
 import {
-  Checkbox,
   Grid,
-  IconButton,
   Divider as MuiDivider,
   Paper as MuiPaper,
   Table,
@@ -22,7 +20,6 @@ import {
   Typography,
   FormControlLabel,
   Switch,
-  Button,
   Chip as MuiChip,
 } from "@material-ui/core";
 
@@ -413,7 +410,7 @@ function EnhancedTable() {
     setDense(event.target.checked);
   };
 
-  const isSelected = (no) => selected.indexOf(no) !== -1;
+  // const isSelected = (no) => selected.indexOf(no) !== -1;
 
   // const emptyRows =
   //   rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -515,10 +512,10 @@ function EnhancedTable() {
 
 function RowOptions({ row }) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const handleClickOpen = () => {
-    setOpen(!open);
-  };
+  // const [open, setOpen] = React.useState(true);
+  // const handleClickOpen = () => {
+  //   setOpen(!open);
+  // };
 
   // const handleClose = () => {
   //   setOpen(false);

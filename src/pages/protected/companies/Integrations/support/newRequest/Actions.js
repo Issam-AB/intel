@@ -27,15 +27,15 @@ const Button = styled(MuiButton)(spacing);
 
 function Actions() {
   const classes = useStyle();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
   return (
     <React.Fragment>

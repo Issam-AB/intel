@@ -26,7 +26,7 @@ const Spacer = styled.div(spacing);
 const Typography = styled(MuiTypography)(spacing);
 
 const CallLog = () => {
-  const [totalCall, setTotalCall] = React.useState(true);
+  const [totalCall] = React.useState(true);
   return (
     <React.Fragment>
       <Helmet title="Marketing Performance" />

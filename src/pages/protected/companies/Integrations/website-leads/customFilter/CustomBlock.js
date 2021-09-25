@@ -5,13 +5,14 @@ import {
   Typography,
   Card,
   Chip as MuiChip,
-  InputBase,
   Button,
+  Paper,
   CardActions,
 } from "@material-ui/core";
 import { Block as BlockIcon } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { spacing } from "@material-ui/system";
+import ChipInput from "material-ui-chip-input";
 const Spacer = styled.div(spacing);
 
 const Chip = styled(MuiChip)`
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
     display: "flex",
+    justifyContent: "space-between",
   },
   card: {
     borderRadius: "12px",
@@ -61,9 +63,50 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #6A74C9",
     marginLeft: "15px",
   },
+  chipInput: {
+    minHeight: "30px",
+    fontWeight: "600",
+  },
+  rootchips: {
+    minWidth: "0px",
+  },
+  chip: {
+    margin: "2px 9px 3px 1px",
+  },
+  paper: {
+    display: "flex",
+    flexWrap: "wrap",
+    listStyle: "none",
+    width: "100%",
+    height: "7rem",
+    padding: theme.spacing(0.5),
+    margin: 0,
+    border: "1px solid #DBDBDB",
+    "&:hover": {
+      border: "1px solid #6320EE",
+    },
+  },
 }));
 const CustomBlock = ({ title, chipData, handleDelete, button }) => {
   const classes = useStyles();
+  const chipRenderer = (
+    { chip, className, handleClick, handleDelete },
+    key
+  ) => (
+    <Chip
+      className={className}
+      key={key}
+      label={chip}
+      onClick={handleClick}
+      onDelete={handleDelete}
+      size="small"
+    />
+  );
+  const defaultValue = [
+    "Notification@email.com",
+    "Person2@email.com",
+    "Person3@email.com",
+  ];
   return (
     <React.Fragment>
       <Card classes={{ root: classes.card }}>
@@ -72,7 +115,7 @@ const CustomBlock = ({ title, chipData, handleDelete, button }) => {
             {title}
           </Typography>
           <form className={classes.root} noValidate autoComplete="off">
-            <InputBase
+            {/* <InputBase
               multiline
               variant="outlined"
               rows={2}
@@ -80,7 +123,19 @@ const CustomBlock = ({ title, chipData, handleDelete, button }) => {
               fullWidth
               // classes={{ hover: classes.hover }}
               className={classes.inputBase}
-            />
+            /> */}
+            <Paper component="ul" className={classes.paper}>
+              <ChipInput
+                disableUnderline={true}
+                classes={{
+                  chipContainer: classes.chipInput,
+                  inputRoot: classes.rootchips,
+                  chip: classes.chip,
+                }}
+                chipRenderer={chipRenderer}
+                defaultValue={defaultValue}
+              />
+            </Paper>
             <Button
               startIcon={<BlockIcon />}
               variant="contained"
