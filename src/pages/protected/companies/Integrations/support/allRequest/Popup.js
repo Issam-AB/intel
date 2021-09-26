@@ -144,7 +144,7 @@ const Popup = ({ open, setOpen, handleClose }) => {
                 <InputLabel
                   // shrink={false}
                   classes={{ shrink: classes.shrink }}
-                  style={{ margin: "-7px 10px" }}
+                  style={{ margin: "-7px 10px", zIndex: 1 }}
                   id="demo-simple-select-label"
                 >
                   Department
@@ -172,7 +172,7 @@ const Popup = ({ open, setOpen, handleClose }) => {
               <FormControl fullWidth>
                 <InputLabel
                   // shrink={false}
-                  style={{ margin: "-7px 10px" }}
+                  style={{ margin: "-7px 10px", zIndex: 1 }}
                   id="demo-simple-select-label"
                   classes={{ shrink: classes.shrink }}
                 >

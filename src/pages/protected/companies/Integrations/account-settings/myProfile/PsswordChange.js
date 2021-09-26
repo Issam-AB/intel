@@ -31,7 +31,7 @@ const TextField = styled(MuiTextField)(spacing);
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: "63rem",
-    height: "28rem",
+    height: "473px",
     marginLeft: "42px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
