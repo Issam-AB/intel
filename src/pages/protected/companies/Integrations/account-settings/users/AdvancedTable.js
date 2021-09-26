@@ -55,6 +55,11 @@ const StyledTableRow = withStyles({
 })(TableRow);
 
 const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    width: "18rem",
+    marginLeft: "9px",
+  },
   icon: {
     color: "#6320EE",
     marginRight: "10px",
@@ -175,6 +180,15 @@ const useStyles = makeStyles((theme) => ({
   },
   labelView: {
     color: "#6A74C9",
+  },
+  rowOption: {
+    width: "20rem",
+  },
+  selectMenu: {
+    paddingLeft: "14px",
+  },
+  shrink: {
+    display: "none",
   },
 }));
 
@@ -489,7 +503,9 @@ function EnhancedTable() {
                         </div>
                       </TableCell>
                       <TableCell align="left">{row.role}</TableCell>
-                      <TableCell align="left">{<RowOptions />}</TableCell>
+                      <TableCell align="left" className={classes.rowOption}>
+                        {<RowOptions />}
+                      </TableCell>
                     </StyledTableRow>
                   );
                 })}
@@ -532,38 +548,39 @@ function RowOptions({ row }) {
   return (
     <>
       {/* <span> {row.refernce} Row Options</span> */}
-      <div className={classes.divIcons}>
-        <FormControl fullWidth>
-          <InputLabel
-            id="demo-simple-select-label"
-            style={{ fontSize: "12px", paddingLeft: "10px" }}
-            classes={{ root: classes.labelView }}
-          >
-            View Only Access
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="View Only Access"
-            onChange={handleChange}
-            disableUnderline
-            className={classes.select}
 
-            // getContentAnchorEl={null}
-            // anchorOrigin={{ vertical: "bottom", horizontal: "top" }}
-            // transformOrigin={{ vertical: "bottom", horizontal: "bottom" }}
-          >
-            <MenuItem value={10}>View Only Access</MenuItem>
-            <MenuItem value={20} style={{ color: "black", fontWeight: "600" }}>
-              Full Access
-            </MenuItem>
-            <MenuItem value={30} style={{ color: "red", fontWeight: "600" }}>
-              Delete
-            </MenuItem>
-          </Select>
-        </FormControl>
-      </div>
+      <FormControl classes={{ root: classes.formControl }}>
+        <InputLabel
+          // shrink={false}
+          id="demo-simple-select-label"
+          style={{ fontSize: "12px", paddingLeft: "14px" }}
+          classes={{ root: classes.labelView, shrink: classes.shrink }}
+        >
+          View Only Access
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="View Only Access"
+          onChange={handleChange}
+          disableUnderline
+          className={classes.select}
+          classes={{ select: classes.selectMenu }}
+
+          // getContentAnchorEl={null}
+          // anchorOrigin={{ vertical: "bottom", horizontal: "top" }}
+          // transformOrigin={{ vertical: "bottom", horizontal: "bottom" }}
+        >
+          <MenuItem value={80}>View Only Access</MenuItem>
+          <MenuItem value={20} style={{ color: "black", fontWeight: "600" }}>
+            Full Access
+          </MenuItem>
+          <MenuItem value={30} style={{ color: "red", fontWeight: "600" }}>
+            Delete
+          </MenuItem>
+        </Select>
+      </FormControl>
     </>
   );
 }

@@ -306,8 +306,8 @@ const PsswordChnage = () => {
                 validateField,
                 validateForm,
               }) => (
-                <Card mb={6}>
-                  <CardContent>
+                <Card mb={6} style={{ marginTop: "-32ox" }}>
+                  <CardContent style={{ marginTop: "-25px" }}>
                     {status && status.sent && (
                       <Alert severity="success" my={3}>
                         [DEMO] Your data has been submitted successfully!
