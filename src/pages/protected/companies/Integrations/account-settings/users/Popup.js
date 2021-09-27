@@ -19,6 +19,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  InputLabel,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Add } from "@material-ui/icons";
@@ -77,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     padding: "11.5px 14px",
+    backgroundColor: "#F9F9FC",
   },
   h5: {
     fontSize: "13px",
@@ -88,6 +90,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "4px",
     padding: "4px 12px ",
     // backgroundColor: "white"
+  },
+  shrink: {
+    display: "none",
   },
 }));
 
@@ -226,26 +231,24 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
                           Access Level*:
                         </Typography>
                         <FormControl fullWidth>
+                          <InputLabel
+                            // shrink={false}
+                            classes={{ shrink: classes.shrink }}
+                            style={{ margin: "-7px 10px", zIndex: 1 }}
+                            id="demo-simple-select-label"
+                          >
+                            Access Level
+                          </InputLabel>
                           <Select
+                            classes={{ root: classes.input }}
+                            InputLabelProps={{ shrink: false }}
+                            variant="outlined"
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            // value={age}
-                            label="View Only Access"
-                            onChange={handleChange}
-                            disableUnderline
-                            displayEmpty
-                            className={classes.select}
-                            getContentAnchorEl={null}
-                            anchorOrigin={{
-                              vertical: "bottom",
-                              horizontal: "center",
-                            }}
-                            transformOrigin={{
-                              vertical: "top",
-                              horizontal: "center",
-                            }}
+                            //   value={age}
+                            //   onChange={handleChange}
                           >
-                            <MenuItem value={""}>View Only Access</MenuItem>
+                            <MenuItem value={10}>View Only Access</MenuItem>
                             <MenuItem value={20}>Full Access</MenuItem>
                           </Select>
                         </FormControl>

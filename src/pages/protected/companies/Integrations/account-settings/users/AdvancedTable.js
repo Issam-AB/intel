@@ -49,7 +49,7 @@ const StyledTableRow = withStyles({
     "& .MuiTableCell-root": {
       borderLeft: "1px solid rgba(224, 224, 224, 1)",
       whiteSpace: "nowrap",
-      padding: "6px",
+      padding: "5px 12px",
     },
   },
 })(TableRow);
@@ -58,7 +58,6 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     width: "18rem",
-    marginLeft: "9px",
   },
   icon: {
     color: "#6320EE",
@@ -183,6 +182,7 @@ const useStyles = makeStyles((theme) => ({
   },
   rowOption: {
     width: "20rem",
+    fontWeight: "600",
   },
   selectMenu: {
     paddingLeft: "14px",
@@ -237,7 +237,7 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: "member",
-    numeric: false,
+    numeric: true,
     label: "Member",
   },
   {
@@ -246,7 +246,12 @@ const headCells = [
     disablePadding: false,
     label: "Role",
   },
-  { id: "actions", numeric: false, disablePadding: false, label: "Actions" },
+  {
+    id: "actions",
+    numeric: false,
+    disablePadding: false,
+    label: "Access Level",
+  },
 ];
 
 function EnhancedTableHead(props) {
@@ -266,7 +271,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
+        <TableCell padding="checkbox" align="center">
           <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
@@ -313,6 +318,7 @@ let EnhancedTableToolbar = (props) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            minHeight: "50px",
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -482,18 +488,19 @@ function EnhancedTable() {
                       // onMouseLeave={() => setActiveRow("")}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
-                      <TableCell padding="checkbox">
+                      <TableCell padding="checkbox" align="center">
                         <Checkbox
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
                       </TableCell>
                       <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
+                        // component="th"
+                        // id={labelId}
+                        // scope="row"
                         // padding="none"
                         align="left"
+                        style={{ width: "22rem", fontWeight: "600" }}
                       >
                         <div style={{ display: "flex", alignItems: "center" }}>
                           <Avatar className={classes.Avatar}>
@@ -502,7 +509,9 @@ function EnhancedTable() {
                           {row.member}
                         </div>
                       </TableCell>
-                      <TableCell align="left">{row.role}</TableCell>
+                      <TableCell align="left" style={{ fontWeight: "600" }}>
+                        {row.role}
+                      </TableCell>
                       <TableCell align="left" className={classes.rowOption}>
                         {<RowOptions />}
                       </TableCell>
