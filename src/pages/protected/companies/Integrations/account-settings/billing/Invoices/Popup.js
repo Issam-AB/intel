@@ -4,16 +4,16 @@ import {
   Grid,
   Typography,
   Dialog,
-  DialogActions,
   DialogContent,
   Box,
   DialogTitle,
   Divider as MuiDivider,
   Container,
+  Button,
   // Slide,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { Close as CloseIcon } from "@material-ui/icons";
 import { spacing } from "@material-ui/system";
 const Black = "/static/img/logo/Black.svg";
 const Divider = styled(MuiDivider)(spacing);
@@ -39,6 +39,11 @@ const useStyles = makeStyles((theme) => ({
   h5Service: {
     fontSize: "12px",
     fontWeight: "800",
+  },
+  rootButton: {
+    margin: "0px 7rem",
+    marginTop: "-154px",
+    minWidth: "27px",
   },
 }));
 
@@ -129,6 +134,15 @@ const Popup = ({ open, setOpen, handleClose }) => {
                 >
                   May 24, 2021
                 </Typography>
+                <Button
+                  style={{ color: "#868695" }}
+                  classes={{ root: classes.rootButton }}
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon />
+                </Button>
               </Grid>
             </Box>
           </Grid>
@@ -436,8 +450,6 @@ const Popup = ({ open, setOpen, handleClose }) => {
           </div>
           <Divider mt={2} />
         </DialogContent>
-
-        {/* <DialogActions style={{ paddingBottom: "35px" }}></DialogActions> */}
       </Container>
     </Dialog>
   );
