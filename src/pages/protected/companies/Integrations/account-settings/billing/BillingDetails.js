@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
     marginTop: "2rem",
     width: "63rem",
+    marginBottom: "4rem",
   },
   title: {
     fontSize: "20px",
