@@ -190,6 +190,10 @@ const useStyles = makeStyles((theme) => ({
   shrink: {
     display: "none",
   },
+  paperSelect: {
+    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+    // backgroundColor: "red",
+  },
 }));
 
 function createData(member, role) {
@@ -273,6 +277,7 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding="checkbox" align="center">
           <Checkbox
+            style={{ marginLeft: "-3px" }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -477,19 +482,19 @@ function EnhancedTable() {
 
                   return (
                     <StyledTableRow
-                      onClick={(event) => handleClick(event, row.member)}
-                      role="checkbox"
-                      aria-checked={isItemSelected}
+                      // role="checkbox"
+                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={index}
                       hover
-                      selected={isItemSelected}
+                      // selected={isItemSelected}
                       // onMouseEnter={() => setActiveRow(index)}
                       // onMouseLeave={() => setActiveRow("")}
                       style={{ whiteSpace: "nowrap", position: "sticky" }}
                     >
                       <TableCell padding="checkbox" align="center">
                         <Checkbox
+                          onClick={(event) => handleClick(event, row.member)}
                           checked={isItemSelected}
                           inputProps={{ "aria-labelledby": labelId }}
                         />
@@ -549,7 +554,7 @@ function RowOptions({ row }) {
   // const handleClose = () => {
   //   setOpen(false);
   // };
-  const [age, setAge] = React.useState("");
+  const [age, setAge] = React.useState("80");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -571,9 +576,23 @@ function RowOptions({ row }) {
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={age}
+          // defaultValue={{}}
           label="View Only Access"
           onChange={handleChange}
           disableUnderline
+          MenuProps={{
+            classes: { paper: classes.paperSelect },
+            variant: "menu",
+            anchorOrigin: {
+              vertical: "bottom",
+              horizontal: "left",
+            },
+            transformOrigin: {
+              vertical: "top",
+              horizontal: "left",
+            },
+            getContentAnchorEl: null,
+          }}
           className={classes.select}
           classes={{ select: classes.selectMenu }}
 

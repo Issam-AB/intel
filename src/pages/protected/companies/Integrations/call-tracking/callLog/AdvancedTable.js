@@ -54,6 +54,7 @@ const StyledTableRow = withStyles({
 
       whiteSpace: "nowrap",
       padding: "7px 16px",
+      cursor: "pointer",
     },
   },
 })(TableRow);
@@ -642,7 +643,7 @@ function RowOptions({ row }) {
           </Tooltip>
         </>
         <>
-          <Tooltip title="Unblock Leads" classes={{ tooltip: classes.popper }}>
+          <Tooltip title="Block Leads" classes={{ tooltip: classes.popper }}>
             <Slash className={classes.blockIcon} />
           </Tooltip>
         </>
