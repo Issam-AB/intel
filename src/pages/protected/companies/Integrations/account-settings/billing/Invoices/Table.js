@@ -23,6 +23,7 @@ import {
   Container,
 } from "@material-ui/core";
 
+import Popup from "./Popup";
 import { Visibility as VisibilityIcon } from "@material-ui/icons";
 import { Download, FileText, Check } from "react-feather";
 import { spacing } from "@material-ui/system";
@@ -390,13 +391,19 @@ function EnhancedTable() {
   );
 }
 
-function RowOptions({ row }) {
+function RowOptions() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  // const handleClickOpen = () => {
+  //   setOpen(!open);
+  // };
   const handleClickOpen = () => {
-    setOpen(!open);
+    setOpen(true);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <div className={classes.divIcons}>
@@ -407,6 +414,9 @@ function RowOptions({ row }) {
               onClick={handleClickOpen}
             />
           </Tooltip>
+          {open && (
+            <Popup open={open} setOpen={setOpen} handleClose={handleClose} />
+          )}
         </>
 
         <>

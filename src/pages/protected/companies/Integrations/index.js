@@ -1,8 +1,8 @@
 import * as integrationsNames from "./constants";
-import { callTracking } from "../Integrations/call-tracking/route";
-import { websiteMetrics } from "./../Integrations/website-metrics/route";
-import { marketingPerformance } from "../Integrations/marketing-performance/route";
-import { websiteLead } from "../Integrations/website-leads/route";
+import { callTracking } from "./call-tracking/route";
+import { websiteMetrics } from "./website-metrics/route";
+import { marketingPerformance } from "./marketing-performance/route";
+import { websiteLead } from "./website-leads/route";
 
 const listOfIntegrations = [];
 
