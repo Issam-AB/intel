@@ -75,7 +75,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
+const Popup = ({
+  open,
+  setOpen,
+  handleClose,
+
+  integration,
+}) => {
   // const [open, setOpen] = React.useState(false);
   const classes = useStyles();
   // const handleClickOpen = () => {
@@ -110,10 +116,15 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
       </DialogTitle>
 
       <DialogContent style={{ marginTop: "-18px" }}>
-        <Grid container direction="row" alignItems="center">
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justify="space-around"
+        >
           <Grid item lg={4}>
             <img
-              src={icons}
+              src={integration.icon}
               alt="box image"
               width="98px"
               style={{ marginLeft: "14px" }}
@@ -124,14 +135,14 @@ const Popup = ({ open, setOpen, handleClose, icons, name, discription }) => {
               variant="h5"
               style={{ fontSize: "16px", fontWeight: "700" }}
             >
-              {name}
+              {integration.name}
             </Typography>
             <Typography variant="subtitle1" className={classes.discription}>
-              {discription}
+              {integration.decsription}
             </Typography>
           </Grid>
         </Grid>
-        <Grid item style={{ marginLeft: "120px" }}>
+        <Grid item style={{ marginLeft: "150px" }}>
           <Button classes={{ root: classes.ButtonAprove }}>Approve</Button>
           <Typography
             variant="subtitle1"

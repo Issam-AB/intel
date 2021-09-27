@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import moment from "moment-timezone";
-import TimezoneSelect, { allTimezones } from "react-timezone-select";
+import TimezoneSelect, { i18nTimezones } from "react-timezone-select";
 import {
   Paper,
   Typography,
@@ -289,7 +289,7 @@ const EditProfile = () => {
                             style={{ width: "29.8rem" }}
                             onChange={setTz}
                             timezones={{
-                              ...allTimezones,
+                              ...i18nTimezones,
                               "America/Lima": "Pittsburgh",
                               "Europe/Berlin": "Frankfurt",
                             }}

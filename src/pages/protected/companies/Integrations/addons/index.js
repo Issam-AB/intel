@@ -36,6 +36,7 @@ const useStyles = makeStyles({
       border: "1px solid #6320EE",
       opacity: 4,
     },
+    boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px",
   },
   iconButton: {
     padding: "5px 10px",
@@ -50,7 +51,6 @@ const useStyles = makeStyles({
     fontSize: "15px",
   },
   root: {
-    background: "#F9F9FC",
     position: "sticky",
     top: 20,
     bottom: 20,

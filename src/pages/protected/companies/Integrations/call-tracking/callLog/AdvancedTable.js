@@ -31,6 +31,7 @@ import {
   Volume,
   Download,
   Volume2,
+  Slash,
 } from "react-feather";
 import { spacing } from "@material-ui/system";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -48,9 +49,11 @@ const StyledTableRow = withStyles({
       opacity: 2,
     },
     "& .MuiTableCell-root": {
-      borderLeft: "1px solid rgba(224, 224, 224, 1)",
+      // borderLeft: "1px solid rgba(224, 224, 224, 1)",
+      border: "1px solid rgba(224, 224, 224, 1)",
+
       whiteSpace: "nowrap",
-      padding: "9px",
+      padding: "7px 16px",
     },
   },
 })(TableRow);
@@ -86,12 +89,6 @@ const useStyles = makeStyles((theme) => ({
       opacity: 4,
     },
   },
-  // input: {
-  //   marginLeft: theme.spacing(1),
-  //   flex: 1,
-  //   opacity: 0.6,
-  //   transition: "0.75s",
-  // },
   iconButton: {
     padding: "5px 10px",
   },
@@ -116,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#6A74C9",
     fontSize: "25px",
     height: "21px",
-    marginRight: "2px",
+    marginRight: "12px",
   },
   forwardIcon: {
     color: "#6A74C9",
@@ -162,12 +159,25 @@ const useStyles = makeStyles((theme) => ({
   fontcells: {
     fontWeight: 600,
   },
+  tableHead: { borderLeft: "1px solid  #E0E0E0" },
+  blockIcon: {
+    color: "red",
+    width: "21px",
+  },
 }));
 const Spacer = styled.div`
   flex: 1 1 100%;
 `;
 
-function createData(no, company, source, startTime, duration, callersName) {
+function createData(
+  no,
+  company,
+  source,
+  startTime,
+  duration,
+  callersName,
+  numero
+) {
   return {
     no,
     company,
@@ -175,6 +185,7 @@ function createData(no, company, source, startTime, duration, callersName) {
     startTime,
     duration,
     callersName,
+    numero,
   };
 }
 
@@ -185,7 +196,8 @@ const rows = [
     "Google My Business",
     "Today 5:00pm",
     "45s",
-    "Keagan Schulist"
+    "Keagan Schulist",
+    "(863) 399-9200"
   ),
   createData(
     "9",
@@ -193,7 +205,8 @@ const rows = [
     "Metal Roffing",
     "Today 4:00pm",
     "2m 05s",
-    "Lou Moore"
+    "Lou Moore",
+    "(863) 399-9200"
   ),
   createData(
     "6",
@@ -201,7 +214,8 @@ const rows = [
     "Google Origanic",
     "Today 1:00pm",
     "32s",
-    "Laurie Senger"
+    "Laurie Senger",
+    "(863) 399-9200"
   ),
   createData(
     "2",
@@ -209,7 +223,8 @@ const rows = [
     "Direct",
     "Yestarday 1:30pm",
     "35s",
-    "jazmyn Greenhoit"
+    "jazmyn Greenhoit",
+    "(863) 399-9200"
   ),
   createData(
     "8",
@@ -217,7 +232,8 @@ const rows = [
     "Leads Gen Intel",
     "Yestarday 3:30pm",
     "2m 12s",
-    "wanda Rice"
+    "wanda Rice",
+    "(863) 399-9200"
   ),
   createData(
     "1",
@@ -225,7 +241,8 @@ const rows = [
     "Bing Origanic",
     "Yestarday 4:30pm",
     "35s",
-    "Metal Roffing"
+    "Metal Roffing",
+    "(863) 399-9200"
   ),
   createData(
     "5",
@@ -233,7 +250,8 @@ const rows = [
     "Google My Business",
     "Today 5:00pm",
     "45s",
-    "Keagan Schulist"
+    "Keagan Schulist",
+    "(863) 399-9200"
   ),
   createData(
     "10",
@@ -241,7 +259,8 @@ const rows = [
     "Metal Roffing",
     "Today 4:00pm",
     "2m 05s",
-    "Lou Moore"
+    "Lou Moore",
+    "(863) 399-9200"
   ),
   createData(
     "7",
@@ -249,7 +268,8 @@ const rows = [
     "Google Origanic",
     "Today 1:00pm",
     "32s",
-    "Laurie Senger"
+    "Laurie Senger",
+    "(863) 399-9200"
   ),
   createData(
     "3",
@@ -257,7 +277,8 @@ const rows = [
     "Direct",
     "Yestarday 1:30pm",
     "35s",
-    "jazmyn Greenhoit"
+    "jazmyn Greenhoit",
+    "(863) 399-9200"
   ),
 ];
 
@@ -344,6 +365,7 @@ function EnhancedTableHead(props) {
         </TableCell>
         {headCells.map((headCell) => (
           <TableCell
+            classes={{ head: classes.tableHead }}
             key={headCell.id}
             align={headCell.numeric ? "left" : "center"}
             padding={headCell.disablePadding ? "none" : "default"}
@@ -541,7 +563,18 @@ function EnhancedTable() {
                         {row.duration}
                       </TableCell>
                       <TableCell align="left" className={classes.fontcells}>
-                        {row.callersName}
+                        <div style={{ marginBottom: "10px" }}>
+                          {row.callersName}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: "12.5px",
+                            fontWeight: "600",
+                            color: "#62A2DC",
+                          }}
+                        >
+                          {row.numero}
+                        </div>
                       </TableCell>
                       <TableCell align="left">{<RowOptions />}</TableCell>
                     </StyledTableRow>
@@ -606,6 +639,11 @@ function RowOptions({ row }) {
         <>
           <Tooltip title="Download Call" classes={{ tooltip: classes.popper }}>
             <Download className={classes.visibility} />
+          </Tooltip>
+        </>
+        <>
+          <Tooltip title="Unblock Leads" classes={{ tooltip: classes.popper }}>
+            <Slash className={classes.blockIcon} />
           </Tooltip>
         </>
       </div>
