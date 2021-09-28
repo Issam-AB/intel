@@ -110,18 +110,12 @@ function SignUp() {
 
   const [step, setStep] = React.useState(1);
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
+  const [isNextStep, setNextStep] = React.useState(false);
 
   const butonLabel = [];
   butonLabel[1] = "Next Step";
   butonLabel[2] = "Almost Done";
   butonLabel[3] = "Sign Up";
-
-  const handleExpandClick = () => {
-    let newStep = step + 1;
-    if (step < 3) return setStep(newStep);
-
-    console.log("suabmi");
-  };
 
   // const setTwoSchema
   const validationSchema = Yup.object().shape({
@@ -195,16 +189,18 @@ function SignUp() {
   });
 
   function isValidField(currentStepValidation, data) {
+    //if (!isNextStep) {
     currentStepValidation
       .validate(data)
       .then(function (valid) {
-        console.log("NO ERROR", data);
+        //console.log("NO ERROR", data);
         return setButtonEnabled(true);
       })
       .catch(function (error) {
-        console.log("ERROR", data);
+        // console.log("ERROR", data);
         return setButtonEnabled(false);
       });
+    //  }
   }
 
   const validate = async ({
@@ -216,10 +212,11 @@ function SignUp() {
     password,
     confirmPassword,
   }) => {
+    //step One
     if (step === 1) await isValidField(stepOneValidation, { name, email });
 
+    //Step2
     if (step === 2) {
-      setButtonEnabled(false);
       await isValidField(stepTowValidation, {
         company,
         wbsiteUrl,
@@ -227,12 +224,47 @@ function SignUp() {
       });
     }
 
+    //Step 3
     if (step === 3) {
-      setButtonEnabled(false);
       await isValidField(stepThreeValidation, { password, confirmPassword });
     }
 
     return {};
+  };
+
+  const handleButtonClick = () => {
+    console.log(step);
+    let newStep = step + 1;
+    if (step < 3) {
+      setButtonEnabled(false);
+      return setStep(newStep);
+    }
+  };
+
+  const onSubmitForm = async (
+    values,
+    { setErrors, setStatus, setSubmitting }
+  ) => {
+    console.log(values);
+
+    try {
+      await dispatch(
+        signUp({
+          name: "test",
+          company: "test",
+          wbsiteUrl: "www.google.com",
+          email: values.email,
+          password: values.password,
+        })
+      );
+      //  history.push("/auth/sign-in");
+    } catch (error) {
+      const message = error.message || "Something went wrong";
+
+      setStatus({ success: false });
+      setErrors({ submit: message });
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -259,7 +291,7 @@ function SignUp() {
         </Typography>
 
         <Formik
-          validate={validate}
+          validate={isNextStep ? false : validate}
           initialValues={{
             name: "",
             company: "",
@@ -271,29 +303,7 @@ function SignUp() {
             submit: false,
           }}
           validationSchema={validationSchema}
-          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-            try {
-              await dispatch(
-                signUp({
-                  name: "test",
-                  company: "test",
-                  wbsiteUrl: "www.google.com",
-                  email: values.email,
-                  password: values.password,
-                })
-              );
-              history.push("/auth/sign-in");
-            } catch (error) {
-              const message = error.message || "Something went wrong";
-
-              setStatus({ success: false });
-              setErrors({ submit: message });
-              setSubmitting(false);
-            }
-          }}
-          onChange={(values) => {
-            console.log(values);
-          }}
+          onSubmit={onSubmitForm}
         >
           {({
             errors,
@@ -326,7 +336,7 @@ function SignUp() {
                       value={values.name}
                       error={Boolean(touched.name && errors.name)}
                       fullWidth
-                      helperText={touched.name && errors.name}
+                      helperText={Boolean(touched.name && errors.name)}
                       onBlur={handleBlur}
                       onChange={handleChange}
                       my={3}
@@ -490,7 +500,7 @@ function SignUp() {
                 variant="contained"
                 disabled={!isSubmitting && !buttonEnabled}
                 // expand={expanded}
-                onClick={handleExpandClick}
+                onClick={handleButtonClick}
                 // aria-expanded={expanded}
               >
                 {butonLabel[step]}
