@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   dashboardLayoutRoutes,
+  authLayoutRoutes,
   presentationLayoutRoutes,
   protectedRoutes,
 } from "./index";
@@ -56,6 +57,7 @@ const Routes = () => (
     <Switch>
       {childRoutes(DashboardLayout, dashboardLayoutRoutes)}
       {childRoutes(DashboardLayout, protectedRoutes)}
+      {childRoutes(AuthLayout, authLayoutRoutes)}
       {childRoutes(PresentationLayout, presentationLayoutRoutes)}
       <Route
         render={() => (

@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
   body {
-    background: ${(props) => props.theme.palette.background.default};
+    /* background: ${(props) => props.theme.palette.background.default}; */
+    background-color: #6320EE;
   }
 `;
 
@@ -24,11 +25,18 @@ const Root = styled.div`
 
 const Auth = ({ children }) => {
   return (
-    <Root>
-      <CssBaseline />
-      <GlobalStyle />
-      {children}
-    </Root>
+    <>
+      <img
+        src="/static/img/logo/white.svg"
+        alt="lgo"
+        style={{ width: "14rem", marginTop: "2rem", marginLeft: "51rem" }}
+      />
+      <Root>
+        <CssBaseline />
+        <GlobalStyle />
+        {children}
+      </Root>
+    </>
   );
 };
 

@@ -27,6 +27,13 @@ import InegrationsRoutes from "./../pages/protected/companies/Integrations/index
 // Guards
 import AuthGuard from "../components/AuthGuard";
 
+// Auth components
+// import SignIn from "../pages/auth/SignIn";
+import SignUp from "../pages/auth/SignUp";
+// import ResetPassword from "../pages/auth/ResetPassword";
+// import Page404 from "../pages/auth/Page404";
+// import Page500 from "../pages/auth/Page500";
+
 // Components components
 // import Accordion from "../pages/components/Accordion";
 // import Alerts from "../pages/components/Alerts";
@@ -210,6 +217,40 @@ const accountSettings = {
   component: null,
 };
 
+const authRoutes = {
+  id: "Auth",
+  path: "/auth",
+  icon: <Users />,
+  children: [
+    // {
+    //   path: "/auth/sign-in",
+    //   name: "Sign In",
+    //   component: SignIn,
+    // },
+    {
+      path: "/auth/sign-up",
+      name: "Sign Up",
+      component: SignUp,
+    },
+    // {
+    //   path: "/auth/reset-password",
+    //   name: "Reset Password",
+    //   component: ResetPassword,
+    // },
+    // {
+    //   path: "/auth/404",
+    //   name: "404 Page",
+    //   component: Page404,
+    // },
+    // {
+    //   path: "/auth/500",
+    //   name: "500 Page",
+    //   component: Page500,
+    // },
+  ],
+  component: null,
+};
+
 const landingRoutes = {
   id: "Landing Page",
   path: "/Landing-Page",
@@ -228,13 +269,17 @@ const protectedPageRoutes = {
   guard: AuthGuard,
 };
 
-// Routes using the Dashboard layout
+// // Routes using the Dashboard layout
 export const dashboardLayoutRoutes = InegrationsRoutes;
 
-// dashboardLayoutRoutes.push(websiteMetrics)
-//dashboardLayoutRoutes.push(callTracking)
+// dashboardLayoutRoutes.push(websiteMetrics);
+// dashboardLayoutRoutes.push(callTracking);
+// dashboardLayoutRoutes.push(integrations);
 // dashboardLayoutRoutes.push(support);
-// dashboardLayoutRoutes.push(accountSettings)
+// dashboardLayoutRoutes.push(accountSettings);
+
+// Routes using the Dashboard layout
+dashboardLayoutRoutes.push([integrations, support, accountSettings]);
 
 // = [
 //   // marketingPerformance,
@@ -245,8 +290,8 @@ export const dashboardLayoutRoutes = InegrationsRoutes;
 //   accountSettings,
 // ];
 
-// // Routes using the Auth layout
-// export const authLayoutRoutes = [authRoutes];
+// Routes using the Auth layout
+export const authLayoutRoutes = [authRoutes];
 
 // Routes using the Presentation layout
 export const presentationLayoutRoutes = [landingRoutes];
@@ -257,16 +302,9 @@ export const protectedRoutes = [protectedPageRoutes];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = InegrationsRoutes;
-// [
-//   marketingPerformance,
-//   websiteMetrics,
-//   websiteLead,
-//   callTracking,
-//   support,
-//   accountSettings,
-// // ];
 
 // sidebarRoutes.push(websiteMetrics);
 sidebarRoutes.push(integrations);
 sidebarRoutes.push(support);
 sidebarRoutes.push(accountSettings);
+// sidebarRoutes.push(authRoutes);
