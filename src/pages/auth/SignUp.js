@@ -12,11 +12,13 @@ import {
   Paper,
   TextField as MuiTextField,
   Typography,
+  Divider as MuiDivider,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+// import PasswordStrengthBar from "react-password-strength-bar";
 
 // const LogoImage = require("/static/img/logo/white.svg");
 const theme = createMuiTheme({
@@ -58,7 +60,7 @@ const useStyles = makeStyles({
   input: {
     padding: "12.5px 14px",
     fontSize: "13px",
-    color: "#868695",
+    color: "black",
   },
   labelRoot: {
     color: "black",
@@ -88,6 +90,7 @@ const useStyles = makeStyles({
 const Alert = styled(MuiAlert)(spacing);
 
 const TextField = styled(MuiTextField)(spacing);
+const Divider = styled(MuiDivider)(spacing);
 
 const Wrapper = styled(Paper)`
   padding: ${(props) => props.theme.spacing(6)}px;
@@ -99,14 +102,139 @@ const Wrapper = styled(Paper)`
     padding: ${(props) => props.theme.spacing(10)}px;
   }
 `;
-// const Logo = styled(LogoImage)`
-//   margin-top: 10px;
-// `;
 
 function SignUp() {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+
+  const [step, setStep] = React.useState(1);
+  const [buttonEnabled, setButtonEnabled] = React.useState(false);
+
+  const butonLabel = [];
+  butonLabel[1] = "Next Step";
+  butonLabel[2] = "Almost Done";
+  butonLabel[3] = "Sign Up";
+
+  const handleExpandClick = () => {
+    let newStep = step + 1;
+    if (step < 3) return setStep(newStep);
+
+    console.log("suabmi");
+  };
+
+  // const setTwoSchema
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().max(30).required("Name is required"),
+    email: Yup.string()
+      .email("Must be a valid email")
+      .max(255)
+      .required("Email is required"),
+    company: Yup.string().max(30).required("Company Name is required"),
+    wbsiteUrl: Yup.string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        "Enter correct url!"
+      )
+      .required("Please enter website"),
+    phoneNumber: Yup.string()
+      .matches(
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        "Phone number is not valid"
+      )
+      .required("Please your phone number"),
+    password: Yup.string()
+      .min(12, "Must be at least 12 characters")
+      .max(255)
+      .required("Required"),
+    confirmPassword: Yup.string().when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: Yup.string().oneOf(
+        [Yup.ref("password")],
+        "Both password need to be the same"
+      ),
+    }),
+  });
+
+  const stepOneValidation = Yup.object().shape({
+    name: Yup.string().max(30).required("Name is required"),
+    email: Yup.string()
+      .email("Must be a valid email")
+      .max(255)
+      .required("Email is required"),
+  });
+
+  const stepTowValidation = Yup.object().shape({
+    company: Yup.string().max(30).required("Company Name is required"),
+    wbsiteUrl: Yup.string()
+      .matches(
+        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+        "Enter correct url!"
+      )
+      .required("Please enter website"),
+    phoneNumber: Yup.string()
+      .matches(
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        "Enter correct phone!"
+      )
+      .required("Phone number is not valid"),
+  });
+
+  const stepThreeValidation = Yup.object().shape({
+    password: Yup.string()
+      .min(12, "Must be at least 12 characters")
+      .max(255)
+      .required("Required"),
+    confirmPassword: Yup.string().when("password", {
+      is: (val) => (val && val.length > 0 ? true : false),
+      then: Yup.string().oneOf(
+        [Yup.ref("password")],
+        "Both password need to be the same"
+      ),
+    }),
+  });
+
+  function isValidField(currentStepValidation, data) {
+    currentStepValidation
+      .validate(data)
+      .then(function (valid) {
+        console.log("NO ERROR", data);
+        return setButtonEnabled(true);
+      })
+      .catch(function (error) {
+        console.log("ERROR", data);
+        return setButtonEnabled(false);
+      });
+  }
+
+  const validate = async ({
+    name,
+    email,
+    company,
+    wbsiteUrl,
+    phoneNumber,
+    password,
+    confirmPassword,
+  }) => {
+    if (step === 1) await isValidField(stepOneValidation, { name, email });
+
+    if (step === 2) {
+      setButtonEnabled(false);
+      await isValidField(stepTowValidation, {
+        company,
+        wbsiteUrl,
+        phoneNumber,
+      });
+    }
+
+    if (step === 3) {
+      setButtonEnabled(false);
+      await isValidField(stepThreeValidation, { password, confirmPassword });
+    }
+
+    return {};
+  };
+
   return (
     <>
       <Wrapper>
@@ -131,33 +259,18 @@ function SignUp() {
         </Typography>
 
         <Formik
+          validate={validate}
           initialValues={{
             name: "",
             company: "",
             email: "",
             wbsiteUrl: "",
-            // password: "",
-            // confirmPassword: "",
+            phoneNumber: "",
+            password: "",
+            confirmPassword: "",
             submit: false,
           }}
-          validationSchema={Yup.object().shape({
-            name: Yup.string().max(255).required("Name is required"),
-            email: Yup.string()
-              .email("Must be a valid email")
-              .max(255)
-              .required("Email is required"),
-            password: Yup.string()
-              .min(12, "Must be at least 12 characters")
-              .max(255)
-              .required("Required"),
-            confirmPassword: Yup.string().when("password", {
-              is: (val) => (val && val.length > 0 ? true : false),
-              then: Yup.string().oneOf(
-                [Yup.ref("password")],
-                "Both password need to be the same"
-              ),
-            }),
-          })}
+          validationSchema={validationSchema}
           onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
             try {
               await dispatch(
@@ -177,6 +290,9 @@ function SignUp() {
               setErrors({ submit: message });
               setSubmitting(false);
             }
+          }}
+          onChange={(values) => {
+            console.log(values);
           }}
         >
           {({
@@ -199,120 +315,188 @@ function SignUp() {
                 </Alert>
               )}
               <ThemeProvider theme={theme}>
-                <TextField
-                  type="text"
-                  name="name"
-                  label="Name:"
-                  variant="outlined"
-                  placeholder="Enter your name"
-                  value={values.name}
-                  error={Boolean(touched.name && errors.name)}
-                  fullWidth
-                  helperText={touched.name && errors.name}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  my={3}
-                  InputLabelProps={{
-                    root: classes.labelRoot,
-                    shrink: true,
-                  }}
-                  InputProps={{ classes: { input: classes.input } }}
-                />
+                {step === 1 ? (
+                  <>
+                    <TextField
+                      type="text"
+                      name="name"
+                      label="Name:"
+                      variant="outlined"
+                      placeholder="Enter your name"
+                      value={values.name}
+                      error={Boolean(touched.name && errors.name)}
+                      fullWidth
+                      helperText={touched.name && errors.name}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        root: classes.labelRoot,
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                      //inputRef={validateDate("name", values.name)}
+                    />
+                    <TextField
+                      type="email"
+                      name="email"
+                      label="Email:"
+                      placeholder="Enter your email"
+                      variant="outlined"
+                      value={values.email}
+                      error={Boolean(touched.email && errors.email)}
+                      fullWidth
+                      helperText={touched.email && errors.email}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
 
-                <TextField
-                  type="text"
-                  name="company"
-                  label="Company Name:"
-                  placeholder="Enter your company"
-                  variant="outlined"
-                  value={values.company}
-                  error={Boolean(touched.company && errors.company)}
-                  fullWidth
-                  helperText={touched.company && errors.company}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  my={3}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  InputProps={{ classes: { input: classes.input } }}
-                />
-                <TextField
-                  type="wbsiteUrl"
-                  name="wbsiteUrl"
-                  label="Website URL:"
-                  placeholder="Enter your Website URL"
-                  variant="outlined"
-                  value={values.wbsiteUrl}
-                  error={Boolean(touched.wbsiteUrl && errors.wbsiteUrl)}
-                  fullWidth
-                  helperText={touched.wbsiteUrl && errors.wbsiteUrl}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  my={3}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  InputProps={{ classes: { input: classes.input } }}
-                />
-                <TextField
-                  type="email"
-                  name="email"
-                  label="Email:"
-                  placeholder="Enter your email"
-                  variant="outlined"
-                  value={values.email}
-                  error={Boolean(touched.email && errors.email)}
-                  fullWidth
-                  helperText={touched.email && errors.email}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  my={3}
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  InputProps={{ classes: { input: classes.input } }}
-                />
+                {step === 2 ? (
+                  <>
+                    <TextField
+                      type="text"
+                      name="company"
+                      label="Company Name:"
+                      placeholder="Enter your company"
+                      variant="outlined"
+                      value={values.company}
+                      error={Boolean(touched.company && errors.company)}
+                      fullWidth
+                      helperText={touched.company && errors.company}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                    <TextField
+                      type="wbsiteUrl"
+                      name="wbsiteUrl"
+                      label="Website URL:"
+                      placeholder="Enter your Website URL"
+                      variant="outlined"
+                      value={values.wbsiteUrl}
+                      error={Boolean(touched.wbsiteUrl && errors.wbsiteUrl)}
+                      fullWidth
+                      helperText={touched.wbsiteUrl && errors.wbsiteUrl}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                    <TextField
+                      type="phoneNumber"
+                      name="phoneNumber"
+                      label="Phone Number:"
+                      placeholder="Enter your phone number"
+                      variant="outlined"
+                      value={values.phoneNumber}
+                      error={Boolean(touched.phoneNumber && errors.phoneNumber)}
+                      fullWidth
+                      helperText={touched.phoneNumber && errors.phoneNumber}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
+
+                {step === 3 ? (
+                  <>
+                    <TextField
+                      type="password"
+                      name="password"
+                      label="Password"
+                      placeholder="Enter your password"
+                      variant="outlined"
+                      value={values.password}
+                      error={Boolean(touched.password && errors.password)}
+                      fullWidth
+                      helperText={touched.password && errors.password}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                    {/* <PasswordStrengthBar
+                        password={values.password}
+                        style={{
+                          width: "21rem",
+                          height: "21px",
+                          marginLeft: "3px",
+                        }}
+                      /> */}
+
+                    <TextField
+                      type="password"
+                      name="confirmPassword"
+                      label="Re-enter Password"
+                      placeholder="Confirme your password"
+                      variant="outlined"
+                      value={values.confirmPassword}
+                      error={Boolean(
+                        touched.confirmPassword && errors.confirmPassword
+                      )}
+                      fullWidth
+                      helperText={
+                        touched.confirmPassword && errors.confirmPassword
+                      }
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      my={3}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      InputProps={{ classes: { input: classes.input } }}
+                    />
+                  </>
+                ) : (
+                  ""
+                )}
               </ThemeProvider>
-              {/* <TextField
-              type="password"
-              name="password"
-              label="Password"
-              value={values.password}
-              error={Boolean(touched.password && errors.password)}
-              fullWidth
-              helperText={touched.password && errors.password}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              my={3}
-            />
-            <TextField
-              type="password"
-              name="confirmPassword"
-              label="Confirm Password"
-              value={values.confirmPassword}
-              error={Boolean(touched.confirmPassword && errors.confirmPassword)}
-              fullWidth
-              helperText={touched.confirmPassword && errors.confirmPassword}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              my={3}
-            /> */}
               <Button
                 style={{
                   borderRadius: "10px",
-                  height: "3.5rem",
-                  backgroundColor: "#23CC94",
+                  height: "3.6rem",
+                  backgroundColor: buttonEnabled ? "#23CC94" : "#cccccc",
+                  color: "white",
                 }}
                 classes={{ label: classes.labelButton }}
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
-                disabled={isSubmitting}
+                disabled={!isSubmitting && !buttonEnabled}
+                // expand={expanded}
+                onClick={handleExpandClick}
+                // aria-expanded={expanded}
               >
-                Sign up <ArrowRightAlt style={{ marginLeft: "6px" }} />
+                {butonLabel[step]}
+                <ArrowRightAlt style={{ marginLeft: "6px" }} />
               </Button>
+
               <div className={classes.fotter}>
                 <Typography
                   variant="subtitle1"
@@ -322,8 +506,14 @@ function SignUp() {
                   By signing up you agree to Inteligencedashboard.com
                 </Typography>
                 <Typography variant="subtitle2" className={classes.terms}>
-                  <span style={{ color: "#6320EE" }}> Term of service</span> and{" "}
-                  <span style={{ color: "#6320EE" }}>Privacy policy</span>
+                  <span style={{ color: "#6320EE", cursor: "pointer" }}>
+                    {" "}
+                    Term of service
+                  </span>{" "}
+                  and{" "}
+                  <span style={{ color: "#6320EE", cursor: "pointer" }}>
+                    Privacy policy
+                  </span>
                 </Typography>
               </div>
             </form>

@@ -28,7 +28,7 @@ import InegrationsRoutes from "./../pages/protected/companies/Integrations/index
 import AuthGuard from "../components/AuthGuard";
 
 // Auth components
-// import SignIn from "../pages/auth/SignIn";
+import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/SignUp";
 // import ResetPassword from "../pages/auth/ResetPassword";
 // import Page404 from "../pages/auth/Page404";
@@ -222,11 +222,11 @@ const authRoutes = {
   path: "/auth",
   icon: <Users />,
   children: [
-    // {
-    //   path: "/auth/sign-in",
-    //   name: "Sign In",
-    //   component: SignIn,
-    // },
+    {
+      path: "/auth/sign-in",
+      name: "Sign In",
+      component: SignIn,
+    },
     {
       path: "/auth/sign-up",
       name: "Sign Up",

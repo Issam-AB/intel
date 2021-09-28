@@ -31,7 +31,7 @@ const TextField = styled(MuiTextField)(spacing);
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: "63rem",
-    height: "473px",
+    height: "520px",
     marginLeft: "42px",
     boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
   },
@@ -323,7 +323,7 @@ const PsswordChnage = () => {
                         <Grid
                           container
                           spacing={6}
-                          style={{ margin: "-36px -39px" }}
+                          style={{ margin: "-11px -39px" }}
                         >
                           <Grid item md={12} xs={6}>
                             <div

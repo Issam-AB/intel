@@ -7,7 +7,8 @@ import { Helmet } from "react-helmet-async";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { signIn } from "../../redux/actions/authActions";
-
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import {
   Avatar,
   Checkbox,
@@ -20,38 +21,81 @@ import {
 import { spacing } from "@material-ui/system";
 import { Alert as MuiAlert } from "@material-ui/lab";
 
+const useStyles = makeStyles({
+  h1Sign: {
+    fontSize: "24px",
+    fontWeight: "800",
+    marginBottom: "2rem",
+  },
+  h2Sign: {
+    fontSize: "14px",
+    fontWeight: "600",
+  },
+  input: {
+    padding: "12.5px 14px",
+    fontSize: "13px",
+    color: "black",
+  },
+  labelRoot: {
+    color: "black",
+    fontWeight: "800",
+  },
+  labelButton: {
+    fontSize: "15px",
+    fontWeight: "700",
+  },
+  fotter: {
+    textAlign: "center",
+    marginTop: "2rem",
+  },
+  bySignin: {
+    fontSize: "12px",
+    fontWeight: "600",
+    lineHeight: "0.75",
+    color: "#868695",
+  },
+  terms: {
+    fontSize: "11px",
+    fontWeight: "600",
+    color: "#868695",
+  },
+});
+
 const Alert = styled(MuiAlert)(spacing);
 
 const TextField = styled(MuiTextField)(spacing);
 
 const Wrapper = styled(Paper)`
   padding: ${(props) => props.theme.spacing(6)}px;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  margin-top: -13rem;
+
+  ${(props) => props.theme.breakpoints.up("md")} {
+    padding: ${(props) => props.theme.spacing(10)}px;
+  }
+  padding: ${(props) => props.theme.spacing(6)}px;
   ${(props) => props.theme.breakpoints.up("md")} {
     padding: ${(props) => props.theme.spacing(10)}px;
   }
 `;
 
-const BigAvatar = styled(Avatar)`
-  width: 92px;
-  height: 92px;
-  text-align: center;
-  margin: 0 auto ${(props) => props.theme.spacing(5)}px;
-`;
-
 function SignIn() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const classes = useStyles();
 
   return (
     <Wrapper>
       <Helmet title="Sign In" />
-      <BigAvatar alt="Lucy" src="/static/img/avatars/avatar-1.jpg" />
-
-      <Typography component="h1" variant="h4" align="center" gutterBottom>
-        Welcome back, Lucy!
-      </Typography>
-      <Typography component="h2" variant="body1" align="center">
-        Sign in to your account to continue
+      <Typography
+        component="h1"
+        variant="h4"
+        align="center"
+        gutterBottom
+        className={classes.h1Sign}
+      >
+        Login to my <br /> Inteligence Dashboard
       </Typography>
 
       <Formik
@@ -104,6 +148,7 @@ function SignIn() {
             <TextField
               type="email"
               name="email"
+              variant="outlined"
               label="Email Address"
               value={values.email}
               error={Boolean(touched.email && errors.email)}
@@ -112,10 +157,17 @@ function SignIn() {
               onBlur={handleBlur}
               onChange={handleChange}
               my={2}
+              InputLabelProps={{
+                root: classes.labelRoot,
+                shrink: true,
+              }}
+              InputProps={{ classes: { input: classes.input } }}
             />
+
             <TextField
               type="password"
               name="password"
+              variant="outlined"
               label="Password"
               value={values.password}
               error={Boolean(touched.password && errors.password)}
@@ -124,12 +176,24 @@ function SignIn() {
               onBlur={handleBlur}
               onChange={handleChange}
               my={2}
+              InputLabelProps={{
+                root: classes.labelRoot,
+                shrink: true,
+              }}
+              InputProps={{ classes: { input: classes.input } }}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
+              style={{
+                borderRadius: "10px",
+                height: "3.6rem",
+                backgroundColor: "#23CC94",
+                color: "white",
+              }}
+              classes={{ label: classes.labelButton }}
               type="submit"
               fullWidth
               variant="contained"
@@ -139,6 +203,7 @@ function SignIn() {
               Sign in
             </Button>
             <Button
+              style={{ color: "#6320EE" }}
               component={Link}
               to="/auth/reset-password"
               fullWidth
@@ -146,6 +211,26 @@ function SignIn() {
             >
               Forgot password
             </Button>
+
+            <div className={classes.fotter}>
+              <Typography
+                variant="subtitle1"
+                gutterBottom
+                className={classes.bySignin}
+              >
+                By signing up you agree to Inteligencedashboard.com
+              </Typography>
+              <Typography variant="subtitle2" className={classes.terms}>
+                <span style={{ color: "#6320EE", cursor: "pointer" }}>
+                  {" "}
+                  Term of service
+                </span>{" "}
+                and{" "}
+                <span style={{ color: "#6320EE", cursor: "pointer" }}>
+                  Privacy policy
+                </span>
+              </Typography>
+            </div>
           </form>
         )}
       </Formik>
