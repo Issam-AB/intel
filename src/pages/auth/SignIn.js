@@ -10,16 +10,41 @@ import { signIn } from "../../redux/actions/authActions";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {
-  Avatar,
-  Checkbox,
-  FormControlLabel,
   Button,
   Paper,
   TextField as MuiTextField,
   Typography,
+  Box,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
 import { Alert as MuiAlert } from "@material-ui/lab";
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiInputLabel: {
+      // Name of the component ⚛️ / style sheet
+      root: {
+        // Name of the rule
+        fontWeight: "700",
+        color: "black",
+        fontSize: "15px",
+        // "&$focused": {
+        //   // increase the specificity for the pseudo class
+        //   color: "blue",
+        // },
+      },
+    },
+    MuiInput: {
+      input: {
+        "& .Mui-focused": {
+          color: "tomato",
+          fontWeight: "bold",
+          borderColor: "#868695",
+        },
+      },
+    },
+  },
+});
 
 const useStyles = makeStyles({
   h1Sign: {
@@ -59,6 +84,19 @@ const useStyles = makeStyles({
     fontWeight: "600",
     color: "#868695",
   },
+  btnLink: {
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: "900",
+    color: "#23CC94",
+  },
+  fogotPass: {
+    float: "right",
+    textDecoration: "none",
+    fontSize: "11px",
+    fontWeight: "700",
+    color: "#6320EE",
+  },
 });
 
 const Alert = styled(MuiAlert)(spacing);
@@ -68,7 +106,10 @@ const TextField = styled(MuiTextField)(spacing);
 const Wrapper = styled(Paper)`
   padding: ${(props) => props.theme.spacing(6)}px;
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
   margin-top: -13rem;
 
   ${(props) => props.theme.breakpoints.up("md")} {
@@ -86,155 +127,153 @@ function SignIn() {
   const classes = useStyles();
 
   return (
-    <Wrapper>
-      <Helmet title="Sign In" />
-      <Typography
-        component="h1"
-        variant="h4"
-        align="center"
-        gutterBottom
-        className={classes.h1Sign}
-      >
-        Login to my <br /> Inteligence Dashboard
-      </Typography>
+    <Box>
+      <Wrapper>
+        <Helmet title="Sign In" />
+        <Typography
+          component="h1"
+          variant="h4"
+          align="center"
+          gutterBottom
+          className={classes.h1Sign}
+        >
+          Login to my <br /> Intelligence Dashboard
+        </Typography>
 
-      <Formik
-        initialValues={{
-          email: "demo@bootlab.io",
-          password: "unsafepassword",
-          submit: false,
-        }}
-        validationSchema={Yup.object().shape({
-          email: Yup.string()
-            .email("Must be a valid email")
-            .max(255)
-            .required("Email is required"),
-          password: Yup.string().max(255).required("Password is required"),
-        })}
-        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          try {
-            await dispatch(
-              signIn({ email: values.email, password: values.password })
-            );
-            history.push("/private");
-          } catch (error) {
-            const message = error.message || "Something went wrong";
+        <Formik
+          initialValues={{
+            email: "demo@bootlab.io",
+            password: "unsafepassword",
+            submit: false,
+          }}
+          validationSchema={Yup.object().shape({
+            email: Yup.string()
+              .email("Must be a valid email")
+              .max(255)
+              .required("Email is required"),
+            password: Yup.string().max(255).required("Password is required"),
+          })}
+          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
+            try {
+              await dispatch(
+                signIn({ email: values.email, password: values.password })
+              );
+              history.push("/private");
+            } catch (error) {
+              const message = error.message || "Something went wrong";
 
-            setStatus({ success: false });
-            setErrors({ submit: message });
-            setSubmitting(false);
-          }
-        }}
-      >
-        {({
-          errors,
-          handleBlur,
-          handleChange,
-          handleSubmit,
-          isSubmitting,
-          touched,
-          values,
-        }) => (
-          <form noValidate onSubmit={handleSubmit}>
-            <Alert mt={3} mb={1} severity="info">
-              Use <strong>demo@bootlab.io</strong> and{" "}
-              <strong>unsafepassword</strong> to sign in
-            </Alert>
-            {errors.submit && (
-              <Alert mt={2} mb={1} severity="warning">
-                {errors.submit}
-              </Alert>
-            )}
-            <TextField
-              type="email"
-              name="email"
-              variant="outlined"
-              label="Email Address"
-              value={values.email}
-              error={Boolean(touched.email && errors.email)}
-              fullWidth
-              helperText={touched.email && errors.email}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              my={2}
-              InputLabelProps={{
-                root: classes.labelRoot,
-                shrink: true,
-              }}
-              InputProps={{ classes: { input: classes.input } }}
-            />
+              setStatus({ success: false });
+              setErrors({ submit: message });
+              setSubmitting(false);
+            }
+          }}
+        >
+          {({
+            errors,
+            handleBlur,
+            handleChange,
+            handleSubmit,
+            isSubmitting,
+            touched,
+            values,
+          }) => (
+            <form noValidate onSubmit={handleSubmit}>
+              {/* <Alert mt={3} mb={1} severity="info">
+                Use <strong>demo@bootlab.io</strong> and{" "}
+                <strong>unsafepassword</strong> to sign in
+              </Alert> */}
+              {errors.submit && (
+                <Alert mt={2} mb={1} severity="warning">
+                  {errors.submit}
+                </Alert>
+              )}
+              <ThemeProvider theme={theme}>
+                <TextField
+                  type="email"
+                  name="email"
+                  variant="outlined"
+                  label="Email Address"
+                  value={values.email}
+                  error={Boolean(touched.email && errors.email)}
+                  fullWidth
+                  helperText={touched.email && errors.email}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  my={5}
+                  InputLabelProps={{
+                    root: classes.labelRoot,
+                    shrink: true,
+                  }}
+                  InputProps={{ classes: { input: classes.input } }}
+                />
+                <>
+                  <Link to="/auth/reset-password" className={classes.fogotPass}>
+                    Forgot your password?
+                  </Link>
+                  <TextField
+                    type="password"
+                    name="password"
+                    variant="outlined"
+                    label="Password"
+                    value={values.password}
+                    error={Boolean(touched.password && errors.password)}
+                    fullWidth
+                    helperText={touched.password && errors.password}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    my={2}
+                    InputLabelProps={{
+                      root: classes.labelRoot,
+                      shrink: true,
+                    }}
+                    InputProps={{ classes: { input: classes.input } }}
+                  />
+                </>
+              </ThemeProvider>
 
-            <TextField
-              type="password"
-              name="password"
-              variant="outlined"
-              label="Password"
-              value={values.password}
-              error={Boolean(touched.password && errors.password)}
-              fullWidth
-              helperText={touched.password && errors.password}
-              onBlur={handleBlur}
-              onChange={handleChange}
-              my={2}
-              InputLabelProps={{
-                root: classes.labelRoot,
-                shrink: true,
-              }}
-              InputProps={{ classes: { input: classes.input } }}
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              style={{
-                borderRadius: "10px",
-                height: "3.6rem",
-                backgroundColor: "#23CC94",
-                color: "white",
-              }}
-              classes={{ label: classes.labelButton }}
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              disabled={isSubmitting}
-            >
-              Sign in
-            </Button>
-            <Button
-              style={{ color: "#6320EE" }}
-              component={Link}
-              to="/auth/reset-password"
-              fullWidth
-              color="primary"
-            >
-              Forgot password
-            </Button>
-
-            <div className={classes.fotter}>
-              <Typography
-                variant="subtitle1"
-                gutterBottom
-                className={classes.bySignin}
+              <Button
+                style={{
+                  borderRadius: "10px",
+                  height: "3.6rem",
+                  backgroundColor: "#23CC94",
+                  color: "white",
+                  marginTop: "1rem",
+                }}
+                classes={{ label: classes.labelButton }}
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                disabled={isSubmitting}
               >
-                By signing up you agree to Inteligencedashboard.com
-              </Typography>
-              <Typography variant="subtitle2" className={classes.terms}>
-                <span style={{ color: "#6320EE", cursor: "pointer" }}>
-                  {" "}
-                  Term of service
-                </span>{" "}
-                and{" "}
-                <span style={{ color: "#6320EE", cursor: "pointer" }}>
-                  Privacy policy
-                </span>
-              </Typography>
-            </div>
-          </form>
-        )}
-      </Formik>
-    </Wrapper>
+                Sign in
+              </Button>
+              {/* <Button
+                style={{ color: "#6320EE" }}
+                component={Link}
+                to="/auth/reset-password"
+                fullWidth
+                color="primary"
+              >
+                Forgot password
+              </Button> */}
+            </form>
+          )}
+        </Formik>
+      </Wrapper>
+      <Box display="block" style={{ textAlign: "center", marginTop: "2rem" }}>
+        <Typography
+          variant="subtitle1"
+          gutterBottom
+          style={{ color: "white", fontSize: "13px" }}
+        >
+          Need Intelligence Dashboard account ?
+        </Typography>
+        <Link to="/auth/sign-up" className={classes.btnLink}>
+          Sign up Now
+        </Link>
+      </Box>
+    </Box>
   );
 }
 

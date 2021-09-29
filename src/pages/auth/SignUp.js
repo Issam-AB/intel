@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { signUp } from "../../redux/actions/authActions";
@@ -12,7 +13,7 @@ import {
   Paper,
   TextField as MuiTextField,
   Typography,
-  Divider as MuiDivider,
+  Box,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
 import { Alert as MuiAlert } from "@material-ui/lab";
@@ -85,12 +86,18 @@ const useStyles = makeStyles({
     fontWeight: "600",
     color: "#868695",
   },
+  btnLink: {
+    textDecoration: "none",
+    fontSize: "14px",
+    fontWeight: "900",
+    color: "#23CC94",
+  },
 });
 
 const Alert = styled(MuiAlert)(spacing);
 
 const TextField = styled(MuiTextField)(spacing);
-const Divider = styled(MuiDivider)(spacing);
+// const Divider = styled(MuiDivider)(spacing);
 
 const Wrapper = styled(Paper)`
   padding: ${(props) => props.theme.spacing(6)}px;
@@ -105,12 +112,11 @@ const Wrapper = styled(Paper)`
 
 function SignUp() {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
   const classes = useStyles();
 
   const [step, setStep] = React.useState(1);
   const [buttonEnabled, setButtonEnabled] = React.useState(false);
-  const [isNextStep, setNextStep] = React.useState(false);
 
   const butonLabel = [];
   butonLabel[1] = "Next Step";
@@ -189,18 +195,14 @@ function SignUp() {
   });
 
   function isValidField(currentStepValidation, data) {
-    //if (!isNextStep) {
     currentStepValidation
       .validate(data)
       .then(function (valid) {
-        //console.log("NO ERROR", data);
         return setButtonEnabled(true);
       })
       .catch(function (error) {
-        // console.log("ERROR", data);
         return setButtonEnabled(false);
       });
-    //  }
   }
 
   const validate = async ({
@@ -268,10 +270,9 @@ function SignUp() {
   };
 
   return (
-    <>
+    <Box>
       <Wrapper>
         <Helmet title="Sign Up" />
-
         <Typography
           component="h1"
           variant="h4"
@@ -289,9 +290,8 @@ function SignUp() {
         >
           Let's get your (100% free) account set up.
         </Typography>
-
         <Formik
-          validate={isNextStep ? false : validate}
+          validate={validate}
           initialValues={{
             name: "",
             company: "",
@@ -513,7 +513,7 @@ function SignUp() {
                   gutterBottom
                   className={classes.bySignin}
                 >
-                  By signing up you agree to Inteligencedashboard.com
+                  By signing up you agree to Intelligencedashboard.com
                 </Typography>
                 <Typography variant="subtitle2" className={classes.terms}>
                   <span style={{ color: "#6320EE", cursor: "pointer" }}>
@@ -530,7 +530,19 @@ function SignUp() {
           )}
         </Formik>
       </Wrapper>
-    </>
+      <Box display="block" style={{ textAlign: "center", marginTop: "2rem" }}>
+        <Typography
+          variant="subtitle1"
+          gutterBottom
+          style={{ color: "white", fontSize: "13px" }}
+        >
+          Already have an account?
+        </Typography>
+        <Link to="/auth/sign-in" className={classes.btnLink}>
+          Sign in
+        </Link>
+      </Box>
+    </Box>
   );
 }
 

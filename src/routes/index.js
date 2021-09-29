@@ -30,7 +30,7 @@ import AuthGuard from "../components/AuthGuard";
 // Auth components
 import SignIn from "../pages/auth/SignIn";
 import SignUp from "../pages/auth/SignUp";
-// import ResetPassword from "../pages/auth/ResetPassword";
+import ResetPassword from "../pages/auth/ResetPassword";
 // import Page404 from "../pages/auth/Page404";
 // import Page500 from "../pages/auth/Page500";
 
@@ -232,11 +232,11 @@ const authRoutes = {
       name: "Sign Up",
       component: SignUp,
     },
-    // {
-    //   path: "/auth/reset-password",
-    //   name: "Reset Password",
-    //   component: ResetPassword,
-    // },
+    {
+      path: "/auth/reset-password",
+      name: "Reset Password",
+      component: ResetPassword,
+    },
     // {
     //   path: "/auth/404",
     //   name: "404 Page",
