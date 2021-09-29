@@ -10,7 +10,7 @@ const authSlice = createSlice({
   },
   reducers: {
     userAdded: (state, action) => {
-      state.isLoading = true;
+      state.isLoading = false;
       state.user = action.payload;
     },
 
@@ -33,7 +33,6 @@ export const { addRequestStarted, userAdded, userAddedFailed } =
 export const addUser = () =>
   apiRequestStarted({
     url: "/user/add",
-    method: "POST",
     onStart: addRequestStarted.type,
     onError: userAddedFailed.type,
     onSuccess: userAdded.type,

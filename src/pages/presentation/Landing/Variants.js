@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Box, Chip, Container, Grid, Typography } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
 
-import { setTheme } from "../../../redux/actions/themeActions";
+import { setTheme } from "../../../redux/reducers/customThemeReducer";
 import { THEMES } from "../../../constants";
 
 const Wrapper = styled.div`

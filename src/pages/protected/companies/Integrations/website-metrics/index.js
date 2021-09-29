@@ -33,11 +33,12 @@ const Typography = styled(MuiTypography)(spacing);
 const Dashborad = ({ theme }) => {
   const userState = useSelector((state) => state.customAuthReducer);
   const dispatch = useDispatch();
+  const loadData = () => {};
 
   useEffect(() => {
-    // /console.log(userState);
+    console.log(userState);
     dispatch(addUser({ name: "Said" }));
-  }, [dispatch]);
+  }, []);
 
   return (
     <React.Fragment>

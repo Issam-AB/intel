@@ -9,9 +9,9 @@ const api =
 
     const { url, data, method, onStart, onSuccess, onError } = action.payload;
 
-    if (onStart) dispatch({ type: onStart, payload: action.payload });
+    if (onStart) dispatch({ type: onStart });
     //start api
-    dispatch(actions.apiRequestStarted(action.payload));
+    next(action);
 
     try {
       const res = await axios({
@@ -22,15 +22,10 @@ const api =
       });
 
       if (onSuccess) dispatch({ type: onSuccess, payload: res.data });
-      dispatch(actions.apiRequestSuccess(action.payload));
+      dispatch({ type: actions.apiRequestSuccess.type });
     } catch (error) {
       if (onError) dispatch({ type: onError, payload: error.message });
-      dispatch(
-        actions.apiRequestFailed({
-          request: action.payload,
-          error: error.message,
-        })
-      );
+      dispatch({ type: actions.apiRequestFailed.type });
     }
   };
 

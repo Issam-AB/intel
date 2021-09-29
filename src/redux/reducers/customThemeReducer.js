@@ -8,7 +8,6 @@ const themeSlice = createSlice({
   },
   reducers: {
     setTheme: (state, { payload }) => {
-      state.isLoading = true;
       state.currentTheme = payload;
     },
   },
