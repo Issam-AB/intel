@@ -5,6 +5,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Settings from "./Settings";
 
 // import { spacing } from "@material-ui/system";
 
@@ -450,6 +451,7 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
             </Menu>
           </Grid>
         </Grid>
+        <Settings />
       </SidebarFooter>
     </Drawer>
   );

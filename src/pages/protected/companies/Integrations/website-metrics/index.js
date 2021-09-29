@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { withTheme } from "styled-components/macro";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "../../../../../redux/reducers/customAuthReducer";
 
 import { Helmet } from "react-helmet-async";
 
@@ -28,7 +30,15 @@ const Spacer = styled.div(spacing);
 
 const Typography = styled(MuiTypography)(spacing);
 
-function Dashborad({ theme }) {
+const Dashborad = ({ theme }) => {
+  const userState = useSelector((state) => state.customAuthReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // /console.log(userState);
+    dispatch(addUser({ name: "Said" }));
+  }, [dispatch]);
+
   return (
     <React.Fragment>
       <Helmet title="Website Matrics" />
@@ -273,6 +283,6 @@ function Dashborad({ theme }) {
       </Grid>
     </React.Fragment>
   );
-}
+};
 
 export default withTheme(Dashborad);

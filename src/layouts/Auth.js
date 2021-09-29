@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     /* background: ${(props) => props.theme.palette.background.default}; */
-    background-color: #6320EE;
+    background-color:#6320EE;
   }
 `;
 
