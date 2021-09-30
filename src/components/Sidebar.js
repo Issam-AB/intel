@@ -6,6 +6,9 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "../vendor/perfect-scrollbar.css";
 import { makeStyles } from "@material-ui/core/styles";
 import Settings from "./Settings";
+import { Redirect } from "react-router-dom";
+import { signOut } from "../redux/reducers/customAuthReducer";
+import { useDispatch } from "react-redux";
 
 // import { spacing } from "@material-ui/system";
 
@@ -282,6 +285,12 @@ const SidebarLink = ({ name, to, badge, icon }) => {
 };
 
 const Sidebar = ({ classes, staticContext, location, ...rest }) => {
+  const dispatch = useDispatch();
+  const handleSignOut = () => {
+    dispatch(signOut());
+    return <Redirect to="/auth/sign-in" />;
+  };
+
   // Menu popup user
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
@@ -444,8 +453,12 @@ const Sidebar = ({ classes, staticContext, location, ...rest }) => {
                 <ListItemIcon style={{ minWidth: "29px" }}>
                   <ExitToAppOutlined fontSize="small" />
                 </ListItemIcon>
-                <Typography variant="inherit" align="right">
-                  Signe Out
+                <Typography
+                  onClick={handleSignOut}
+                  variant="inherit"
+                  align="right"
+                >
+                  Sign Out
                 </Typography>
               </MenuItem>
             </Menu>

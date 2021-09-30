@@ -1,4 +1,3 @@
-/* eslint-disable import/first */
 import React from "react";
 
 // import InvoiceDetails from "../pages/pages/InvoiceDetails";
@@ -8,6 +7,7 @@ import CallLog from "./callLog";
 import Report from "./report";
 
 import { PhoneIncoming, FileText } from "react-feather";
+import AuthGuard from "./../../../../../components/AuthGuard";
 
 export const callTracking = {
   id: "Call Tracking",
@@ -27,4 +27,5 @@ export const callTracking = {
     },
   ],
   component: null,
+  guard: AuthGuard,
 };

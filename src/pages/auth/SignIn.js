@@ -1,12 +1,13 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { signIn } from "../../redux/actions/authActions";
+import { login } from "../../redux/reducers/customAuthReducer";
+
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import {
@@ -120,11 +121,43 @@ const Wrapper = styled(Paper)`
     padding: ${(props) => props.theme.spacing(10)}px;
   }
 `;
-
-function SignIn() {
+const SignIn = () => {
   const dispatch = useDispatch();
+
   const history = useHistory();
   const classes = useStyles();
+
+  const { user, error, isLoading } = useSelector((state) => state.authReducer);
+
+  useEffect(() => {
+    if (user) {
+      // save the token in Storage
+      localStorage.setItem("myToken", JSON.stringify(user.token));
+
+      history.push("/private");
+    }
+  }, [user]);
+
+  const handleMySubmit = async (
+    values,
+    { setErrors, setStatus, setSubmitting }
+  ) => {
+    dispatch(login({ email: values.email, password: values.password }));
+    // setLoading(true);
+    //setLocalError("");
+
+    //console.log(login({ email: values.email, password: values.password }));
+    //(login({ email: values.email, password: values.password }));
+    // try {
+    //   await dispatch(login({ email: values.email, password: values.password }));
+    //   history.push("/private");
+    // } catch (error) {
+    //   const message = error.message || "Something went wrong";
+    //   setStatus({ success: false });
+    //   setErrors({ submit: message });
+    //   setSubmitting(false);
+    // }
+  };
 
   return (
     <Box>
@@ -142,8 +175,8 @@ function SignIn() {
 
         <Formik
           initialValues={{
-            email: "demo@bootlab.io",
-            password: "unsafepassword",
+            email: "issam.aboulfadl05@gmail.com",
+            password: "111111111111",
             submit: false,
           }}
           validationSchema={Yup.object().shape({
@@ -153,20 +186,7 @@ function SignIn() {
               .required("Email is required"),
             password: Yup.string().max(255).required("Password is required"),
           })}
-          onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-            try {
-              await dispatch(
-                signIn({ email: values.email, password: values.password })
-              );
-              history.push("/private");
-            } catch (error) {
-              const message = error.message || "Something went wrong";
-
-              setStatus({ success: false });
-              setErrors({ submit: message });
-              setSubmitting(false);
-            }
-          }}
+          onSubmit={handleMySubmit}
         >
           {({
             errors,
@@ -182,9 +202,9 @@ function SignIn() {
                 Use <strong>demo@bootlab.io</strong> and{" "}
                 <strong>unsafepassword</strong> to sign in
               </Alert> */}
-              {errors.submit && (
+              {error && (
                 <Alert mt={2} mb={1} severity="warning">
-                  {errors.submit}
+                  {error}
                 </Alert>
               )}
               <ThemeProvider theme={theme}>
@@ -235,7 +255,7 @@ function SignIn() {
                 style={{
                   borderRadius: "10px",
                   height: "3.6rem",
-                  backgroundColor: "#23CC94",
+                  backgroundColor: isLoading ? "#cccccc" : "#23CC94",
                   color: "white",
                   marginTop: "1rem",
                 }}
@@ -244,7 +264,7 @@ function SignIn() {
                 fullWidth
                 variant="contained"
                 color="primary"
-                disabled={isSubmitting}
+                disabled={isLoading}
               >
                 Sign in
               </Button>
@@ -275,6 +295,6 @@ function SignIn() {
       </Box>
     </Box>
   );
-}
+};
 
 export default SignIn;

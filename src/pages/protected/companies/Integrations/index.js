@@ -27,7 +27,7 @@ for (let slug in listOfIntegrations) {
     InegrationsRoutes.push(listOfIntegrations[slug]);
   }
 }
-console.log("hi", InegrationsRoutes);
+//console.log("hi", InegrationsRoutes);
 
 export default InegrationsRoutes;
 

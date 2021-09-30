@@ -1,11 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
 import { Helmet } from "react-helmet-async";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { resetPassword } from "../../redux/actions/authActions";
+import {
+  resetPassword,
+  resetErrorAndSeccess,
+} from "../../redux/reducers/customAuthReducer";
 
 import {
   Button,
@@ -83,6 +86,21 @@ function ResetPassword() {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
+  React.useEffect(() => {
+    //dispatch(resetErrorAndSeccess());
+  }, []);
+
+  const { messageSucceeded, error, isLoading } = useSelector(
+    (state) => state.authReducer
+  );
+
+  const handleSubmit = (values, { setErrors, setStatus, setSubmitting }) => {
+    dispatch(
+      resetPassword({
+        email: values.email,
+      })
+    );
+  };
 
   return (
     <Wrapper>
@@ -117,22 +135,7 @@ function ResetPassword() {
             .max(255)
             .required("Email is required"),
         })}
-        onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-          try {
-            await dispatch(
-              resetPassword({
-                email: values.email,
-              })
-            );
-            history.push("/auth/sign-in");
-          } catch (error) {
-            const message = error.message || "Something went wrong";
-
-            setStatus({ success: false });
-            setErrors({ submit: message });
-            setSubmitting(false);
-          }
-        }}
+        onSubmit={handleSubmit}
       >
         {({
           errors,
@@ -144,9 +147,15 @@ function ResetPassword() {
           values,
         }) => (
           <form noValidate onSubmit={handleSubmit}>
-            {errors.submit && (
+            {messageSucceeded && (
+              <Alert mt={2} mb={1} severity="success">
+                {messageSucceeded.message}
+              </Alert>
+            )}
+
+            {error && (
               <Alert mt={2} mb={1} severity="warning">
-                {errors.submit}
+                {error}
               </Alert>
             )}
             <ThemeProvider theme={theme}>
@@ -170,12 +179,12 @@ function ResetPassword() {
               />
             </ThemeProvider>
             <Button
-              style={{ backgroundColor: "#23CC94" }}
+              style={{ backgroundColor: isLoading ? "#cccccc" : "#23CC94" }}
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              disabled={isSubmitting}
+              disabled={isLoading}
               classes={{ label: classes.labelButton }}
             >
               Reset password

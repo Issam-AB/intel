@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik } from "formik";
-import { signUp } from "../../redux/actions/authActions";
 import { ArrowRightAlt } from "@material-ui/icons";
 import {
   Button,
@@ -250,15 +249,14 @@ function SignUp() {
     console.log(values);
 
     try {
-      await dispatch(
-        signUp({
-          name: "test",
-          company: "test",
-          wbsiteUrl: "www.google.com",
-          email: values.email,
-          password: values.password,
-        })
-      );
+      await dispatch();
+      // signUp({
+      //   name: "test",
+      //   company: "test",
+      //   wbsiteUrl: "www.google.com",
+      //   email: values.email,
+      //   password: values.password,
+      // })
       //  history.push("/auth/sign-in");
     } catch (error) {
       const message = error.message || "Something went wrong";

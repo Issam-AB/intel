@@ -12,7 +12,7 @@ import {
 import { Menu as MenuIcon } from "@material-ui/icons";
 
 import MessagesDropdown from "./MessagesDropdown";
-import LanguagesDropdown from "./LanguagesDropdown";
+import TopProfileDropDown from "./TopProfileDropDown";
 
 const AppBar = styled(MuiAppBar)`
   background: ${(props) => props.theme.header.background};
@@ -45,7 +45,7 @@ const AppBarComponent = ({ onDrawerToggle }) => (
           <Grid item xs />
           <Grid item>
             <MessagesDropdown />
-            <LanguagesDropdown />
+            <TopProfileDropDown />
             {/* <UserDropdown /> */}
           </Grid>
         </Grid>

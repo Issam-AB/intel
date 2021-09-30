@@ -33,11 +33,10 @@ const Typography = styled(MuiTypography)(spacing);
 const Dashborad = ({ theme }) => {
   const userState = useSelector((state) => state.customAuthReducer);
   const dispatch = useDispatch();
-  const loadData = () => {};
 
   useEffect(() => {
-    console.log(userState);
-    dispatch(addUser({ name: "Said" }));
+    console.log(process.env.REACT_APP_BASE_URL);
+    /// dispatch(addUser({ name: "Said" }));
   }, []);
 
   return (
