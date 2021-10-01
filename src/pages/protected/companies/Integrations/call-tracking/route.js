@@ -18,14 +18,15 @@ export const callTracking = {
       name: "Call Log",
       icon: <PhoneIncoming />,
       component: CallLog,
+      guard: AuthGuard,
     },
     {
       path: "/call-tracking/reports",
       name: "Reports",
       icon: <FileText />,
       component: Report,
+      guard: AuthGuard,
     },
   ],
   component: null,
-  guard: AuthGuard,
 };

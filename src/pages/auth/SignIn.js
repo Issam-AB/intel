@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { login } from "../../redux/reducers/customAuthReducer";
+import * as keys from "../../constants";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -127,36 +128,22 @@ const SignIn = () => {
   const history = useHistory();
   const classes = useStyles();
 
-  const { user, error, isLoading } = useSelector((state) => state.authReducer);
+  let { user, error, isLoading } = useSelector((state) => state.authReducer);
 
   useEffect(() => {
     if (user) {
       // save the token in Storage
-      localStorage.setItem("myToken", JSON.stringify(user.token));
+      localStorage.setItem(keys.USER_TOKEN, JSON.stringify(user.token));
 
-      history.push("/private");
+      //get the companies of the users
+      const { companies } = user;
+      if (companies.length === 1) history.push("/");
+      else if (companies.length > 1) history.push("/select");
     }
   }, [user]);
 
-  const handleMySubmit = async (
-    values,
-    { setErrors, setStatus, setSubmitting }
-  ) => {
+  const handleMySubmit = (values) => {
     dispatch(login({ email: values.email, password: values.password }));
-    // setLoading(true);
-    //setLocalError("");
-
-    //console.log(login({ email: values.email, password: values.password }));
-    //(login({ email: values.email, password: values.password }));
-    // try {
-    //   await dispatch(login({ email: values.email, password: values.password }));
-    //   history.push("/private");
-    // } catch (error) {
-    //   const message = error.message || "Something went wrong";
-    //   setStatus({ success: false });
-    //   setErrors({ submit: message });
-    //   setSubmitting(false);
-    // }
   };
 
   return (

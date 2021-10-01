@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import {
   resetPassword,
-  resetErrorAndSeccess,
+  resetErrorAndSuccess,
 } from "../../redux/reducers/customAuthReducer";
 
 import {
@@ -86,13 +86,14 @@ function ResetPassword() {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
-  React.useEffect(() => {
-    //dispatch(resetErrorAndSeccess());
-  }, []);
 
   const { messageSucceeded, error, isLoading } = useSelector(
     (state) => state.authReducer
   );
+
+  React.useEffect(() => {
+    if (messageSucceeded || error) dispatch(resetErrorAndSuccess());
+  }, []);
 
   const handleSubmit = (values, { setErrors, setStatus, setSubmitting }) => {
     dispatch(

@@ -36,7 +36,7 @@ const authSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
-    resetErrorAndSeccess: (state) => {
+    resetErrorAndSuccess: (state) => {
       state.error = null;
       state.isLoading = false;
       state.messageSucceeded = null;
@@ -44,6 +44,14 @@ const authSlice = createSlice({
     signOut: (state) => {
       localStorage.removeItem(globals.USER_TOKEN);
       state.user = null;
+    },
+    SignUpFailed: (state, action) => {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
+    SignUpSuccess: (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload;
     },
   },
 });
@@ -55,8 +63,10 @@ export const {
   loginFailed,
   requestFailed,
   requestSuccess,
-  resetErrorAndSeccess,
+  resetErrorAndSuccess,
   signOut,
+  SignUpFailed,
+  SignUpSuccess,
 } = authSlice.actions;
 
 export const login = (data) =>
@@ -98,5 +108,16 @@ export const getUserByToken = (data) => {
     onStart: requestStarted.type,
     onSuccess: loginSuccess.type,
     onError: signOut.type,
+  });
+};
+
+export const register = (data) => {
+  apiRequest({
+    url: "/auth/sign-up",
+    data,
+    method: "POST",
+    onStart: requestStarted.type,
+    onError: SignUpFailed.type,
+    onSuccess: SignUpSuccess.type,
   });
 };

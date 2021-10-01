@@ -168,12 +168,14 @@ export const support = {
       name: "All Request",
       icon: <Copy />,
       component: AllRequest,
+      guard: AuthGuard,
     },
     {
       path: "/support/new-request",
       name: "New Request",
       icon: <FilePlus />,
       component: NewRrquest,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -187,6 +189,7 @@ export const integrations = {
       name: "All Integration",
       icon: <Grid />,
       component: Integration,
+      guard: AuthGuard,
     },
   ],
   component: null,
@@ -201,21 +204,24 @@ const accountSettings = {
       name: "My Profile",
       icon: <User />,
       component: MyProfile,
+      guard: AuthGuard,
     },
     {
       path: "/account-settings/users",
       name: "Users",
       icon: <UsersIcon />,
       component: Users,
+      guard: AuthGuard,
     },
     {
       path: "/account-settings/billing",
       name: "Biling",
       icon: <CreditCard />,
       component: Billing,
+      guard: AuthGuard,
     },
   ],
-  component: null,
+  // component: null,
 };
 
 const authRoutes = {
@@ -304,7 +310,7 @@ export const presentationLayoutRoutes = [landingRoutes];
 // export const presentationLayoutRoutes = [marketingPerformance];
 
 // Routes that are protected
-export const protectedRoutes = [protectedPageRoutes];
+export const protectedRoutes = [protectedPageRoutes, accountSettings];
 
 // Routes visible in the sidebar
 export const sidebarRoutes = InegrationsRoutes;

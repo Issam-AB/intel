@@ -18,6 +18,7 @@ import { spacing } from "@material-ui/system";
 import { Alert as MuiAlert } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core";
+import { register } from "../../redux/reducers/customAuthReducer";
 // import PasswordStrengthBar from "react-password-strength-bar";
 
 // const LogoImage = require("/static/img/logo/white.svg");
@@ -248,23 +249,23 @@ function SignUp() {
   ) => {
     console.log(values);
 
-    try {
-      await dispatch();
-      // signUp({
-      //   name: "test",
-      //   company: "test",
-      //   wbsiteUrl: "www.google.com",
-      //   email: values.email,
-      //   password: values.password,
-      // })
-      //  history.push("/auth/sign-in");
-    } catch (error) {
-      const message = error.message || "Something went wrong";
+    dispatch(
+      register({
+        user: {
+          name: values.name,
+          email: values.email,
+          password: values.password,
+          confirmPassword: values.confirmPassword,
+        },
+        company: {
+          company: values.company,
+          wbsiteUrl: values.wbsiteUrl,
+          phoneNumber: values.phoneNumber,
+        },
+      })
+    );
 
-      setStatus({ success: false });
-      setErrors({ submit: message });
-      setSubmitting(false);
-    }
+    //  history.push("/auth/sign-in");
   };
 
   return (
