@@ -19,7 +19,7 @@ export const websiteMetrics = {
       name: "Dashboard",
       icon: <Activity />,
       component: Dashborad,
-      guard: AuthGuard,
+      // guard: AuthGuard,
     },
   ],
   component: null,

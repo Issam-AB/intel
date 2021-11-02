@@ -13,7 +13,8 @@ import {
 import Actions from "./Actions";
 import { spacing } from "@material-ui/system";
 import { makeStyles } from "@material-ui/core/styles";
-import { Bar } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
+
 const Card = styled(MuiCard)(spacing);
 
 const Spacer = styled.div(spacing);
@@ -50,6 +51,7 @@ function BarChart({ theme }) {
     ],
     datasets: [
       {
+        type: "bar",
         label: "Last year",
         backgroundColor: theme.palette.secondary.main,
         borderColor: theme.palette.secondary.main,
@@ -68,6 +70,12 @@ function BarChart({ theme }) {
         data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
         barPercentage: 0.75,
         categoryPercentage: 0.5,
+      },
+
+      {
+        type: "line",
+        label: "Line Dataset",
+        data: [50, 50, 50, 50],
       },
     ],
   };
@@ -104,12 +112,22 @@ function BarChart({ theme }) {
     checkedA: true,
     checkedB: true,
     checkedF: true,
-    checkedG: true,
+    checkedLeads: false,
   });
-
+  console.log(state);
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+  // React.useEffect(() => {
+  //   const { checkedLeads } = state;
+  //   if (checkedLeads === true) {
+  //     for (let chart in data) {
+  //       console.log(data[chart]);
+  //     }
+  //     // const dataset = data.map((data) => data.datasets);
+  //     // console.log(dataset);
+  //   } else console.log("is false");
+  // });
 
   return (
     <Card mb={1} className={classes.Card}>
@@ -181,7 +199,7 @@ function BarChart({ theme }) {
                 <Checkbox
                   //checked={state.checkedF}
                   onChange={handleChange}
-                  name="checkedF"
+                  name="checkedLeads"
                   color="primary"
                 />
                 <span
@@ -203,6 +221,7 @@ function BarChart({ theme }) {
         </FormGroup>
         <Spacer mb={5} />
         <ChartWrapper>
+          <Line data={data} options={options} />
           <Bar data={data} options={options} />
         </ChartWrapper>
       </CardContent>
